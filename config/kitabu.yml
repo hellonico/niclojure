@@ -1,0 +1,44 @@
+# The book's title. Will be used everywhere!
+title: "Clojure for pleasure"
+
+# The book's language.
+language: en
+
+# Your book copyright info.
+# Here's some examples:
+#
+#   Copyright 2012 by Nico.
+#   Copyright 2012 by Nico. This work is licensed under MIT License.
+#   This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+#   This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+#   This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+#
+copyright: "Copyright (C) 2012 Nico."
+
+# Who's publishing this book.
+publisher: "Nico"
+
+# When this book was published.
+published_at: "2012-09-07"
+
+# Some book description.
+subject: "Cool Clojure and how to get started quickly"
+
+# Some keywords that identify this book.
+keywords: "[Your book keywords (comma-separated)]"
+
+# Some unique identification. Works great with your domain
+# like `http://yourbook.example.com`.
+uid: "e449bf07ca21e56796b51060c8a22efb"
+
+# Your book identification like ISBN or ISSN.
+identifier:
+  id: "http://yourbook.example.com"
+  type: "URL" # can be ISBN, ISSN or URL
+
+# This book authors.
+authors:
+  - "Nico"
+
+# The base URL from your source code.
+base_url: http://example.com
