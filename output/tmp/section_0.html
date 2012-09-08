@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title></title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="user.css"/>
+  </head>
+
+  <body>
+    <div class="chapter">
+      <h2 id="welcome-to-clojure">Welcome to Clojure</h2>
+
+<p>This book is about sharing my love for Clojure, why I use it, and why I will keep using it for a fair bit of time. You don't need to be a great IT geek, you just have to start using Clojure. Here we go.</p>
+
+<h3 id="clojure">Clojure</h3>
+
+<p><a href="http://learn-clojure.com/clojure_tutorials.html">http://learn-clojure.com/clojure_tutorials.html</a></p>
+
+<p>I will not go too much into the first steps details, since this is not the aim of this book. There is a completely new online book written by <a href="http://www.unexpected-vortices.com/clojure/brief-beginners-guide/index.html">John</a> that should get all the attention it deserves.</p>
+
+<p>Do not forget to do a few <a href="https://github.com/functional-koans/clojure-koans">clojure koans</a> to make sure the basic and the roots are ok.</p>
+
+<h3 id="leiningen">Leiningen</h3>
+
+<p><a href="https://github.com/technomancy/leiningen">https://github.com/technomancy/leiningen</a></p>
+
+<p>To start using clojure, you actually do not install it. You start by installing Leiningen. Once you have it installed, you should be able to see the following:</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="no">Niko</span><span class="vi">@Modrzyks</span><span class="o">-</span><span class="no">MacBook</span><span class="o">-</span><span class="no">Pro</span><span class="o">][</span><span class="mi">13</span><span class="p">:</span><span class="mi">44</span><span class="o">][~</span><span class="sr">/projects/</span><span class="o">]</span> <span class="o">%</span> <span class="n">lein</span> 
+<span class="no">Leiningen</span> <span class="n">is</span> <span class="n">a</span> <span class="n">tool</span> <span class="k">for</span> <span class="n">working</span> <span class="n">with</span> <span class="no">Clojure</span> <span class="n">projects</span><span class="o">.</span>
+
+<span class="no">Several</span> <span class="n">tasks</span> <span class="n">are</span> <span class="n">available</span><span class="p">:</span>
+<span class="n">classpath</span>   <span class="no">Print</span> <span class="n">the</span> <span class="n">classpath</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">project</span><span class="o">.</span>
+<span class="n">clean</span>       <span class="no">Remove</span> <span class="n">compiled</span> <span class="k">class</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">jars</span> <span class="n">from</span> <span class="n">project</span><span class="o">.</span>
+<span class="n">compile</span>     <span class="no">Compile</span> <span class="no">Clojure</span> <span class="n">source</span> <span class="n">into</span> <span class="o">.</span><span class="n">class</span> <span class="n">files</span><span class="o">.</span>
+<span class="n">deploy</span>      <span class="no">Build</span> <span class="n">jar</span> <span class="ow">and</span> <span class="n">deploy</span> <span class="n">to</span> <span class="n">remote</span> <span class="n">repository</span><span class="o">.</span>
+<span class="n">deps</span>        <span class="no">Download</span> <span class="ss">:dependencies</span> <span class="ow">and</span> <span class="n">put</span> <span class="n">them</span> <span class="k">in</span> <span class="ss">:library</span><span class="o">-</span><span class="n">path</span><span class="o">.</span>
+<span class="n">help</span>        <span class="no">Display</span> <span class="n">a</span> <span class="n">list</span> <span class="n">of</span> <span class="n">tasks</span> <span class="ow">or</span> <span class="n">help</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">task</span><span class="o">.</span>
+<span class="n">install</span>     <span class="no">Install</span> <span class="n">current</span> <span class="n">project</span> <span class="ow">or</span> <span class="n">download</span> <span class="n">specified</span> <span class="n">project</span><span class="o">.</span>
+<span class="n">interactive</span> <span class="no">Enter</span> <span class="n">an</span> <span class="n">interactive</span> <span class="n">task</span> <span class="n">shell</span><span class="o">.</span> <span class="no">Aliased</span> <span class="n">to</span> <span class="s2">"int"</span><span class="o">.</span>
+<span class="n">jar</span>         <span class="no">Package</span> <span class="n">up</span> <span class="n">all</span> <span class="n">the</span> <span class="n">project</span><span class="s1">'s files into a jar file.</span>
+<span class="s1">javac       Compile Java source files.</span>
+<span class="s1">new         Create a new project skeleton.</span>
+<span class="s1">plugin      Manage user-level plugins.</span>
+<span class="s1">pom         Write a pom.xml file to disk for Maven interop.</span>
+<span class="s1">repl        Start a repl session either with the current project or standalone.</span>
+<span class="s1">retest      Run only the test namespaces which failed last time around.</span>
+<span class="s1">run         Run the project'</span><span class="n">s</span> <span class="o">-</span><span class="n">main</span> <span class="n">function</span><span class="o">.</span>
+<span class="n">search</span>      <span class="no">Search</span> <span class="n">remote</span> <span class="n">maven</span> <span class="n">repositories</span> <span class="k">for</span> <span class="n">matching</span> <span class="n">jars</span><span class="o">.</span>
+<span class="nb">test</span>        <span class="no">Run</span> <span class="n">the</span> <span class="n">project</span><span class="s1">'s tests.</span>
+<span class="s1">test!       Run a project'</span><span class="n">s</span> <span class="n">tests</span> <span class="n">after</span> <span class="n">cleaning</span> <span class="ow">and</span> <span class="n">fetching</span> <span class="n">dependencies</span><span class="o">.</span>
+<span class="n">trampoline</span>  <span class="no">Run</span> <span class="n">a</span> <span class="n">task</span> <span class="n">without</span> <span class="n">nesting</span> <span class="n">the</span> <span class="n">project</span><span class="s1">'s JVM inside Leiningen'</span><span class="n">s</span><span class="o">.</span>
+<span class="n">uberjar</span>     <span class="no">Package</span> <span class="n">up</span> <span class="n">the</span> <span class="n">project</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">all</span> <span class="n">dependencies</span> <span class="n">into</span> <span class="n">a</span> <span class="n">jar</span> <span class="n">file</span><span class="o">.</span>
+<span class="n">upgrade</span>     
+<span class="n">version</span>     <span class="no">Print</span> <span class="n">version</span> <span class="k">for</span> <span class="no">Leiningen</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">current</span> <span class="no">JVM</span><span class="o">.</span>
+
+<span class="no">Run</span> <span class="n">lein</span> <span class="n">help</span> <span class="vg">$TASK</span> <span class="k">for</span> <span class="n">details</span><span class="o">.</span>
+<span class="no">See</span> <span class="n">also</span><span class="p">:</span> <span class="n">readme</span><span class="p">,</span> <span class="n">tutorial</span><span class="p">,</span> <span class="n">copying</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">deploying</span> <span class="ow">and</span> <span class="n">news</span><span class="o">.</span>
+</pre>
+</div>
+
+
+<p>Now if you just want to start using some live clojure, you just go with:</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="no">Niko</span><span class="vi">@Modrzyks</span><span class="o">-</span><span class="no">MacBook</span><span class="o">-</span><span class="no">Pro</span><span class="o">][</span><span class="mi">13</span><span class="p">:</span><span class="mi">50</span><span class="o">][~</span><span class="sr">/] % lein repl</span>
+<span class="sr">REPL started; server listening on localhost port 27991</span>
+<span class="sr">user=&gt; </span>
+</pre>
+</div>
+
+
+<p>And there you are. Was simple no ?</p>
+
+<p>And here is your mother of them all hello world</p>
+
+<div class="highlight">
+<pre><span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">println</span> <span class="s2">"hello clojure!"</span><span class="p">)</span>
+<span class="n">hello</span> <span class="n">clojure!</span>
+</pre>
+</div>
+
+
+<p>Now you have to realize that all the libs available to the Java World through Maven repositories, and all the libs hosted on Clojars can be integrated in the project in no time by using the command:</p>
+
+<p><em>lein deps</em></p>
+
+<p>The libraries will come to your local project folder. Let's hack in no time.</p>
+
+<h4 id="search-clojars">Search clojars</h4>
+
+<p>To search a library online, use the following syntax:
+<code></code></p>
+
+<pre><code>lein search &lt;libraryname&gt;
+</code></pre>
+
+<p></p>
+
+<p>For example
+<code></code></p>
+
+<pre><code>lein search jsoup     
+</code></pre>
+
+<p>
+will return</p>
+
+<p><code>
+ == Results from clojars - Showing page 1 / 1 total
+[org.clojars.clizzin/jsoup "1.5.1"] jsoup HTML parser
+</code></p>
+
+<h4 id="upload-to-clojars">Upload to clojars</h4>
+
+<p>There is a plugin called <a href="https://github.com/ato/lein-clojars">lein-clojars</a></p>
+
+<p>You install it somehow like this:
+<code></code></p>
+
+<pre><code>lein plugin install lein-clojars 0.9.1
+</code></pre>
+
+<p></p>
+
+<p>Then in a clojure project, just go and upload it with
+<code></code></p>
+
+<pre><code>lein push
+</code></pre>
+
+<p>
+Nothing else.</p>
+
+<p>Then a lein search will (should) show it.</p>
+
+<h3 id="jark">Jark</h3>
+
+<p><a href="http://icylisper.in/jark/started.html">http://icylisper.in/jark/started.html</a></p>
+
+<p>Next you probably going to get tired of the Java VM so very slow startup time. Here comes <a href="https://github.com/clojure/tools.nrepl">nrepl</a> and <a href="http://icylisper.in/jark/features.html">Jark</a></p>
+
+<p>Create a new leiningen project, and follow the jark install steps:</p>
+
+<div class="highlight">
+<pre><span class="p">;</span> <span class="n">project</span><span class="o">.</span><span class="n">clj</span>
+
+<span class="p">(</span><span class="n">defproject</span> <span class="n">book01</span> <span class="s2">"1.0.0-SNAPSHOT"</span>
+  <span class="ss">:description</span> <span class="s2">"FIXME: write description"</span>
+  <span class="ss">:dependencies</span> <span class="o">[</span>
+    <span class="o">[</span><span class="n">org</span><span class="o">.</span><span class="n">clojure</span><span class="o">/</span><span class="n">clojure</span> <span class="s2">"1.3.0"</span><span class="o">]</span>
+    <span class="o">[</span><span class="n">jark</span> <span class="s2">"0.4.2"</span> <span class="ss">:exclusions</span> <span class="o">[</span><span class="n">org</span><span class="o">.</span><span class="n">clojure</span><span class="o">/</span><span class="n">clojure</span><span class="o">]]</span> 
+  <span class="o">]</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">core</span><span class="o">.</span><span class="n">clj</span>
+<span class="p">(</span><span class="n">ns</span> <span class="n">book01</span><span class="o">.</span><span class="n">core</span>
+    <span class="p">(</span><span class="ss">:require</span> <span class="o">[</span><span class="n">clojure</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">nrepl</span> <span class="ss">:as</span> <span class="n">nrepl</span><span class="o">]</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">nrepl</span><span class="o">/</span><span class="n">start</span><span class="o">-</span><span class="n">server</span> <span class="mi">9000</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>and then start the repl with the new code from core.clj</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="no">Niko</span><span class="vi">@Modrzyks</span><span class="o">-</span><span class="no">MacBook</span><span class="o">-</span><span class="no">Pro</span><span class="o">][</span><span class="mi">14</span><span class="p">:</span><span class="mi">11</span><span class="o">][~</span><span class="sr">/projects/</span><span class="n">book01</span><span class="o">/]</span> <span class="o">%</span> <span class="n">lein</span> <span class="n">repl</span>
+<span class="no">REPL</span> <span class="n">started</span><span class="p">;</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">42326</span>
+<span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="nb">load</span><span class="o">-</span><span class="n">file</span> <span class="s2">"src/book01/core.clj"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>And now straight from the shell you can use and run remote clojure code</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="no">Niko</span><span class="vi">@Modrzyks</span><span class="o">-</span><span class="no">MacBook</span><span class="o">-</span><span class="no">Pro</span><span class="o">][</span><span class="mi">14</span><span class="p">:</span><span class="mi">16</span><span class="o">][~</span><span class="sr">/Downloads/</span><span class="n">jark</span><span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="no">Darwin</span><span class="o">-</span><span class="n">x86_64</span><span class="o">/]</span> <span class="o">%</span> <span class="n">jark</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"(+ 2 2)"</span>
+<span class="o">=&gt;</span> <span class="mi">4</span>
+</pre>
+</div>
+
+
+<p>Now that is some sweet fast starting time, so stop buzzing around.</p>
+
+<h3 id="pomegrenate">Pomegrenate</h3>
+
+<p><a href="https://github.com/cemerick/pomegranate">https://github.com/cemerick/pomegranate</a></p>
+
+<p>This is the best way to add libraries at runtime. You still need the library itself to be available to the repl, by adding this to your <strong>project.clj</strong> file:</p>
+
+<p><code></code></p>
+
+<pre><code>[com.cemerick/pomegranate "0.0.13"]
+</code></pre>
+
+<p></p>
+
+<p>Then, here is how to import incanter in a running REPL session:</p>
+
+<div class="highlight">
+<pre><span class="o">[</span><span class="n">missing</span> <span class="s1">'code/11_pomegranata.clj'</span> <span class="n">file</span><span class="o">]</span>
+</pre>
+</div>
+    </div>
+  </body>
+</html>

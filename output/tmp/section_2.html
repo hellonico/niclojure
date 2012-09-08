@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title></title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="user.css"/>
+  </head>
+
+  <body>
+    <div class="chapter">
+      <h2 id="opencv-arduino">OpenCV, Arduino </h2>
+
+<h3 id="physics-with-clojure">Physics with Clojure</h3>
+
+<ul><li><a href="%5Bhttp://nakkaya.com/2010/07/21/physics-with-clojure/">http://nakkaya.com/2010/07/21/physics-with-clojure/</a></li>
+<li><a href="http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/">http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/</a></li>
+</ul><h3 id="cloduino">Cloduino</h3>
+
+<p><a href="https://github.com/nakkaya/clodiuno">https://github.com/nakkaya/clodiuno</a></p>
+
+<p>Once you have uploaded the Firmata protocol on your board
+<code>
+File -&gt; Examples -&gt; Firmata -&gt; StandartFirmata
+</code></p>
+
+<p>You can send a Clojure SOS.</p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="n">ns</span> <span class="n">sos</span>
+   <span class="p">(</span><span class="ss">:use</span> <span class="ss">:reload</span><span class="o">-</span><span class="n">all</span> <span class="n">clodiuno</span><span class="o">.</span><span class="n">core</span><span class="p">)</span>
+   <span class="p">(</span><span class="ss">:use</span> <span class="ss">:reload</span><span class="o">-</span><span class="n">all</span> <span class="n">clodiuno</span><span class="o">.</span><span class="n">firmata</span><span class="p">))</span>
+
+ <span class="p">(</span><span class="k">def</span> <span class="nf">short</span><span class="o">-</span><span class="n">pulse</span> <span class="mi">250</span><span class="p">)</span>
+ <span class="p">(</span><span class="k">def</span> <span class="nf">long</span><span class="o">-</span><span class="n">pulse</span> <span class="mi">500</span><span class="p">)</span>
+ <span class="p">(</span><span class="k">def</span> <span class="nf">letter</span><span class="o">-</span><span class="n">delay</span> <span class="mi">1000</span><span class="p">)</span>
+
+ <span class="p">(</span><span class="k">def</span> <span class="nf">letter</span><span class="o">-</span><span class="n">s</span> <span class="o">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>
+ <span class="p">(</span><span class="k">def</span> <span class="nf">letter</span><span class="o">-</span><span class="n">o</span> <span class="o">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+
+ <span class="p">(</span><span class="n">defn</span> <span class="n">blink</span> <span class="o">[</span><span class="n">board</span> <span class="n">time</span><span class="o">]</span>
+   <span class="p">(</span><span class="n">digital</span><span class="o">-</span><span class="n">write</span> <span class="n">board</span> <span class="mi">13</span> <span class="no">HIGH</span><span class="p">)</span>
+   <span class="p">(</span><span class="no">Thread</span><span class="o">/</span><span class="nb">sleep</span> <span class="n">time</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">digital</span><span class="o">-</span><span class="n">write</span> <span class="n">board</span> <span class="mi">13</span> <span class="no">LOW</span><span class="p">)</span>
+   <span class="p">(</span><span class="no">Thread</span><span class="o">/</span><span class="nb">sleep</span> <span class="n">time</span><span class="p">))</span>
+
+ <span class="p">(</span><span class="n">defn</span> <span class="n">blink</span><span class="o">-</span><span class="n">letter</span> <span class="o">[</span><span class="n">board</span> <span class="n">letter</span><span class="o">]</span>
+   <span class="p">(</span><span class="n">doseq</span> <span class="o">[</span><span class="n">i</span> <span class="n">letter</span><span class="o">]</span>
+     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="o">=</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">blink</span> <span class="n">board</span> <span class="n">short</span><span class="o">-</span><span class="n">pulse</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">blink</span> <span class="n">board</span> <span class="n">long</span><span class="o">-</span><span class="n">pulse</span><span class="p">)))</span>
+   <span class="p">(</span><span class="no">Thread</span><span class="o">/</span><span class="nb">sleep</span> <span class="n">letter</span><span class="o">-</span><span class="n">delay</span><span class="p">))</span>
+
+ <span class="p">(</span><span class="n">defn</span> <span class="n">sos</span> <span class="o">[]</span>
+   <span class="p">(</span><span class="n">let</span> <span class="o">[</span><span class="n">board</span> <span class="p">(</span><span class="n">arduino</span> <span class="ss">:firmata</span> <span class="s2">"/dev/tty.usbserial-A900adPT"</span><span class="p">)</span><span class="o">]</span> 
+     <span class="p">;;</span><span class="n">allow</span> <span class="n">arduino</span> <span class="n">to</span> <span class="n">boot</span>
+     <span class="p">(</span><span class="no">Thread</span><span class="o">/</span><span class="nb">sleep</span> <span class="mi">5000</span><span class="p">)</span>
+     <span class="p">(</span><span class="n">pin</span><span class="o">-</span><span class="n">mode</span> <span class="n">board</span> <span class="mi">13</span> <span class="no">OUTPUT</span><span class="p">)</span>
+
+     <span class="p">(</span><span class="n">doseq</span> <span class="o">[</span><span class="n">_</span> <span class="p">(</span><span class="n">range</span> <span class="mi">3</span><span class="p">)</span><span class="o">]</span> 
+       <span class="p">(</span><span class="n">blink</span><span class="o">-</span><span class="n">letter</span> <span class="n">board</span> <span class="n">letter</span><span class="o">-</span><span class="n">s</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">blink</span><span class="o">-</span><span class="n">letter</span> <span class="n">board</span> <span class="n">letter</span><span class="o">-</span><span class="n">o</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">blink</span><span class="o">-</span><span class="n">letter</span> <span class="n">board</span> <span class="n">letter</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>
+
+     <span class="p">(</span><span class="n">close</span> <span class="n">board</span><span class="p">)))</span>
+</pre>
+</div>
+
+
+<p>There are so many more great <a href="http://nakkaya.com/clodiuno.html">Samples</a> that Nakkaya has been writing. Make sure you go through them.</p>
+
+<ul><li>https://github.com/bagucode/clj-native</li>
+<li>https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU</li>
+<li>http://im4java.sourceforge.net/</li>
+<li>https://github.com/bagucode/clj-native</li>
+</ul>
+    </div>
+  </body>
+</html>
