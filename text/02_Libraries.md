@@ -40,50 +40,6 @@ Try an example: sample 1,000 values from a standard-normal distribution and view
 
 ![Alt text](../images/histogram.png)
 
-### Quil
-
-[https://github.com/quil/quil](https://github.com/quil/quil)
-
-Quil is to [Processing](http://processing.org/) what Clojure is to Java, some fresh air.
-
-This is how your quil-ed processing sketch now looks like:
-
-@@@ ruby 10_quil.clj @@@
-
-Note the decor set to false, that hides most of the uglyness of the Window borders.
-
-And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
-
-### Overtone
-[https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
-
-Because you really need to live audio programming to be a real VJ these days.
-This is how you install it:
-
-@@@ ruby 12_overtone.clj @@@
-
-Once the library is in your project, type
-
-<code>
-	(use 'overtone.live)
-</code>
-
-And now you can define an instrument
-<code>
-	(definst foo [] (saw 220))
-</code>
-
-And make some sound !
-
-<code>
-
-> (foo) ; Call the function returned by our synth
-4      ; returns a synth ID number
-> (kill 4) ; kill the synth with ID 4
-> (kill foo) ; or kill all instances of synth foo
-
-</code>
-
 ### Marginalia 
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
 
@@ -157,6 +113,12 @@ This is an example taken from a [slick tutorial](https://github.com/swannodette/
 
 You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
 Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
+
+### Korma
+[http://sqlkorma.com/docs](http://sqlkorma.com/docs)
+
+Korma makes actually enjoyable to write SQL queries. 
+
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
