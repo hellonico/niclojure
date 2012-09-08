@@ -7,6 +7,7 @@ Now that we are ready for some hacking, here are sites, that refer interesting C
 * [clojurewerkz](http://clojurewerkz.org/)
 * [Clojure on github](http://clojure.github.com/)
 * [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
+* [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
 
 ### Noir
 
@@ -113,6 +114,17 @@ This is an example taken from a [slick tutorial](https://github.com/swannodette/
 
 You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
 Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
+
+### Docjure
+[https://github.com/ative/docjure](https://github.com/ative/docjure)
+
+The best way to have fun with spreadsheet in clojure. Relies on the [Apache POI](http://poi.apache.org/) library but with some clojure sauce so it can actually be eaten.
+
+This is how you write a simple spreadsheet.
+
+@@@ ruby 21_docjure.clj @@@
+
+For more examples, I suggest you look at the ["horrible" documentation](http://poi.apache.org/spreadsheet/how-to.html#sxssf) :)
 
 ### Korma
 [http://sqlkorma.com/docs](http://sqlkorma.com/docs)

@@ -67,6 +67,16 @@ Nothing else.
 
 Then a lein search will (should) show it. 
 
+#### Examples
+
+All the examples in this book can be run with:
+<code>
+(use 'clojure.string)
+(load-file "code/18_clojure_soup.clj")
+</code>
+
+If you can not run them, let me know ;) 
+
 ### Jark
 [http://icylisper.in/jark/started.html](http://icylisper.in/jark/started.html)
 

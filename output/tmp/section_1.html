@@ -70,91 +70,6 @@
 
 <p><img src="histogram.png" alt="" /></p>
 
-<h3 id="quil">Quil</h3>
-
-<p><a href="https://github.com/quil/quil">https://github.com/quil/quil</a></p>
-
-<p>Quil is to <a href="http://processing.org/">Processing</a> what Clojure is to Java, some fresh air.</p>
-
-<p>This is how your quil-ed processing sketch now looks like:</p>
-
-<div class="highlight">
-<pre><span class="p">(</span><span class="n">ns</span> <span class="n">quilme</span><span class="o">.</span><span class="n">core</span>
-  <span class="p">(</span><span class="ss">:use</span> <span class="n">quil</span><span class="o">.</span><span class="n">core</span><span class="p">))</span>
-
-<span class="p">(</span><span class="n">defn</span> <span class="n">setup</span> <span class="o">[]</span>
-  <span class="p">;(</span><span class="n">smooth</span><span class="p">)</span>                          <span class="p">;;</span><span class="no">Turn</span> <span class="n">on</span> <span class="n">anti</span><span class="o">-</span><span class="n">aliasing</span>
-  <span class="p">(</span><span class="n">frame</span><span class="o">-</span><span class="n">rate</span> <span class="mi">5</span><span class="p">)</span>                    <span class="p">;;</span><span class="no">Set</span> <span class="n">framerate</span> <span class="n">to</span> <span class="mi">1</span> <span class="no">FPS</span>
-  <span class="p">(</span><span class="n">background</span> <span class="mi">0</span><span class="p">))</span>                 <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">background</span> <span class="n">colour</span> <span class="n">to</span>
-                                    <span class="p">;;</span>  <span class="n">a</span> <span class="n">nice</span> <span class="n">shade</span> <span class="n">of</span> <span class="n">grey</span><span class="o">.</span>
-<span class="p">(</span><span class="n">defn</span> <span class="n">draw</span> <span class="o">[]</span>
-  <span class="p">(</span><span class="n">stroke</span> <span class="p">(</span><span class="n">random</span> <span class="mi">255</span><span class="p">))</span>             <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">stroke</span> <span class="n">colour</span> <span class="n">to</span> <span class="n">a</span> <span class="n">random</span> <span class="n">grey</span>
-  <span class="p">(</span><span class="n">stroke</span><span class="o">-</span><span class="n">weight</span> <span class="p">(</span><span class="n">random</span> <span class="mi">10</span><span class="p">))</span>       <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">stroke</span> <span class="n">thickness</span> <span class="n">randomly</span>
-  <span class="p">(</span><span class="n">fill</span> <span class="p">(</span><span class="n">random</span> <span class="mi">255</span><span class="p">))</span>               <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">fill</span> <span class="n">colour</span> <span class="n">to</span> <span class="n">a</span> <span class="n">random</span> <span class="n">grey</span>
-
-  <span class="p">(</span><span class="n">let</span> <span class="o">[</span><span class="n">diam</span> <span class="p">(</span><span class="n">random</span> <span class="mi">100</span><span class="p">)</span>           <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">diameter</span> <span class="n">to</span> <span class="n">a</span> <span class="n">value</span> <span class="n">between</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">100</span>
-        <span class="n">x</span>    <span class="p">(</span><span class="n">random</span> <span class="p">(</span><span class="n">width</span><span class="p">))</span>       <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">x</span> <span class="n">coord</span> <span class="n">randomly</span> <span class="n">within</span> <span class="n">the</span> <span class="n">sketch</span>
-        <span class="n">y</span>    <span class="p">(</span><span class="n">random</span> <span class="p">(</span><span class="n">height</span><span class="p">))</span><span class="o">]</span>     <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">y</span> <span class="n">coord</span> <span class="n">randomly</span> <span class="n">within</span> <span class="n">the</span> <span class="n">sketch</span>
-    <span class="p">(</span><span class="n">ellipse</span> <span class="n">x</span> <span class="n">y</span> <span class="n">diam</span> <span class="n">diam</span><span class="p">)))</span>       <span class="p">;;</span><span class="no">Draw</span> <span class="n">a</span> <span class="n">circle</span> <span class="n">at</span> <span class="n">x</span> <span class="n">y</span> <span class="n">with</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">diameter</span>
-
-<span class="p">(</span><span class="n">defsketch</span> <span class="n">example</span>                  <span class="p">;;</span><span class="no">Define</span> <span class="n">a</span> <span class="kp">new</span> <span class="n">sketch</span> <span class="n">named</span> <span class="n">example</span>
-  <span class="ss">:title</span> <span class="s2">"Oh so many grey circles"</span>  <span class="p">;;</span><span class="no">Set</span> <span class="n">the</span> <span class="n">title</span> <span class="n">of</span> <span class="n">the</span> <span class="n">sketch</span>
-  <span class="ss">:setup</span> <span class="n">setup</span>                      <span class="p">;;</span><span class="no">Specify</span> <span class="n">the</span> <span class="n">setup</span> <span class="n">fn</span>
-  <span class="ss">:draw</span> <span class="n">draw</span>                        <span class="p">;;</span><span class="no">Specify</span> <span class="n">the</span> <span class="n">draw</span> <span class="n">fn</span>
-  <span class="ss">:render</span> <span class="ss">:opengl</span>
-  <span class="ss">:decor</span> <span class="kp">false</span>
-  <span class="ss">:size</span> <span class="o">[</span><span class="mi">800</span> <span class="mi">600</span><span class="o">]</span><span class="p">)</span>                  <span class="p">;;</span><span class="no">You</span> <span class="n">struggle</span> <span class="n">to</span> <span class="n">beat</span> <span class="n">the</span> <span class="n">golden</span> <span class="n">ratio</span>
-</pre>
-</div>
-
-
-<p>Note the decor set to false, that hides most of the uglyness of the Window borders.</p>
-
-<p>And all the <a href="https://github.com/quil/quil/tree/master/examples/gen_art">examples</a> you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.</p>
-
-<h3 id="overtone">Overtone</h3>
-
-<p><a href="https://github.com/overtone/overtone/wiki/Getting-Started">https://github.com/overtone/overtone/wiki/Getting-Started</a></p>
-
-<p>Because you really need to live audio programming to be a real VJ these days.
-This is how you install it:</p>
-
-<div class="highlight">
-<pre><span class="p">(</span><span class="n">defproject</span> <span class="n">tutorial</span> <span class="s2">"1.0"</span>
-  <span class="ss">:dependencies</span> <span class="o">[</span> <span class="o">[</span><span class="n">org</span><span class="o">.</span><span class="n">clojure</span><span class="o">/</span><span class="n">clojure</span> <span class="s2">"1.3.0"</span><span class="o">]</span>
-                  <span class="o">[</span><span class="n">overtone</span> <span class="s2">"0.7.1"</span><span class="o">]</span> <span class="o">]</span><span class="p">)</span>
-</pre>
-</div>
-
-
-<p>Once the library is in your project, type</p>
-
-<p><code></code></p>
-
-<pre><code>(use 'overtone.live)
-</code></pre>
-
-<p></p>
-
-<p>And now you can define an instrument
-<code></code></p>
-
-<pre><code>(definst foo [] (saw 220))
-</code></pre>
-
-<p></p>
-
-<p>And make some sound !</p>
-
-<p><code></code></p>
-
-<blockquote><p>(foo) ; Call the function returned by our synth
-4      ; returns a synth ID number
-(kill 4) ; kill the synth with ID 4
-(kill foo) ; or kill all instances of synth foo</p></blockquote>
-
-<p></p>
-
 <h3 id="marginalia">Marginalia</h3>
 
 <p><a href="https://github.com/fogus/marginalia">https://github.com/fogus/marginalia</a></p>
@@ -273,7 +188,7 @@ This is how you install it:</p>
 <pre><span class="p">;</span> <span class="n">start</span> <span class="n">jsoup</span>
 <span class="p">(</span><span class="n">use</span> <span class="s1">'jsoup.soup)</span>
 
-<span class="s1">: Get all Emoji names concatenated by single bars from '</span><span class="n">emoji</span><span class="o">-</span><span class="n">cheat</span><span class="o">-</span><span class="n">sheet</span><span class="o">.</span><span class="n">com</span><span class="err">'</span><span class="p">:</span>
+<span class="s1">; Get all Emoji names concatenated by single bars from '</span><span class="n">emoji</span><span class="o">-</span><span class="n">cheat</span><span class="o">-</span><span class="n">sheet</span><span class="o">.</span><span class="n">com</span><span class="err">'</span><span class="p">:</span>
 
 <span class="p">(</span><span class="err">$</span> <span class="p">(</span><span class="n">get!</span> <span class="s2">"http://www.emoji-cheat-sheet.com/"</span><span class="p">)</span> 
    <span class="s2">"li div:has(span.emoji)"</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span> 
@@ -301,6 +216,40 @@ This is how you install it:</p>
 
 <p>You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it.
 Then as a developper you just come and stick content at the location that has been decided. Slick uh ?</p>
+
+<h3 id="docjure">Docjure</h3>
+
+<p><a href="https://github.com/ative/docjure">https://github.com/ative/docjure</a></p>
+
+<p>The best way to have fun with spreadsheet in clojure. Relies on the <a href="http://poi.apache.org/">Apache POI</a> library but with some clojure sauce so it can actually be eaten.</p>
+
+<p>This is how you write a simple spreadsheet.</p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="n">use</span> <span class="err">'</span><span class="n">dk</span><span class="o">.</span><span class="n">ative</span><span class="o">.</span><span class="n">docjure</span><span class="o">.</span><span class="n">spreadsheet</span><span class="p">)</span>       
+
+<span class="p">;;</span> <span class="no">Create</span> <span class="n">a</span> <span class="n">spreadsheet</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">it</span>
+<span class="p">(</span><span class="n">let</span> <span class="o">[</span><span class="n">wb</span> <span class="p">(</span><span class="n">create</span><span class="o">-</span><span class="n">workbook</span> <span class="s2">"Price List"</span>
+                          <span class="o">[[</span><span class="s2">"Name"</span> <span class="s2">"Price"</span><span class="o">]</span>
+                           <span class="o">[</span><span class="s2">"Foo Widget"</span> <span class="mi">100</span><span class="o">]</span>
+                           <span class="o">[</span><span class="s2">"Bar Widget"</span> <span class="mi">200</span><span class="o">]]</span><span class="p">)</span>
+      <span class="n">sheet</span> <span class="p">(</span><span class="nb">select</span><span class="o">-</span><span class="n">sheet</span> <span class="s2">"Price List"</span> <span class="n">wb</span><span class="p">)</span>
+      <span class="n">header</span><span class="o">-</span><span class="n">row</span> <span class="p">(</span><span class="n">first</span> <span class="p">(</span><span class="n">row</span><span class="o">-</span><span class="n">seq</span> <span class="n">sheet</span><span class="p">))</span><span class="o">]</span>
+  <span class="p">(</span><span class="k">do</span>
+    <span class="p">(</span><span class="n">set</span><span class="o">-</span><span class="n">row</span><span class="o">-</span><span class="n">style!</span> <span class="n">header</span><span class="o">-</span><span class="n">row</span> <span class="p">(</span><span class="n">create</span><span class="o">-</span><span class="n">cell</span><span class="o">-</span><span class="n">style!</span> <span class="n">wb</span> <span class="p">{</span><span class="ss">:background</span> <span class="ss">:yellow</span><span class="p">,</span>
+                                                       <span class="ss">:font</span> <span class="p">{</span><span class="ss">:bold</span> <span class="kp">true</span><span class="p">}}))</span>
+    <span class="p">(</span><span class="n">save</span><span class="o">-</span><span class="n">workbook!</span> <span class="s2">"spreadsheet.xlsx"</span> <span class="n">wb</span><span class="p">)))</span>
+</pre>
+</div>
+
+
+<p>For more examples, I suggest you look at the <a href="http://poi.apache.org/spreadsheet/how-to.html#sxssf">"horrible" documentation</a> :)</p>
+
+<h3 id="korma">Korma</h3>
+
+<p><a href="http://sqlkorma.com/docs">http://sqlkorma.com/docs</a></p>
+
+<p>Korma makes actually enjoyable to write SQL queries.</p>
 
 <h3 id="vaadin">Vaadin</h3>
 
