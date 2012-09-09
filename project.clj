@@ -11,6 +11,8 @@
   [korma "0.3.0-beta7"]
   [com.h2database/h2 "1.3.154"]
   [lobos "0.8.0"]
+
+  [com.draines/postal "1.8.0"]
   
   ;[clojure-soup "0.0.1"]
   [clj-xpath "1.3.0"]

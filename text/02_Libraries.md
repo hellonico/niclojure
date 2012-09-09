@@ -126,6 +126,15 @@ This is how you write a simple spreadsheet.
 
 For more examples, I suggest you look at the ["horrible" documentation](http://poi.apache.org/spreadsheet/how-to.html#sxssf) :)
 
+### Postal
+[https://github.com/drewr/postal](https://github.com/drewr/postal)
+
+I am pretty sure you knew how to send a mail before, but look at the awesome way of doing this in Clojure.
+
+@@@ ruby 22_postal.clj @@@
+
+This is including attachment and Japanese encoding. yey
+
 ### Korma
 [http://sqlkorma.com/docs](http://sqlkorma.com/docs)
 
