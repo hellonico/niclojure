@@ -3,8 +3,6 @@ TODO
 Book
 * Find grep example with Clojure 1.4
 * add a task to grep TODOs in the book
-* Write a macro for try/catch
-* Famous clojure Tricks and Tips
 * Add pomegrenate to project.clj so can add libs at runtime
 
 Rich Hickey Interview
@@ -23,3 +21,4 @@ Libraries
 * HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/
 * https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU
 * http://im4java.sourceforge.net/
+* https://github.com/clojurewerkz/cassaforte

@@ -253,6 +253,68 @@ Nothing else.</p>
 
 <p>Now you can tell your friend you know more than one language on the JVM. :)</p>
 
+<h3 id="java-integration">Java Integration</h3>
+
+<p>Note that the scala integration right above is also supported by the original java. This is actually built in leiningen. Here is how you put it together just in case:</p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="n">import</span> <span class="no">HelloWorldJava</span><span class="p">)</span>
+<span class="p">(</span><span class="o">.</span><span class="n">sayHello</span> <span class="p">(</span><span class="no">HelloWorldJava</span><span class="o">.</span><span class="p">)</span> <span class="s2">"World"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>This is actually very good to keep old sources ready to be migrated, or actually the whole power of leiningen is that it is going to install everything you want from the command line to get you started with a regular java project as well. Yurk.</p>
+
+<h3 id="hooke">Hooke</h3>
+
+<p><a href="https://github.com/technomancy/robert-hooke/">https://github.com/technomancy/robert-hooke/</a></p>
+
+<p>While searching for an example on the javac plugin above, I stubmled on a super example on how to add hooks on methods.
+Awesome.</p>
+
+<p><code>
+[robert/hooke "1.1.2"]
+</code></p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="n">use</span> <span class="s1">'robert.hooke)</span>
+
+<span class="s1">(defn examine [x]</span>
+<span class="s1">  (println x))</span>
+
+<span class="s1">(defn microscope</span>
+<span class="s1">  "The keen powers of observation enabled by Robert Hooke allow</span>
+<span class="s1">  for a closer look at any object!"</span>
+<span class="s1">  [f x]</span>
+<span class="s1">  (f (.toUpperCase x)))</span>
+
+<span class="s1">(defn doubler [f &amp; args]</span>
+<span class="s1">  (apply f args)</span>
+<span class="s1">  (apply f args))</span>
+
+<span class="s1">(defn telescope [f x]</span>
+<span class="s1">  (f (apply str (interpose " " x))))</span>
+
+<span class="s1">(add-hook #'</span><span class="n">examine</span> <span class="c1">#'microscope)</span>
+<span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">hook</span> <span class="c1">#'examine #'doubler)</span>
+<span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">hook</span> <span class="c1">#'examine #'telescope)</span>
+
+<span class="p">(</span><span class="n">examine</span> <span class="s2">"something"</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">now</span> <span class="n">we</span> <span class="n">also</span> <span class="n">have</span> <span class="n">two</span> <span class="n">append</span><span class="o">/</span><span class="n">prepend</span> <span class="n">awesome</span> <span class="n">macros</span> 
+<span class="p">;</span> <span class="n">to</span> <span class="n">speed</span> <span class="n">up</span> <span class="n">adding</span> <span class="n">hooooooks</span><span class="o">.</span>
+<span class="p">;</span> <span class="n">see</span> <span class="n">how</span> <span class="n">it</span> <span class="n">goes</span>
+<span class="p">(</span><span class="n">prepend</span> <span class="nb">print</span><span class="o">-</span><span class="nb">name</span>
+  <span class="p">(</span><span class="nb">print</span> <span class="s2">"The following person is awesome:"</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nb">print</span><span class="o">-</span><span class="nb">name</span> <span class="s2">"Gilbert K. Chesterton"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)</p>
+
 <h3 id="existing-leiningen-plugins">Existing Leiningen Plugins</h3>
 
 <p>This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen <a href="https://github.com/technomancy/leiningen/wiki/Plugins">plugins list</a></p>
@@ -289,6 +351,45 @@ Now the jar file ended being over 2G :) big, and the core Clojure programmers de
 [org.clojure/data.zip "0.1.1"]
 [org.clojure/data.xml "0.0.6"]
 </code></p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="nb">require</span> <span class="s1">'[clojure.xml :as xml])</span>
+<span class="s1">(require '</span><span class="o">[</span><span class="n">clojure</span><span class="o">.</span><span class="n">zip</span> <span class="ss">:as</span> <span class="n">zip</span><span class="o">]</span><span class="p">)</span>
+<span class="p">(</span><span class="n">use</span> <span class="s1">'clojure.pprint)</span>
+<span class="s1">(use '</span><span class="n">clojure</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">xml</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">defn</span> <span class="n">parse</span><span class="o">-</span><span class="n">str</span> <span class="o">[</span><span class="n">s</span><span class="o">]</span>
+    <span class="p">(</span><span class="n">zip</span><span class="o">/</span><span class="n">xml</span><span class="o">-</span><span class="n">zip</span> <span class="p">(</span><span class="n">xml</span><span class="o">/</span><span class="n">parse</span> <span class="p">(</span><span class="kp">new</span> <span class="n">org</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">InputSource</span>
+                            <span class="p">(</span><span class="kp">new</span> <span class="n">java</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">StringReader</span> <span class="n">s</span><span class="p">)))))</span>
+<span class="p">(</span><span class="n">defn</span> <span class="n">parse</span><span class="o">-</span><span class="n">file</span> <span class="o">[</span><span class="n">f</span><span class="o">]</span>
+    <span class="p">(</span><span class="n">zip</span><span class="o">/</span><span class="n">xml</span><span class="o">-</span><span class="n">zip</span> <span class="p">(</span><span class="n">xml</span><span class="o">/</span><span class="n">parse</span> <span class="p">(</span><span class="kp">new</span> <span class="n">org</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">InputSource</span>
+                            <span class="p">(</span><span class="kp">new</span> <span class="n">java</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FileReader</span> <span class="n">f</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="k">def</span> <span class="nf">atom1</span> <span class="p">(</span><span class="n">parse</span><span class="o">-</span><span class="n">str</span> <span class="s2">"&lt;?xml version='1.0' encoding='UTF-8'?&gt;</span>
+<span class="s2">                      &lt;feed xmlns='http://www.w3.org/2005/Atom'&gt;</span>
+<span class="s2">                        &lt;id&gt;tag:blogger.com,1999:blog-28403206&lt;/id&gt;</span>
+<span class="s2">                        &lt;updated&gt;2008-02-14T08:00:58.567-08:00&lt;/updated&gt;</span>
+<span class="s2">                        &lt;title type='text'&gt;n01senet&lt;/title&gt;</span>
+<span class="s2">                        &lt;link rel='alternate' type='text/html' href='http://n01senet.blogspot.com/'/&gt;</span>
+<span class="s2">                        &lt;entry&gt;</span>
+<span class="s2">                          &lt;id&gt;1&lt;/id&gt;</span>
+<span class="s2">                          &lt;published&gt;2008-02-13&lt;/published&gt;</span>
+<span class="s2">                          &lt;title type='text'&gt;clojure is the best lisp yet&lt;/title&gt;</span>
+<span class="s2">                          &lt;author&gt;&lt;name&gt;Chouser&lt;/name&gt;&lt;/author&gt;</span>
+<span class="s2">                        &lt;/entry&gt;</span>
+<span class="s2">                        &lt;entry&gt;</span>
+<span class="s2">                          &lt;id&gt;2&lt;/id&gt;</span>
+<span class="s2">                          &lt;published&gt;2008-02-07&lt;/published&gt;</span>
+<span class="s2">                          &lt;title type='text'&gt;experimenting with vnc&lt;/title&gt;</span>
+<span class="s2">                          &lt;author&gt;&lt;name&gt;agriffis&lt;/name&gt;&lt;/author&gt;</span>
+<span class="s2">                        &lt;/entry&gt;</span>
+<span class="s2">                      &lt;/feed&gt;</span>
+<span class="s2">                      "</span><span class="p">))</span>
+
+<span class="p">;(</span><span class="n">pprint</span> <span class="n">atom1</span><span class="p">)</span>
+<span class="p">(</span><span class="n">xml</span><span class="o">-&gt;</span> <span class="n">atom1</span> <span class="ss">:entry</span> <span class="n">text</span><span class="p">)</span>
+</pre>
+</div>
     </div>
   </body>
 </html>

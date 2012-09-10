@@ -176,5 +176,4 @@ Add this to your project.clj:
 [org.clojure/data.xml "0.0.6"]
 </code>
 
-
-
+@@@ ruby 26_xml.clj @@@

@@ -31,3 +31,10 @@
 ; 1 2 3
 ; 2 4 6
 ; 3 6 9
+
+; some old xml code. round trip xml parsing
+(use 'clojure.xml)
+(emit (parse "http://feeds.feedburner.com/burningonesblog"))
+
+; every line of a file in sequences
+(line-seq (clojure.java.io/reader (clojure.java.io/file “project.clj”)))

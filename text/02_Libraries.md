@@ -30,6 +30,22 @@ Now the guy from Noir has also started a very cute project named [Playground](ht
 
 ![Alt text](../images/LightTable.png)
 
+### http-kit
+[https://github.com/shenfeng/http-kit](https://github.com/shenfeng/http-kit)
+
+
+In the same time, you can turn yourself asynchrnous with http-kit. 
+
+<code>
+[me.shenfeng/http-kit "1.2.0"]
+</code>
+
+@@@ ruby 36_http_kit.clj @@@
+
+The server will be started, and will delay answer to the client. No dependency so kind of very lightweight and wicked.
+It also incorporate a kinda cool http client, again with no dependencies. Give a try.
+
+![Async](../images/async.png)
 
 ### Incanter
 
@@ -188,6 +204,30 @@ Sweeet.
 @@@ ruby 32_csv.clj @@@
 
 This is greatly inspired by a web based address book application available on [github](https://github.com/KushalP/addressbook/blob/master/src/addressbook/format.clj).
+
+### clj-rss
+[https://github.com/yogthos/clj-rss](https://github.com/yogthos/clj-rss)
+
+<code>
+[clj-rss "0.1.2"]
+</code>
+
+@@@ ruby 35_rs.clj @@@
+
+This is taken from [here](http://yogthos.net/blog/17).
+
+### clj-growlnotify
+[https://github.com/franks42/clj-growlnotify](https://github.com/franks42/clj-growlnotify)
+
+<code>
+[clj-growlnotify "0.1.1"]
+</code>
+
+@@@ ruby 34_growl.clj @@@
+
+When you run the script above, if you have the growl notification system ([osx](http://growl.info/), [windows](http://www.growlforwindows.com/gfw/)) installed on your machine, you will get a nice message like the one below:
+
+!["Growl"](../images/Growl.png)
 
 
 ### Vaadin
