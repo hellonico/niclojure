@@ -147,6 +147,19 @@ This is also very useful for testing.
 
 Korma makes actually enjoyable to write SQL queries.
 
+=== clj-dns
+[https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
+
+> DNS Querying in Clojure. 
+
+<code>
+[com.brweber2/clj-dns "0.0.2"]
+</code>
+
+How easy it is to do lookup and reverse lookup. Need anything else ? 
+
+@@@ ruby 29_dns.clj @@@
+
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 

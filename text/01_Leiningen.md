@@ -10,6 +10,8 @@ I will not go too much into the first steps details, since this is not the aim o
 
 Do not forget to do a few [clojure koans](https://github.com/functional-koans/clojure-koans) to make sure the basic and the roots are ok.
 
+I have added a few trips and ticks in the 00_zero.clj file (in the samples), so feel free to go along and try it by yourself, once you have read the next section about how to get started with clojure.
+
 ### Leiningen 
 [https://github.com/technomancy/leiningen](https://github.com/technomancy/leiningen)
 

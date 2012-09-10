@@ -5,6 +5,7 @@ Book
 * add a task to grep TODOs in the book
 * Write a macro for try/catch
 * Famous clojure Tricks and Tips
+* Add pomegrenate to project.clj so can add libs at runtime
 
 Rich Hickey Interview
 http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105
