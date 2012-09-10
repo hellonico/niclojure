@@ -1,15 +1,16 @@
 (defproject test "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
 
-  :eval-in-leiningen true
+  ; the below is dangerous, prevent loading java and scala classes
+  ;:eval-in-leiningen true
   :dev-dependencies [
      [lein-scalac "0.1.0"]
   ]
   :scala-source-path "src/scala"
-  :prep-tasks ["javac" "compile" "scalac"]
+  :prep-tasks ["compile"]
 
   :source-paths ["code"]
-  :java-source-paths ["src/java"]
+  :java-source-path "src/java"
 
   :dependencies [
   [com.brweber2/clj-dns "0.0.2"]

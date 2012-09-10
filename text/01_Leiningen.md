@@ -125,6 +125,24 @@ and here is how you call it from Clojure
 
 Now you can tell your friend you know more than one language on the JVM. :)
 
+### Java Integration
+
+Note that the scala integration right above is also supported by the original java. Here is how you put it together just in case:
+
+@@@ ruby 30_java.clj @@@
+
+### Hooke
+[https://github.com/technomancy/robert-hooke/](https://github.com/technomancy/robert-hooke/)
+
+While searching for an example on the javac plugin above, I stubmled on a super example on how to add hooks on methods. This is like adding aspects to your methods.
+Awesome.
+
+<code>
+[robert/hooke "1.1.2"]
+</code>
+
+@@@ ruby 31_hooke.clj @@@
+
 ### Existing Leiningen Plugins
 
 This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen [plugins list](https://github.com/technomancy/leiningen/wiki/Plugins)
