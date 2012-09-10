@@ -20,3 +20,6 @@
 ; use the method
 (with-open [stream (.openStream (java.net.URL. "http://www.google.com"))]
 	(.available stream))
+
+; do some regexp
+(re-find #"abc" "This is a string that contains abc")

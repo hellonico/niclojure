@@ -9,11 +9,63 @@
 
   <body>
     <div class="chapter">
-      
-  <ul><li>http://www.intensivesystems.net/tutorials/stream_proc.html</li>
-<li>https://github.com/sattvik/Clojure-Android-Examples</li>
-</ul>
+      <h2 id="in-the-clouds">In the Clouds</h2>
 
+<h3 id="clj-monitor">clj.monitor</h3>
+
+<p><a href="https://github.com/killme2008/clj.monitor">https://github.com/killme2008/clj.monitor</a></p>
+
+<h3 id="jrobin-wrapper-for-clojure">JRobin wrapper for Clojure?</h3>
+
+<p><a href="http://www.jrobin.org/index.php/Main_Page">http://www.jrobin.org/index.php/Main_Page</a></p>
+
+<h3 id="parallel-ssh">Parallel SSH</h3>
+
+<p><a href="http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/">http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/</a></p>
+
+<h3 id="pallet">Pallet</h3>
+
+<p><a href="http://palletops.com/">http://palletops.com/</a></p>
+
+<p>Pallet is the mother of them all of cloud infrastructure tool. See the <a href="http://www.jclouds.org/documentation/reference/supported-providers/">list of providers</a> it supports!
+They are actually doing this through <a href="http://www.jclouds.org/">jclouds</a></p>
+
+<h3 id="heroku">Heroku</h3>
+
+<p><a href="https://devcenter.heroku.com/articles/debugging-clojure">Debugging clojure on Heroku</a></p>
+
+<h3 id="vmfest">VMFest</h3>
+
+<p><a href="https://github.com/tbatchelli/vmfest">https://github.com/tbatchelli/vmfest</a></p>
+
+<p>Easy VirtualBox wrapper for easy cloud management.</p>
+
+<div class="highlight">
+<pre><span class="p">;</span> <span class="n">you</span> <span class="n">can</span> <span class="n">define</span> <span class="n">your</span> <span class="n">machine</span> <span class="n">this</span> <span class="n">way</span><span class="p">:</span>
+<span class="p">(</span><span class="k">def</span> <span class="nf">my</span><span class="o">-</span><span class="n">machine</span> 
+     <span class="p">(</span><span class="n">instance</span> <span class="n">my</span><span class="o">-</span><span class="n">server</span> <span class="s2">"my-vmfest-vm"</span> 
+        <span class="p">{</span><span class="ss">:uuid</span> <span class="s2">"/Users/tbatchelli/imgs/vmfest-Debian-6.0.2.1-64bit-v0.3.vdi"</span><span class="p">}</span>  
+        <span class="p">{</span><span class="ss">:memory</span><span class="o">-</span><span class="n">size</span> <span class="mi">512</span>
+         <span class="ss">:cpu</span><span class="o">-</span><span class="n">count</span> <span class="mi">1</span>
+         <span class="ss">:network</span> <span class="o">[</span><span class="p">{</span><span class="ss">:attachment</span><span class="o">-</span><span class="n">type</span> <span class="ss">:host</span><span class="o">-</span><span class="n">only</span>
+                    <span class="ss">:host</span><span class="o">-</span><span class="n">only</span><span class="o">-</span><span class="n">interface</span> <span class="s2">"vboxnet0"</span><span class="p">}</span>
+                   <span class="p">{</span><span class="ss">:attachment</span><span class="o">-</span><span class="n">type</span> <span class="ss">:nat</span><span class="p">}</span><span class="o">]</span>
+         <span class="ss">:storage</span> <span class="o">[</span><span class="p">{</span><span class="ss">:name</span> <span class="s2">"IDE Controller"</span>
+                    <span class="ss">:bus</span> <span class="ss">:ide</span>
+                    <span class="ss">:devices</span> <span class="o">[</span><span class="kp">nil</span> <span class="kp">nil</span> <span class="p">{</span><span class="ss">:device</span><span class="o">-</span><span class="n">type</span> <span class="ss">:dvd</span><span class="p">}</span> <span class="kp">nil</span><span class="o">]</span><span class="p">}</span><span class="o">]</span>
+         <span class="ss">:boot</span><span class="o">-</span><span class="n">mount</span><span class="o">-</span><span class="n">point</span> <span class="o">[</span><span class="s2">"IDE Controller"</span> <span class="mi">0</span><span class="o">]</span><span class="p">}))</span>
+
+<span class="p">;</span> <span class="k">then</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">way</span> <span class="n">to</span> <span class="n">start</span><span class="o">/</span><span class="n">stop</span><span class="o">.</span><span class="n">.</span> <span class="n">any</span> <span class="n">of</span> <span class="n">the</span> <span class="n">virtual</span> <span class="n">machines</span> <span class="n">you</span> <span class="n">have</span>
+<span class="p">(</span><span class="n">start</span> <span class="n">my</span><span class="o">-</span><span class="n">machine</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pause</span> <span class="n">my</span><span class="o">-</span><span class="n">machine</span><span class="p">)</span>
+<span class="p">(</span><span class="n">resume</span> <span class="n">my</span><span class="o">-</span><span class="n">machine</span><span class="p">)</span>
+<span class="p">(</span><span class="n">stop</span> <span class="n">my</span><span class="o">-</span><span class="n">machine</span><span class="p">)</span>
+<span class="p">(</span><span class="n">destroy</span> <span class="n">my</span><span class="o">-</span><span class="n">machine</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<p>Make sure you also look at the <a href="https://github.com/pallet/vmfest-playground">playground</a> and have a look at the <a href="https://github.com/pallet/vmfest-playground/blob/master/src/play.clj">tutorial</a></p>
     </div>
   </body>
 </html>

@@ -1,8 +1,17 @@
 In the Clouds
 --------
 
-### Pallet
+### clj.monitor
+[https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 
+### JRobin wrapper for Clojure?
+[http://www.jrobin.org/index.php/Main_Page](http://www.jrobin.org/index.php/Main_Page)
+
+### Parallel SSH
+[http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
+
+
+### Pallet
 [http://palletops.com/](http://palletops.com/)
 
 Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 

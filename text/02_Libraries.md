@@ -147,7 +147,7 @@ This is also very useful for testing.
 
 Korma makes actually enjoyable to write SQL queries.
 
-=== clj-dns
+### clj-dns
 [https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
 
 > DNS Querying in Clojure. 
