@@ -1,6 +1,6 @@
 (defproject test "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
-
+  :repositories {"mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"}
   ; the below is dangerous, prevent loading java and scala classes
   ;:eval-in-leiningen true
   :dev-dependencies [
@@ -13,9 +13,12 @@
   :java-source-path "src/java"
 
   :dependencies [
+  [com.google.gdata/gdata-contacts-3.0 "1.41.5"]
+
   [com.brweber2/clj-dns "0.0.2"]
   [clj-growlnotify "0.1.1"]
   [clj-rss "0.1.2"]
+  ;[itext/itext "1.4.8"]
 
   [me.shenfeng/http-kit "1.1.0"]
 
