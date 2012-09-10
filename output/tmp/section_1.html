@@ -275,7 +275,36 @@ Then as a developper you just come and stick content at the location that has be
 
 <p>This is including attachment and Japanese encoding. yey</p>
 
-<h3 id="korma-and-lobos">Korma and Lobos</h3>
+<h3 id="lobos">Lobos</h3>
+
+<p><a href="http://budu.github.com/lobos/">http://budu.github.com/lobos/</a></p>
+
+<p>Here is comes Lobos, or how to manage your database directly from a Clojure REPL.</p>
+
+<div class="highlight">
+<pre><span class="p">;</span> <span class="n">create</span> <span class="no">SQL</span> <span class="n">tables</span> <span class="n">with</span> <span class="n">lobos</span>
+<span class="p">(</span><span class="n">use</span> <span class="s1">'lobos.connectivity</span>
+<span class="s1">     '</span><span class="n">lobos</span><span class="o">.</span><span class="n">core</span>
+     <span class="err">'</span><span class="n">lobos</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+ 
+<span class="p">(</span><span class="k">def</span> <span class="nf">h2</span>
+  <span class="p">{</span><span class="ss">:classname</span>   <span class="s2">"org.h2.Driver"</span>
+   <span class="ss">:subprotocol</span> <span class="s2">"h2"</span>
+   <span class="ss">:subname</span>     <span class="s2">"./korma"</span><span class="p">})</span>
+ 
+ <span class="p">;</span> <span class="n">seems</span> <span class="n">lobos</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">working</span> <span class="n">anymore</span> <span class="n">without</span> <span class="n">clojure</span><span class="o">-</span><span class="n">contrib</span>
+<span class="p">(</span><span class="n">create</span> <span class="n">h2</span>
+  <span class="p">(</span><span class="n">table</span> <span class="ss">:users</span>
+    <span class="p">(</span><span class="n">varchar</span> <span class="ss">:first</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">varchar</span> <span class="ss">:last</span> <span class="mi">100</span><span class="p">)))</span>
+</pre>
+</div>
+
+
+<p>You define your database connection, and just go and create, drop delete, what every you need.
+This is also very useful for testing.</p>
+
+<h3 id="korma">Korma</h3>
 
 <p><a href="http://sqlkorma.com/docs">http://sqlkorma.com/docs</a></p>
 
@@ -296,15 +325,18 @@ Natural Language Processing in Clojure.</p>
 
 <h3 id="clj-http">clj-http</h3>
 
-<p><a href="https://github.com/dakrone/clj-http">https://github.com/dakrone/clj-http</a></p>
+<p><a href="https://github.com/dakrone/clj-http">https://github.com/dakrone/clj-http</a>
+Http Slurping</p>
 
 <h3 id="cascalog">Cascalog</h3>
 
-<p><a href="https://github.com/nathanmarz/cascalog/wiki">https://github.com/nathanmarz/cascalog/wiki</a></p>
+<p><a href="https://github.com/nathanmarz/cascalog/wiki">https://github.com/nathanmarz/cascalog/wiki</a>
+Hadoop Query from Clojure</p>
 
 <h3 id="aleph">Aleph</h3>
 
-<p><a href="https://github.com/ztellman/aleph">https://github.com/ztellman/aleph</a></p>
+<p><a href="https://github.com/ztellman/aleph">https://github.com/ztellman/aleph</a>
+Websockets</p>
 
 <h3 id="lamina">Lamina</h3>
 

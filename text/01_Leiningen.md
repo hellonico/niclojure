@@ -1,4 +1,4 @@
-Welcome to Clojure
+Welcome to Clojure, through Leiningen
 -----------------
 
 This book is about sharing my love for Clojure, why I use it, and why I will keep using it for a fair bit of time. You don't need to be a great IT geek, you just have to start using Clojure. Here we go.
@@ -137,3 +137,20 @@ Create a file under *src/leiningen* and add some clojure code:
 Then a new task will be available to your current project.
 
 To share the task with other, please have a look at [writing leiningen plugins 101/](http://nakkaya.com/2010/02/25/writing-leiningen-plugins-101/)
+
+### Clojure Contrib
+[http://dev.clojure.org/display/doc/Clojure+Contrib](http://dev.clojure.org/display/doc/Clojure+Contrib)
+
+Clojure contrib used to be a set of namespaces that were adding some great syntaxic sugar to a bunch of every day tasks.
+Now the jar file ended being over 2G :) big, and the core Clojure programmers decided to start making smaller projects.
+
+Here is an example for parsing xml that takes an old example of parsing an XML RSS Feed, and make it work with today's Clojure 1.4 packaging.
+
+Add this to your project.clj:
+<code>
+[org.clojure/data.zip "0.1.1"]
+[org.clojure/data.xml "0.0.6"]
+</code>
+
+
+

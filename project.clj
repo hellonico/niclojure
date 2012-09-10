@@ -12,6 +12,8 @@
   :java-source-paths ["src/java"]
 
   :dependencies [
+  [org.clojure/data.zip "0.1.1"]
+
   [org.clojure/clojure "1.4.0"]
 
   [dk.ative/docjure "1.6.0-SNAPSHOT"] 
