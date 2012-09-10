@@ -4,3 +4,5 @@ korma.h2.db
 korma.trace.db
 spreadsheet.xlsx
 classes
+korma.lock.db
+.lobos_stash.clj

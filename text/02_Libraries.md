@@ -160,12 +160,15 @@ Natural Language Processing in Clojure.
 
 ### clj-http
 [https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
+Http Slurping
 
 ### Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
+Hadoop Query from Clojure
 
 ### Aleph
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
+Websockets
 
 ### Lamina
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
