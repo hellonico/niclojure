@@ -108,3 +108,32 @@ This is the best way to add libraries at runtime. You still need the library its
 Then, here is how to import incanter in a running REPL session:
 
 @@@ ruby 11_pomegranata.clj @@@
+
+### Scala Integration
+
+Since every source file in a lein project can be integrated, you can use the [scalac-plugin](https://github.com/technomancy/lein-scalac)
+
+Here is the HelloWorld.scala file:
+
+@@@ ruby 24_scala.scala @@@
+
+and here is how you call it from Clojure
+
+@@@ ruby 23_scala.clj @@@
+
+Now you can tell your friend you know more than one language on the JVM. :)
+
+### Existing Leiningen Plugins
+
+This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen [plugins list](https://github.com/technomancy/leiningen/wiki/Plugins)
+
+### Writing your own plugin for Leiningen
+Now if the above was not enough for your needs, here is how you create a plugin for your repetitive tasks.
+
+Create a file under *src/leiningen* and add some clojure code:
+
+@@@ ruby 25_plugin.clj @@@
+
+Then a new task will be available to your current project.
+
+To share the task with other, please have a look at [writing leiningen plugins 101/](http://nakkaya.com/2010/02/25/writing-leiningen-plugins-101/)

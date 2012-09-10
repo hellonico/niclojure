@@ -1,6 +1,13 @@
 (defproject test "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
 
+  :eval-in-leiningen true
+  :dev-dependencies [
+     [lein-scalac "0.1.0"]
+  ]
+  :scala-source-path "src/scala"
+  :prep-tasks ["javac" "compile" "scalac"]
+
   :source-paths ["code"]
   :java-source-paths ["src/java"]
 
@@ -10,7 +17,10 @@
   [dk.ative/docjure "1.6.0-SNAPSHOT"] 
   [korma "0.3.0-beta7"]
   [com.h2database/h2 "1.3.154"]
-  [lobos "0.8.0"]
+  [lobos "1.0.0-SNAPSHOT"]
+
+  ; scala me 
+  [org.scala-lang/scala-library "2.9.2"]
 
   [com.draines/postal "1.8.0"]
   

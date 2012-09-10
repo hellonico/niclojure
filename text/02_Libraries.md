@@ -8,6 +8,7 @@ Now that we are ready for some hacking, here are sites, that refer interesting C
 * [Clojure on github](http://clojure.github.com/)
 * [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
 * [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
+* [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 
 ### Noir
 
@@ -67,10 +68,6 @@ And dependending on the amount of comments you wrote in the code, you will get s
 A library that can quickly create SVG diagram with automatic layout, like this one:
 
 ![SVG](../images/radial.png)
-
-<code>
-(use 'lacij.graph.svg.graph)
-</code>
 
 Then, a graph can be drawn like this:
 
@@ -135,7 +132,7 @@ I am pretty sure you knew how to send a mail before, but look at the awesome way
 
 This is including attachment and Japanese encoding. yey
 
-### Korma
+### Korma and Lobos
 [http://sqlkorma.com/docs](http://sqlkorma.com/docs)
 
 Korma makes actually enjoyable to write SQL queries. 

@@ -1,3 +1,5 @@
+(use 'lacij.graph.svg.graph)
+
 (-> (create-graph :width 800 :height 400)
     (add-default-node-style :fill "lightgreen")
     (add-default-edge-style :stroke "royalblue")
@@ -16,4 +18,4 @@
                                          :font-size "20px"
                                          :font-style "italic"})
     (build)
-    (export "/tmp/styles.svg"))
+    (export "styles.svg"))

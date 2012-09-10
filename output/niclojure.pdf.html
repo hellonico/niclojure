@@ -470,14 +470,15 @@ Then as a developper you just come and stick content at the location that has be
 
 <h3 id="postal">Postal</h3>
 
-<p><a href="https://github.com/drewr/postal">https://github.com/drewr/postal</a>
-I am pretty sure you knew how to send a mail before, but look at the awesome way of doing this in Clojure.</p>
+<p><a href="https://github.com/drewr/postal">https://github.com/drewr/postal</a></p>
+
+<p>I am pretty sure you knew how to send a mail before, but look at the awesome way of doing this in Clojure.</p>
 
 <div class="highlight"><pre><span class="p">(</span><span class="n">use</span> <span class="err">'</span><span class="n">postal</span><span class="o">.</span><span class="n">core</span><span class="p">)</span>
 
 <span class="p">(</span><span class="nb">send</span><span class="o">-</span><span class="n">message</span> <span class="o">^</span><span class="p">{</span> <span class="ss">:host</span> <span class="s2">"smtp.gmail.com"</span>
-                    <span class="ss">:user</span> <span class="s2">"hellonico"</span>
-                    <span class="ss">:pass</span> <span class="s2">"tiabtfda28!"</span>
+                    <span class="ss">:user</span> <span class="s2">"&lt;username&gt;"</span>
+                    <span class="ss">:pass</span> <span class="s2">"&lt;password&gt;"</span>
                     <span class="ss">:ssl</span> <span class="ss">:yes!</span><span class="o">!!</span><span class="mi">11</span>
                 <span class="p">}</span>
                 <span class="p">{</span>    <span class="ss">:from</span> <span class="s2">"hellonico@gmail.com"</span>
