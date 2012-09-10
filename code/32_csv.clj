@@ -26,13 +26,15 @@
 	}
 	))
 
+(use 'clostache.parser)
+
 ; not all field are there, this depends on your own implementation
 (defn vcard
   "Converts the intermal map representation into a format meeting the vCard specification"
   [record]
   (render "BEGIN:VCARD
-VERSION:2.1
-N:{{first}};{{last}}
+VERSION:3.0
+N:{{first}};{{last}};
 {{#tel}}
 TEL;TYPE=CELL;TYPE=PREF:{{tel}}
 {{/tel}}
@@ -44,4 +46,6 @@ END:VCARD
 ; 1 line to parse the csv file
 (def ppl (slurp "/Users/Niko/Dropbox/perso/contacts.csv"))
 ; 1 line to convert each line to a vcard
-(spit "contacts.vcf" (pmap #(vcard (l %)) (parse-csv ppl)))
+(def vcards (map #(vcard (l %)) (parse-csv ppl)))
+
+(spit "contacts.vcf" (apply str vcards))

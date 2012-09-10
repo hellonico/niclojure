@@ -9,6 +9,7 @@ Now that we are ready for some hacking, here are sites, that refer interesting C
 * [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
 * [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
 * [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
+* [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
 
 ### Noir
 
@@ -162,6 +163,7 @@ How easy it is to do lookup and reverse lookup. Need anything else ?
 
 
 ### Clostache
+[https://github.com/fhd/clostache](https://github.com/fhd/clostache)
 
 <code>
 [de.ubercode.clostache/clostache "1.3.0"]
@@ -170,7 +172,6 @@ How easy it is to do lookup and reverse lookup. Need anything else ?
 Some very simple templating magic.
 
 @@@ ruby 33_clostache.clj @@@
-
 
 ### clojure-csv
 [https://github.com/davidsantiago/clojure-csv](https://github.com/davidsantiago/clojure-csv)
@@ -185,6 +186,8 @@ Took a few minutes to write the code, not a single exception, and all using mult
 Sweeet.
 
 @@@ ruby 32_csv.clj @@@
+
+This is greatly inspired by a web based address book application available on [github](https://github.com/KushalP/addressbook/blob/master/src/addressbook/format.clj).
 
 
 ### Vaadin
