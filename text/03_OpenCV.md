@@ -14,9 +14,3 @@ This is how your quil-ed processing sketch now looks like:
 Note the decor set to false, that hides most of the uglyness of the Window borders.
 
 And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
-
-
-* https://github.com/bagucode/clj-native
-* https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU
-* http://im4java.sourceforge.net/
-* https://github.com/bagucode/clj-native

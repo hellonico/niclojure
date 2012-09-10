@@ -132,11 +132,20 @@ I am pretty sure you knew how to send a mail before, but look at the awesome way
 
 This is including attachment and Japanese encoding. yey
 
-### Korma and Lobos
+### Lobos
+[http://budu.github.com/lobos/](http://budu.github.com/lobos/)
+
+Here is comes Lobos, or how to manage your database directly from a Clojure REPL.
+
+@@@ ruby 20_lobos.clj @@@
+
+You define your database connection, and just go and create, drop delete, what every you need.
+This is also very useful for testing.
+
+### Korma
 [http://sqlkorma.com/docs](http://sqlkorma.com/docs)
 
-Korma makes actually enjoyable to write SQL queries. 
-
+Korma makes actually enjoyable to write SQL queries.
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
