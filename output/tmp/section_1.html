@@ -18,6 +18,7 @@
 <li><a href="http://clojure.github.com/">Clojure on github</a></li>
 <li><a href="http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core">http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core</a></li>
 <li><a href="http://www.clojure-toolbox.com/">http://www.clojure-toolbox.com/</a></li>
+<li><a href="http://twitch.nervestaple.com/2012/01/12/clojure-hbase/">http://twitch.nervestaple.com/2012/01/12/clojure-hbase/</a></li>
 </ul><h3 id="noir">Noir</h3>
 
 <p><a href="https://github.com/ibdknox/noir">https://github.com/ibdknox/noir</a>
@@ -106,14 +107,12 @@
 
 <p><img src="radial.png" alt="" /></p>
 
-<p><code>
-(use 'lacij.graph.svg.graph)
-</code></p>
-
 <p>Then, a graph can be drawn like this:</p>
 
 <div class="highlight">
-<pre><span class="p">(</span><span class="o">-&gt;</span> <span class="p">(</span><span class="n">create</span><span class="o">-</span><span class="n">graph</span> <span class="ss">:width</span> <span class="mi">800</span> <span class="ss">:height</span> <span class="mi">400</span><span class="p">)</span>
+<pre><span class="p">(</span><span class="n">use</span> <span class="err">'</span><span class="n">lacij</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+
+<span class="p">(</span><span class="o">-&gt;</span> <span class="p">(</span><span class="n">create</span><span class="o">-</span><span class="n">graph</span> <span class="ss">:width</span> <span class="mi">800</span> <span class="ss">:height</span> <span class="mi">400</span><span class="p">)</span>
     <span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">style</span> <span class="ss">:fill</span> <span class="s2">"lightgreen"</span><span class="p">)</span>
     <span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">edge</span><span class="o">-</span><span class="n">style</span> <span class="ss">:stroke</span> <span class="s2">"royalblue"</span><span class="p">)</span>
     <span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">node</span> <span class="ss">:hermes</span> <span class="s2">"Hermes"</span> <span class="ss">:x</span> <span class="mi">10</span> <span class="ss">:y</span> <span class="mi">30</span> <span class="ss">:style</span> <span class="p">{</span><span class="ss">:fill</span> <span class="s2">"lightblue"</span><span class="p">})</span>
@@ -131,7 +130,7 @@
                                          <span class="ss">:font</span><span class="o">-</span><span class="n">size</span> <span class="s2">"20px"</span>
                                          <span class="ss">:font</span><span class="o">-</span><span class="n">style</span> <span class="s2">"italic"</span><span class="p">})</span>
     <span class="p">(</span><span class="n">build</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">export</span> <span class="s2">"/tmp/styles.svg"</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">export</span> <span class="s2">"styles.svg"</span><span class="p">))</span>
 </pre>
 </div>
 
@@ -276,7 +275,7 @@ Then as a developper you just come and stick content at the location that has be
 
 <p>This is including attachment and Japanese encoding. yey</p>
 
-<h3 id="korma">Korma</h3>
+<h3 id="korma-and-lobos">Korma and Lobos</h3>
 
 <p><a href="http://sqlkorma.com/docs">http://sqlkorma.com/docs</a></p>
 
