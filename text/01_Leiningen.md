@@ -131,10 +131,12 @@ Note that the scala integration right above is also supported by the original ja
 
 @@@ ruby 30_java.clj @@@
 
+This is actually very good to keep old sources ready to be migrated, or actually the whole power of leiningen is that it is going to install everything you want from the command line to get you started with a regular java project as well. Yurk.
+
 ### Hooke
 [https://github.com/technomancy/robert-hooke/](https://github.com/technomancy/robert-hooke/)
 
-While searching for an example on the javac plugin above, I stubmled on a super example on how to add hooks on methods. This is like adding aspects to your methods.
+While searching for an example on the javac plugin above, I stubmled on a super example on how to add hooks on methods. 
 Awesome.
 
 <code>
@@ -142,6 +144,8 @@ Awesome.
 </code>
 
 @@@ ruby 31_hooke.clj @@@
+
+This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)
 
 ### Existing Leiningen Plugins
 
