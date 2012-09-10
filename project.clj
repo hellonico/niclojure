@@ -15,6 +15,9 @@
   :dependencies [
   [com.brweber2/clj-dns "0.0.2"]
 
+  [clojure-csv/clojure-csv "2.0.0-alpha1"]
+  [de.ubercode.clostache/clostache "1.3.0"]
+
   [org.clojure/data.zip "0.1.1"]
   [org.clojure/clojure "1.4.0"]
 

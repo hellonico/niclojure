@@ -23,3 +23,11 @@
 
 ; do some regexp
 (re-find #"abc" "This is a string that contains abc")
+
+; doseq
+(doseq [x [1 2 3] y [1 2 3]] 
+	(println (* x y)))
+; returns 
+; 1 2 3
+; 2 4 6
+; 3 6 9

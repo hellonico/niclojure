@@ -127,7 +127,7 @@ Now you can tell your friend you know more than one language on the JVM. :)
 
 ### Java Integration
 
-Note that the scala integration right above is also supported by the original java. Here is how you put it together just in case:
+Note that the scala integration right above is also supported by the original java. This is actually built in leiningen. Here is how you put it together just in case:
 
 @@@ ruby 30_java.clj @@@
 

@@ -6,6 +6,9 @@
 (defn parse-str [s]
     (zip/xml-zip (xml/parse (new org.xml.sax.InputSource
                             (new java.io.StringReader s)))))
+(defn parse-file [f]
+    (zip/xml-zip (xml/parse (new org.xml.sax.InputSource
+                            (new java.io.FileReader f)))))
 
 (def atom1 (parse-str "<?xml version='1.0' encoding='UTF-8'?>
                       <feed xmlns='http://www.w3.org/2005/Atom'>

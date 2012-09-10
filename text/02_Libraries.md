@@ -160,6 +160,33 @@ How easy it is to do lookup and reverse lookup. Need anything else ?
 
 @@@ ruby 29_dns.clj @@@
 
+
+### Clostache
+
+<code>
+[de.ubercode.clostache/clostache "1.3.0"]
+</code>
+
+Some very simple templating magic.
+
+@@@ ruby 33_clostache.clj @@@
+
+
+### clojure-csv
+[https://github.com/davidsantiago/clojure-csv](https://github.com/davidsantiago/clojure-csv)
+
+<code>
+[clojure-csv/clojure-csv "2.0.0-alpha1"]
+</code>
+
+Now that we have mustache, I actually have added a longer example showing how to convert a csv files containing people addresses, to a vcard vcf file format.
+Took a few minutes to write the code, not a single exception, and all using multiple cores to convert the map.
+
+Sweeet.
+
+@@@ ruby 32_csv.clj @@@
+
+
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 
