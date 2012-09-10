@@ -16,7 +16,7 @@
   [com.brweber2/clj-dns "0.0.2"]
   [clj-growlnotify "0.1.1"]
   [clj-rss "0.1.2"]
-
+  [cheshire "4.0.2"]
   [me.shenfeng/http-kit "1.1.0"]
 
   [clojure-csv/clojure-csv "2.0.0-alpha1"]

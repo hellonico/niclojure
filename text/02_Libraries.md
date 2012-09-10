@@ -229,6 +229,18 @@ When you run the script above, if you have the growl notification system ([osx](
 
 !["Growl"](../images/Growl.png)
 
+### cheshire
+[https://github.com/dakrone/cheshire](https://github.com/dakrone/cheshire)
+
+Or how to do proper json fun in the Clojure style. Cheshire is there for good.
+
+<code>
+[cheshire "4.0.2"]
+</code>
+
+@@@ ruby 37_json.clj @@@
+
+Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
