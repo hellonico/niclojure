@@ -1,15 +1,15 @@
-TODO
+#TODO
 
-Book
+## Book
 * Find grep example with Clojure 1.4
 * add a task to grep TODOs in the book
 * Add pomegrenate to project.clj so can add libs at runtime
 
-Tutorials
+## Tutorials
 * http://stevelosh.com/blog/2012/07/caves-of-clojure-01/
 * http://stevelosh.com/blog/2012/07/caves-of-clojure-03-4/
 
-Libraries
+## Libraries
 * Calcx/OpenCV: https://github.com/ztellman/calx
 * AppEngine: https://github.com/gcv/appengine-magic
 * Fractal: http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/
@@ -29,20 +29,26 @@ Libraries
 * [JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)
 * [Clojure in Freemind](http://freemind.sourceforge.net/wiki/index.php/Plugins)
 * [Application as service or executable](http://wrapper.tanukisoftware.com/doc/english/integrate.html#method1)
+* [Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure)
 
-More Lein Samples
+## More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
 
-Server
+## Server
 * https://github.com/weavejester/lein-ring with Vaadin !
 * http://clojurewerkz.org/
 
-Java Libraries
+## Java Libraries
 * http://jericho.htmlparser.net/docs/index.html
-* Apache Camel from Clojure https://github.com/denlab/apache-camel-clojure 
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 
-PDF (where's mine ?)
+## PDF (where's mine ?)
 
 * https://github.com/yogthos/instant-pdf
 * https://github.com/yogthos/clj-pdf
+
+## Finance
+* [Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
+* [MC with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
+* [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
+* [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)

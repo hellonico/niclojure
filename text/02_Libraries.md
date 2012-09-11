@@ -287,6 +287,20 @@ will spawn a terminal, and display some text:
 It is also easy to wait for keys, and other terminal things fun.
 Have a look at the extensive [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/) to get you excited.
 
+### clj-time
+[https://github.com/seancorfield/clj-time](https://github.com/seancorfield/clj-time)
+
+Wrapper around jodatime to do dates times and everything time related the clojure way.
+
+Add this to your project.clj
+<code>
+[clj-time "0.4.3"]
+</code>
+
+@@@ ruby 41_time.clj @@@
+
+Will make your life with timezones definitely better :)
+
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 
