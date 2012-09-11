@@ -51,6 +51,13 @@ It also incorporate a kinda cool http client, again with no dependencies. Give a
 
 [Download](http://incanter.org/downloads/) and [Get started](https://github.com/liebke/incanter/wiki#getstarted)
 
+The download above includes a bunch of stuff you may not need. A faster way to get started is to go the usual route with Leiningen
+<code>
+[incanter "1.3.0"]
+</code>
+
+Then you can play around:
+
 @@@ ruby 38_incanter.clj @@@
 
 The image below has been generated from the script above ! 
@@ -241,6 +248,16 @@ Or how to do proper json fun in the Clojure style. Cheshire is there for good.
 @@@ ruby 37_json.clj @@@
 
 Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
+
+### clj-digest
+[https://github.com/tebeka/clj-digest](https://github.com/tebeka/clj-digest)
+
+This is your everyday tool to compute digest on just about everything. It comes from clojars:
+<code>
+[digest "1.3.0"]
+</code>
+
+And voila. A few lines to compute digest from files, strings bytes etc ...
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)

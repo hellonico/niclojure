@@ -19,6 +19,8 @@
   [cheshire "4.0.2"]
   [me.shenfeng/http-kit "1.1.0"]
   [incanter "1.3.0"]
+  [digest "1.3.0"]
+  [clojure-lanterna "0.9.2"]
 
   [clojure-csv/clojure-csv "2.0.0-alpha1"]
   [de.ubercode.clostache/clostache "1.3.0"]

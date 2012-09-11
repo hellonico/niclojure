@@ -37,6 +37,8 @@
 
 <p><a href="http://blog.malcolmsparks.com/?p=94">The UK Government should take a look at Clojure</a></p>
 
+<p><a href="http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105">Rich Hickey Interview</a></p>
+
 
 </div>
   <div class="chapter"><h2 id="welcome-to-clojure-through-leiningen">Welcome to Clojure, through Leiningen</h2>
@@ -490,17 +492,28 @@ It also incorporate a kinda cool http client, again with no dependencies. Give a
 
 <p><a href="http://incanter.org/downloads/">Download</a> and <a href="https://github.com/liebke/incanter/wiki#getstarted">Get started</a></p>
 
-<p>From the Clojure REPL, load the Incanter libraries:</p>
+<div class="highlight"><pre><span class="p">(</span><span class="n">use</span> <span class="err">'</span><span class="p">(</span><span class="n">incanter</span> <span class="n">core</span> <span class="n">stats</span> <span class="n">charts</span><span class="p">))</span>
 
-<pre><code>user=&gt; (use '(incanter core stats charts))</code></pre>
+<span class="p">;</span> <span class="no">Try</span> <span class="n">an</span> <span class="n">example</span><span class="p">:</span> <span class="n">sample</span> <span class="mi">1</span><span class="p">,</span><span class="mo">000</span> <span class="n">values</span> <span class="n">from</span> <span class="n">a</span> <span class="n">standard</span><span class="o">-</span><span class="n">normal</span> <span class="n">distribution</span> <span class="ow">and</span> <span class="n">view</span> <span class="n">a</span> <span class="n">histogram</span><span class="p">:</span> 
+<span class="p">(</span><span class="n">view</span> <span class="p">(</span><span class="n">histogram</span> <span class="p">(</span><span class="n">sample</span><span class="o">-</span><span class="n">normal</span> <span class="mi">1000</span><span class="p">)))</span>
+
+<span class="p">;</span> <span class="n">this</span> <span class="n">is</span> <span class="n">saving</span> <span class="n">the</span> <span class="n">file</span> <span class="n">as</span> <span class="n">png</span>
+<span class="p">;</span> <span class="n">wow</span><span class="o">.</span> <span class="n">so</span> <span class="n">fast</span><span class="o">.</span>
+<span class="p">(</span><span class="n">save</span> <span class="p">(</span><span class="n">histogram</span> <span class="p">(</span><span class="n">sample</span><span class="o">-</span><span class="n">normal</span> <span class="mi">1000</span><span class="p">))</span> <span class="s2">"test.png"</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="no">Below</span> <span class="n">only</span> <span class="n">works</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="n">latex</span> <span class="n">installed</span>
+<span class="p">;</span> <span class="p">(</span><span class="k">def</span> <span class="nf">eq</span> <span class="p">(</span><span class="n">str</span> <span class="s2">"f(x)=</span><span class="se">\\</span><span class="s2">frac{1}{</span><span class="se">\\</span><span class="s2">sqrt{2</span><span class="se">\\</span><span class="s2">pi </span><span class="se">\\</span><span class="s2">sigma^2}}"</span> <span class="s2">"e^{</span><span class="se">\\</span><span class="s2">frac{-(x - </span><span class="se">\\</span><span class="s2">mu)^2}{2 </span><span class="se">\\</span><span class="s2">sigma^2}}"</span><span class="p">))</span>
+<span class="p">;</span> <span class="p">(</span><span class="n">view</span> <span class="p">(</span><span class="n">latex</span> <span class="n">eq</span><span class="p">))</span>
+<span class="p">;</span> <span class="p">(</span><span class="n">save</span> <span class="p">(</span><span class="n">latex</span> <span class="n">eq</span><span class="p">)</span> <span class="n">filename</span><span class="p">)</span>
+</pre>
+</div>
 
 
-<p>Try an example: sample 1,000 values from a standard-normal distribution and view a histogram:</p>
-
-<pre><code>user=&gt; (view (histogram (sample-normal 1000)))</code></pre>
-
+<p>The image below has been generated from the script above !</p>
 
 <p><img src="../images/histogram.png" alt="Alt text" /></p>
+
+<p>Whats your next diagram ?</p>
 
 <h3 id="marginalia">Marginalia</h3>
 
@@ -1109,7 +1122,8 @@ This is how you install it:</p>
 </div>
   <div class="chapter"><h2 id="in-the-clouds">In the Clouds</h2>
 
-<h3 id="clj-monitor">clj.monitor</h3>
+<ul><li><a href="http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and">http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and</a></li>
+</ul><h3 id="clj-monitor">clj.monitor</h3>
 
 <p><a href="https://github.com/killme2008/clj.monitor">https://github.com/killme2008/clj.monitor</a></p>
 
@@ -1169,6 +1183,7 @@ They are actually doing this through <a href="http://www.jclouds.org/">jclouds</
   <div class="chapter">
     <ul><li>http://www.intensivesystems.net/tutorials/stream_proc.html</li>
 <li>https://github.com/sattvik/Clojure-Android-Examples</li>
+<li>Android?: http://kinjo.github.com/ojag-clojure/#slide61</li>
 </ul></div>
 
     </div>
