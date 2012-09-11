@@ -51,13 +51,13 @@ It also incorporate a kinda cool http client, again with no dependencies. Give a
 
 [Download](http://incanter.org/downloads/) and [Get started](https://github.com/liebke/incanter/wiki#getstarted)
 
-From the Clojure REPL, load the Incanter libraries: 
-<pre><code>user=> (use '(incanter core stats charts))</code></pre>
+@@@ ruby 38_incanter.clj @@@
 
-Try an example: sample 1,000 values from a standard-normal distribution and view a histogram: 
-<pre><code>user=> (view (histogram (sample-normal 1000)))</code></pre>
+The image below has been generated from the script above ! 
 
 ![Alt text](../images/histogram.png)
+
+Whats your next diagram ? 
 
 ### Marginalia 
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)

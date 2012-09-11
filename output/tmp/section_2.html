@@ -497,6 +497,38 @@ Took a few minutes to write the code, not a single exception, and all using mult
 
 <p><img src="Growl.png" alt="" /></p>
 
+<h3 id="cheshire">cheshire</h3>
+
+<p><a href="https://github.com/dakrone/cheshire">https://github.com/dakrone/cheshire</a></p>
+
+<p>Or how to do proper json fun in the Clojure style. Cheshire is there for good.</p>
+
+<p><code>
+[cheshire "4.0.2"]
+</code></p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="n">use</span> <span class="err">'</span><span class="o">[</span><span class="n">cheshire</span><span class="o">.</span><span class="n">core</span><span class="o">]</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">generate</span><span class="o">-</span><span class="n">string</span> <span class="p">{</span><span class="ss">:foo</span> <span class="s2">"bar"</span> <span class="ss">:baz</span> <span class="mi">5</span><span class="p">})</span>
+
+<span class="p">;;</span> <span class="n">parse</span> <span class="n">some</span> <span class="n">json</span>
+<span class="p">(</span><span class="n">parse</span><span class="o">-</span><span class="n">string</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">}"</span><span class="p">)</span>
+<span class="p">;;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"foo"</span> <span class="s2">"bar"</span><span class="p">}</span>
+
+<span class="p">;;</span> <span class="n">parse</span> <span class="n">some</span> <span class="n">json</span> <span class="ow">and</span> <span class="n">get</span> <span class="n">keywords</span> <span class="n">back</span>
+<span class="p">(</span><span class="n">parse</span><span class="o">-</span><span class="n">string</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">}"</span> <span class="kp">true</span><span class="p">)</span>
+<span class="p">;;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:foo</span> <span class="s2">"bar"</span><span class="p">}</span>
+
+<span class="p">;;</span> <span class="n">parse</span> <span class="n">some</span> <span class="n">json</span> <span class="ow">and</span> <span class="n">munge</span> <span class="n">keywords</span> <span class="n">with</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">function</span>
+<span class="p">(</span><span class="n">parse</span><span class="o">-</span><span class="n">string</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">}"</span> <span class="p">(</span><span class="n">fn</span> <span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="p">(</span><span class="n">keyword</span> <span class="p">(</span><span class="o">.</span><span class="n">toUpperCase</span> <span class="n">k</span><span class="p">))))</span>
+<span class="p">;;;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:FOO</span> <span class="s2">"bar"</span><span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫</p>
+
 <h3 id="vaadin">Vaadin</h3>
 
 <p><a href="http://dev.vaadin.com/wiki/Articles/ClojureScripting">http://dev.vaadin.com/wiki/Articles/ClojureScripting</a></p>

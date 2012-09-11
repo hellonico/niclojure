@@ -22,3 +22,9 @@ Libraries
 * https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU
 * http://im4java.sourceforge.net/
 * https://github.com/clojurewerkz/cassaforte
+* Production Web REPL: http://java.dzone.com/articles/clojure-production-web-repl
+
+Java Libraries
+* http://jericho.htmlparser.net/docs/index.html
+* Apache Camel from Clojure https://github.com/denlab/apache-camel-clojure 
+* http://www.intensivesystems.net/tutorials/stream_proc.html
