@@ -51,13 +51,20 @@ It also incorporate a kinda cool http client, again with no dependencies. Give a
 
 [Download](http://incanter.org/downloads/) and [Get started](https://github.com/liebke/incanter/wiki#getstarted)
 
-From the Clojure REPL, load the Incanter libraries: 
-<pre><code>user=> (use '(incanter core stats charts))</code></pre>
+The download above includes a bunch of stuff you may not need. A faster way to get started is to go the usual route with Leiningen
+<code>
+[incanter "1.3.0"]
+</code>
 
-Try an example: sample 1,000 values from a standard-normal distribution and view a histogram: 
-<pre><code>user=> (view (histogram (sample-normal 1000)))</code></pre>
+Then you can play around:
+
+@@@ ruby 38_incanter.clj @@@
+
+The image below has been generated from the script above ! 
 
 ![Alt text](../images/histogram.png)
+
+Whats your next diagram ? 
 
 ### Marginalia 
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
@@ -164,6 +171,16 @@ This is also very useful for testing.
 
 Korma makes actually enjoyable to write SQL queries.
 
+<code>
+[korma "0.3.0-beta7"]
+</code>
+
+Have a look at the following code:
+
+@@@ ruby 19_korma.clj @@@
+
+Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
+
 ### clj-dns
 [https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
 
@@ -229,6 +246,46 @@ When you run the script above, if you have the growl notification system ([osx](
 
 !["Growl"](../images/Growl.png)
 
+### cheshire
+[https://github.com/dakrone/cheshire](https://github.com/dakrone/cheshire)
+
+Or how to do proper json fun in the Clojure style. Cheshire is there for good.
+
+<code>
+[cheshire "4.0.2"]
+</code>
+
+@@@ ruby 37_json.clj @@@
+
+Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
+
+### clj-digest
+[https://github.com/tebeka/clj-digest](https://github.com/tebeka/clj-digest)
+
+This is your everyday tool to compute digest on just about everything. It comes from clojars:
+<code>
+[digest "1.3.0"]
+</code>
+
+And voila. A few lines to compute digest from files, strings bytes etc ...
+
+### clojure-lanterna
+[https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
+
+Fun with the terminal. 
+<code>
+[clojure-lanterna "0.9.2"]
+</code>
+
+This simple script:
+@@@ ruby 40_lanterna.clj @@@
+
+will spawn a terminal, and display some text:
+
+![Lanterna](../images/lanterna.png)
+
+It is also easy to wait for keys, and other terminal things fun.
+Have a look at the extensive [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/) to get you excited.
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)

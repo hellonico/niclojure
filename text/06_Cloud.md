@@ -1,6 +1,8 @@
 In the Clouds
 --------
 
+* [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
+
 ### clj.monitor
 [https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 
@@ -9,7 +11,6 @@ In the Clouds
 
 ### Parallel SSH
 [http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
-
 
 ### Pallet
 [http://palletops.com/](http://palletops.com/)
