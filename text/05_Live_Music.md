@@ -30,3 +30,9 @@ And make some sound !
 > (kill foo) ; or kill all instances of synth foo
 
 </code>
+
+
+### Live Samples
+[https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
+
+[https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)

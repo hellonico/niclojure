@@ -5,7 +5,10 @@
   ;:eval-in-leiningen true
   :dev-dependencies [
      [lein-scalac "0.1.0"]
+     ; maybe need lein 2.0
+     ;[lein-groovyc "0.2.0"]
   ]
+  ;:groovyc-source-path "src/groovy"
   :scala-source-path "src/scala"
   :prep-tasks ["compile"]
 

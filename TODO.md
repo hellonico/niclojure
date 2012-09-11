@@ -22,9 +22,15 @@ Libraries
 * http://im4java.sourceforge.net/
 * https://github.com/clojurewerkz/cassaforte
 * Production Web REPL: http://java.dzone.com/articles/clojure-production-web-repl
-* [Terminal fun](https://github.com/sjl/clojure-lanterna/)
-
+* [ImageMagick Wrapper](https://github.com/neatonk/im4clj)
+* [Benchmark](https://github.com/neatonk/criterium)
+* [glob files](https://github.com/neatonk/clj-glob)
 * [Memcache](http://clojurememcached.info/articles/getting_started.html)
+* [JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)
+* [Clojure in Freemind](http://freemind.sourceforge.net/wiki/index.php/Plugins)
+
+More Lein Samples
+* [Jruby :)](https://github.com/jkutner/lein-jruby)
 
 Server
 * https://github.com/weavejester/lein-ring with Vaadin !

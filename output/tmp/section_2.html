@@ -360,6 +360,45 @@ This is also very useful for testing.</p>
 
 <p>Korma makes actually enjoyable to write SQL queries.</p>
 
+<p><code>
+[korma "0.3.0-beta7"]
+</code></p>
+
+<p>Have a look at the following code:</p>
+
+<div class="highlight">
+<pre><span class="p">;</span> <span class="k">then</span> <span class="n">use</span> <span class="n">korma</span> <span class="n">to</span> <span class="n">query</span> <span class="ow">and</span> <span class="n">insert</span>
+<span class="p">(</span><span class="n">use</span> <span class="s1">'korma.db)</span>
+<span class="s1">(use '</span><span class="n">korma</span><span class="o">.</span><span class="n">core</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">define</span> <span class="n">the</span> <span class="n">connection</span>
+<span class="p">(</span><span class="n">defdb</span> <span class="n">h2</span>
+  <span class="p">{</span><span class="ss">:classname</span>   <span class="s2">"org.h2.Driver"</span>
+   <span class="ss">:subprotocol</span> <span class="s2">"h2"</span>
+   <span class="ss">:subname</span>     <span class="s2">"./korma"</span><span class="p">})</span>
+
+<span class="p">;</span> <span class="n">this</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="n">later</span> 
+<span class="p">(</span><span class="n">defentity</span> <span class="n">users</span>
+    <span class="p">(</span><span class="n">entity</span><span class="o">-</span><span class="n">fields</span> <span class="ss">:first</span> <span class="ss">:last</span><span class="p">))</span>
+
+<span class="p">;</span> <span class="n">insert</span> <span class="n">as</span> <span class="nb">hash</span> <span class="n">map</span>
+<span class="p">(</span><span class="n">insert</span> <span class="n">users</span> <span class="p">(</span><span class="n">values</span> <span class="p">{</span><span class="ss">:first</span> <span class="s2">"john"</span> <span class="ss">:last</span> <span class="s2">"doe"</span><span class="p">}))</span>
+
+<span class="p">;</span> <span class="n">query</span> <span class="n">all</span> <span class="n">users</span>
+<span class="p">(</span><span class="nb">select</span> <span class="n">users</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">delete</span> <span class="n">all</span> <span class="n">users</span> <span class="n">with</span> <span class="n">last</span> <span class="o">=</span> <span class="s2">"doe"</span>
+<span class="p">(</span><span class="n">delete</span> <span class="n">users</span>
+  <span class="p">(</span><span class="n">where</span> <span class="p">{</span><span class="ss">:last</span> <span class="s2">"doe"</span><span class="p">}))</span>
+
+<span class="p">;</span> <span class="n">query</span> <span class="n">all</span> <span class="n">users</span>
+<span class="p">(</span><span class="nb">select</span> <span class="n">users</span><span class="p">)</span>  
+</pre>
+</div>
+
+
+<p>Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ?</p>
+
 <h3 id="clj-dns">clj-dns</h3>
 
 <p><a href="https://github.com/brweber2/clj-dns">https://github.com/brweber2/clj-dns</a></p>
@@ -558,6 +597,12 @@ Took a few minutes to write the code, not a single exception, and all using mult
 </code></p>
 
 <p>And voila. A few lines to compute digest from files, strings bytes etc ...</p>
+
+<h3 id="clojure-lanterna">clojure-lanterna</h3>
+
+<p><a href="https://github.com/sjl/clojure-lanterna/">https://github.com/sjl/clojure-lanterna/</a></p>
+
+<p>Fun with the terminal.</p>
 
 <h3 id="vaadin">Vaadin</h3>
 

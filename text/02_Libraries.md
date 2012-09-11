@@ -269,6 +269,24 @@ This is your everyday tool to compute digest on just about everything. It comes 
 
 And voila. A few lines to compute digest from files, strings bytes etc ...
 
+### clojure-lanterna
+[https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
+
+Fun with the terminal. 
+<code>
+[clojure-lanterna "0.9.2"]
+</code>
+
+This simple script:
+@@@ ruby 40_lanterna.clj @@@
+
+will spawn a terminal, and display some text:
+
+![Lanterna](../images/lanterna.png)
+
+It is also easy to wait for keys, and other terminal things fun.
+Have a look at the extensive [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/) to get you excited.
+
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 
