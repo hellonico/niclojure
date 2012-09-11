@@ -28,6 +28,7 @@ Libraries
 * [Memcache](http://clojurememcached.info/articles/getting_started.html)
 * [JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)
 * [Clojure in Freemind](http://freemind.sourceforge.net/wiki/index.php/Plugins)
+* [Application as service or executable](http://wrapper.tanukisoftware.com/doc/english/integrate.html#method1)
 
 More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
