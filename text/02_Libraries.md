@@ -171,6 +171,16 @@ This is also very useful for testing.
 
 Korma makes actually enjoyable to write SQL queries.
 
+<code>
+[korma "0.3.0-beta7"]
+</code>
+
+Have a look at the following code:
+
+@@@ ruby 19_korma.clj @@@
+
+Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
+
 ### clj-dns
 [https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
 
