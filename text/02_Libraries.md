@@ -344,3 +344,20 @@ Event workflow for clojure
 ### Conduit
 [http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
 Stream processing in Clojure
+
+### Clojure-tco
+[https://github.com/cjfrisz/clojure-tco](https://github.com/cjfrisz/clojure-tco)
+ (Tail Call Optimization)
+
+To be checked because it did not work so well :)
+
+### serial
+[https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj](https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj)
+
+<code>
+[serial-port "1.1.0"]	
+</code>
+
+Very useful to access the USB port of your machine when the JVM actually has some limitation. This is going deep down the roots of the computer and may not work. Some other libraries like calx and penumbra may have this embedded already. So this is mostly for reference. Now is the time to start your own driver :)
+
+@@@ ruby 51_serial.clj @@@

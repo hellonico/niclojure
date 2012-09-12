@@ -24,7 +24,7 @@
 ; do some regexp
 (re-find #"abc" "This is a string that contains abc")
 
-; doseq
+; multi dimensional loops
 (doseq [x [1 2 3] y [1 2 3]] 
 	(println (* x y)))
 ; returns 
@@ -36,8 +36,15 @@
 (use 'clojure.xml)
 (emit (parse "http://feeds.feedburner.com/burningonesblog"))
 
-; every line of a file in sequences
-(line-seq (clojure.java.io/reader (clojure.java.io/file “project.clj”)))
-
 ; text is code is text !
 (eval '(apply str [1 2 3 4 5]))
+
+; every line of a file in sequences
+(line-seq (clojure.java.io/reader "project.clj"))
+
+; cool destructuring
+; http://stackoverflow.com/questions/11990986/how-to-iterate-over-a-nested-array-hash-structure-in-clojure?rq=1s
+(def config [{:host "test", :port 1},{:host "testtest", :port 2}])
+
+(for [{h :host p :port} config]
+  (format "host: %s ; port: %s" h p))
