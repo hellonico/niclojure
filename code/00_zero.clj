@@ -48,3 +48,11 @@
 
 (for [{h :host p :port} config]
   (format "host: %s ; port: %s" h p))
+
+; filter even numbers
+(filter even? (range 10))
+; (0 2 4 6 8)
+
+(filter #(> (second %) 100) 
+	{:a 1 :b 2 :c 101 :d 102 :e -1})
+; ([:c 101] [:d 102])

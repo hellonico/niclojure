@@ -361,3 +361,14 @@ To be checked because it did not work so well :)
 Very useful to access the USB port of your machine when the JVM actually has some limitation. This is going deep down the roots of the computer and may not work. Some other libraries like calx and penumbra may have this embedded already. So this is mostly for reference. Now is the time to start your own driver :)
 
 @@@ ruby 51_serial.clj @@@
+
+### xml-picker-seq
+[https://github.com/marktriggs/xml-picker-seq](https://github.com/marktriggs/xml-picker-seq)
+
+What to do when you have to deal with pretty big xml files. This library supports up to 1Gb heavy files, more than you should need on average.
+
+<code>
+	
+</code>
+
+@@@ ruby 52_xml_seq.clj @@@

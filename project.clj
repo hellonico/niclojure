@@ -36,8 +36,9 @@
   [serial-port "1.1.0"]
   ; tail call optimization
   [ctco "0.2.1"]
+  ; heavy xml
+  [xml-picker-seq "0.0.2"]
   ; opencl
->>>>>>> 075146e42a655baef4255f82d18d3cfd89430e9c
   [calx "0.2.1"]
   ; dns
   [com.brweber2/clj-dns "0.0.2"]
