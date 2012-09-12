@@ -10,6 +10,7 @@ Now that we are ready for some hacking, here are sites, that refer interesting C
 * [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
 * [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 * [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
+* [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ### Noir
 
@@ -311,7 +312,7 @@ Will make your life with timezones definitely better :)
 A wrapper to automate ssh commands, using the default ssh agent on the local machine.
 There is probably more to read if you are on windows. 
 
-@@@ ruby 42_ssh.clj @@@
+@@@ ruby 45_ssh.clj @@@
 
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)

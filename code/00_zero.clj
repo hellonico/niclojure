@@ -38,3 +38,6 @@
 
 ; every line of a file in sequences
 (line-seq (clojure.java.io/reader (clojure.java.io/file “project.clj”)))
+
+; text is code is text !
+(eval '(apply str [1 2 3 4 5]))

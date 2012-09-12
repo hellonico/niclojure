@@ -11,8 +11,10 @@
 * [Best in Class:Functional fluid dynamics in clojure](http://www.bestinclass.dk/index.clj/2010/03/functional-fluid-dynamics-in-clojure.html)
 * [So much to do, so little time: Easy parallelization with Clojure](http://blog.rguha.net/?p=153)
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
+* [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
 
 ## Libraries
+* [Avout](https://github.com/AlexBaranosky/avout)
 * [AppEngine](https://github.com/gcv/appengine-magic)
 * [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 * [REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)
@@ -35,6 +37,7 @@
 * [Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure)
 * [SSH Tunnel](https://github.com/trampoline/clj-ssh-tunnel)
 * [hiccup](https://github.com/weavejester/hiccup)
+* [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 
 ## Cloud
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
