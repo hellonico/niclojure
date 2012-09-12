@@ -14,7 +14,7 @@
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 
 ## Libraries
-* [Clucy](https://github.com/weavejester/clucy)
+* [Clucy](https://github.com/weavejester/clucy) 
 * [AppEngine](https://github.com/gcv/appengine-magic)
 * [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 * [REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)
