@@ -10,13 +10,11 @@
       (println title))))
 
 (use 'clojure.java.io)
-(defn contains-one[list string]
-	(doseq [item list]
-		
-		)
-	)
 
-;(xml-picker-seq.core/xml-picker-seq rdr "entry" (xml-picker-seq.core/xpath-query "//")))
-(with-open [rdr (reader "/Users/Niko/JMdict.xml")]	
-	(doseq [l (filter #(= (.indexOf % "<pos") -1) (line-seq rdr))]
+(defn contains-one[mstring]
+	(if (re-find #"JMdict>|<entry>|<gloss>|<reb>" mstring) true false))
+
+(with-open [rdr (reader "/Users/Niko/JMdict")]	
+	(doseq [l (filter #(contains-one %) (line-seq rdr))]
 		(spit "dict.xml" (str l "\n") :append true)))
+;(xml-picker-seq.core/xml-picker-seq rdr "entry" (xml-picker-seq.core/xpath-query "//")))
