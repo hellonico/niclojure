@@ -38,3 +38,10 @@
 
 ; every line of a file in sequences
 (line-seq (clojure.java.io/reader (clojure.java.io/file “project.clj”)))
+
+; cool destructuring
+; http://stackoverflow.com/questions/11990986/how-to-iterate-over-a-nested-array-hash-structure-in-clojure?rq=1s
+(def config [{:host "test", :port 1},{:host "testtest", :port 2}])
+
+(for [{h :host p :port} config]
+  (format "host: %s ; port: %s" h p))
