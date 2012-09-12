@@ -1,5 +1,3 @@
-#Backlog
-
 ## Book
 * Find grep example with Clojure 1.4
 * add a task to grep TODOs in the book
@@ -13,6 +11,7 @@
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 
 ## Libraries
+* [Serial Port Communication](https://github.com/samaaron/serial-port)
 * [AppEngine](https://github.com/gcv/appengine-magic)
 * [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 * [REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)

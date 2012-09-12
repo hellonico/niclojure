@@ -67,10 +67,13 @@ Then in a clojure project, just go and upload it with
 </code>
 Nothing else.
 
+
+
 Then a lein search will (should) show it. 
 
 ### Working from Eclipse
 [http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
+
 
 
 #### Examples
