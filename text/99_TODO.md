@@ -1,8 +1,10 @@
-### Book
+### TODO
+
+#### Book
 * Find grep example with Clojure 1.4
 * add a task to grep TODOs in the book
 
-### Tutorials
+#### Tutorials
 * [Caves of clojure](http://stevelosh.com/blog/2012/07/caves-of-clojure-03-4/)
 * [Web application Dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
 * [Best in Class:Functional fluid dynamics in clojure](http://www.bestinclass.dk/index.clj/2010/03/functional-fluid-dynamics-in-clojure.html)
@@ -10,7 +12,7 @@
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
 
-## Libraries
+#### Libraries
 * [Avout](https://github.com/AlexBaranosky/avout)
 * [Serial Port Communication](https://github.com/samaaron/serial-port)
 * [AppEngine](https://github.com/gcv/appengine-magic)
@@ -19,8 +21,8 @@
 * [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
 * [Clojure Native](https://github.com/bagucode/clj-native)
 * [Clucy](https://github.com/weavejester/clucy) 
-* BitBucket https://github.com/ohpauleez/clj-bitbucket/tree/17467d27bf0dbd3b3f39290fa66c4201d788d8b0
-* HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/
+* [BitBucket](https://github.com/ohpauleez/clj-bitbucket/tree/17467d27bf0dbd3b3f39290fa66c4201d788d8b0)
+* [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 * https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU
 * https://github.com/clojurewerkz/cassaforte
 * [Production Web REPL](http://java.dzone.com/articles/clojure-production-web-repl)
@@ -36,37 +38,37 @@
 * [hiccup](https://github.com/weavejester/hiccup)
 * [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 
-### Cloud
+#### Cloud
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 
-### More Lein Samples
+#### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
 
-### Server
+#### Server
 * https://github.com/weavejester/lein-ring with Vaadin !
 * http://clojurewerkz.org/
 
-### Java Libraries
+#### Java Libraries
 * http://jericho.htmlparser.net/docs/index.html
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
 
-### PDF (where's mine ?)
+#### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)
 * [iText wrapper](https://github.com/yogthos/clj-pdf)
 
-### Finance
+#### Finance
 * [Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
 * [MC with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
 * [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
 * [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
 
-### ClojureScript
+#### ClojureScript
 * [Enlive inspired templating](https://github.com/ckirkendall/enfocus)
 
-### Experimental
+#### Experimental
 * [mimir rule engine](https://github.com/hraberg/mimir)
 * [OpenCL Playground](https://github.com/hraberg/sleipnir)
 * [Rootbeer](https://github.com/pcpratts/rootbeer1)
