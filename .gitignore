@@ -8,3 +8,5 @@ korma.lock.db
 .lobos_stash.clj
 test.vcf
 output
+native
+liblwjgl.jnilib

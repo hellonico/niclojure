@@ -23,8 +23,10 @@
   [org.clojure/clojure "1.4.0"]
 
   [com.cemerick/pomegranate "0.0.13"]
-  
   [com.google.gdata/gdata-contacts-3.0 "1.41.5"]
+  [bronsa/penumbra "0.6.0-SNAPSHOT"] 
+
+  [calx "0.2.1"]
   [com.brweber2/clj-dns "0.0.2"]
   [clj-growlnotify "0.1.1"]
   [clj-rss "0.1.2"]

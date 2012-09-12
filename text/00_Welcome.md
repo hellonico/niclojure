@@ -21,3 +21,10 @@ A few application examples would be:
 * Multi-cores processing Setlements application integrating with distributed messaging queues and complex trading systems
 * Heavily threaded Web based configuration management, monitoring and deployment application 
 * Very fast to-market implementation of a social Plateform service, using websockets and MongoDB on Heroku
+
+What this book will cover
+---
+
+* Clojure quick recipies that I myself use regularly
+* Leiningen setup
+* Common libraries for common programming tasks
