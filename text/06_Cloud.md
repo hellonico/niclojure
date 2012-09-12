@@ -12,12 +12,13 @@ In the Clouds
 ### Parallel SSH
 [http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
 
+[https://github.com/RJMetrics/Parallel-SSH](https://github.com/RJMetrics/Parallel-SSH)
+
 ### Pallet
 [http://palletops.com/](http://palletops.com/)
 
 Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 
 They are actually doing this through [jclouds](http://www.jclouds.org/)
-
 
 ### Heroku
 [Debugging clojure on Heroku](https://devcenter.heroku.com/articles/debugging-clojure)

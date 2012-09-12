@@ -301,6 +301,18 @@ Add this to your project.clj
 
 Will make your life with timezones definitely better :)
 
+### clj-ssh
+[https://github.com/hugoduncan/clj-ssh](https://github.com/hugoduncan/clj-ssh)
+
+<code>
+[clj-ssh "0.4.0"]
+</code>
+
+A wrapper to automate ssh commands, using the default ssh agent on the local machine.
+There is probably more to read if you are on windows. 
+
+@@@ ruby 42_ssh.clj @@@
+
 ### Vaadin
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 

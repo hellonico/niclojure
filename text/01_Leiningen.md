@@ -73,7 +73,6 @@ Then a lein search will (should) show it.
 
 All the examples in this book can be run with:
 <code>
-(use 'clojure.string)
 (load-file "code/18_clojure_soup.clj")
 </code>
 
