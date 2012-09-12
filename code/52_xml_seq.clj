@@ -1,3 +1,5 @@
+; http://stackoverflow.com/questions/9939844/huge-xml-in-clojure
+
 (use 'xml-picker-seq.core)
 
 (with-open [rdr (clojure.java.io/reader "http://www.loc.gov/standards/marcxml/xml/collection.xml")]
@@ -12,9 +14,11 @@
 (use 'clojure.java.io)
 
 (defn contains-one[mstring]
-	(if (re-find #"JMdict>|<entry>|<gloss>|<reb>" mstring) true false))
+	(if (re-find #"JMdict>|entry>|<gloss>|<reb>" mstring) true false))
 
 (with-open [rdr (reader "/Users/Niko/JMdict")]	
 	(doseq [l (filter #(contains-one %) (line-seq rdr))]
 		(spit "dict.xml" (str l "\n") :append true)))
-;(xml-picker-seq.core/xml-picker-seq rdr "entry" (xml-picker-seq.core/xpath-query "//")))
+
+(with-open [rdr (reader "dict.xml")]	
+	(doall (xml-picker-seq.core/xml-picker-seq rdr "entry" (xml-picker-seq.core/xpath-query "//gloss[text() = 'thank']"))))
