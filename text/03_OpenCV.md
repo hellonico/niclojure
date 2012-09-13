@@ -78,4 +78,4 @@ The version we are including here is not from the original author but is compati
 [bronsa/penumbra "0.6.0-SNAPSHOT"] 
 </code>
 
-@@@ ruby ruby 43_penumbra.clj @@@
+@@@ ruby 43_penumbra.clj @@@
