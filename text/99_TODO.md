@@ -24,8 +24,8 @@
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
 
 #### Libraries
+* [SIP](https://github.com/Ruiyun/cljain)
 * [Avout](https://github.com/AlexBaranosky/avout)
-* [Serial Port Communication](https://github.com/samaaron/serial-port)
 * [AppEngine](https://github.com/gcv/appengine-magic)
 * [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 * [REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)
