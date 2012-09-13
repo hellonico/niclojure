@@ -10,3 +10,6 @@
 [submodule "apps/javafxclojure"]
 	path = apps/javafxclojure
 	url = https://github.com/staypufd/JavaFXClojure.git
+[submodule "apps/swt-examples"]
+	path = apps/swt-examples
+	url = https://github.com/CMPITG/clojure-swt-examples.git

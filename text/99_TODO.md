@@ -24,6 +24,9 @@
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
 
 #### Libraries
+* [OSGI](https://github.com/aav/clojure.osgi), with [blog post](http://paudo.posterous.com/clojure-osgi)
+* [Redis](https://github.com/wallrat/labs-redis-clojure)
+* [JMS, AMQP/RabbitMQ](https://github.com/sbtourist/clamq)
 * [SIP](https://github.com/Ruiyun/cljain)
 * [Avout](https://github.com/AlexBaranosky/avout)
 * [AppEngine](https://github.com/gcv/appengine-magic)
