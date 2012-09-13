@@ -21,6 +21,7 @@ Pallet is the mother of them all of cloud infrastructure tool. See the [list of 
 They are actually doing this through [jclouds](http://www.jclouds.org/)
 
 ### Heroku
+[Deploying Application on Heroku](https://devcenter.heroku.com/articles/clojure-web-application)
 [Debugging clojure on Heroku](https://devcenter.heroku.com/articles/debugging-clojure)
 
 ### VMFest
