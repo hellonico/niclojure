@@ -27,13 +27,24 @@ and/or this is how you would have it started in a few seconds with the leiningen
 
 @@@ ruby 09_noir.sh @@@
 
-Now the guy from Noir has also started a very cute project named [Playground](http://app.kodowa.com/playground) where you can do live execution of your code with a nice UI.
+Now the guy from Noir has also started a very cute project named [Lighttable](http://www.kickstarter.com/projects/ibdknox/light-table). You can see the [Playground](http://app.kodowa.com/playground) where you can do live execution of your code with an awesome new type of UI for programming. 
 
 ![Alt text](../images/LightTable.png)
 
+### colorize 
+[https://github.com/ibdknox/colorize](https://github.com/ibdknox/colorize)
+
+<code>
+[colorize "0.1.0"]
+</code>
+
+Colorize is a super simple ansi colorizing library. Try it for yourself:
+
+@@@ ruby 54_colorize.clj @@@
+
+
 ### http-kit
 [https://github.com/shenfeng/http-kit](https://github.com/shenfeng/http-kit)
-
 
 In the same time, you can turn yourself asynchrnous with http-kit. 
 
@@ -368,7 +379,7 @@ Very useful to access the USB port of your machine when the JVM actually has som
 What to do when you have to deal with pretty big xml files. This library supports up to 1Gb heavy files, more than you should need on average.
 
 <code>
-	
+[xml-picker-seq "0.0.2"]	
 </code>
 
 @@@ ruby 52_xml_seq.clj @@@

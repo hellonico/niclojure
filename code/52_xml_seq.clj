@@ -16,7 +16,9 @@
 (defn contains-one[mstring]
 	(if (re-find #"JMdict>|entry>|<gloss>|<reb>" mstring) true false))
 
-(with-open [rdr (reader "/Users/Niko/JMdict")]	
+; you need to download JMdict from: 
+; http://ftp.monash.edu.au/pub/nihongo/JMdict_e
+(with-open [rdr (reader "tmp/JMdict")]	
 	(doseq [l (filter #(contains-one %) (line-seq rdr))]
 		(spit "dict.xml" (str l "\n") :append true)))
 

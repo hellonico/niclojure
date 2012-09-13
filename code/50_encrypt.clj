@@ -1,6 +1,8 @@
 ; Copyright Nakkaya dot com
 ; http://nakkaya.com/2009/11/25/cryptography-with-clojure-one-time-pad/
 
+; totally useless encryption
+
 (defn rand-bytes [size]
   (let [rand (java.security.SecureRandom/getInstance "SHA1PRNG")
         buffer (make-array Byte/TYPE size)]

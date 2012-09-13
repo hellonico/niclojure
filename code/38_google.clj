@@ -6,20 +6,24 @@
  '(com.google.gdata.data.contacts ContactFeed)
  '(java.net URL))
 
-(defn contacts-service [service-name username password]
+(defn contacts-service 
+  "set the credential for the contact service"
+  [service-name username password]
   (let [cs (new ContactsService service-name)]
     (.setUserCredentials cs username password)
     cs))
 
-(defn get-email-addresses [entry] (.getEmailAddresses entry))
-(defn get-address [email] (.getAddress email))
-(defn get-first-email-address [entry]
-  (let [email-addresses (get-email-addresses entry)]
+(defn get-first-email-address 
+  "find the first email address"
+  [entry]
+  (let [email-addresses (.getEmailAddresses entry)]
     (if (empty? email-addresses)
       "no address"
-      (get-address (first email-addresses)))))
+      (.getAddress (first email-addresses)))))
 
-(defn contacts[username password]
+(defn contacts
+  "Collect google contacts for an account"
+  [username password]
   (let [
         cs          (contacts-service "clojure-test" username password)
         max-results 10 

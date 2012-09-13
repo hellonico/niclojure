@@ -24,6 +24,8 @@
   :dependencies [
   ; core clojure
   [org.clojure/clojure "1.5.0-alpha3"]
+  ; colors for terminal 
+  [colorize "0.1.0"]
   ; dependencies management
   [com.cemerick/pomegranate "0.0.13"]
   ; google api
