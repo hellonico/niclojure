@@ -31,6 +31,10 @@ And make some sound !
 
 </code>
 
+### Mini-beast
+[https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
+
+
 
 ### Live Samples
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)

@@ -1,0 +1,9 @@
+[submodule "apps/noir-messageboard"]
+	path = apps/noir-messageboard
+	url = https://github.com/pmn/noir-messageboard.git
+[submodule "apps/noir-blog"]
+	path = apps/noir-blog
+	url = git@github.com:hellonico/noir-blog.git
+[submodule "apps/noir-showdate"]
+	path = apps/noir-showdate
+	url = https://github.com/dfuenzalida/noir-showdate.git
