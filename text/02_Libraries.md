@@ -314,16 +314,6 @@ There is probably more to read if you are on windows.
 
 @@@ ruby 45_ssh.clj @@@
 
-### Vaadin
-[http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
-
-This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
-
-Sample Application
-[https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
-
-[Original Vaadin Sampler](http://demo.vaadin.com/sampler)
-
 ### clj-opennlp
 [https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
 Natural Language Processing in Clojure.
@@ -337,10 +327,6 @@ Http Slurping
 ### Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure
-
-### Aleph
-[https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
-Websockets
 
 ### Lamina
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
