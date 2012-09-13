@@ -26,4 +26,13 @@ A few application examples would be:
 
 * Clojure quick recipies that I myself use regularly
 * Leiningen setup
-* Common libraries for common programming tasks
+* Common libraries for your everyday programming tasks
+* How to create user interfaces interactively 
+* How to quickly create web application
+* How to connect to the most famous agile middlewares: RabbitMQ, Redis, MongoDB, Storm ...
+* How to do music as data programming
+* How to interface with Arduino 
+* How to interface with Processing
+* How to interface with common cloud plateforms
+* Some introduction on how to use clojure for Android programming
+* Present Clojure for the .NET plateform and ClojureScript

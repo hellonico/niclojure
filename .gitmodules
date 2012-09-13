@@ -7,3 +7,6 @@
 [submodule "apps/noir-showdate"]
 	path = apps/noir-showdate
 	url = https://github.com/dfuenzalida/noir-showdate.git
+[submodule "apps/javafxclojure"]
+	path = apps/javafxclojure
+	url = https://github.com/staypufd/JavaFXClojure.git
