@@ -1,5 +1,16 @@
 ### TODO
 
+### Lists
+* [ClojureSphere](http://www.clojuresphere.com/)
+* [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
+* [clojurewerkz](http://clojurewerkz.org/)
+* [Clojure on github](http://clojure.github.com/)
+* [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
+* [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
+* [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
+* [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
+* [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
+
 #### Book
 * Find grep example with Clojure 1.4
 * add a task to grep TODOs in the book
@@ -37,11 +48,13 @@
 * [SSH Tunnel](https://github.com/trampoline/clj-ssh-tunnel)
 * [hiccup](https://github.com/weavejester/hiccup)
 * [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
+* [Event Processing](https://github.com/pingles/clj-esper)
 
 #### Cloud
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
+* [Immutant](http://immutant.org/tutorials/installation/index.html)
 
 #### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
@@ -73,3 +86,4 @@
 * [OpenCL Playground](https://github.com/hraberg/sleipnir)
 * [Rootbeer](https://github.com/pcpratts/rootbeer1)
 * [Machine Learning](https://github.com/sids/nerchuko)
+* [Jobim](https://github.com/antoniogarrote/jobim)

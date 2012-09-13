@@ -1,17 +1,6 @@
 Libraries
 ---------
 
-Now that we are ready for some hacking, here are sites, that refer interesting Clojure libraries:
-
-* [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
-* [clojurewerkz](http://clojurewerkz.org/)
-* [Clojure on github](http://clojure.github.com/)
-* [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
-* [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
-* [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
-* [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
-* [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
-
 ### Noir
 
 [https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 
