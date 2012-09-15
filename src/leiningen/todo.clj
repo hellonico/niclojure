@@ -1,3 +1,7 @@
 (ns leiningen.todo)
+(use 'clojure.pprint)
 
-(defn todo [project & args] (println "Hello TODO!!"))
+(load-file "code/057_grep2.clj")
+
+(defn todo [project & args] 
+	(doall (map #(println %) (grep-in-files #"TODO" (map #(.getPath %) (glob "**/*.md"))))))
