@@ -60,6 +60,7 @@
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 * [Immutant](http://immutant.org/tutorials/installation/index.html)
 
+
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
 
@@ -71,6 +72,7 @@
 * http://jericho.htmlparser.net/docs/index.html
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
+* [Portlet](https://github.com/jave/cljportlet)
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)
