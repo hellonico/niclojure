@@ -11,6 +11,7 @@
      [lein-scalac "0.1.0"]
      [lein-eclipse "1.0.0"]
      [lein-marginalia "0.7.1"]
+     [lein-jruby "0.1.0"]
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
   ]

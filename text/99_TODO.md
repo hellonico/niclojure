@@ -1,5 +1,7 @@
 ### TODO
 
+##### Book
+
 #### Lists
 * [ClojureSphere](http://www.clojuresphere.com/)
 * [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
@@ -11,19 +13,19 @@
 * [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
-##### Book
-* Find grep example with Clojure 1.4
-* add a task to grep TODOs in the book
-
 ##### Tutorials
+* [Genetic Algorithm in Clojure](http://ethanfast.com/2009/09/ga-framework/)
+* [back propagation algorithm in Clojure](http://www.fatvat.co.uk/2009/06/back-propagation-algorithm-in-clojure.html)
 * [Caves of clojure](http://stevelosh.com/blog/2012/07/caves-of-clojure-03-4/)
 * [Web application Dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
 * [Best in Class:Functional fluid dynamics in clojure](http://www.bestinclass.dk/index.clj/2010/03/functional-fluid-dynamics-in-clojure.html)
 * [So much to do, so little time: Easy parallelization with Clojure](http://blog.rguha.net/?p=153)
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
+* [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Matchure](https://github.com/dcolthorp/matchure)
 * [clarsec](https://github.com/jasonjckn/clarsec), [parsley](https://github.com/cgrand/parsley)
 * [OSGI](https://github.com/aav/clojure.osgi), with [blog post](http://paudo.posterous.com/clojure-osgi)
 * [Redis](https://github.com/wallrat/labs-redis-clojure)
@@ -59,7 +61,8 @@
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 * [Immutant](http://immutant.org/tutorials/installation/index.html)
-
+* [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
+* [Monitoring EC2 with clojure](http://paulosuzart.github.com/blog/2012/04/17/monitoring-ec2-with-clojure-and-server-stats/)
 
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
