@@ -362,13 +362,6 @@ I have added here the most simplest example on how to parse text.
 Note that this is only the most basic use of the OpenNLP library.
 You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
 
-### Tokenizer
-[Tokenizer](https://github.com/eandrejko/clj-tokenizer) for text analysis.
-
-### Cascalog
-[https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
-Hadoop Query from Clojure
-
 ### Lamina
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
 Event workflow for clojure
@@ -378,6 +371,11 @@ Event workflow for clojure
 Stream processing in Clojure
 
 <!-- 
+
+### Tokenizer
+[Tokenizer](https://github.com/eandrejko/clj-tokenizer) for text analysis.
+ too minor for this ?
+
 ### Clojure-tco
 [https://github.com/cjfrisz/clojure-tco](https://github.com/cjfrisz/clojure-tco)
  (Tail Call Optimization)

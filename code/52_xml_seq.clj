@@ -20,7 +20,7 @@
 ; http://ftp.monash.edu.au/pub/nihongo/JMdict_e
 (with-open [rdr (reader "tmp/JMdict")]	
 	(doseq [l (filter #(contains-one %) (line-seq rdr))]
-		(spit "dict.xml" (str l "\n") :append true)))
+		(spit "tmp/dict.xml" (str l "\n") :append true)))
 
-(with-open [rdr (reader "dict.xml")]	
+(with-open [rdr (reader "tmp/dict.xml")]	
 	(doall (xml-picker-seq.core/xml-picker-seq rdr "entry" (xml-picker-seq.core/xpath-query "//gloss[text() = 'thank']"))))
