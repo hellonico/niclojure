@@ -1,7 +1,10 @@
 (defproject niclojure "1.0.0-SNAPSHOT"
   :description "Niclojure"
 
-  :repositories {"mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"}
+  :repositories {
+    "mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"
+    "xuggle" "http://xuggle.googlecode.com/svn/trunk/repo/share/java"
+  }
 
   ; the below is dangerous, prevent loading java and scala classes
   ;:eval-in-leiningen true
@@ -89,7 +92,8 @@
   [clojure-soup/clojure-soup "0.0.1"]
   ; ssh
   [clj-ssh "0.4.0"]
-
+  ; xuggle 34M :)
+  [xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
   ; maybe not compatible with lein2 :(
   ;[jark "0.4.2" :exclusions [org.clojure/clojure]]
   ])

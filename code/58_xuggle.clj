@@ -18,3 +18,6 @@
       (.addListener (ToolFactory/makeWriter videoOutput reader))
       (.addListener (ToolFactory/makeDebugListener (into-array [IMediaDebugListener$Event/META_DATA]))))
     (readerRecurse reader)))
+
+; it works !!!! painfully slow.
+(convert "/Users/Niko/Downloads/Roppongi2.mp4" "/Users/Niko/nico.mpg")
