@@ -48,9 +48,12 @@ For example
 </code>
 will return 
 
+
 <code>
+<pre>
  == Results from clojars - Showing page 1 / 1 total
 [org.clojars.clizzin/jsoup "1.5.1"] jsoup HTML parser
+</pre>
 </code>
 
 #### Upload to clojars
