@@ -1,3 +1,5 @@
+(use '[ctco.core :only (ctco)])
+
 ; method that targets CTO
 (defn fact
   [n]
@@ -12,7 +14,7 @@
     [n]
     (if (zero? n)
         1
-        (*' n (fact (dec n))))))
+        (*' n (fact (dec n)))))) ; not supported
 
 ; and use it the normal way
 (println (fact 457))

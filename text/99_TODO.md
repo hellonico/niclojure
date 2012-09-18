@@ -32,6 +32,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
 * [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
 * [VCR](https://github.com/fredericksgary/vcr-clj)
 * [Async HTTP Client](http://neotyk.github.com/http.async.client/)
@@ -65,18 +66,16 @@
 * [hiccup](https://github.com/weavejester/hiccup)
 * [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 * [Event Processing](https://github.com/pingles/clj-esper)
+* [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
 
 ##### Cloud
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 * [Immutant](http://immutant.org/tutorials/installation/index.html)
-<<<<<<< HEAD
 * [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
-=======
 * [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
 * [Monitoring EC2 with clojure](http://paulosuzart.github.com/blog/2012/04/17/monitoring-ec2-with-clojure-and-server-stats/)
->>>>>>> 5cda5fa91d27020c05c64913ce2b4c97ddfab8e8
 
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
@@ -89,12 +88,9 @@
 * http://jericho.htmlparser.net/docs/index.html
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
-<<<<<<< HEAD
 * http://www.jcuda.de/
-=======
 * [Portlet](https://github.com/jave/cljportlet)
 * [Kryonet](http://code.google.com/p/kryonet/)
->>>>>>> 5cda5fa91d27020c05c64913ce2b4c97ddfab8e8
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)

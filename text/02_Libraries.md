@@ -332,10 +332,37 @@ What to do when you have to deal with pretty big xml files. This library support
 
 @@@ ruby 52_xml_seq.clj @@@
 
+### clj-webdriver
+[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
+
+"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+
+<code>
+[clj-webdriver "0.6.0-alpha11"]
+</code>
+
+When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
+
+@@@ ruby 60_taxi.clj @@@
+
 ### clj-opennlp
 [https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
 Natural Language Processing in Clojure.
 
+This is has to be one of the most technical subject available to be used just as is in this book.  OpenNLP allows you to parse text into something meaninful so you can reuse it in your application.
+
+<code>
+[clojure-opennlp "0.1.10"]
+</code>
+
+I have added here the most simplest example on how to parse text. 
+
+@@@ ruby 61_opennlp.clj @@@
+
+Note that this is only the most basic use of the OpenNLP library.
+You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
+
+### Tokenizer
 [Tokenizer](https://github.com/eandrejko/clj-tokenizer) for text analysis.
 
 ### Cascalog
@@ -350,8 +377,9 @@ Event workflow for clojure
 [http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
 Stream processing in Clojure
 
+<!-- 
 ### Clojure-tco
 [https://github.com/cjfrisz/clojure-tco](https://github.com/cjfrisz/clojure-tco)
  (Tail Call Optimization)
 
-To be checked because it did not work so well :)
+To be checked because it did not work so well :) -->
