@@ -29,6 +29,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
 * [VCR](https://github.com/fredericksgary/vcr-clj)
 * [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 * [Matchure](https://github.com/dcolthorp/matchure)

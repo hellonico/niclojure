@@ -303,7 +303,17 @@ Natural Language Processing in Clojure.
 
 ### clj-http
 [https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
-Http Slurping
+
+clj-http is your usual wrapper around the [apache http client](http://hc.apache.org/). That http client has been around for quite a few years, and propose a very robust api. Now with clojure, we can even have it short.
+
+<code>
+[clj-http "0.1.3"]
+</code>
+
+The following example show how to send a post request to ask for some image processing to be done in the cloud through the [bitline API](http://www.blitline.com/docs/quickstart).
+
+@@@ ruby 59_bitline.clj @@@
+
 
 ### Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
