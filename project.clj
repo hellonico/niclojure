@@ -24,7 +24,7 @@
 
   :dependencies [
   ; core clojure
-  [org.clojure/clojure "1.5.0-alpha3"]
+  [org.clojure/clojure "1.4.0"]
   ; colors for terminal 
   [colorize "0.1.0"]
   ; dependencies management
@@ -35,6 +35,8 @@
   [bronsa/penumbra "0.6.0-SNAPSHOT"] 
   ; server and websockets
   [aleph "0.3.0-SNAPSHOT"]
+  ; http
+  [clj-http "0.1.3"]
   ; serial
   [serial-port "1.1.0"]
   ; tail call optimization

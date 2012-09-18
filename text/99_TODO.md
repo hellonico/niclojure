@@ -1,8 +1,11 @@
 ### TODO
 
 ##### Book
+* [Look at vancouver clojure club](https://github.com/van-clj)
+* [Ant task to make deb packages](http://code.google.com/p/ant-deb-task/) and [https://clojars.org/tvachon/ant-deb-task](https://clojars.org/tvachon/ant-deb-task)
 
 #### Lists
+* [Clojure API Examples](http://en.wikibooks.org/wiki/Clojure_Programming#API_Examples)
 * [ClojureSphere](http://www.clojuresphere.com/)
 * [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
 * [clojurewerkz](http://clojurewerkz.org/)
@@ -14,6 +17,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [jMonkey](http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure)
 * [Genetic Algorithm in Clojure](http://ethanfast.com/2009/09/ga-framework/)
 * [back propagation algorithm in Clojure](http://www.fatvat.co.uk/2009/06/back-propagation-algorithm-in-clojure.html)
 * [Caves of clojure](http://stevelosh.com/blog/2012/07/caves-of-clojure-03-4/)
@@ -25,6 +29,8 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [VCR](https://github.com/fredericksgary/vcr-clj)
+* [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 * [Matchure](https://github.com/dcolthorp/matchure)
 * [clarsec](https://github.com/jasonjckn/clarsec), [parsley](https://github.com/cgrand/parsley)
 * [OSGI](https://github.com/aav/clojure.osgi), with [blog post](http://paudo.posterous.com/clojure-osgi)
@@ -76,6 +82,7 @@
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
 * [Portlet](https://github.com/jave/cljportlet)
+* [Kryonet](http://code.google.com/p/kryonet/)
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)
@@ -96,3 +103,4 @@
 * [Rootbeer](https://github.com/pcpratts/rootbeer1)
 * [Machine Learning](https://github.com/sids/nerchuko)
 * [Jobim](https://github.com/antoniogarrote/jobim)
+* [Genetic Programming](https://github.com/lspector/Clojush)
