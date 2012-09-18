@@ -251,6 +251,8 @@ This is your everyday tool to compute digest on just about everything. It comes 
 
 And voila. A few lines to compute digest from files, strings bytes etc ...
 
+@@ ruby 39_digest.clj @@@
+
 ### clojure-lanterna
 [https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
 
