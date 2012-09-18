@@ -38,8 +38,6 @@
   [bronsa/penumbra "0.6.0-SNAPSHOT"] 
   ; server and websockets
   [aleph "0.3.0-SNAPSHOT"]
-  ; http: this version is clashing with selenium, which includes it as well
-  ; [clj-http "0.1.3"]
   ; serial
   [serial-port "1.1.0"]
   ; tail call optimization
@@ -96,6 +94,11 @@
   [clojure-soup/clojure-soup "0.0.1"]
   ; ssh
   [clj-ssh "0.4.0"]
+  ; lamina
+  [lamina "0.5.0-alpha2"]
+
+  ; http: this version is clashing with selenium, which includes it as well
+  ; [clj-http "0.1.3"]
   ; xuggle 34M :)
   ; comment out until I find a repository that works
   ;[xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
