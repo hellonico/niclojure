@@ -1,5 +1,8 @@
 ### TODO
 
+### Talks
+* [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
+
 #### Lists
 * [ClojureSphere](http://www.clojuresphere.com/)
 * [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
@@ -59,6 +62,7 @@
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 * [Immutant](http://immutant.org/tutorials/installation/index.html)
+* [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
@@ -71,6 +75,7 @@
 * http://jericho.htmlparser.net/docs/index.html
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
+* http://www.jcuda.de/
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)
