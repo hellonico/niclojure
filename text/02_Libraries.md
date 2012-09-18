@@ -345,6 +345,8 @@ When in need for some integrated testing using clojure, especially on website th
 
 @@@ ruby 60_taxi.clj @@@
 
+There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
+
 ### clj-opennlp
 [https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
 Natural Language Processing in Clojure.
@@ -365,6 +367,19 @@ You can see a vast list of direct examples in the [README](https://github.com/da
 ### Lamina
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
 Event workflow for clojure
+
+Lamina defines the very awesome concept of queues to receive events or values and then process them as they are coming. Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+
+You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data.
+
+@@@ ruby 62_lamina.clj @@@
+
+![Lamina](../images/lamina1.png)
+
+@@@ ruby 62_lamina2.clj @@@
+
+![Lamina](../images/lamina2.png)
+
 
 ### Conduit
 [http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
