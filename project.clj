@@ -1,7 +1,10 @@
 (defproject niclojure "1.0.0-SNAPSHOT"
   :description "Niclojure"
 
-  :repositories {"mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"}
+  :repositories {
+    "mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"
+    "xuggle" "http://xuggle.googlecode.com/svn/trunk/repo/share/java"
+  }
 
   ; the below is dangerous, prevent loading java and scala classes
   ;:eval-in-leiningen true
@@ -11,6 +14,7 @@
      [lein-scalac "0.1.0"]
      [lein-eclipse "1.0.0"]
      [lein-marginalia "0.7.1"]
+     [lein-jruby "0.1.0"]
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
   ]
@@ -23,7 +27,7 @@
 
   :dependencies [
   ; core clojure
-  [org.clojure/clojure "1.5.0-alpha3"]
+  [org.clojure/clojure "1.4.0"]
   ; colors for terminal 
   [colorize "0.1.0"]
   ; dependencies management
@@ -34,6 +38,8 @@
   [bronsa/penumbra "0.6.0-SNAPSHOT"] 
   ; server and websockets
   [aleph "0.3.0-SNAPSHOT"]
+  ; http
+  [clj-http "0.1.3"]
   ; serial
   [serial-port "1.1.0"]
   ; tail call optimization
@@ -86,7 +92,8 @@
   [clojure-soup/clojure-soup "0.0.1"]
   ; ssh
   [clj-ssh "0.4.0"]
-
+  ; xuggle 34M :)
+  [xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
   ; maybe not compatible with lein2 :(
   ;[jark "0.4.2" :exclusions [org.clojure/clojure]]
   ])

@@ -14,7 +14,8 @@ This is a book targeted at young and not so young engineers to help them acquire
 
 ### Myself
 
-Personally I have implemented Clojure based application over time, on multi-cores and distributed application, and it never failed, so I think this one awesome knife to have into the whole set of weapons you need to be independant contractor.
+Personally I have implemented Clojure application over time, highly distributed, and they have been doing great under stressful loads.
+I definitely think Clojure, under its different forms, is a one awesome knife to have into the whole set of weapons you need to be a successful independant contractor.
 
 A few application examples would be:
 
