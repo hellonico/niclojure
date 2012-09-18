@@ -364,11 +364,29 @@ I have added here the most simplest example on how to parse text.
 Note that this is only the most basic use of the OpenNLP library.
 You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
 
+
+### Conduit
+[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
+Stream processing in Clojure. 
+
+Latest version in the stream processing for Clojure. This will get values in, apply a transformation, and then get the values out as they are coming. 
+
+<code>
+[net.intensivesystems/conduit "0.9.0"]
+</code>
+
+@@@ ruby 63_conduit.clj @@@
+
 ### Lamina
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
-Event workflow for clojure
+Event workflow for clojure, stream processing in Clojure.
 
 Lamina defines the very awesome concept of queues to receive events or values and then process them as they are coming. Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+
+Import it in your project with:
+<code>
+[lamina "0.5.0-alpha2"]
+</code>
 
 You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data.
 
@@ -379,20 +397,3 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 @@@ ruby 62_lamina2.clj @@@
 
 ![Lamina](../images/lamina2.png)
-
-
-### Conduit
-[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
-Stream processing in Clojure
-
-<!-- 
-
-### Tokenizer
-[Tokenizer](https://github.com/eandrejko/clj-tokenizer) for text analysis.
- too minor for this ?
-
-### Clojure-tco
-[https://github.com/cjfrisz/clojure-tco](https://github.com/cjfrisz/clojure-tco)
- (Tail Call Optimization)
-
-To be checked because it did not work so well :) -->

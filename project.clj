@@ -26,6 +26,7 @@
   :java-source-path "src/java"
 
   :dependencies [
+
   ; core clojure
   [org.clojure/clojure "1.4.0"]
   ; colors for terminal 
@@ -96,7 +97,8 @@
   [clj-ssh "0.4.0"]
   ; lamina
   [lamina "0.5.0-alpha2"]
-
+  ; conduit 
+  [net.intensivesystems/conduit "0.9.0"]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
