@@ -3,6 +3,10 @@ In the Clouds
 
 * [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
+### Cascalog
+[https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
+Hadoop Query from Clojure
+
 ### clj.monitor
 [https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 

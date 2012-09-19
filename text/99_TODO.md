@@ -1,5 +1,13 @@
 ### TODO
 
+#### Talks
+* [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
+* [Dell's presentation on Infrastructure monitoring](http://www.slideshare.net/shr3kst3r/java-one-2011-monitoring-a-largescale-infrastructure-with-clojure)
+* [Storm (from Twitter) with a Clojure DSL](http://www.slideshare.net/nathanmarz/storm-distributed-and-faulttolerant-realtime-computation)
+* [The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
+* [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
+
+
 ##### Book
 * [Look at vancouver clojure club](https://github.com/van-clj)
 * [Ant task to make deb packages](http://code.google.com/p/ant-deb-task/) and [https://clojars.org/tvachon/ant-deb-task](https://clojars.org/tvachon/ant-deb-task)
@@ -29,6 +37,8 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
+* [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
 * [VCR](https://github.com/fredericksgary/vcr-clj)
 * [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 * [Matchure](https://github.com/dcolthorp/matchure)
@@ -61,12 +71,14 @@
 * [hiccup](https://github.com/weavejester/hiccup)
 * [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 * [Event Processing](https://github.com/pingles/clj-esper)
+* [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
 
 ##### Cloud
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
 * [Immutant](http://immutant.org/tutorials/installation/index.html)
+* [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 * [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
 * [Monitoring EC2 with clojure](http://paulosuzart.github.com/blog/2012/04/17/monitoring-ec2-with-clojure-and-server-stats/)
 
@@ -81,6 +93,7 @@
 * http://jericho.htmlparser.net/docs/index.html
 * http://www.intensivesystems.net/tutorials/stream_proc.html
 * http://im4java.sourceforge.net/
+* http://www.jcuda.de/
 * [Portlet](https://github.com/jave/cljportlet)
 * [Kryonet](http://code.google.com/p/kryonet/)
 

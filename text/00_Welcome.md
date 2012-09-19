@@ -1,20 +1,15 @@
 Why Clojure the lucky stiff
 ----
 
-[Dell's presentation on Infrastructure monitoring](http://www.slideshare.net/shr3kst3r/java-one-2011-monitoring-a-largescale-infrastructure-with-clojure)
+Clojure is a rather new programming language, targeting the Java Virtual Machine. While Java has its up and down, and some times a not so pretty syntax, the virtual Machine it runs own is one of the best multi core ready environment for computing.
 
-[Storm (from Twitter) with a Clojure DSL](http://www.slideshare.net/nathanmarz/storm-distributed-and-faulttolerant-realtime-computation)
-
-[The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
-
-[Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
-
-This book will focus on presenting libraries and tricks targeted at the clojure plateform. Clojure as a plateform can actually run quite a large set of libraries by just integrating with Java, .NET or others.
-This is a book targeted at young and not so young engineers to help them acquire the Clojure ecosystem as fast as possible. The ecosystem is quite large, and quite a bit of documentation is outdated or not so useful anymore. By providing runnable examples, and a set of libraries out of the box, this book hopes the reader will find some interest into having fun and running the piece of code by himself. 
+This book will focus on presenting Clojure libraries and some easy tricks. Clojure as a diverse and vaste plateform can actually run a large set of libraries by just integrating with Java, .NET or others.
+This is a book targeted at young and not so young engineers to help them acquire the Clojure ecosystem as fast as possible. The ecosystem is quite large, and quite a bit of documentation is outdated or not so useful anymore. By providing runnable examples, applications and a set of libraries out of the box, this book hopes the reader will find some interest into having fun and running the piece of code by himself. 
 
 ### Myself
 
-Personally I have implemented Clojure based application over time, on multi-cores and distributed application, and it never failed, so I think this one awesome knife to have into the whole set of weapons you need to be independant contractor.
+Personally I have implemented Clojure application over time, highly distributed, and they have been doing great under stressful loads.
+I definitely think Clojure, under its different forms, is a one awesome knife to have into the whole set of weapons you need to be a successful independant contractor.
 
 A few application examples would be:
 
@@ -25,11 +20,12 @@ A few application examples would be:
 ### What this book will cover
 
 * Clojure quick recipies that I myself use regularly
-* Leiningen setup
+* The Clojure build tool, Leiningen, setup and down to earth usage
 * Common libraries for your everyday programming tasks
 * How to create user interfaces interactively 
 * How to quickly create web application
 * How to connect to the most famous agile middlewares: RabbitMQ, Redis, MongoDB, Storm ...
+* How to write Clojure-like OpenGL, and do some live 3D programming
 * How to do music as data programming
 * How to interface with Arduino 
 * How to interface with Processing

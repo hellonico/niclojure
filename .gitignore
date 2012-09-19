@@ -10,3 +10,4 @@ test.vcf
 output
 native
 liblwjgl.jnilib
+tmp

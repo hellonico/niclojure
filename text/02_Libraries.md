@@ -211,7 +211,7 @@ This is greatly inspired by a web based address book application available on [g
 [clj-rss "0.1.2"]
 </code>
 
-@@@ ruby 35_rs.clj @@@
+@@@ ruby 35_rss.clj @@@
 
 This is taken from [here](http://yogthos.net/blog/17).
 
@@ -250,6 +250,8 @@ This is your everyday tool to compute digest on just about everything. It comes 
 </code>
 
 And voila. A few lines to compute digest from files, strings bytes etc ...
+
+@@ ruby 39_digest.clj @@@
 
 ### clojure-lanterna
 [https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
@@ -295,33 +297,18 @@ There is probably more to read if you are on windows.
 
 @@@ ruby 45_ssh.clj @@@
 
-### clj-opennlp
-[https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
-Natural Language Processing in Clojure.
-
-[Tokenizer](https://github.com/eandrejko/clj-tokenizer) for text analysis.
-
 ### clj-http
 [https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
-Http Slurping
 
-### Cascalog
-[https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
-Hadoop Query from Clojure
+clj-http is your usual wrapper around the [apache http client](http://hc.apache.org/). That http client has been around for quite a few years, and propose a very robust api. Now with clojure, we can even have it short.
 
-### Lamina
-[https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
-Event workflow for clojure
+<code>
+[clj-http "0.1.3"]
+</code>
 
-### Conduit
-[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
-Stream processing in Clojure
+The following example show how to send a post request to ask for some image processing to be done in the cloud through the [blitline API](http://www.blitline.com/docs/quickstart).
 
-### Clojure-tco
-[https://github.com/cjfrisz/clojure-tco](https://github.com/cjfrisz/clojure-tco)
- (Tail Call Optimization)
-
-To be checked because it did not work so well :)
+@@@ ruby 59_blitline.clj @@@
 
 ### serial
 [https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj](https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj)
@@ -344,3 +331,69 @@ What to do when you have to deal with pretty big xml files. This library support
 </code>
 
 @@@ ruby 52_xml_seq.clj @@@
+
+### clj-webdriver
+[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
+
+"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+
+<code>
+[clj-webdriver "0.6.0-alpha11"]
+</code>
+
+When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
+
+@@@ ruby 60_taxi.clj @@@
+
+There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
+
+### clj-opennlp
+[https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
+Natural Language Processing in Clojure.
+
+This is has to be one of the most technical subject available to be used just as is in this book.  OpenNLP allows you to parse text into something meaninful so you can reuse it in your application.
+
+<code>
+[clojure-opennlp "0.1.10"]
+</code>
+
+I have added here the most simplest example on how to parse text. 
+
+@@@ ruby 61_opennlp.clj @@@
+
+Note that this is only the most basic use of the OpenNLP library.
+You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
+
+
+### Conduit
+[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
+Stream processing in Clojure. 
+
+Latest version in the stream processing for Clojure. This will get values in, apply a transformation, and then get the values out as they are coming. 
+
+<code>
+[net.intensivesystems/conduit "0.9.0"]
+</code>
+
+@@@ ruby 63_conduit.clj @@@
+
+### Lamina
+[https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
+Event workflow for clojure, stream processing in Clojure.
+
+Lamina defines the very awesome concept of queues to receive events or values and then process them as they are coming. Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+
+Import it in your project with:
+<code>
+[lamina "0.5.0-alpha2"]
+</code>
+
+You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data.
+
+@@@ ruby 62_lamina.clj @@@
+
+![Lamina](../images/lamina1.png)
+
+@@@ ruby 62_lamina2.clj @@@
+
+![Lamina](../images/lamina2.png)

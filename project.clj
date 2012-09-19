@@ -1,7 +1,10 @@
 (defproject niclojure "1.0.0-SNAPSHOT"
   :description "Niclojure"
 
-  :repositories {"mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"}
+  :repositories {
+    "mandubian-mvn" "http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository"
+    "xuggle" "http://xuggle.googlecode.com/svn/trunk/repo/share/java"
+  }
 
   ; the below is dangerous, prevent loading java and scala classes
   ;:eval-in-leiningen true
@@ -23,6 +26,7 @@
   :java-source-path "src/java"
 
   :dependencies [
+
   ; core clojure
   [org.clojure/clojure "1.4.0"]
   ; colors for terminal 
@@ -35,8 +39,6 @@
   [bronsa/penumbra "0.6.0-SNAPSHOT"] 
   ; server and websockets
   [aleph "0.3.0-SNAPSHOT"]
-  ; http
-  [clj-http "0.1.3"]
   ; serial
   [serial-port "1.1.0"]
   ; tail call optimization
@@ -45,6 +47,8 @@
   [xml-picker-seq "0.0.2"]
   ; opencl
   [calx "0.2.1"]
+  ; selenium
+  [clj-webdriver "0.6.0-alpha11"]
   ; dns
   [com.brweber2/clj-dns "0.0.2"]
   ; growl
@@ -61,6 +65,8 @@
   [digest "1.3.0"]
   ; terminal 
   [clojure-lanterna "0.9.2"]
+  ; opennlp
+  [clojure-opennlp "0.1.10"]
   ; joda time
   [clj-time "0.4.3"]
   ; swing ui
@@ -89,7 +95,15 @@
   [clojure-soup/clojure-soup "0.0.1"]
   ; ssh
   [clj-ssh "0.4.0"]
-
+  ; lamina
+  [lamina "0.5.0-alpha2"]
+  ; conduit 
+  [net.intensivesystems/conduit "0.9.0"]
+  ; http: this version is clashing with selenium, which includes it as well
+  ; [clj-http "0.1.3"]
+  ; xuggle 34M :)
+  ; comment out until I find a repository that works
+  ;[xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
   ; maybe not compatible with lein2 :(
   ;[jark "0.4.2" :exclusions [org.clojure/clojure]]
   ])
