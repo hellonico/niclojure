@@ -1,0 +1,7 @@
+Just type:
+--- 
+
+lein run
+
+And go to the following page:
+http://localhost:8080/?restartApplication
