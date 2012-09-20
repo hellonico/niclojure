@@ -18,6 +18,7 @@
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
   ]
+  :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
   :scala-source-path "src/scala"
   :prep-tasks ["compile"]
@@ -105,5 +106,5 @@
   ; comment out until I find a repository that works
   ;[xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
   ; maybe not compatible with lein2 :(
-  ;[jark "0.4.2" :exclusions [org.clojure/clojure]]
+  [jark "0.4.2" :exclusions [org.clojure/clojure]]
   ])

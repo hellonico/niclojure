@@ -27,4 +27,4 @@
    	:accept :json
    	}))
 
-(json/read-json (:body post))
+(pprint (json/read-json (:body post)))

@@ -8,5 +8,11 @@
   ]))
 
 ; now let's start the embedded repl
+(ns jarkserver
+	(:gen-class))
+
 (require '[clojure.tools.nrepl :as nrepl])
-(nrepl/start-server 9000)
+
+(defn -main
+	[args &]
+	(nrepl/start-server 9000))

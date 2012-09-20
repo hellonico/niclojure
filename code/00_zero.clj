@@ -56,3 +56,8 @@
 (filter #(> (second %) 100) 
 	{:a 1 :b 2 :c 101 :d 102 :e -1})
 ; ([:c 101] [:d 102])
+
+; futures in one line
+(def f (future (Thread/sleep 10000) (println "done") 100))
+; blocks until the value has been computed
+@f
