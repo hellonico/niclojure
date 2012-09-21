@@ -1,4 +1,5 @@
 ### TODO
+* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 
 #### Talks
 * [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
@@ -37,6 +38,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
 * [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
 * [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
 * [VCR](https://github.com/fredericksgary/vcr-clj)

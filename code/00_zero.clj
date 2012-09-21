@@ -61,3 +61,7 @@
 (def f (future (Thread/sleep 10000) (println "done") 100))
 ; blocks until the value has been computed
 @f
+
+; shell script
+ (use '[clojure.java.shell :only [sh]])
+ (sh "ls" "-aul")

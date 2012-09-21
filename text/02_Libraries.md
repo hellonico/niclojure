@@ -397,3 +397,4 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 @@@ ruby 62_lamina2.clj @@@
 
 ![Lamina](../images/lamina2.png)
+
