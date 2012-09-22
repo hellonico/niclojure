@@ -38,6 +38,9 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Ahead of time scheduler](https://github.com/overtone/at-at)
+* [BigQuery](https://github.com/forward/clj-bq)
+* [Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)
 * [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
 * [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
 * [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)

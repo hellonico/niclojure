@@ -65,3 +65,17 @@
 ; shell script
  (use '[clojure.java.shell :only [sh]])
  (sh "ls" "-aul")
+
+ ; unless macro
+ ; taken from: http://devblog.factual.com/thinking-in-clojure-for-java-programmers-part-2-%E2%80%94-macros-ftw
+ (defmacro unless [condition & body]
+  `(when (not ~condition) ~@body))
+
+ (unless (> 8 1) (println "The println is never even evaluated"))
+
+ (defmacro time [expr]
+  `(let [start# (System/currentTimeMillis)
+         ret# ~expr]
+     (println (str "Duration: " (- (System/currentTimeMillis) start#)))
+     ret#))
+ (time (slurp "http://www.google.com"))

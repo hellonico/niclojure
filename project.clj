@@ -100,6 +100,8 @@
   [lamina "0.5.0-alpha2"]
   ; conduit 
   [net.intensivesystems/conduit "0.9.0"]
+  ; quartz
+  [clojurewerkz/quartzite "1.0.1"]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
