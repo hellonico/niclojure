@@ -2,6 +2,8 @@
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 
 #### Talks
+* [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
+* [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
 * [Clojure and Java Links](http://theholyjava.wordpress.com/tag/clojure/)
 * [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
 * [Dell's presentation on Infrastructure monitoring](http://www.slideshare.net/shr3kst3r/java-one-2011-monitoring-a-largescale-infrastructure-with-clojure)

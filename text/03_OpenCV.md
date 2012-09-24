@@ -78,3 +78,6 @@ The version we are including here is not from the original author but is compati
 </code>
 
 @@@ ruby 43_penumbra.clj @@@
+
+### Blender exporter for Penumbra
+[https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
