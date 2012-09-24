@@ -1,4 +1,4 @@
-Libraries
+Day to Day libraries
 ---------
 
 ### colorize 
@@ -397,4 +397,16 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 @@@ ruby 62_lamina2.clj @@@
 
 ![Lamina](../images/lamina2.png)
+
+### Midje
+[Midje](https://github.com/marick/Midje)
+
+Midge is a fantastic move in the world of Test Driven Development. Midge not only makes testing your code fun, it gives you the right mindset to do experiment and testing in your own project.
+
+To install Midge:
+<code>
+lein plugin install lein-midje 1.0.10
+</code>
+
+@@@ ruby 65_midje.clj @@@
 

@@ -25,10 +25,13 @@ Now the guy from Noir has also started a very cute project named [Lighttable](ht
 
 This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
 
-Sample Application
+<!-- Sample Application
 [https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
-[Original Vaadin Sampler](http://demo.vaadin.com/sampler)
+[Original Vaadin Sampler](http://demo.vaadin.com/sampler) -->
 
 ### Aleph
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
 Websockets
+
+### Ring
+[https://github.com/ring-clojure/ring](https://github.com/ring-clojure/ring)

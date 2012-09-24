@@ -17,6 +17,7 @@
      [lein-jruby "0.1.0"]
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
+     [midje "1.4.0"]
   ]
   :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
@@ -31,7 +32,9 @@
   ; core clojure
   [org.clojure/clojure "1.4.0"]
   ; colors for terminal 
-  [colorize "0.1.0"]
+  ;[colorize "0.1.0"] -> in midje
+  ; shell
+  [shake "0.2.1"]
   ; dependencies management
   [com.cemerick/pomegranate "0.0.13"]
   ; google api
