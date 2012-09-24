@@ -2,6 +2,7 @@
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 
 #### Talks
+* [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
 * [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
 * [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
 * [Clojure and Java Links](http://theholyjava.wordpress.com/tag/clojure/)
@@ -29,6 +30,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
 * [jMonkey](http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure)
 * [Genetic Algorithm in Clojure](http://ethanfast.com/2009/09/ga-framework/)
 * [back propagation algorithm in Clojure](http://www.fatvat.co.uk/2009/06/back-propagation-algorithm-in-clojure.html)
@@ -41,6 +43,8 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
+* [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
 * [Ahead of time scheduler](https://github.com/overtone/at-at)
 * [BigQuery](https://github.com/forward/clj-bq)
 * [Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)

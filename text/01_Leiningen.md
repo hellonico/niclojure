@@ -113,6 +113,15 @@ And now straight from the shell you can use and run remote clojure code
 
 Now that is some sweet fast starting time, so stop buzzing around.
 
+### Scripting with Jark
+[building-a-clojure-app-with-a-command-line-interface](http://stackoverflow.com/questions/1341154/building-a-clojure-app-with-a-command-line-interface)
+
+<code>
+jark ns load file.clj
+jark <namespace>.<function> <args>
+jark if cli-json <namespace><function> args 
+</code>
+
 ### Pomegrenate
 [https://github.com/cemerick/pomegranate](https://github.com/cemerick/pomegranate)
 

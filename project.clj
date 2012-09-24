@@ -19,7 +19,7 @@
      ;[lein-groovyc "0.2.0"]
      [midje "1.4.0"]
   ]
-  :aot [:jarkserver]
+  ; :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
   :scala-source-path "src/scala"
   :prep-tasks ["compile"]
