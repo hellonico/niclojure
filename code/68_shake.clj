@@ -1,0 +1,5 @@
+(require '[shake.core :as sh])      
+(alter-var-root (var sh/*print-output*) (fn[_] true))
+(uname -a)
+(sh/knife client delete -y sh-Niko)
+(sh/knife node delete -y sh-Niko)

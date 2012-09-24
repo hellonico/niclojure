@@ -1,0 +1,1 @@
+jark -cp lib/*:lib/dev/*:* -p 9000 server start 
