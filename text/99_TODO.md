@@ -43,6 +43,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [IzPack](https://github.com/kanayo/izpack)
 * [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
 * [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
 * [Ahead of time scheduler](https://github.com/overtone/at-at)
