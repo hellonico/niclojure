@@ -46,6 +46,13 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
+* [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
+* [Cogito](http://liebke.github.com/cogito/)
+* [Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
+* [NBody Computation](https://github.com/farr/Clojure-Nbody-Library)
+* [MonteCarlo](https://github.com/farr/mcmc-clojure)
+* [Powerloom](https://github.com/davelambert/clojure-powerloom)
 * [IzPack](https://github.com/kanayo/izpack) and [Debian Packaging](https://github.com/erickg/lein-debian)
 * [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
 * [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
@@ -112,6 +119,7 @@
 * http://www.jcuda.de/
 * [Portlet](https://github.com/jave/cljportlet)
 * [Kryonet](http://code.google.com/p/kryonet/)
+* [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)

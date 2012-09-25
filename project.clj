@@ -31,6 +31,7 @@
 
   ; core clojure
   [org.clojure/clojure "1.4.0"]
+  [clj-science/jscience "4.3.1"]
   ; colors for terminal 
   ;[colorize "0.1.0"] -> in midje
   ; shell

@@ -81,3 +81,9 @@ The version we are including here is not from the original author but is compati
 
 ### Blender exporter for Penumbra
 [https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
+
+OpenCV
+----
+[https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
+
+[http://nakkaya.com/vision.html](http://nakkaya.com/vision.html)
