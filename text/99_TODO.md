@@ -1,5 +1,6 @@
 ### TODO
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+* [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
 #### Talks
 * [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
