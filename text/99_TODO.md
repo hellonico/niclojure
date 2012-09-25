@@ -13,6 +13,8 @@
 * [The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
 * [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
 
+##### Appps
+[Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
 
 ##### Book
 * [Look at vancouver clojure club](https://github.com/van-clj)
@@ -44,7 +46,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
-* [IzPack](https://github.com/kanayo/izpack)
+* [IzPack](https://github.com/kanayo/izpack) and [Debian Packaging](https://github.com/erickg/lein-debian)
 * [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
 * [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
 * [Ahead of time scheduler](https://github.com/overtone/at-at)
