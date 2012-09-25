@@ -14,7 +14,9 @@
 * [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
 
 ##### Appps
-[Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
+* [Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
+* [OpenCVBubbles](https://github.com/dcousineau/clojure-opencv-bubbles)
+* [https://github.com/ray1729/spirograph](https://github.com/ray1729/spirograph)
 
 ##### Book
 * [Look at vancouver clojure club](https://github.com/van-clj)
@@ -46,6 +48,13 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Ice Client Server](https://github.com/jblomo/iceclient)
+* [Midi](https://github.com/pcsanwald/clojure-midi)
+* [Lein Heroku](https://github.com/technomancy/lein-heroku)
+* [Cryptography for Clojure](https://github.com/pjstadig/alice)
+* [Gnome Shell Extension](https://github.com/technomancy/lein-gnome)	
+* [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber)
+* [JsonPath](https://github.com/gga/json-path)
 * [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 * [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
 * [Cogito](http://liebke.github.com/cogito/)
