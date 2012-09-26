@@ -3,6 +3,8 @@
 * [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
 #### Talks
+* [Quick And Dirty Data Science with Incanter](https://github.com/otfrom/quiddswic)
+* [ClojureWest](https://github.com/strangeloop/clojurewest2012-slides)
 * [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
 * [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
 * [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
@@ -46,6 +48,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [clj-pdf](https://github.com/yogthos/clj-pdf)
 * [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 * [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
 * [Cogito](http://liebke.github.com/cogito/)
