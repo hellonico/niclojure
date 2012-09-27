@@ -61,7 +61,8 @@
 * [Monad](https://github.com/clojure/algo.monads)
 
 ##### Libraries
-* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure)
+* [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
+* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
 * [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)
 * [Scheduler](https://github.com/Factual/timely)
 * [Zen Client](https://github.com/rcampbell/zenclient)
