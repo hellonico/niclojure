@@ -1,6 +1,0 @@
-Sort me quick
-http://www.kickstarter.com/projects/1348966732/the-lisa-conference-leaders-in-software-and-art
-http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
-http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
-http://contextfreeart.org/
-http://lifeofaprogrammergeek.blogspot.jp/2009/04/opengl-in-clojure.html

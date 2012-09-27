@@ -1,8 +1,17 @@
+### Sort me quick
+* http://www.kickstarter.com/projects/1348966732/the-lisa-conference-leaders-in-software-and-art
+* http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
+* http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
+* http://contextfreeart.org/
+* http://lifeofaprogrammergeek.blogspot.jp/2009/04/opengl-in-clojure.html
+
 ### TODO
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 * [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
 #### Talks
+* [Quick And Dirty Data Science with Incanter](https://github.com/otfrom/quiddswic)
+* [ClojureWest](https://github.com/strangeloop/clojurewest2012-slides)
 * [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
 * [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
 * [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
@@ -62,6 +71,8 @@
 * [Gnome Shell Extension](https://github.com/technomancy/lein-gnome)	
 * [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber)
 * [JsonPath](https://github.com/gga/json-path)
+* [liberator, rest in clojure](https://github.com/clojure-liberator/liberator)
+* [clj-pdf](https://github.com/yogthos/clj-pdf)
 * [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 * [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
 * [Cogito](http://liebke.github.com/cogito/)
