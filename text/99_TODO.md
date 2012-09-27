@@ -58,6 +58,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure)
 * [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)
 * [Scheduler](https://github.com/Factual/timely)
 * [Zen Client](https://github.com/rcampbell/zenclient)
