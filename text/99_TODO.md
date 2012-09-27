@@ -57,6 +57,9 @@
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
+##### Core Libraries
+* [Monad](https://github.com/clojure/algo.monads)
+
 ##### Libraries
 * [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure)
 * [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)

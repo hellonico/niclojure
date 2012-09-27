@@ -40,7 +40,7 @@ And make some sound !
 
 [https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
 
-GPU, Processing, OpenCV and imaging
+GPU, Processing
 -----
 
 ### Quil
@@ -82,7 +82,7 @@ The version we are including here is not from the original author but is compati
 ### Blender exporter for Penumbra
 [https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
 
-OpenCV
+OpenCV and Imaging
 ----
 [https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
 

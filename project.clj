@@ -106,6 +106,8 @@
   [net.intensivesystems/conduit "0.9.0"]
   ; quartz
   [clojurewerkz/quartzite "1.0.1"]
+  ; quil
+  [quil "1.6.0"]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
