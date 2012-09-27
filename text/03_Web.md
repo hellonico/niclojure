@@ -1,8 +1,10 @@
 Rapid And Fun Web Development
 --- 
 
-### Noir
+### Ring
+[https://github.com/ring-clojure/ring](https://github.com/ring-clojure/ring)
 
+### Noir
 [https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 
 [http://www.webnoir.org/](http://www.webnoir.org/)
 
@@ -32,6 +34,3 @@ This is not so much a library than a way to develop slick web application using 
 ### Aleph
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
 Websockets
-
-### Ring
-[https://github.com/ring-clojure/ring](https://github.com/ring-clojure/ring)
