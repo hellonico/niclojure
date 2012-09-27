@@ -1,3 +1,10 @@
+### Sort me quick
+* http://www.kickstarter.com/projects/1348966732/the-lisa-conference-leaders-in-software-and-art
+* http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
+* http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
+* http://contextfreeart.org/
+* http://lifeofaprogrammergeek.blogspot.jp/2009/04/opengl-in-clojure.html
+
 ### TODO
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 * [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
@@ -48,6 +55,7 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [liberator, rest in clojure](https://github.com/clojure-liberator/liberator)
 * [clj-pdf](https://github.com/yogthos/clj-pdf)
 * [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 * [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
