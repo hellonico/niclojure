@@ -1,0 +1,12 @@
+# hamweather
+
+Simple Clojure Library to interface with HamWeather in Java/Clojure
+
+## Usage
+
+
+## License
+
+Copyright (C) 2012 Nicolas Modrzyk
+
+Distributed under the Eclipse Public License, the same as Clojure.

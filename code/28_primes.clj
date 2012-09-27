@@ -1,3 +1,4 @@
+(ns primes)
 (import [javax.swing JFrame JLabel JTextArea JScrollPane] )
 (import [java.awt Dimension BorderLayout])
 
@@ -23,4 +24,5 @@ pane (.getContentPane fr)]
 (.setVisible fr true)
 (dotimes [n (count @f)] (.setText ta (str (.getText ta) (@f n) "\n")))))
 
-(show-primes 2)
+(defn main[& args]
+	(show-primes 97))

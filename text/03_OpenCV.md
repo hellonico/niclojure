@@ -35,7 +35,6 @@ And make some sound !
 [https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
 
 
-
 ### Live Samples
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
 
@@ -79,3 +78,12 @@ The version we are including here is not from the original author but is compati
 </code>
 
 @@@ ruby 43_penumbra.clj @@@
+
+### Blender exporter for Penumbra
+[https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
+
+OpenCV
+----
+[https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
+
+[http://nakkaya.com/vision.html](http://nakkaya.com/vision.html)

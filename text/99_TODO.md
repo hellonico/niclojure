@@ -1,12 +1,22 @@
 ### TODO
+* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+* [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
 #### Talks
+* [Quick And Dirty Data Science with Incanter](https://github.com/otfrom/quiddswic)
+* [ClojureWest](https://github.com/strangeloop/clojurewest2012-slides)
+* [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
+* [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
+* [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
+* [Clojure and Java Links](http://theholyjava.wordpress.com/tag/clojure/)
 * [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
 * [Dell's presentation on Infrastructure monitoring](http://www.slideshare.net/shr3kst3r/java-one-2011-monitoring-a-largescale-infrastructure-with-clojure)
 * [Storm (from Twitter) with a Clojure DSL](http://www.slideshare.net/nathanmarz/storm-distributed-and-faulttolerant-realtime-computation)
 * [The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
 * [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
 
+##### Appps
+[Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
 
 ##### Book
 * [Look at vancouver clojure club](https://github.com/van-clj)
@@ -25,6 +35,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
 * [jMonkey](http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure)
 * [Genetic Algorithm in Clojure](http://ethanfast.com/2009/09/ga-framework/)
 * [back propagation algorithm in Clojure](http://www.fatvat.co.uk/2009/06/back-propagation-algorithm-in-clojure.html)
@@ -37,6 +48,21 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [clj-pdf](https://github.com/yogthos/clj-pdf)
+* [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
+* [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
+* [Cogito](http://liebke.github.com/cogito/)
+* [Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
+* [NBody Computation](https://github.com/farr/Clojure-Nbody-Library)
+* [MonteCarlo](https://github.com/farr/mcmc-clojure)
+* [Powerloom](https://github.com/davelambert/clojure-powerloom)
+* [IzPack](https://github.com/kanayo/izpack) and [Debian Packaging](https://github.com/erickg/lein-debian)
+* [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
+* [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
+* [Ahead of time scheduler](https://github.com/overtone/at-at)
+* [BigQuery](https://github.com/forward/clj-bq)
+* [Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)
+* [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
 * [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
 * [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
 * [VCR](https://github.com/fredericksgary/vcr-clj)
@@ -96,6 +122,7 @@
 * http://www.jcuda.de/
 * [Portlet](https://github.com/jave/cljportlet)
 * [Kryonet](http://code.google.com/p/kryonet/)
+* [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)

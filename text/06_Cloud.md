@@ -3,6 +3,13 @@ In the Clouds
 
 * [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
+### Mixpanel 
+[https://mixpanel.com/about/](https://mixpanel.com/about/)
+
+Mixpanel allows you to track any kind of event from Within your Application.
+[https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
+[https://mixpanel.com/account/](https://mixpanel.com/account/)
+
 ### Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure

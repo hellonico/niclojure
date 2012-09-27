@@ -12,6 +12,8 @@ Do not forget to do a few [clojure koans](https://github.com/functional-koans/cl
 
 I have added a few trips and ticks in the 00_zero.clj file (in the samples), so feel free to go along and try it by yourself, once you have read the next section about how to get started with clojure.
 
+Last one, if you get lost on your journey, be sure to refer to the [cheatsheet](http://clojuredocs.org/quickref/Clojure%20Core).
+
 ### Leiningen 
 [https://github.com/technomancy/leiningen](https://github.com/technomancy/leiningen)
 
@@ -70,18 +72,22 @@ Then in a clojure project, just go and upload it with
 </code>
 Nothing else.
 
-
-
 Then a lein search will (should) show it. 
 
 ### Working from Eclipse
 [http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
 
+The plugin Counterclockwise install without glitches on modern Eclipse environment. 
 
+![Eclipse1](../images/ccw.png)
+
+The real reason you want to have eclipse running is for its awesome auto completion and integrated documentation. Start typing and see it in action:
+
+![Eclipse2](../images/ccw2.png)
 
 #### Examples
 
-All the examples in this book can be run with:
+All the examples in this book can be run with a command like:
 <code>
 (load-file "code/18_clojure_soup.clj")
 </code>
@@ -106,6 +112,15 @@ And now straight from the shell you can use and run remote clojure code
 @@@ ruby 06_jark_sample.sh @@@
 
 Now that is some sweet fast starting time, so stop buzzing around.
+
+### Scripting with Jark
+[building-a-clojure-app-with-a-command-line-interface](http://stackoverflow.com/questions/1341154/building-a-clojure-app-with-a-command-line-interface)
+
+<code>
+jark ns load file.clj
+jark <namespace>.<function> <args>
+jark if cli-json <namespace><function> args 
+</code>
 
 ### Pomegrenate
 [https://github.com/cemerick/pomegranate](https://github.com/cemerick/pomegranate)

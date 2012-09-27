@@ -1,0 +1,1 @@
+java -cp hamweather-1.0.1-standalone.jar  net.hellonico.hamweather "Tokyo,Japan"

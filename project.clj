@@ -17,8 +17,9 @@
      [lein-jruby "0.1.0"]
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
+     [midje "1.4.0"]
   ]
-  :aot [:jarkserver]
+  ; :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
   :scala-source-path "src/scala"
   :prep-tasks ["compile"]
@@ -30,8 +31,11 @@
 
   ; core clojure
   [org.clojure/clojure "1.4.0"]
+  [clj-science/jscience "4.3.1"]
   ; colors for terminal 
-  [colorize "0.1.0"]
+  ;[colorize "0.1.0"] -> in midje
+  ; shell
+  [shake "0.2.1"]
   ; dependencies management
   [com.cemerick/pomegranate "0.0.13"]
   ; google api
@@ -100,6 +104,8 @@
   [lamina "0.5.0-alpha2"]
   ; conduit 
   [net.intensivesystems/conduit "0.9.0"]
+  ; quartz
+  [clojurewerkz/quartzite "1.0.1"]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
