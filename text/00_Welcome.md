@@ -32,3 +32,5 @@ A few application examples would be:
 * How to interface with common cloud plateforms
 * Some introduction on how to use clojure for Android programming
 * Present Clojure for the .NET plateform and ClojureScript
+
+This book will not focus so much on the language, as to what you can easily do through the fantastic Clojure ecosystem.
