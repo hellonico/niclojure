@@ -17,6 +17,7 @@
 * [Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
 * [OpenCVBubbles](https://github.com/dcousineau/clojure-opencv-bubbles)
 * [https://github.com/ray1729/spirograph](https://github.com/ray1729/spirograph)
+* [Space Invader in ClojureScript](https://github.com/robashton/clojure-spaceinvaders)
 
 ##### Book
 * [Look at vancouver clojure club](https://github.com/van-clj)
@@ -48,6 +49,12 @@
 * [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Libraries
+* [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)
+* [Scheduler](https://github.com/Factual/timely)
+* [Zen Client](https://github.com/rcampbell/zenclient)
+* [Unit of Measure Calculator](https://github.com/martintrojer/frinj) and [samples](https://github.com/martintrojer/frinj/blob/master/src/frinj/examples.clj)
+* [FactQL](https://github.com/dirtyvagabond/factql)
+* [Camel Routes with Clojure](https://github.com/hmanish/clj-camel)
 * [Ice Client Server](https://github.com/jblomo/iceclient)
 * [Midi](https://github.com/pcsanwald/clojure-midi)
 * [Lein Heroku](https://github.com/technomancy/lein-heroku)

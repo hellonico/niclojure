@@ -9,6 +9,7 @@ With Clojure, you can also develop for Android.
 
 [Lein Droid blog](http://clojure-android.blogspot.jp/)
 [Lein Droid](https://github.com/alexander-yakushev/lein-droid)
+[Android UI with Clojure](http://clojure-android.blogspot.jp/2012/06/android-ui-with-clojure.html)
 
 * http://fineshambles.com/2012/06/30/android-and-predexed-clojure/
 * [gist](https://gist.github.com/1032864)
