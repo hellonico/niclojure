@@ -45,6 +45,8 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [Web dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
+* [Parallel NQueens Fun](http://blog.mired.org/2011/03/easy-parallel-processing-in-clojure.html)
 * [A DSL for MongoDB](http://christophermaier.name/blog/2011/07/17/creating-a-query-dsl-using-clojure-and-mongodb)
 * [Writing a DSL in Clojure](http://vrac.cgrand.net/DSL.pdf)
 * [Google App Engine](http://www.hackers-with-attitude.com/2009/08/intertactive-programming-with-clojure.html)
@@ -64,6 +66,8 @@
 * [Monad](https://github.com/clojure/algo.monads)
 
 ##### Libraries
+* [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
+* [Akka wrapper for Clojure](https://github.com/gaverhae/okku)
 * [Clojure with speech](https://github.com/klutometis/speech-recognition)
 * [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
 * [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
@@ -144,6 +148,7 @@
 
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
+* [Leiningen with Drip](https://github.com/flatland/drip/wiki/Clojure)
 
 ##### Server
 * https://github.com/weavejester/lein-ring with Vaadin !

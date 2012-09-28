@@ -33,4 +33,7 @@ A few application examples would be:
 * Some introduction on how to use clojure for Android programming
 * Present Clojure for the .NET plateform and ClojureScript
 
+
+Thema:
 This book will not focus so much on the language, as to what you can easily do through the fantastic Clojure ecosystem.
+It has been observed by a number of people that programming is now more about connecting libraries than writing elegant solutions to problems. 
