@@ -45,6 +45,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [JVisualVM and Clojure](http://www.fatvat.co.uk/2009/05/jvisualvm-and-clojure.html)
 * [A DSL for MongoDB](http://christophermaier.name/blog/2011/07/17/creating-a-query-dsl-using-clojure-and-mongodb)
 * [Writing a DSL in Clojure](http://vrac.cgrand.net/DSL.pdf)
 * [Google App Engine](http://www.hackers-with-attitude.com/2009/08/intertactive-programming-with-clojure.html)
