@@ -45,6 +45,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [Cloudbees](http://earthly-powers.blogspot.jp/2011/10/using-lein-to-deploy-clojure-ring.html)
 * [Web dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
 * [Parallel NQueens Fun](http://blog.mired.org/2011/03/easy-parallel-processing-in-clojure.html)
 * [JVisualVM and Clojure](http://www.fatvat.co.uk/2009/05/jvisualvm-and-clojure.html)
