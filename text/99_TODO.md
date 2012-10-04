@@ -72,7 +72,7 @@
 * [Lein Heroku](https://github.com/technomancy/lein-heroku)
 * [Cryptography for Clojure](https://github.com/pjstadig/alice)
 * [Gnome Shell Extension](https://github.com/technomancy/lein-gnome)	
-* [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber)
+* [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber) & [Cucumber](http://www.matthewtodd.info/?p=112)
 * [JsonPath](https://github.com/gga/json-path)
 * [liberator, rest in clojure](https://github.com/clojure-liberator/liberator)
 * [clj-pdf](https://github.com/yogthos/clj-pdf)
