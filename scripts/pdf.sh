@@ -4,3 +4,4 @@
 #rvm use "1.9.3"
 kitabu export 
 open output/*.pdf
+cp output/*.pdf ~/Dropbox/book

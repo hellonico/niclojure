@@ -45,6 +45,13 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 
 ##### Tutorials
+* [Cloudbees](http://earthly-powers.blogspot.jp/2011/10/using-lein-to-deploy-clojure-ring.html)
+* [Web dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
+* [Parallel NQueens Fun](http://blog.mired.org/2011/03/easy-parallel-processing-in-clojure.html)
+* [JVisualVM and Clojure](http://www.fatvat.co.uk/2009/05/jvisualvm-and-clojure.html)
+* [A DSL for MongoDB](http://christophermaier.name/blog/2011/07/17/creating-a-query-dsl-using-clojure-and-mongodb)
+* [Writing a DSL in Clojure](http://vrac.cgrand.net/DSL.pdf)
+* [Google App Engine](http://www.hackers-with-attitude.com/2009/08/intertactive-programming-with-clojure.html)
 * [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
 * [jMonkey](http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure)
 * [Genetic Algorithm in Clojure](http://ethanfast.com/2009/09/ga-framework/)
@@ -61,6 +68,11 @@
 * [Monad](https://github.com/clojure/algo.monads)
 
 ##### Libraries
+* [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
+* [Akka wrapper for Clojure](https://github.com/gaverhae/okku)
+* [Clojure with speech](https://github.com/klutometis/speech-recognition)
+* [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
+* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
 * [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)
 * [Scheduler](https://github.com/Factual/timely)
 * [Zen Client](https://github.com/rcampbell/zenclient)
@@ -127,6 +139,7 @@
 * [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
 
 ##### Cloud
+* [Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
 * [Compojure](https://github.com/weavejester/compojure) and see more [weavejester](https://github.com/weavejester)
@@ -137,6 +150,7 @@
 
 ##### More Lein Samples
 * [Jruby :)](https://github.com/jkutner/lein-jruby)
+* [Leiningen with Drip](https://github.com/flatland/drip/wiki/Clojure)
 
 ##### Server
 * https://github.com/weavejester/lein-ring with Vaadin !
