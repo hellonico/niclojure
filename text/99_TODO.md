@@ -68,6 +68,7 @@
 * [Monad](https://github.com/clojure/algo.monads)
 
 ##### Libraries
+* [Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
 * [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
 * [Akka wrapper for Clojure](https://github.com/gaverhae/okku)
 * [Clojure with speech](https://github.com/klutometis/speech-recognition)
