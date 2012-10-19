@@ -30,7 +30,8 @@
   :dependencies [
 
   ; core clojure
-  [org.clojure/clojure "1.4.0"]
+  [org.clojure/clojure "1.5.0-alpha7"]
+  ; [org.clojure/clojure "1.4.0"]
   [clj-science/jscience "4.3.1"]
   ; matching
   [org.clojure/core.match "0.2.0-alpha11"]
@@ -110,11 +111,13 @@
   [clojurewerkz/quartzite "1.0.1"]
   ; quil
   [quil "1.6.0"]
+  ; pi 
+  [org.apfloat/apfloat "1.6.3"]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
   ; comment out until I find a repository that works
   ;[xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
   ; maybe not compatible with lein2 :(
-  [jark "0.4.2" :exclusions [org.clojure/clojure]]
+  [jark "0.4.3" :exclusions [org.clojure/clojure]]
   ])

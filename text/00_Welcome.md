@@ -6,7 +6,7 @@ Clojure is a rather new programming language, targeting the Java Virtual Machine
 This book will focus on presenting Clojure libraries and some easy tricks. Clojure as a diverse and vaste plateform can actually run a large set of libraries by just integrating with Java, .NET or others.
 This is a book targeted at young and not so young engineers to help them acquire the Clojure ecosystem as fast as possible. The ecosystem is quite large, and quite a bit of documentation is outdated or not so useful anymore. By providing runnable examples, applications and a set of libraries out of the box, this book hopes the reader will find some interest into having fun and running the piece of code by himself. 
 
-### Myself
+### About the authors
 
 Personally I have implemented Clojure application over time, highly distributed, and they have been doing great under stressful loads.
 I definitely think Clojure, under its different forms, is a one awesome knife to have into the whole set of weapons you need to be a successful independant contractor.
