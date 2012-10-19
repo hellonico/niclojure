@@ -61,7 +61,7 @@
     (stroke 20 50 70)
     (dorun (map #(apply line %) line-args))))
 
-; (defsketch gen-art-13
-;   :title "Noisy Spiral"
-;   :setup setup
-;   :size [500 300])
+(defsketch gen-art-13
+  :title "Noisy Spiral"
+  :setup setup
+  :size [500 300])

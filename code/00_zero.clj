@@ -79,3 +79,6 @@
      (println (str "Duration: " (- (System/currentTimeMillis) start#)))
      ret#))
  (time (slurp "http://www.google.com"))
+
+ ; factorial in one line
+ (defn factorial[n] (apply *' (take n (iterate inc 1))))

@@ -2,7 +2,7 @@
 (use 'clj-xpath.core)
 
 ; slurp the remote document
-(def xdoc (slurp "http://google-web-toolkit.googlecode.com/svn/trunk/samples/expenses/pom.xml"))
+(def xdoc (slurp "https://raw.github.com/Atmosphere/atmosphere/master/samples/jquery-pubsub/pom.xml"))
 
 ; show the top element
 ($x:tag "/*" xdoc)
