@@ -36,7 +36,7 @@ Now you have to realize that all the libs available to the Java World through Ma
 
 The libraries will come to your local project folder. Let's hack in no time.
 
-#### Search clojars
+### Search clojars
 
 To search a library online, use the following syntax:
 <code>
@@ -57,7 +57,7 @@ will return
 </pre>
 </code>
 
-#### Upload to clojars
+### Upload to clojars
 There is a plugin called [lein-clojars](https://github.com/ato/lein-clojars)
 
 You install it somehow like this:
