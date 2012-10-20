@@ -1,1 +1,1 @@
-jark -cp lib/*:lib/dev/*:* -p 9000 server start 
+jark -c 1.3.0 -cp lib/*:lib/dev/*:* -p 9000 server start 

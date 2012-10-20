@@ -1,2 +1,2 @@
 jark vm pid | xargs kill -9 
-jark -cp lib/*:lib/dev/*:* -p 9000 server start 
+jark -cp "lib/*.jar:lib/dev/*.jar" -p 9000 server start 

@@ -66,8 +66,10 @@
 
 ##### Core Libraries
 * [Monad](https://github.com/clojure/algo.monads)
+* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 
 ##### Libraries
+* [Ring App Testing](https://github.com/xeqi/kerodon)
 * [Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
 * [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
 * [Akka wrapper for Clojure](https://github.com/gaverhae/okku)

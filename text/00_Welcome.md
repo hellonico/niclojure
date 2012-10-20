@@ -1,5 +1,7 @@
-Why Clojure the lucky stiff
-----
+# Welcome 
+
+
+## Why Clojure the lucky stiff
 
 Clojure is a rather new programming language, targeting the Java Virtual Machine. While Java has its up and down, and some times a not so pretty syntax, the virtual Machine it runs own is one of the best multi core ready environment for computing.
 
@@ -17,6 +19,8 @@ A few application examples would be:
 * Heavily threaded Web based configuration management, monitoring and deployment application 
 * Very fast to-market implementation of a social Plateform service, using websockets and MongoDB on Heroku
 
+But also some command liene scripts.
+
 ### What this book will cover
 
 * Clojure quick recipies that I myself use regularly
@@ -32,7 +36,6 @@ A few application examples would be:
 * How to interface with common cloud plateforms
 * Some introduction on how to use clojure for Android programming
 * Present Clojure for the .NET plateform and ClojureScript
-
 
 Thema:
 This book will not focus so much on the language, as to what you can easily do through the fantastic Clojure ecosystem.

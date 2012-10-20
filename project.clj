@@ -18,6 +18,10 @@
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
      [midje "1.4.0"]
+
+     ; for toc
+     [markdown-clj "0.9.9"]
+     [clojure-soup/clojure-soup "0.0.1"]
   ]
   ; :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
@@ -29,9 +33,12 @@
 
   :dependencies [
 
-  ; core clojure
-  [org.clojure/clojure "1.5.0-alpha7"]
-  ; [org.clojure/clojure "1.4.0"]
+  ; core clojure -> need to get this fix for jark. only works with 1.5.0
+  ; [org.clojure/clojure "1.5.0-alpha7"]
+  [org.clojure/clojure "1.3.0"]
+
+  ; markdown
+  [markdown-clj "0.9.9"]
   [clj-science/jscience "4.3.1"]
   ; matching
   [org.clojure/core.match "0.2.0-alpha11"]
@@ -83,12 +90,12 @@
   [clojure-csv/clojure-csv "2.0.0-alpha1"]
   ; templates
   [de.ubercode.clostache/clostache "1.3.0"]
-  ; navigation
+  ; ; navigation
   [org.clojure/data.zip "0.1.1"]
+  ; sql schema
+  [korma "0.3.0-beta7" :exclusions [org.clojure/clojure]]
   ; excel
   [dk.ative/docjure "1.6.0-SNAPSHOT"] 
-  ; sql schema
-  [korma "0.3.0-beta7"]
   ; embedded database
   [com.h2database/h2 "1.3.154"]
   ; sql queries
@@ -113,11 +120,13 @@
   [quil "1.6.0"]
   ; pi 
   [org.apfloat/apfloat "1.6.3"]
+  ; maybe not compatible with lein2 :(
+  [jark "0.4.3" :exclusions [org.clojure/clojure]]
+
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)
   ; comment out until I find a repository that works
   ;[xuggle.xuggle-xuggler/xuggle-xuggler "5.4"]
-  ; maybe not compatible with lein2 :(
-  [jark "0.4.3" :exclusions [org.clojure/clojure]]
+  
   ])
