@@ -1,7 +1,7 @@
-# Welcome 
+## Welcome 
 
 
-## Why Clojure the lucky stiff
+### Why Clojure the lucky stiff
 
 Clojure is a rather new programming language, targeting the Java Virtual Machine. While Java has its up and down, and some times a not so pretty syntax, the virtual Machine it runs own is one of the best multi core ready environment for computing.
 

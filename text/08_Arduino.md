@@ -1,5 +1,6 @@
-Arduino 
---------
+## Arduino 
+
+
 ### Physics with Clojure
 * [http://nakkaya.com/2010/07/21/physics-with-clojure/]([http://nakkaya.com/2010/07/21/physics-with-clojure/)
 * [http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/](http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/)

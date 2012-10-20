@@ -1,5 +1,5 @@
-Plateform
----
+## Plateform
+
 When you do not want to use the JVM *or* when you want to reuse some clojure code in a different environment.
 
 ### ClojureCLR (clojure on .NET)

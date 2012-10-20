@@ -1,5 +1,4 @@
-Welcome to Clojure, through Leiningen
------------------
+## Welcome to Clojure, through Leiningen
 
 This book is about sharing my love for Clojure, why I use it, and why I will keep using it for a fair bit of time. You don't need to be a great IT geek, you just have to start using Clojure. Here we go.
 
@@ -186,7 +185,7 @@ Then a new task will be available to your current project.
 
 To share the task with other, please have a look at [writing leiningen plugins 101/](http://nakkaya.com/2010/02/25/writing-leiningen-plugins-101/)
 
-### Clojure Contrib
+### If you ever see something called, clojure-contrib
 [http://dev.clojure.org/display/doc/Clojure+Contrib](http://dev.clojure.org/display/doc/Clojure+Contrib)
 
 Clojure contrib used to be a set of namespaces that were adding some great syntaxic sugar to a bunch of every day tasks.

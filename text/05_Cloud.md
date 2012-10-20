@@ -1,5 +1,4 @@
-In the Clouds
---------
+## In the Clouds
 
 * [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 

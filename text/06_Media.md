@@ -1,5 +1,4 @@
-Live Music
-----
+## Live Music
 
 ### Overtone
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)

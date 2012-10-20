@@ -1,5 +1,4 @@
-Appendix
----
+## Appendix
 
 ### Basic tricks
 

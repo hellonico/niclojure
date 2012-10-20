@@ -1,5 +1,4 @@
-Android
----
+## Androi
 
 With Clojure, you can also develop for Android. 
 

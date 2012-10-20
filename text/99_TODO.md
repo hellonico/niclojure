@@ -1,12 +1,11 @@
+## TODO 
+
 ### Sort me quick
 * http://www.kickstarter.com/projects/1348966732/the-lisa-conference-leaders-in-software-and-art
 * http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
 * http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
 * http://contextfreeart.org/
 * http://lifeofaprogrammergeek.blogspot.jp/2009/04/opengl-in-clojure.html
-
-### TODO
-* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 * [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
 #### Talks

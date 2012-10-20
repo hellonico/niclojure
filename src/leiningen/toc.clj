@@ -26,7 +26,7 @@
 	(doseq [md (glob "**/*.md")] (toc1 (rd md))))
 
 ; (defn toc[project & args] 
-
+; ↑ when I have time to debug this mess 
 (defn toc[] 
 	(spit output_file "")
 	(tocall))
