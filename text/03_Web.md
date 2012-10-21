@@ -1,9 +1,10 @@
-## Rapid And Fun Web Development
+## Rapid And Fun Web Development in Clojure
 
-### Ring
+### Lord of the Ring: your best ally for clojure web development
 [https://github.com/ring-clojure/ring](https://github.com/ring-clojure/ring)
 
-### Noir
+### Not everything is Noir. But it sure help to develop a web site with so few lines of code
+
 [https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 
 [http://www.webnoir.org/](http://www.webnoir.org/)
 
@@ -21,7 +22,7 @@ Now the guy from Noir has also started a very cute project named [Lighttable](ht
 
 ![Alt text](../images/LightTable.png)
 
-### Vaadin
+### Vaadin, or Google Web Toolkit without all the plumbery, just with the fun
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
 
 This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
@@ -30,6 +31,7 @@ This is not so much a library than a way to develop slick web application using 
 [https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
 [Original Vaadin Sampler](http://demo.vaadin.com/sampler) -->
 
-### Aleph
+### Has websocket development become so simple ? Thanks Aleph
+
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
 Websockets

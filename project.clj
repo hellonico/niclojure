@@ -18,10 +18,6 @@
      ; maybe need lein 2.0
      ;[lein-groovyc "0.2.0"]
      [midje "1.4.0"]
-
-     ; for toc
-     [markdown-clj "0.9.9"]
-     [clojure-soup/clojure-soup "0.0.1"]
   ]
   ; :aot [:jarkserver]
   ;:groovyc-source-path "src/groovy"
@@ -34,8 +30,11 @@
   :dependencies [
 
   ; core clojure -> need to get this fix for jark. only works with 1.5.0
-  ; [org.clojure/clojure "1.5.0-alpha7"]
-  [org.clojure/clojure "1.3.0"]
+  [org.clojure/clojure "1.5.0-alpha7"]
+  ;  lacij
+  [lacij "0.7.1"]
+  ; soup
+  [clojure-soup/clojure-soup "0.0.1"]
 
   ; markdown
   [markdown-clj "0.9.9"]
@@ -121,7 +120,7 @@
   ; pi 
   [org.apfloat/apfloat "1.6.3"]
   ; maybe not compatible with lein2 :(
-  [jark "0.4.3" :exclusions [org.clojure/clojure]]
+  [jark "0.4.3" :exclusions [org.clojure]]
 
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]

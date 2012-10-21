@@ -1,8 +1,8 @@
-## Library
+## Clojure reciepies of the day
 
-### Everything
+### I'll have the usual
 
-####  colorize 
+####  Give some colors to your REPL
 [https://github.com/ibdknox/colorize](https://github.com/ibdknox/colorize)
 
 <code>
@@ -13,7 +13,7 @@ Colorize is a super simple ansi colorizing library. Try it for yourself:
 
 @@@ ruby 54_colorize.clj @@@
 
-####  http-kit
+####  Asynchronous http server and ... client. 
 [https://github.com/shenfeng/http-kit](https://github.com/shenfeng/http-kit)
 
 In the same time, you can turn yourself asynchrnous with http-kit. 
@@ -29,7 +29,7 @@ It also incorporate a kinda cool http client, again with no dependencies. Give a
 
 ![Async](../images/async.png)
 
-####  Incanter
+####  Easy statistics with Incanter.
 
 [Download](http://incanter.org/downloads/) and [Get started](https://github.com/liebke/incanter/wiki#getstarted)
 
@@ -48,7 +48,7 @@ The image below has been generated from the script above !
 
 Whats your next diagram ? 
 
-####  Marginalia 
+####  Where the doc ? It's literate. 
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
 
 Marginalia is your best literate programming tool for clojure.  
@@ -68,7 +68,7 @@ And dependending on the amount of comments you wrote in the code, you will get s
 
 ![Alt text](../images/marginalia.png)
 
-####  Lacij 
+####  Easy and beautiful graphs
 [https://github.com/pallix/lacij](https://github.com/pallix/lacij)
 
 A library that can quickly create SVG diagram with automatic layout, like this one:
@@ -81,7 +81,7 @@ Then, a graph can be drawn like this:
 
 The advantage is that you can add and remove nodes dynamically, thus giving a dynamic view about live typologies.
 
-####  Seesaw
+####  Easy User Interface Applications with Seesaw
 [https://github.com/daveray/seesaw](https://github.com/daveray/seesaw)
 
 Make cool UIs in no time.
@@ -92,21 +92,21 @@ And by trying the example, here is a style you can get after a few lines:
 
 ![seesaw](../images/seesaw.png)
 
-####  clj-xpath
+####  xpath queries
 [https://github.com/kyleburton/clj-xpath](https://github.com/kyleburton/clj-xpath)
 
 Now you been looking on how to process those xml files as fast as possible, here is a super way to do it, clj-xpath.
 
 @@@ ruby 17_clj_xpath.clj @@@
 
-####  clojure-soup
+####  html parsing with delicious jsoup
 [https://github.com/mfornos/clojure-soup](https://github.com/mfornos/clojure-soup)
 
 This is a wrapper to provide awesome parsing of html files, whether local or remote. Once you have added the library, check out the following example:
 
 @@@ ruby 18_clojure_soup.clj @@@
 
-####  Enlive
+####  Templating the clojure way with Enlive
 [https://github.com/cgrand/enlive](https://github.com/cgrand/enlive)
 
 HTML parser, and Templating framework at the same time, Enlive does a super job of making HTML fun. (yes you read me.)
@@ -118,7 +118,7 @@ This is an example taken from a [slick tutorial](https://github.com/swannodette/
 You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
 Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
 
-####  Docjure
+####  Easy Spreadsheet with docjure
 [https://github.com/ative/docjure](https://github.com/ative/docjure)
 
 The best way to have fun with spreadsheet in clojure. Relies on the [Apache POI](http://poi.apache.org/) library but with some clojure sauce so it can actually be eaten.
@@ -129,7 +129,7 @@ This is how you write a simple spreadsheet.
 
 For more examples, I suggest you look at the ["horrible" documentation](http://poi.apache.org/spreadsheet/how-to.html#sxssf) :)
 
-####  Postal
+####  Spam master with postal 
 [https://github.com/drewr/postal](https://github.com/drewr/postal)
 
 I am pretty sure you knew how to send a mail before, but look at the awesome way of doing this in Clojure.
@@ -138,7 +138,7 @@ I am pretty sure you knew how to send a mail before, but look at the awesome way
 
 This is including attachment and Japanese encoding. yey
 
-####  Lobos
+####  Manage your databases schema with lobos
 [http://budu.github.com/lobos/](http://budu.github.com/lobos/)
 
 Here is comes Lobos, or how to manage your database directly from a Clojure REPL.
@@ -148,7 +148,7 @@ Here is comes Lobos, or how to manage your database directly from a Clojure REPL
 You define your database connection, and just go and create, drop delete, what every you need.
 This is also very useful for testing.
 
-####  Korma
+####  Write beautiful SQL queries with Korma
 [http://sqlkorma.com/docs](http://sqlkorma.com/docs)
 
 Korma makes actually enjoyable to write SQL queries.
@@ -163,7 +163,7 @@ Have a look at the following code:
 
 Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
 
-####  clj-dns
+####  How's the DNS going ? 
 [https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
 
 > DNS Querying in Clojure. 
@@ -177,7 +177,7 @@ How easy it is to do lookup and reverse lookup. Need anything else ?
 @@@ ruby 29_dns.clj @@@
 
 
-####  Clostache
+####  Don't touch my clostache: more templating 
 [https://github.com/fhd/clostache](https://github.com/fhd/clostache)
 
 <code>
@@ -188,7 +188,7 @@ Some very simple templating magic.
 
 @@@ ruby 33_clostache.clj @@@
 
-####  clojure-csv
+####  When you need some CSV magic
 [https://github.com/davidsantiago/clojure-csv](https://github.com/davidsantiago/clojure-csv)
 
 <code>
@@ -204,7 +204,7 @@ Sweeet.
 
 This is greatly inspired by a web based address book application available on [github](https://github.com/KushalP/addressbook/blob/master/src/addressbook/format.clj).
 
-####  clj-rss
+####  When google reader is not enough, some RSS magic.
 [https://github.com/yogthos/clj-rss](https://github.com/yogthos/clj-rss)
 
 <code>
@@ -215,7 +215,7 @@ This is greatly inspired by a web based address book application available on [g
 
 This is taken from [here](http://yogthos.net/blog/17).
 
-####  clj-growlnotify
+####  You need to grrrowl to make great notifications
 [https://github.com/franks42/clj-growlnotify](https://github.com/franks42/clj-growlnotify)
 
 <code>
@@ -228,7 +228,7 @@ When you run the script above, if you have the growl notification system ([osx](
 
 !["Growl"](../images/Growl.png)
 
-####  cheshire
+####  All about JSON with Cheshire.
 [https://github.com/dakrone/cheshire](https://github.com/dakrone/cheshire)
 
 Or how to do proper json fun in the Clojure style. Cheshire is there for good.
@@ -241,7 +241,7 @@ Or how to do proper json fun in the Clojure style. Cheshire is there for good.
 
 Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
 
-####  clj-digest
+####  Compute digest for just about everything.
 [https://github.com/tebeka/clj-digest](https://github.com/tebeka/clj-digest)
 
 This is your everyday tool to compute digest on just about everything. It comes from clojars:
@@ -253,7 +253,7 @@ And voila. A few lines to compute digest from files, strings bytes etc ...
 
 @@ ruby 39_digest.clj @@@
 
-####  clojure-lanterna
+####  Terminal and user interfaction, with lanterna.
 [https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
 
 Fun with the terminal. 
@@ -271,7 +271,7 @@ will spawn a terminal, and display some text:
 It is also easy to wait for keys, and other terminal things fun.
 Have a look at the extensive [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/) to get you excited.
 
-####  clj-time
+####  What time is it ? It's clj time
 [https://github.com/seancorfield/clj-time](https://github.com/seancorfield/clj-time)
 
 Wrapper around jodatime to do dates times and everything time related the clojure way.
@@ -285,7 +285,7 @@ Add this to your project.clj
 
 Will make your life with timezones definitely better :)
 
-####  clj-ssh
+####  SSH shortcuts
 [https://github.com/hugoduncan/clj-ssh](https://github.com/hugoduncan/clj-ssh)
 
 <code>
@@ -297,7 +297,7 @@ There is probably more to read if you are on windows.
 
 @@@ ruby 45_ssh.clj @@@
 
-####  clj-http
+####  Master of them all HTTP client
 [https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
 
 clj-http is your usual wrapper around the [apache http client](http://hc.apache.org/). That http client has been around for quite a few years, and propose a very robust api. Now with clojure, we can even have it short.
@@ -310,7 +310,7 @@ The following example show how to send a post request to ask for some image proc
 
 @@@ ruby 59_blitline.clj @@@
 
-####  serial
+####  How's your serial port doing  ?
 [https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj](https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj)
 
 <code>
@@ -321,7 +321,7 @@ Very useful to access the USB port of your machine when the JVM actually has som
 
 @@@ ruby 51_serial.clj @@@
 
-####  xml-picker-seq
+####  No memory, but I know how to stream that XML !
 [https://github.com/marktriggs/xml-picker-seq](https://github.com/marktriggs/xml-picker-seq)
 
 What to do when you have to deal with pretty big xml files. This library supports up to 1Gb heavy files, more than you should need on average.
@@ -332,22 +332,8 @@ What to do when you have to deal with pretty big xml files. This library support
 
 @@@ ruby 52_xml_seq.clj @@@
 
-####  clj-webdriver
-[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
 
-"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
-
-<code>
-[clj-webdriver "0.6.0-alpha11"]
-</code>
-
-When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
-
-@@@ ruby 60_taxi.clj @@@
-
-There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
-
-####  clj-opennlp
+####  Natual language processing in Clojure
 [https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
 Natural Language Processing in Clojure.
 
@@ -365,7 +351,7 @@ Note that this is only the most basic use of the OpenNLP library.
 You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
 
 
-####  Conduit
+####  Full Clojure stream ahead ! Use conduit
 [http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
 Stream processing in Clojure. 
 
@@ -377,7 +363,8 @@ Latest version in the stream processing for Clojure. This will get values in, ap
 
 @@@ ruby 63_conduit.clj @@@
 
-####  Lamina
+####  Event workflow and stream processing in Clojure
+
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
 Event workflow for clojure, stream processing in Clojure.
 
@@ -398,9 +385,11 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 ![Lamina](../images/lamina2.png)
 
-### Testing
+### I will test some of that
 
-####  Midje
+#### You are lazy. Use lazytest
+
+####  You are not a midjet, so you use midje to test 
 [Midje](https://github.com/marick/Midje)
 
 Midge is a fantastic move in the world of Test Driven Development. Midge not only makes testing your code fun, it gives you the right mindset to do experiment and testing in your own project.
@@ -412,3 +401,17 @@ lein plugin install lein-midje 1.0.10
 
 @@@ ruby 65_midje.clj @@@
 
+####  Web sites easy testing with selenium
+[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
+
+"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+
+<code>
+[clj-webdriver "0.6.0-alpha11"]
+</code>
+
+When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
+
+@@@ ruby 60_taxi.clj @@@
+
+There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 

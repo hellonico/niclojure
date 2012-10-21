@@ -1,8 +1,9 @@
-## Welcome to Clojure, through Leiningen
+## Your own two hands and Clojure. 
 
 This book is about sharing my love for Clojure, why I use it, and why I will keep using it for a fair bit of time. You don't need to be a great IT geek, you just have to start using Clojure. Here we go.
 
-### Clojure
+### Clojure References and links when you get lost
+
 [http://learn-clojure.com/clojure_tutorials.html](http://learn-clojure.com/clojure_tutorials.html)
 
 I will not go too much into the first steps details, since this is not the aim of this book. There is a completely new online book written by [John](http://www.unexpected-vortices.com/clojure/brief-beginners-guide/index.html) that should get all the attention it deserves.
@@ -13,7 +14,10 @@ I have added a few trips and ticks in the 00_zero.clj file (in the samples), so 
 
 Last one, if you get lost on your journey, be sure to refer to the [cheatsheet](http://clojuredocs.org/quickref/Clojure%20Core).
 
-### Leiningen 
+### Leiningen, your tool to run and distribute clojure code
+
+#### Do you have your REPL with you ? 
+
 [https://github.com/technomancy/leiningen](https://github.com/technomancy/leiningen)
 
 To start using clojure, you actually do not install it. You start by installing Leiningen. Once you have it installed, you should be able to see the following:
@@ -30,13 +34,17 @@ And here is your mother of them all hello world
 
 @@@ ruby 03_hello.clj @@@
 
+
+
+#### You need to depend on someone
+
 Now you have to realize that all the libs available to the Java World through Maven repositories, and all the libs hosted on Clojars can be integrated in the project in no time by using the command:
 
 *lein deps*
 
 The libraries will come to your local project folder. Let's hack in no time.
 
-### Search clojars
+### Clojars, or your clojure libraries at your fingertips
 
 To search a library online, use the following syntax:
 <code>
@@ -57,7 +65,7 @@ will return
 </pre>
 </code>
 
-### Upload to clojars
+### Create code, and share it through clojars
 There is a plugin called [lein-clojars](https://github.com/ato/lein-clojars)
 
 You install it somehow like this:
@@ -73,7 +81,7 @@ Nothing else.
 
 Then a lein search will (should) show it. 
 
-### Working from Eclipse
+### Sunny work with Eclipse
 [http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
 
 The plugin Counterclockwise install without glitches on modern Eclipse environment. 
@@ -84,16 +92,7 @@ The real reason you want to have eclipse running is for its awesome auto complet
 
 ![Eclipse2](../images/ccw2.png)
 
-#### Examples
-
-All the examples in this book can be run with a command like:
-<code>
-(load-file "code/18_clojure_soup.clj")
-</code>
-
-If you can not run them, let me know ;) 
-
-### Jark
+### Save time, do not reload the JVM with Jark
 [http://icylisper.in/jark/started.html](http://icylisper.in/jark/started.html)
 
 Next you probably going to get tired of the Java VM so very slow startup time. Here comes [nrepl](https://github.com/clojure/tools.nrepl) and [Jark](http://icylisper.in/jark/features.html)
@@ -112,7 +111,7 @@ And now straight from the shell you can use and run remote clojure code
 
 Now that is some sweet fast starting time, so stop buzzing around.
 
-### Scripting with Jark
+### Intense clojure scripting with Jark
 [building-a-clojure-app-with-a-command-line-interface](http://stackoverflow.com/questions/1341154/building-a-clojure-app-with-a-command-line-interface)
 
 <code>
@@ -121,7 +120,7 @@ jark <namespace>.<function> <args>
 jark if cli-json <namespace><function> args 
 </code>
 
-### Pomegrenate
+### Dynamiquely add libraries to your current clojure session
 [https://github.com/cemerick/pomegranate](https://github.com/cemerick/pomegranate)
 
 This is the best way to add libraries at runtime. You still need the library itself to be available to the repl, by adding this to your __project.clj__ file:
@@ -134,7 +133,7 @@ Then, here is how to import incanter in a running REPL session:
 
 @@@ ruby 11_pomegranata.clj @@@
 
-### Scala Integration
+### Don't tell anyone you run Scala code from Clojure
 
 Since every source file in a lein project can be integrated, you can use the [scalac-plugin](https://github.com/technomancy/lein-scalac)
 
@@ -148,7 +147,7 @@ and here is how you call it from Clojure
 
 Now you can tell your friend you know more than one language on the JVM. :)
 
-### Java Integration
+### Don't tell anyone you run Java code from Clojure
 
 Note that the scala integration right above is also supported by the original java. This is actually built in leiningen. Here is how you put it together just in case:
 
@@ -156,7 +155,7 @@ Note that the scala integration right above is also supported by the original ja
 
 This is actually very good to keep old sources ready to be migrated, or actually the whole power of leiningen is that it is going to install everything you want from the command line to get you started with a regular java project as well. Yurk.
 
-### Hooke
+### Wrap any clojure method with hooke
 [https://github.com/technomancy/robert-hooke/](https://github.com/technomancy/robert-hooke/)
 
 While searching for an example on the javac plugin above, I stubmled on a super example on how to add hooks on methods. 
@@ -170,7 +169,7 @@ Awesome.
 
 This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)
 
-### Existing Leiningen Plugins
+### The delicious Leiningen Plugins soup
 
 This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen [plugins list](https://github.com/technomancy/leiningen/wiki/Plugins)
 
@@ -185,7 +184,7 @@ Then a new task will be available to your current project.
 
 To share the task with other, please have a look at [writing leiningen plugins 101/](http://nakkaya.com/2010/02/25/writing-leiningen-plugins-101/)
 
-### If you ever see something called, clojure-contrib
+### If you ever see something called, clojure-contrib, run away.
 [http://dev.clojure.org/display/doc/Clojure+Contrib](http://dev.clojure.org/display/doc/Clojure+Contrib)
 
 Clojure contrib used to be a set of namespaces that were adding some great syntaxic sugar to a bunch of every day tasks.
@@ -200,3 +199,12 @@ Add this to your project.clj:
 </code>
 
 @@@ ruby 26_xml.clj @@@
+
+### Free and working examples 
+
+All the examples in this book can be run with a command like:
+<code>
+(load-file "code/18_clojure_soup.clj")
+</code>
+
+If you can not run them, let me know ;) 

@@ -1,43 +1,44 @@
-## In the Clouds
+## Clojure in the Clouds, it's a sunny day
 
+### Monitor your amazon ec2 instance directly from CLojure
 * [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
-### Mixpanel 
+### Mixpanel, or how to track millions of user events from within your application
 [https://mixpanel.com/about/](https://mixpanel.com/about/)
 
 Mixpanel allows you to track any kind of event from Within your Application.
 [https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
 [https://mixpanel.com/account/](https://mixpanel.com/account/)
 
-### Cascalog
+### Hadoop queries from Clojure
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure
 
-### clj.monitor
-[https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
+### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
+[https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
 
-### JRobin wrapper for Clojure?
-[http://www.jrobin.org/index.php/Main_Page](http://www.jrobin.org/index.php/Main_Page)
+### Monitor your clojure application using clojure-control
+[https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 
 ### Parallel SSH
 [http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
-
 [https://github.com/RJMetrics/Parallel-SSH](https://github.com/RJMetrics/Parallel-SSH)
 
-### Pallet
+### robin: a RRDtool or system graphing and monitoring in Clojure
+[http://www.jrobin.org/index.php/Main_Page](http://www.jrobin.org/index.php/Main_Page)
+
+### Your cloud infrastructure right at your fingertips
 [http://palletops.com/](http://palletops.com/)
 
 Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 
 They are actually doing this through [jclouds](http://www.jclouds.org/)
 
-### Heroku
+### Did we say ? 5 minutes to deploy your clojure application on Heroku
 [Deploying Application on Heroku](https://devcenter.heroku.com/articles/clojure-web-application)
 [Debugging clojure on Heroku](https://devcenter.heroku.com/articles/debugging-clojure)
 
-### VMFest
+### Easy VirtualBox wrapper for easy cloud management
 [https://github.com/tbatchelli/vmfest](https://github.com/tbatchelli/vmfest)
-
-Easy VirtualBox wrapper for easy cloud management.
 
 @@@ ruby 14_vmfest.clj @@@
 

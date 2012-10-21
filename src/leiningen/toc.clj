@@ -10,17 +10,18 @@
 (defn rd [file]
 	(parse (md/md-to-html-string (slurp file))))
 
-(defn write[text indent]
-	(loop [t indent] (when (> t 1) (spit output_file " " :append true) (recur (- t 1))))
-	(spit output_file text :append true)
-	(spit output_file "\n" :append true))
+(defn write[text]
+	(spit output_file text :append true))
+
+; awesome and dirty, remove the elements we do not want
+(defn tic[content]
+	(doseq [t ["p" "ul" "li" "a" "img" "pre" "code" ]]
+		(.remove (select t content)))
+	content)
 
 (defn toc1 [content]
-	(doseq [i (take 5 (iterate inc 1))] 
-	  (let [
-	  	h  (str "h" i)
-		c (select h content)]
-	  	(doseq [v c] (write (.toString v) i)))))
+	  (let [cleaned (tic content)]
+		(write ($ cleaned "body > *"))))
 	  
 (defn tocall[]
 	(doseq [md (glob "**/*.md")] (toc1 (rd md))))

@@ -1,6 +1,6 @@
-## Live Music
+## Music in Clojure
 
-### Overtone
+### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
 
 Because you really need to live audio programming to be a real VJ these days.
@@ -39,10 +39,9 @@ And make some sound !
 
 [https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
 
-GPU, Processing
------
+## GPU, Processing and other visual tools
 
-### Quil
+### Processing, the best visual tool ported to Clojure for easy animation
 [https://github.com/quil/quil](https://github.com/quil/quil)
 
 Quil is to [Processing](http://processing.org/) what Clojure is to Java, some fresh air.
@@ -55,7 +54,7 @@ Note the decor set to false, that hides most of the uglyness of the Window borde
 
 And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
 
-### Calx
+### OpenCL
 [https://github.com/ztellman/calx](https://github.com/ztellman/calx)
 
 [OpenCL](http://www.drdobbs.com/parallel/a-gentle-introduction-to-opencl/231002854) binding library. OpenCL is meant to be a universal parallel computing library. With calx we now have its power straight from Clojure. 
@@ -66,7 +65,7 @@ And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art
 
 @@@ ruby 42_calx.clj@@@
 
-### Penumbra
+### OpenGL for Clojure is here
 [https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
 
 OpenGL binding library.  This is not actively developped anymore, but still a good way to play with OpenGL from clojure, or simply to do GPU computing straight from your computer.
@@ -81,8 +80,8 @@ The version we are including here is not from the original author but is compati
 ### Blender exporter for Penumbra
 [https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
 
-OpenCV and Imaging
-----
-[https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
+## OpenCV and Imaging
 
+### You have Vision !
+[https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
 [http://nakkaya.com/vision.html](http://nakkaya.com/vision.html)
