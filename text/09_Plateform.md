@@ -16,8 +16,3 @@ A port of Clojure to the CLR, part of the Clojure project
 Single Page Application Using Clojure Script
 
 [Enlive inspired templating](https://github.com/ckirkendall/enfocus)
-
-<!-- 
-### A few words on Datomic 
-[http://www.datomic.com/](http://www.datomic.com/)
-[Free Version](http://downloads.datomic.com/free.html) -->

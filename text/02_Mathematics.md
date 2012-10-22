@@ -1,5 +1,6 @@
 
 ### Mathematics
+
 * [Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
 * [MC with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
 * [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
@@ -8,5 +9,10 @@
 #### Fractals
 [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 
-#### Gajure, or your dose of genetic algorithm in Clojure
+#### your dose of genetic algorithm in Clojure
+
+##### Gajure
 [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
+
+##### Clojush
+[Genetic Programming](https://github.com/lspector/Clojush)

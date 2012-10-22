@@ -44,6 +44,9 @@ And make some sound !
 ### Speech Recognition: Clojure with speeech !
 [Clojure with speech](https://github.com/klutometis/speech-recognition)
 
+### Control your sound
+[Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
+
 ## GPU, Processing and other visual tools
 
 ### Processing, the best visual tool ported to Clojure for easy animation

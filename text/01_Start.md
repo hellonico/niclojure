@@ -34,8 +34,6 @@ And here is your mother of them all hello world
 
 @@@ ruby 03_hello.clj @@@
 
-
-
 #### You need to depend on someone
 
 Now you have to realize that all the libs available to the Java World through Maven repositories, and all the libs hosted on Clojars can be integrated in the project in no time by using the command:

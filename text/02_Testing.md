@@ -44,3 +44,6 @@ There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-bro
 
 #### VCR or your HTTP Playback 
 [VCR](https://github.com/fredericksgary/vcr-clj)
+
+#### Ring App Testing
+[Ring App Testing](https://github.com/xeqi/kerodon)
