@@ -419,7 +419,10 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 [Ahead of time scheduler](https://github.com/overtone/at-at)
 
 #### On parsing ANTLR grammars with Clojure
-* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
+[AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
 
 #### How to glob files
 [glob files](https://github.com/neatonk/clj-glob)
+
+#### Asynchronous HTTP Client
+[Async HTTP Client](http://neotyk.github.com/http.async.client/)

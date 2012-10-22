@@ -47,6 +47,9 @@ And make some sound !
 ### Control your sound
 [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
 
+### Stream and get streamed with Icecast audio streaming server
+[Ice Client Server](https://github.com/jblomo/iceclient)
+
 ## GPU, Processing and other visual tools
 
 ### Processing, the best visual tool ported to Clojure for easy animation

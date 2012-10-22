@@ -16,3 +16,6 @@
 
 ##### Clojush
 [Genetic Programming](https://github.com/lspector/Clojush)
+
+#### Racing for MonteCarlo in Clojure
+[MonteCarlo](https://github.com/farr/mcmc-clojure)
