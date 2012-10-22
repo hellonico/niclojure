@@ -15,7 +15,7 @@
 
 ; awesome and dirty, remove the elements we do not want
 (defn tic[content]
-	(doseq [t ["p" "ul" "li" "a" "img" "pre" "code" ]]
+	(doseq [t ["p" "ul" "li" "a" "img" "pre" "code" "blockquote" ]]
 		(.remove (select t content)))
 	content)
 
@@ -26,8 +26,11 @@
 (defn tocall[]
 	(doseq [md (glob "**/*.md")] (toc1 (rd md))))
 
+(defn headers[]
+	"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" media=\"screen\" /></head>")
+
 ; (defn toc[project & args] 
 ; ↑ when I have time to debug this mess 
 (defn toc[] 
-	(spit output_file "")
+	(spit output_file (headers))
 	(tocall))
