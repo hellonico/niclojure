@@ -426,3 +426,6 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 #### Asynchronous HTTP Client
 [Async HTTP Client](http://neotyk.github.com/http.async.client/)
+
+#### Google protobuffer for Clojure
+[https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
