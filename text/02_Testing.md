@@ -41,3 +41,6 @@ There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-bro
 
 #### Load testing and performance with perforate
 [Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
+
+#### VCR or your HTTP Playback 
+[VCR](https://github.com/fredericksgary/vcr-clj)

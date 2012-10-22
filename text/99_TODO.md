@@ -26,6 +26,7 @@
 ##### Core Libraries
 * [Monad](https://github.com/clojure/algo.monads)
 * [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+* [core logic](https://github.com/clojure/core.logic/wiki/Examples)
 
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
@@ -49,7 +50,6 @@
 * [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
 * [BigQuery](https://github.com/forward/clj-bq)
 * [Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)
-* [VCR](https://github.com/fredericksgary/vcr-clj)
 * [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 * [Matchure](https://github.com/dcolthorp/matchure)
 * [clarsec](https://github.com/jasonjckn/clarsec), [parsley](https://github.com/cgrand/parsley)
