@@ -387,33 +387,30 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 ![Lamina](../images/lamina2.png)
 
-### I will test some of that
+#### Everyday cryptography with Alice, but where is bob ? 
+[Cryptography for Clojure](https://github.com/pjstadig/alice)
 
-#### You are lazy. Use lazytest
+#### Unit of measures calculator in Clojure
 
-####  You are not a midjet, so you use midje to test 
-[Midje](https://github.com/marick/Midje)
+[Unit of Measure Calculator](https://github.com/martintrojer/frinj) and [samples](https://github.com/martintrojer/frinj/blob/master/src/frinj/examples.clj)
 
-Midge is a fantastic move in the world of Test Driven Development. Midge not only makes testing your code fun, it gives you the right mindset to do experiment and testing in your own project.
+#### When you are in need of querying Json
+[JsonPath](https://github.com/gga/json-path)
 
-To install Midge:
-<code>
-lein plugin install lein-midje 1.0.10
-</code>
+####  Clojure on your nerves ? Use Netz for your neural network things
+[Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
 
-@@@ ruby 65_midje.clj @@@
+#### SSH Tunnels
+[SSH Tunnel](https://github.com/trampoline/clj-ssh-tunnel)
 
-####  Web sites easy testing with selenium
-[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
+#### infer, inference and machine learning in Clojure
+[infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 
-"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+#### Shake, or every shell program is now a clojure function
+[Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
 
-<code>
-[clj-webdriver "0.6.0-alpha11"]
-</code>
+#### Timely, or your super easy scheduling in Clojure
+[Scheduler](https://github.com/Factual/timely)
 
-When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
-
-@@@ ruby 60_taxi.clj @@@
-
-There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
+#### Generate, string clean HTML in a clojure way without hiccups
+[hiccup](https://github.com/weavejester/hiccup)

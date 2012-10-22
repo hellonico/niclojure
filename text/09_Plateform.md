@@ -15,6 +15,9 @@ A port of Clojure to the CLR, part of the Clojure project
 [https://github.com/neatonk/one](https://github.com/neatonk/one)
 Single Page Application Using Clojure Script
 
-### Datomic
+[Enlive inspired templating](https://github.com/ckirkendall/enfocus)
+
+<!-- 
+### A few words on Datomic 
 [http://www.datomic.com/](http://www.datomic.com/)
-[Free Version](http://downloads.datomic.com/free.html)
+[Free Version](http://downloads.datomic.com/free.html) -->

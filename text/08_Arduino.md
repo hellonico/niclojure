@@ -16,3 +16,6 @@ You can send a Clojure SOS.
 @@@ ruby 15_cloduino.clj @@@
 
 There are so many more great [Samples](http://nakkaya.com/clodiuno.html) that Nakkaya has been writing. Make sure you go through them.
+
+### Having fun around moving Roomba around the house from Clojure
+[REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)

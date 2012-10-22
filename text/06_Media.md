@@ -33,6 +33,8 @@ And make some sound !
 ### Mini-beast
 [https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
 
+### Midi sound with Clojure
+* [Midi](https://github.com/pcsanwald/clojure-midi)
 
 ### Live Samples
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)

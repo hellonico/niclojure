@@ -31,6 +31,10 @@ This is not so much a library than a way to develop slick web application using 
 [https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
 [Original Vaadin Sampler](http://demo.vaadin.com/sampler) -->
 
+### When you see something named Compojure, know it's a cool webframewokr
+[Compojure](https://github.com/weavejester/compojure) 
+more [weavejester](https://github.com/weavejester)
+
 ### Has websocket development become so simple ? Thanks Aleph
 
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
