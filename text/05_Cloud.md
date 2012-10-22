@@ -10,10 +10,6 @@ Mixpanel allows you to track any kind of event from Within your Application.
 [https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
 [https://mixpanel.com/account/](https://mixpanel.com/account/)
 
-### Hadoop queries from Clojure
-[https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
-Hadoop Query from Clojure
-
 ### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
 [https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
 

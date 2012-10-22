@@ -27,9 +27,10 @@ Now the guy from Noir has also started a very cute project named [Lighttable](ht
 
 This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
 
-<!-- Sample Application
+#### Sample Vaadin Application to get started
 [https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
-[Original Vaadin Sampler](http://demo.vaadin.com/sampler) -->
+[Original Vaadin Sampler](http://demo.vaadin.com/sampler) 
+(https://github.com/weavejester/lein-ring with Vaadin)[https://github.com/weavejester/lein-ring]
 
 ### When you see something named Compojure, know it's a cool webframewokr
 [Compojure](https://github.com/weavejester/compojure) 

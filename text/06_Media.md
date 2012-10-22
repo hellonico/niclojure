@@ -1,4 +1,4 @@
-## Music in Clojure
+## Music and sound in Clojure
 
 ### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
@@ -40,6 +40,9 @@ And make some sound !
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
 
 [https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
+
+### Speech Recognition: Clojure with speeech !
+[Clojure with speech](https://github.com/klutometis/speech-recognition)
 
 ## GPU, Processing and other visual tools
 

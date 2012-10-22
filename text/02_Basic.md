@@ -414,3 +414,12 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 #### Generate, string clean HTML in a clojure way without hiccups
 [hiccup](https://github.com/weavejester/hiccup)
+
+#### Ahead of time scheduler at
+[Ahead of time scheduler](https://github.com/overtone/at-at)
+
+#### On parsing ANTLR grammars with Clojure
+* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
+
+#### How to glob files
+[glob files](https://github.com/neatonk/clj-glob)

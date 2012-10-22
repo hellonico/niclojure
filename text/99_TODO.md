@@ -29,87 +29,48 @@
 
 * [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
 * [Sample Webapp](https://github.com/thurn/ackbar)
-* [Immutant](http://immutant.org/tutorials/installation/index.html)
-* [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 
 ##### Libraries
+* [Immutant](http://immutant.org/tutorials/installation/index.html)
+* [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 * [Ring App Testing](https://github.com/xeqi/kerodon)
-* [Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
-* [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
 * [Akka wrapper for Clojure](https://github.com/gaverhae/okku)
-* [Clojure with speech](https://github.com/klutometis/speech-recognition)
 * [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
-* [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
 * [Liquidbase](https://github.com/kumarshantanu/clj-liquibase)
 * [Zen Client](https://github.com/rcampbell/zenclient)
-* [FactQL](https://github.com/dirtyvagabond/factql)
 * [Ice Client Server](https://github.com/jblomo/iceclient)
 * [Gnome Shell Extension](https://github.com/technomancy/lein-gnome)	
 * [liberator, rest in clojure](https://github.com/clojure-liberator/liberator)
-* [clj-pdf](https://github.com/yogthos/clj-pdf)
-* [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
 * [Cogito](http://liebke.github.com/cogito/)
 * [NBody Computation](https://github.com/farr/Clojure-Nbody-Library)
 * [MonteCarlo](https://github.com/farr/mcmc-clojure)
 * [Powerloom](https://github.com/davelambert/clojure-powerloom)
 * [IzPack](https://github.com/kanayo/izpack) and [Debian Packaging](https://github.com/erickg/lein-debian)
 * [https://github.com/pingles/clj-mixpanel#readme](https://github.com/pingles/clj-mixpanel#readme)
-* [Ahead of time scheduler](https://github.com/overtone/at-at)
 * [BigQuery](https://github.com/forward/clj-bq)
 * [Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)
-* [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
 * [VCR](https://github.com/fredericksgary/vcr-clj)
 * [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 * [Matchure](https://github.com/dcolthorp/matchure)
 * [clarsec](https://github.com/jasonjckn/clarsec), [parsley](https://github.com/cgrand/parsley)
 * [OSGI](https://github.com/aav/clojure.osgi), with [blog post](http://paudo.posterous.com/clojure-osgi)
-* [Redis](https://github.com/wallrat/labs-redis-clojure)
-* [SIP](https://github.com/Ruiyun/cljain)
-* [Avout](https://github.com/AlexBaranosky/avout)
-* [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 * [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
 * [Clojure Native](https://github.com/bagucode/clj-native)
 * [Clucy](https://github.com/weavejester/clucy) 
 * [BitBucket](https://github.com/ohpauleez/clj-bitbucket/tree/17467d27bf0dbd3b3f39290fa66c4201d788d8b0)
-* [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 * https://groups.google.com/forum/?fromgroups=#!topic/clojure/WHKlys_SmcU
-* https://github.com/clojurewerkz/cassaforte
 * [Production Web REPL](http://java.dzone.com/articles/clojure-production-web-repl)
-* [glob files](https://github.com/neatonk/clj-glob)
-* [Memcache](http://clojurememcached.info/articles/getting_started.html)
 * [Clojure in Freemind](http://freemind.sourceforge.net/wiki/index.php/Plugins)
 * [Application as service or executable](http://wrapper.tanukisoftware.com/doc/english/integrate.html#method1)
-* [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 * [Event Processing](https://github.com/pingles/clj-esper)
-* [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
 * [mimir rule engine](https://github.com/hraberg/mimir)
 
-##### More Lein Samples
-* [Jruby :)](https://github.com/jkutner/lein-jruby)
-* [Leiningen with Drip](https://github.com/flatland/drip/wiki/Clojure)
-
 ##### Server
-* https://github.com/weavejester/lein-ring with Vaadin !
-* http://clojurewerkz.org/
-
-##### Java Libraries
-* http://jericho.htmlparser.net/docs/index.html
-* http://www.intensivesystems.net/tutorials/stream_proc.html
-* http://im4java.sourceforge.net/
-* http://www.jcuda.de/
-* [Portlet](https://github.com/jave/cljportlet)
-* [Kryonet](http://code.google.com/p/kryonet/)
 * [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
 
 ##### PDF (where's mine ?)
 * [PDF as a service](https://github.com/yogthos/instant-pdf)
 * [iText wrapper](https://github.com/yogthos/clj-pdf)
-
-##### Finance
-* [Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
-* [MC with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
-* [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
-* [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
 
 ##### Experimental
 * [OpenCL Playground](https://github.com/hraberg/sleipnir)
@@ -117,3 +78,18 @@
 * [Machine Learning](https://github.com/sids/nerchuko)
 * [Jobim](https://github.com/antoniogarrote/jobim)
 * [Genetic Programming](https://github.com/lspector/Clojush)
+
+<!-- 
+##### Java Libraries
+* http://jericho.htmlparser.net/docs/index.html
+* http://www.intensivesystems.net/tutorials/stream_proc.html
+* http://im4java.sourceforge.net/
+* http://www.jcuda.de/
+* [Portlet](https://github.com/jave/cljportlet)
+* [Kryonet](http://code.google.com/p/kryonet/) 
+
+##### Not worth it, can't make them work
+* [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
+* [Leiningen with Drip](https://github.com/flatland/drip/wiki/Clojure)
+* [Drip a fast JVM launcher for Clojure](https://github.com/flatland/drip)
+-->

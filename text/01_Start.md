@@ -173,6 +173,9 @@ This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)
 
 This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen [plugins list](https://github.com/technomancy/leiningen/wiki/Plugins)
 
+### One more ruby: Jruby 
+[Jruby :)](https://github.com/jkutner/lein-jruby)
+
 ### Writing your own plugin for Leiningen
 Now if the above was not enough for your needs, here is how you create a plugin for your repetitive tasks.
 

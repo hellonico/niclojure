@@ -38,3 +38,6 @@ There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-bro
 
 #### Taxi !!! Test my web application quick !
 [Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
+
+#### Load testing and performance with perforate
+[Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
