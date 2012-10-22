@@ -1,49 +1,12 @@
 ## TODO 
 
 ### Sort me quick
-* http://www.kickstarter.com/projects/1348966732/the-lisa-conference-leaders-in-software-and-art
 * http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
-* http://www.thejach.com/view/2012/5/getting_started_with_jmonkeyengine_and_clojure
-* http://contextfreeart.org/
 * http://lifeofaprogrammergeek.blogspot.jp/2009/04/opengl-in-clojure.html
 * [Deployment](http://stackoverflow.com/questions/2915209/clojure-deployment)
 
-#### Talks
-* [Quick And Dirty Data Science with Incanter](https://github.com/otfrom/quiddswic)
-* [ClojureWest](https://github.com/strangeloop/clojurewest2012-slides)
-* [Growing a DSL with Clojure](http://pragprog.com/magazines/2011-07/growing-a-dsl-with-clojure)
-* [Finding Clojure](http://portal.sliderocket.com/AWUPA/Finding-Clojure)
-* [Bootstrapping Clojure at Groupon](http://www.infoq.com/presentations/Bootstrapping-Clojure)
-* [Clojure and Java Links](http://theholyjava.wordpress.com/tag/clojure/)
-* [Clojure STM](http://www.slideshare.net/marblejenka/clojurestm)
-* [Dell's presentation on Infrastructure monitoring](http://www.slideshare.net/shr3kst3r/java-one-2011-monitoring-a-largescale-infrastructure-with-clojure)
-* [Storm (from Twitter) with a Clojure DSL](http://www.slideshare.net/nathanmarz/storm-distributed-and-faulttolerant-realtime-computation)
-* [The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
-* [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
-
-##### Appps
-* [Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
-* [OpenCVBubbles](https://github.com/dcousineau/clojure-opencv-bubbles)
-* [https://github.com/ray1729/spirograph](https://github.com/ray1729/spirograph)
-* [Space Invader in ClojureScript](https://github.com/robashton/clojure-spaceinvaders)
-
-##### Book
-* [Look at vancouver clojure club](https://github.com/van-clj)
-* [Ant task to make deb packages](http://code.google.com/p/ant-deb-task/) and [https://clojars.org/tvachon/ant-deb-task](https://clojars.org/tvachon/ant-deb-task)
-
-#### Lists
-* [Clojure API Examples](http://en.wikibooks.org/wiki/Clojure_Programming#API_Examples)
-* [ClojureSphere](http://www.clojuresphere.com/)
-* [clojure-libraries on appspot.com/](http://clojure-libraries.appspot.com/)
-* [clojurewerkz](http://clojurewerkz.org/)
-* [Clojure on github](http://clojure.github.com/)
-* [http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core](http://programmers.stackexchange.com/questions/125107/what-are-the-essential-clojure-libraries-to-learn-beyond-the-basics-of-core)
-* [http://www.clojure-toolbox.com/](http://www.clojure-toolbox.com/)
-* [http://twitch.nervestaple.com/2012/01/12/clojure-hbase/](http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
-* [http://clojure.jr0cket.co.uk/](http://clojure.jr0cket.co.uk/)
-* [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
-
 ##### Tutorials
+* [Ant task to make deb packages](http://code.google.com/p/ant-deb-task/) and [https://clojars.org/tvachon/ant-deb-task](https://clojars.org/tvachon/ant-deb-task)
 * [Cloudbees](http://earthly-powers.blogspot.jp/2011/10/using-lein-to-deploy-clojure-ring.html)
 * [Web dev with Clojure](http://www.vijaykiran.com/2012/01/17/web-application-development-with-clojure-part-2/)
 * [Parallel NQueens Fun](http://blog.mired.org/2011/03/easy-parallel-processing-in-clojure.html)
@@ -61,7 +24,6 @@
 * [So much to do, so little time: Easy parallelization with Clojure](http://blog.rguha.net/?p=153)
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
-* [Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
 
 ##### Core Libraries
 * [Monad](https://github.com/clojure/algo.monads)
@@ -139,6 +101,7 @@
 * [VertX](https://github.com/vert-x/vert.x) with [Clojure](https://gist.github.com/1578718)
 * [Event Processing](https://github.com/pingles/clj-esper)
 * [Clojure-tco](https://github.com/cjfrisz/clojure-tco)
+* [mimir rule engine](https://github.com/hraberg/mimir)
 
 ##### Cloud
 * [Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)
@@ -181,7 +144,6 @@
 * [Enlive inspired templating](https://github.com/ckirkendall/enfocus)
 
 ##### Experimental
-* [mimir rule engine](https://github.com/hraberg/mimir)
 * [OpenCL Playground](https://github.com/hraberg/sleipnir)
 * [Rootbeer](https://github.com/pcpratts/rootbeer1)
 * [Machine Learning](https://github.com/sids/nerchuko)

@@ -120,8 +120,7 @@
   ; pi 
   [org.apfloat/apfloat "1.6.3"]
   ; maybe not compatible with lein2 :(
-  [jark "0.4.3" :exclusions [org.clojure]]
-
+  [jark "0.4.3-clojure-1.5.0-alpha5" :exclusions [org.clojure]]
   ; http: this version is clashing with selenium, which includes it as well
   ; [clj-http "0.1.3"]
   ; xuggle 34M :)

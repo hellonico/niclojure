@@ -118,6 +118,8 @@ This is an example taken from a [slick tutorial](https://github.com/swannodette/
 You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
 Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
 
+[Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
+
 ####  Easy Spreadsheet with docjure
 [https://github.com/ative/docjure](https://github.com/ative/docjure)
 
