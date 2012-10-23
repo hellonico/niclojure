@@ -429,3 +429,20 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 #### Google protobuffer for Clojure
 [https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
+
+#### Idiomatic pattern matching in Clojure
+[Matchure](https://github.com/dcolthorp/matchure)
+
+#### Clojure interface to superb search engine Lucene
+[Clucy](https://github.com/weavejester/clucy) 
+
+#### Interface with your own Solr based search engine
+[Solr Querying](https://github.com/mattdeboard/Icarus) and [lsa4solr](https://github.com/algoriffic/lsa4solr)
+[https://github.com/mikejs/clojure-solr](https://github.com/mikejs/clojure-solr)
+
+#### When in need of pdf magic
+* [PDF as a service](https://github.com/yogthos/instant-pdf)
+* [iText wrapper](https://github.com/yogthos/clj-pdf)
+
+#### Clojure wrapper for complex event processing, based on Esper
+* [Event Processing](https://github.com/pingles/clj-esper)

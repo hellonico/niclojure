@@ -209,3 +209,6 @@ All the examples in this book can be run with a command like:
 </code>
 
 If you can not run them, let me know ;) 
+
+### Make your own !! Web based clojure interpreter
+[Production Web REPL](http://java.dzone.com/articles/clojure-production-web-repl)

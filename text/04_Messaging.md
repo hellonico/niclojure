@@ -41,3 +41,10 @@ Hadoop Query from Clojure
 
 ### Apache Cassandra, at your clojure tips
 [Cassaforte](https://github.com/clojurewerkz/cassaforte)
+
+### The best Actor model concurrency in the scala world coming to Clojure
+[Akka wrapper for Clojure](https://github.com/gaverhae/okku)
+
+### Simple Apache Thrift, powering Facebook, in Clojure
+[Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
+

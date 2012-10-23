@@ -18,4 +18,7 @@
 [Genetic Programming](https://github.com/lspector/Clojush)
 
 #### Racing for MonteCarlo in Clojure
-[MonteCarlo](https://github.com/farr/mcmc-clojure)
+[MonteCarlo](https://github.com/farr/mcmc-clojure
+
+#### Simulation of a dynamical system of particles with NBody computation
+[NBody Computation](https://github.com/farr/Clojure-Nbody-Library)

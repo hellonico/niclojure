@@ -19,3 +19,6 @@ There are so many more great [Samples](http://nakkaya.com/clodiuno.html) that Na
 
 ### Having fun around moving Roomba around the house from Clojure
 [REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)
+
+### Going native
+[Clojure Native](https://github.com/bagucode/clj-native)

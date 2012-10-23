@@ -76,6 +76,9 @@ And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art
 
 @@@ ruby 42_calx.clj@@@
 
+### More OpenCL, using JOCL
+* [OpenCL Playground](https://github.com/hraberg/sleipnir)
+
 ### OpenGL for Clojure is here
 [https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
 
@@ -96,3 +99,6 @@ The version we are including here is not from the original author but is compati
 ### You have Vision !
 [https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
 [http://nakkaya.com/vision.html](http://nakkaya.com/vision.html)
+
+### Fiji, the best imaging tool in java can be clojure scripted !
+[Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
