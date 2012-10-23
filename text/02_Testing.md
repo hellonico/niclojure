@@ -47,3 +47,6 @@ There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-bro
 
 #### Ring App Testing
 [Ring App Testing](https://github.com/xeqi/kerodon)
+
+#### Travis: Open Source hosted continuous integration service for Clojure
+[Travis](http://about.travis-ci.org/docs/user/languages/clojure/)

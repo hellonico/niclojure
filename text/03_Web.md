@@ -40,3 +40,6 @@ more [weavejester](https://github.com/weavejester)
 
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
 Websockets
+
+### Building RESTful applications has no more secret to you
+[https://github.com/clojure-liberator/liberator](https://github.com/clojure-liberator/liberator)

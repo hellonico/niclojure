@@ -22,3 +22,6 @@ There are so many more great [Samples](http://nakkaya.com/clodiuno.html) that Na
 
 ### Going native
 [Clojure Native](https://github.com/bagucode/clj-native)
+have a look at:
+[https://github.com/Chouser/clojure-jna](https://github.com/Chouser/clojure-jna)
+but it seems broken

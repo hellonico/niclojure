@@ -48,3 +48,8 @@ Hadoop Query from Clojure
 ### Simple Apache Thrift, powering Facebook, in Clojure
 [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
 
+### Storm is a distributed realtime computation system, accessible from Clojure
+[https://github.com/nathanmarz/storm/wiki/Clojure-DSL](https://github.com/nathanmarz/storm/wiki/Clojure-DSL)
+
+### Actors library for Clojure, using Zookeeper and RabbitMQ
+[https://github.com/antoniogarrote/jobim](https://github.com/antoniogarrote/jobim)

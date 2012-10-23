@@ -140,31 +140,6 @@ I am pretty sure you knew how to send a mail before, but look at the awesome way
 
 This is including attachment and Japanese encoding. yey
 
-####  Manage your databases schema with lobos
-[http://budu.github.com/lobos/](http://budu.github.com/lobos/)
-
-Here is comes Lobos, or how to manage your database directly from a Clojure REPL.
-
-@@@ ruby 20_lobos.clj @@@
-
-You define your database connection, and just go and create, drop delete, what every you need.
-This is also very useful for testing.
-
-####  Write beautiful SQL queries with Korma
-[http://sqlkorma.com/docs](http://sqlkorma.com/docs)
-
-Korma makes actually enjoyable to write SQL queries.
-
-<code>
-[korma "0.3.0-beta7"]
-</code>
-
-Have a look at the following code:
-
-@@@ ruby 19_korma.clj @@@
-
-Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
-
 ####  How's the DNS going ? 
 [https://github.com/brweber2/clj-dns](https://github.com/brweber2/clj-dns)
 
@@ -177,7 +152,6 @@ Portable, compatible queries against a SQL database, with the feel of a no-sql o
 How easy it is to do lookup and reverse lookup. Need anything else ? 
 
 @@@ ruby 29_dns.clj @@@
-
 
 ####  Don't touch my clostache: more templating 
 [https://github.com/fhd/clostache](https://github.com/fhd/clostache)
@@ -446,3 +420,16 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 #### Clojure wrapper for complex event processing, based on Esper
 * [Event Processing](https://github.com/pingles/clj-esper)
+
+#### A few words on Monads in Clojure
+* [Monad](https://github.com/clojure/algo.monads)
+
+#### A few words on the new reducers sauce
+* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+
+#### A few logical words
+* [core logic](https://github.com/clojure/core.logic/wiki/Examples)
+
+#### A few words about haskell
+* [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
+* [clarsec](https://github.com/jasonjckn/clarsec), 

@@ -65,6 +65,9 @@ Note the decor set to false, that hides most of the uglyness of the Window borde
 
 And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
 
+### The rootbeer GPU compiler
+[https://github.com/pcpratts/rootbeer1](https://github.com/pcpratts/rootbeer1)
+
 ### OpenCL
 [https://github.com/ztellman/calx](https://github.com/ztellman/calx)
 
