@@ -3,7 +3,7 @@
 ### ctl for controlling the jark server
 
 PID=""
-CP="lib/*:lib/dev/*:*"
+CP="lib/*:lib/dev/*:.:*"
 
 function get_pid {
    PID=`jark vm stat | grep -A0 PID  | sed s/PID// | sed s/[' ']*// `
