@@ -1,0 +1,1 @@
+jark vm stat | grep -A0 PID  | sed s/PID// | xargs kill -9  # new version
