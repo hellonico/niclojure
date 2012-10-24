@@ -1,0 +1,70 @@
+#!/bin/bash
+
+### ctl for controlling the jark server
+
+PID=""
+CP="lib/*:lib/dev/*:*"
+
+function get_pid {
+   PID=`jark vm stat | grep -A0 PID  | sed s/PID// | sed s/[' ']*// `
+}
+
+function start {
+   get_pid
+   if [ -z $PID ]; then
+      echo  "Starting jark.."
+      jark -cp $CP server start
+      sleep 3
+      get_pid
+      echo "Done. PID=$PID"
+   else
+      echo "jark is already running, PID=$PID"
+   fi
+}
+function stop {
+   get_pid
+   if [ -z $PID ]; then
+      echo "jark is not running."
+      exit 1
+   else
+      echo -n "Stopping jark.."
+      kill $PID
+      echo ".. Done."
+   fi
+}
+function restart {
+   echo  "Restarting jark.."
+   get_pid
+   if [ -z $PID ]; then
+      start
+   else
+      stop
+      start
+   fi
+}
+function status {
+   get_pid
+   if [ -z  $PID ]; then
+      echo "jark is not running."
+      exit 1
+   else
+      echo "jark is running, PID=$PID"
+   fi
+}
+
+case "$1" in
+   start)
+      start
+   ;;
+   stop)
+      stop
+   ;;
+   restart)
+      restart
+   ;;
+   status)
+      status
+   ;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+esac

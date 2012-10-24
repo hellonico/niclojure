@@ -3,9 +3,6 @@
 (ns factorial)
 
 (defn compute [n]
-   (apply *' (take n (iterate inc 1))))
+   (apply * (take n (iterate inc 1))))
 
-(println "Factorial of 30 :" (compute 30))
-
-(defn -main[& args]
-	(println args))
+(println "Factorial of 10 :" (compute 10))
