@@ -21,7 +21,7 @@
 	content)
 
 (defn toc1 [content]
-	  (spit "toc_debug.html" content :append true)
+	  ;(spit "toc_debug.html" content :append true)
 	  (let [cleaned (tic content)]
 		(write ($ cleaned "body > *"))))
 	  
@@ -39,7 +39,7 @@
 	((.open (Desktop/getDesktop) (File. file))))
 
 (defn toc[] 
-	(spit "toc_debug.html" "")
+	;(spit "toc_debug.html" "")
 	(spit output_file headers)
 	(tocall)
 	(openf output_file))
