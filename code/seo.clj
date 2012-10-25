@@ -2,6 +2,7 @@
 (use 'jsoup.soup)
 (use 'clojure.pprint)
 (require '[clj-http.client :as client])
+(import 'java.net.URLDecoder)
 
 ; http://www.blueglass.com/blog/google-search-url-parameters-query-string-anatomy/
 
@@ -38,6 +39,13 @@
 	    :selector "a.g[target]"
 	    :clean (fn[e] (.attr e "href"))
 	    }
+	    :fresheye  ; naver ;)
+	    {
+	    :base "http://search.fresheye.com/?"
+	    :query (fn[k] {"kw" k "x" 0 "y" 0 "type" 1 "ord" "s" "rt" "web" "cs" "utf8"})
+	    :selector "div.rslt p.title a"
+	    :clean (fn[e] (URLDecoder/decode (last (re-find #"go=(.*)\&srch=" (.attr e "href"))) "UTF-8")) ; the href is encoded in a search query :(
+		}
 	}
 )
 
@@ -65,7 +73,8 @@
 	(lookup target (fetch-doc target keywords)))
 
 ; testing
-(def target (ref (targets :goo)))
+(def target (ref (targets :fresheye)))
 (defn q[keywords] (query @target keywords))
 (defn p[keywords] (pprint (q keywords)))
 (defn d[keywords] (fetch-doc @target keywords))
+(defn p[keywords t] (pprint (query (targets t) keywords)))
