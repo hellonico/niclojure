@@ -1,0 +1,1 @@
+(ns gstreamer.core)
