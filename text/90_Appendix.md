@@ -4,6 +4,8 @@
 
 @@@ ruby 00_zero.clj @@@
 
+End of appendix A
+
 ### Appendix B: References
 
 * [Clojure API Examples](http://en.wikibooks.org/wiki/Clojure_Programming#API_Examples)
@@ -18,6 +20,7 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 * [Look at vancouver clojure club](https://github.com/van-clj)
 
+End of appendix B
 
 ### Appendix C: Ready to be used clojure Applications
 
@@ -26,6 +29,7 @@
 * [https://github.com/ray1729/spirograph](https://github.com/ray1729/spirograph)
 * [Space Invader in ClojureScript](https://github.com/robashton/clojure-spaceinvaders)
 
+End of appendix C
 
 ### Appendix D: Talks and Interviews about Clojure
 
@@ -40,6 +44,8 @@
 * [Storm (from Twitter) with a Clojure DSL](http://www.slideshare.net/nathanmarz/storm-distributed-and-faulttolerant-realtime-computation)
 * [The UK Government should take a look at Clojure](http://blog.malcolmsparks.com/?p=94)
 * [Rich Hickey Interview](http://www.infoworld.com/d/application-development/clojure-inventor-hickey-now-aims-android-189105)
+
+End of appendix D
 
 ### Appendix E : Great tutorials
 
@@ -62,3 +68,5 @@
 * [So much to do, so little time: Easy parallelization with Clojure](http://blog.rguha.net/?p=153)
 * [Simple Static blog with Clojure](http://thegeez.net/2012/03/15/static_blog_on_github_with_enlive.html)
 * [a real time chat server](http://alexkehayias.tumblr.com/post/28783286946/a-simple-real-time-chat-server-using-clojure-and-aleph)
+
+End of appendix E

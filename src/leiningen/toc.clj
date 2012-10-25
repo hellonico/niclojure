@@ -15,13 +15,13 @@
 (defn write[text]
 	(spit output_file text :append true))
 
-; awesome and dirty, remove the elements we do not want
 (defn tic[content]
 	(doseq [t ["p" "ul" "li" "a" "img" "pre" "code" "blockquote" ]]
 		(.remove (select t content)))
 	content)
 
 (defn toc1 [content]
+	  (spit "toc_debug.html" content :append true)
 	  (let [cleaned (tic content)]
 		(write ($ cleaned "body > *"))))
 	  
@@ -29,18 +29,17 @@
 	(doseq [md (glob "**/*.md")] 
 		(toc1 (rd md))))
 
-(defn headers[]
-	(str
+(def headers (str
 		"<html><head>"
 		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" media=\"screen\" />"
 		"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />"
 		"</head>"))
+
 (defn openf[file]
 	((.open (Desktop/getDesktop) (File. file))))
 
-; (defn toc[project & args] 
-; ↑ when I have time to debug this mess 
 (defn toc[] 
-	(spit output_file (headers))
+	(spit "toc_debug.html" "")
+	(spit output_file headers)
 	(tocall)
 	(openf output_file))

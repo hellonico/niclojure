@@ -1,6 +1,6 @@
 ## Clojure in the Clouds, it's a sunny day
 
-### Monitor your amazon ec2 instance directly from CLojure
+### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
 Mixpanel allows you to track any kind of event from Within your Application.

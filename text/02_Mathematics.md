@@ -4,7 +4,11 @@
 #### Fractals
 [Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 
+Where we learn about computing fractals ..
+
 #### your dose of genetic algorithm in Clojure
+
+Two short introduction
 
 ##### Gajure
 [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
