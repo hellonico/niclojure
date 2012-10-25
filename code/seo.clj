@@ -104,3 +104,6 @@
 (score "www.nicotouchesthewalls.net" (q "nico" :bing))
 (all-scores "linkedin" "nicolas modrzyk")
 
+; store in data store with a date
+(use '[cheshire.core])
+(generate-string (all-scores "linkedin" "nicolas modrzyk"))
