@@ -433,3 +433,7 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 #### A few words about haskell
 [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
 [clarsec](https://github.com/jasonjckn/clarsec), 
+
+#### When you need an oauth, you have friends
+[friend oauth](https://github.com/ddellacosta/friend-oauth2)
+[](https://github.com/ddellacosta/friend-oauth2-examples)

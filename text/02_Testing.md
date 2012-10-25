@@ -50,3 +50,6 @@ There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-bro
 
 #### Travis: Open Source hosted continuous integration service for Clojure
 [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
+
+#### BDD and Rspec the clojure way
+[specj](https://github.com/slagyr/speclj)
