@@ -2,6 +2,13 @@
 
 When you do not want to use the JVM *or* when you want to reuse some clojure code in a different environment.
 
+
+### I see! Ruby + Clojure = Rouge !
+[https://github.com/unnali/rouge#readme](https://github.com/unnali/rouge#readme)
+Ruby's gems are fun to use.
+Quick boot time (currently around 0.1s).
+Clojure is awesome.
+
 ### ClojureCLR (clojure on .NET)
 [https://github.com/richhickey/clojure-clr](https://github.com/richhickey/clojure-clr)
 
