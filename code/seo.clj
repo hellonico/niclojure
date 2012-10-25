@@ -66,7 +66,7 @@
 	}
 )
 
-; prepare the query
+; prepare the query string
 (defn query-string[target words]
 	(str (target :base) (client/generate-query-string ((target :query) words))))
 ; run the query
@@ -81,13 +81,13 @@
 	(parse (fetch target keywords)))
 ; apply selector and clean up each element found
 (defn lookup[target docme]
-	(pmap (target :clean) (select (target :selector) docme)))
+	(map (target :clean) (select (target :selector) docme)))
 ; top method to execute a query with given keywords
 (defn query[target keywords]
 	(lookup target (fetch-doc target keywords)))
 ; position a site in a result set. returns a list of index matching the map	
 (defn score[site result]
-	(positions #{true} (map #(.contains % site) result)))
+	(positions #{true} (pmap #(.contains % site) result)))
 (defn scores[site keywords engines]
 	(zipmap engines (pmap #(score site (query (targets %) keywords)) engines)))
 (defn all-scores[site keywords]
@@ -107,3 +107,11 @@
 ; store in data store with a date
 (use '[cheshire.core])
 (generate-string (all-scores "linkedin" "nicolas modrzyk"))
+
+; use google charts for the charts
+; https://developers.google.com/chart/interactive/docs/queries
+
+; Noir
+; http://webnoir.org/
+
+; ACTION

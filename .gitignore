@@ -11,3 +11,4 @@ output
 native
 liblwjgl.jnilib
 tmp
+target
