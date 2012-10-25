@@ -415,21 +415,21 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 [https://github.com/mikejs/clojure-solr](https://github.com/mikejs/clojure-solr)
 
 #### When in need of pdf magic
-* [PDF as a service](https://github.com/yogthos/instant-pdf)
-* [iText wrapper](https://github.com/yogthos/clj-pdf)
+[PDF as a service](https://github.com/yogthos/instant-pdf)
+[iText wrapper](https://github.com/yogthos/clj-pdf)
 
 #### Clojure wrapper for complex event processing, based on Esper
-* [Event Processing](https://github.com/pingles/clj-esper)
+[Event Processing](https://github.com/pingles/clj-esper)
 
 #### A few words on Monads in Clojure
-* [Monad](https://github.com/clojure/algo.monads)
+[Monad](https://github.com/clojure/algo.monads)
 
 #### A few words on the new reducers sauce
-* [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+[Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
 
 #### A few logical words
-* [core logic](https://github.com/clojure/core.logic/wiki/Examples)
+[core logic](https://github.com/clojure/core.logic/wiki/Examples)
 
 #### A few words about haskell
-* [Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
-* [clarsec](https://github.com/jasonjckn/clarsec), 
+[Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
+[clarsec](https://github.com/jasonjckn/clarsec), 

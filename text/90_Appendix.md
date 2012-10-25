@@ -18,12 +18,14 @@
 * [Clojure Dojo](https://github.com/zeroed/ClojureDojo)
 * [Look at vancouver clojure club](https://github.com/van-clj)
 
+
 ### Appendix C: Ready to be used clojure Applications
 
 * [Facebook on Heroku](https://github.com/metadaddy-sfdc/facebook-template-clojure)
 * [OpenCVBubbles](https://github.com/dcousineau/clojure-opencv-bubbles)
 * [https://github.com/ray1729/spirograph](https://github.com/ray1729/spirograph)
 * [Space Invader in ClojureScript](https://github.com/robashton/clojure-spaceinvaders)
+
 
 ### Appendix D: Talks and Interviews about Clojure
 

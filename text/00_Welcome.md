@@ -43,3 +43,5 @@ But also some command liene scripts.
 * How to interface with common cloud plateforms
 * Some introduction on how to use clojure for Android programming
 * Present Clojure for the .NET plateform and ClojureScript
+
+Enjoy the ride

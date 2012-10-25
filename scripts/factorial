@@ -1,11 +1,6 @@
-#!/usr/bin/env jark
-
 (ns factorial)
 
 (defn compute [n]
    (apply * (take n (iterate inc 1))))
 
-; (println "Factorial of 10 :" (compute 10))
-
-(defn -main[& args]
-	(println args))
+(compute 10)

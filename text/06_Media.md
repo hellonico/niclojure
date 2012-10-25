@@ -34,7 +34,7 @@ And make some sound !
 [https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
 
 ### Midi sound with Clojure
-* [Midi](https://github.com/pcsanwald/clojure-midi)
+[Midi](https://github.com/pcsanwald/clojure-midi)
 
 ### Live Samples
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
@@ -80,7 +80,7 @@ And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art
 @@@ ruby 42_calx.clj@@@
 
 ### More OpenCL, using JOCL
-* [OpenCL Playground](https://github.com/hraberg/sleipnir)
+[OpenCL Playground](https://github.com/hraberg/sleipnir)
 
 ### OpenGL for Clojure is here
 [https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)

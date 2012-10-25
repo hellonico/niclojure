@@ -1,7 +1,7 @@
 ## Clojure in the Clouds, it's a sunny day
 
 ### Monitor your amazon ec2 instance directly from CLojure
-* [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
+[http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
 Mixpanel allows you to track any kind of event from Within your Application.
 [https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
@@ -54,4 +54,4 @@ And a ready to be used CMS to deploy on the app engine:
 [Sample Webapp](https://github.com/thurn/ackbar)
 
 ### Deploying clojure app in the cloud with jetlastic. it's super easy !
-* [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
+[Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
