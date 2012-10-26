@@ -436,4 +436,7 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 #### When you need an oauth, you have friends
 [friend oauth](https://github.com/ddellacosta/friend-oauth2)
-[](https://github.com/ddellacosta/friend-oauth2-examples)
+[examples](https://github.com/ddellacosta/friend-oauth2-examples)
+
+#### When your friends are in LDAP
+[clj-ldap](https://github.com/pauldorman/clj-ldap)

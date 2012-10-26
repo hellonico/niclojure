@@ -21,15 +21,12 @@
 	content)
 
 (defn toc1 [content]
-	  ;(spit "toc_debug.html" content :append true)
 	  (let [cleaned (tic content)]
 		(write ($ cleaned "body > *"))))
 	  
 (defn tocall[]
 	(doseq [md (glob "**/*.md")] 
 		(toc1 (rd md))))
-
-(def headers )
 
 (defn openf[file]
 	((.open (Desktop/getDesktop) (File. file))))
