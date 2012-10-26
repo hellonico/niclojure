@@ -106,7 +106,7 @@
 
 ; store in data store with a date
 (use '[cheshire.core])
-(generate-string (all-scores "linkedin" "nicolas modrzyk"))
+; (generate-string (all-scores "linkedin" "nicolas modrzyk"))
 
 ; use google charts for the charts
 ; https://developers.google.com/chart/interactive/docs/queries

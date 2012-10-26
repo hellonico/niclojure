@@ -7,7 +7,7 @@
 
 (load-file "code/57_grep2.clj")
 
-(def output_file "toc.html")
+(def output_file "html/toc.html")
 
 (defn rd [file]
 	(parse (md/md-to-html-string (slurp file))))
@@ -29,17 +29,13 @@
 	(doseq [md (glob "**/*.md")] 
 		(toc1 (rd md))))
 
-(def headers (str
-		"<html><head>"
-		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" media=\"screen\" />"
-		"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />"
-		"</head>"))
+(def headers )
 
 (defn openf[file]
 	((.open (Desktop/getDesktop) (File. file))))
 
 (defn toc[] 
-	;(spit "toc_debug.html" "")
-	(spit output_file headers)
+	(spit output_file (slurp "html/header.html"))
 	(tocall)
+	(spit output_file (slurp "html/footer.html") :append true)
 	(openf output_file))
