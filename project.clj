@@ -30,7 +30,7 @@
   :dependencies [
 
   ; core clojure -> need to get this fix for jark. only works with 1.5.0
-  [org.clojure/clojure "1.5.0-alpha7"]
+  [org.clojure/clojure "1.4.0"]
   ;  lacij
   [lacij "0.7.1"]
   ; soup
@@ -119,6 +119,10 @@
   [quil "1.6.0"]
   ; pi 
   [org.apfloat/apfloat "1.6.3"]
+  ; database
+  [cupboard "1.0.0-SNAPSHOT"]
+  ; mongodb 
+  [congomongo "0.3.1"]
   ; maybe not compatible with lein2 :(
   [jark "0.4.3-clojure-1.5.0-alpha5" :exclusions [org.clojure]]
   ; http: this version is clashing with selenium, which includes it as well

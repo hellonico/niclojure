@@ -82,3 +82,6 @@
 
  ; factorial in one line
  (defn factorial[n] (apply *' (take n (iterate inc 1))))
+
+ ; dotimes
+ (dotimes [i 10] (println (str "hello" i)))
