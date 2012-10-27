@@ -25,7 +25,7 @@
 		(write ($ cleaned "body > *"))))
 	  
 (defn tocall[base]
-	(doseq [md (glob (str base "*.md"))] 
+	(doseq [md (glob (str base "/*.md"))] 
 		(toc1 (rd md))))
 
 (defn openf[file]
@@ -36,6 +36,7 @@
 	(tocall base)
 	(spit output_file (slurp "html/footer.html") :append true)
 	(openf output_file))
+
 (defn tocja[]
 	(toc "textja"))
 (defn tocen[]
