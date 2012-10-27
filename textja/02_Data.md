@@ -1,15 +1,15 @@
-## アミューズ・グール（Amuse gueule）: It's only logical
+## アミューズ・グール（Amuse gueule）: 直訳すると、口の楽しみ。居酒屋のお通しみたいな感じ。
 ### フラクタル
 #### 遺伝的アルゴリズム
 ##### Gajure
 ##### Clojush
 
 ### MonteCarloでレース。  じゃなくてシミュレーション
-#### Simulation of a dynamical system of particles with NBody computation
+#### N-Body シミュレーション
 #### 知識表現と推論システム：PowerLoom
 #### ルールエンジンが熱い 
-#### Probabilistic reasoner in Clojure
-#### Machine learning for textual data
+#### 確率的推論
+#### テキストによる機械学習
 
 ### SQL
 #### マイグレーション自由自在
@@ -20,5 +20,5 @@
 #### Clojure Monger：Mongo クライアント
 #### マジめにredisライブラリ
 #### マメにメンテナンスされているRabbitMQ クライアント
-#### FleetDB:your all clojure schema-free database 
-#### Time to open the cupboard and find the cakes of an easy in memory storage
+#### スキーマいらずな FleetDB 
+#### 組み込みデータベース：cupboard

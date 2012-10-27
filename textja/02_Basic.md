@@ -1,6 +1,6 @@
 ## アヴァン・アミューズ（Avant amuse）:アミューズ前のちょこっとした料理。
 
-### 今日からのClojure
+### 今日からできるClojure
 #### REPLに色を付ける
 #### 非同期でhttpサーバとクライアントを 
 #### 統計するならIncanter
@@ -22,37 +22,37 @@
 #### ターミナルとユーザインターフェイス：lanterna
 #### そろそろ、clj
 #### SSHのショートカット
-#### Master of them all HTTP client
+#### HTTP クライアント名人
 #### シリアルポート使ってる？
 #### メモリがない！ どうやってXMLをストリームする？
-#### クロージャーで自然言語処理
+#### Clojureで自然言語処理
 #### conduitでストリーム全開！
 #### イベント処理とストリーム
 #### Aliceが暗号化すればBobも安心 
-#### Unit of measures calculator in Clojure
+#### 単位変換機
 #### JSONでクエリを投げるには
 #### ニューラルネットワークにはNetz
 #### SSHトンネリング
-#### クロージャーで学習させるならinfer
+#### Clojureに学習させるならinfer
 #### Shakeでシェルプログラムを自由自在
 #### 予定を組む？Timely
 #### hiccups無しで美しくHTMLを生成する
-#### Ahead of time scheduler at
+#### タイムスケジューラ
 #### ANTLR構文解析を使う
-#### クロージャーでglobするには？
+#### Clojureでglobするには？
 #### 非同期HTTPクライアント
 #### プロトコルバッファー
-#### 慣用句のパターンマッチング
+#### パターンマッチング
 #### Luceneにつなげる
-#### Solrベースの検索エンジンとつなげる
-#### PDFが必要？
-#### Clojure wrapper for complex event processing, based on Esper
-#### A few words on Monads in Clojure
-#### A few words on the new reducers sauce
-#### A few logical words
-#### A few words about haskell
-#### When you need an oauth, you have friends
-#### When your friends are in LDAP
+#### Solrベースの検索エンジンとつなぐ
+#### PDFにしたいときは
+#### Esperを使って複雑なイベントを処理する
+#### Monads について
+#### 新しい reducers sauce について
+#### logical について少々
+#### haskell について
+#### oauth を使う
+#### LDAP にお友達がいるときは
 
 ### DSL
 #### パーサーを作る
