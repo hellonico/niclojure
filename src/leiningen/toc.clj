@@ -24,15 +24,19 @@
 	  (let [cleaned (tic content)]
 		(write ($ cleaned "body > *"))))
 	  
-(defn tocall[]
-	(doseq [md (glob "**/*.md")] 
+(defn tocall[base]
+	(doseq [md (glob (str base "*.md"))] 
 		(toc1 (rd md))))
 
 (defn openf[file]
 	((.open (Desktop/getDesktop) (File. file))))
 
-(defn toc[] 
+(defn toc[base] 
 	(spit output_file (slurp "html/header.html"))
-	(tocall)
+	(tocall base)
 	(spit output_file (slurp "html/footer.html") :append true)
 	(openf output_file))
+(defn tocja[]
+	(toc "textja"))
+(defn tocen[]
+	(toc "text"))

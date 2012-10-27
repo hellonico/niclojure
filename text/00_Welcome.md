@@ -1,7 +1,6 @@
-# 電脳戦隊クロージャー
+# Clojure À la carte
 
 ## Welcome 
-
 
 ### Why Clojure the lucky stiff
 
