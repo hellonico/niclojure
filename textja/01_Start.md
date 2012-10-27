@@ -1,21 +1,21 @@
-## ヴァン（Vine） :入隊準備 
+## ヴァン（Vine） :ワインのこと。 料理の注文が終わると、ソムリエがワインを選びに来る。 
 
 ### 道に迷ったときは
-### Leiningenでクロージャーを操る
-#### Do you have your REPL with you ? 
-#### You need to depend on someone
-### Clojarとクロージャーライブラリ
+### LeiningenでClojureを操る
+#### 自分のREPLがある？ 
+#### 誰かを頼りにしよう
+### ClojarとClojureライブラリ
 ### 書いたコードをClojarでシェア
 ### Eclipseで一仕事
 ### JarkでJVMをリロード知らず
-### Jarkで激しくクロージャースクリプティング
+### Jarkで激しくClojureスクリプティング
 ### 止めずにライブラリを追加する
 ### 内緒でScalaのコードを走らせる
 ### Javaのコードを走らせるっていうのは、ここだけの話
-### クロージャーのメソッドをhookeでラップする
+### Clojureのメソッドをhookeでラップする
 ### おいしいプラグインのスープLeiningen仕立て
 ### Rubyをもう一つ： Jruby 
 ### Leiningen用のプラグインを書いてみる
 ### clojure-contribって知ってる？ ヤバいよ、それ。
 ### サンプル 
-### Make your own !! Web based clojure interpreter
+### 自分専用のWebベース Clojureインタープリタを作る
