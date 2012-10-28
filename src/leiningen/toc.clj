@@ -8,6 +8,7 @@
 (load-file "code/57_grep2.clj")
 
 (def output_file "html/toc.html")
+(def desktop (Desktop/getDesktop))
 
 (defn rd [file]
 	(parse (md/md-to-html-string (slurp file))))
@@ -29,7 +30,7 @@
 		(toc1 (rd md))))
 
 (defn openf[file]
-	((.open (Desktop/getDesktop) (File. file))))
+	(.open desktop (File. file)))
 
 (defn toc[base] 
 	(spit output_file (slurp "html/header.html"))
