@@ -1,6 +1,7 @@
-## サラデゥー (Salade):サラダ : 音楽とClojure
+## サラデゥー (Salade)
+###### サラダ : メディアとClojure
 
-### Music
+### 音
 
 #### ライブする
 #### Mini-beast
