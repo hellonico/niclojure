@@ -1,7 +1,7 @@
-## ポタージュ（Les potage）: テストいろいろ
+## ポタージュ（Les potage）:スープ : テストいろいろ
 
 ### かったるいので、lazytest
-### You are not a midjet, so you use midje to test 
+### セコくないけど、midje を使ってテスト 
 ### Webサイトのテストで楽するならselenium
 ### 振舞駆動開発：cucumber
 ### ベンチマークをcriteriumで
@@ -9,4 +9,4 @@
 ### 負荷とパフォーマンスチェックならperforate
 ### ビデオみたいにHTTPリクエストを再生 
 ### Ringを使ったアプリケーションテスト
-### Travis: Open Source hosted continuous integration service for Clojure
+### Travis: オープンソースな継続的インテグレーションサービス

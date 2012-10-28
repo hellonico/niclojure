@@ -1,14 +1,14 @@
-## フロマージュ（Les fromage）: クラウドで苦労しないためのクロージャー
+## フロマージュ（Les fromage）:チーズ : クラウドで苦労しないためのClojure
 
 ### Amazon EC2 を直接モニタする
 ### システム管理やデプロイ用のクラスタとタスクを定義し、リモートで実行する
-### clojure-control でクロージャーアプリケーションをモニタする
+### clojure-control でClojureアプリをモニタする
 ### 並列 SSH
 ### ロビンちゃんでグラフ化モニタリング
-### Your cloud infrastructure right at your fingertips
+### すぐに使えるクラウドインフラ
 ### 5分でHerokuにデプロイする。
 ### クラウド管理のための簡単 VirtualBoxラッパー
 ### Hadoop ジョブをローカルやEMRで実行するための Lemur
 ### Redhat OpenShift にデプロイする
 ### Google App Engine 
-### ちょー簡単！ jetlastic でクロージャーアプリをクラウドでデプロイ
+### ちょー簡単！ jetlastic でClojureアプリをクラウドでデプロイ

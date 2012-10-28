@@ -1,6 +1,6 @@
-## アヴァン・デセール（Avant dessert）: Android
+## アヴァン・デセール（Avant dessert）:デザート前のお料理 : Android
 
-### Basic Android Examples
-### Android UI in Clojure
-### In the emulator
-### Using Lein Droid for easy packaging and deployment
+### 簡単な Android サンプル
+### Clojure における Android ユーザインターフェイス
+### エミュレータ	
+### Lein Droid でパッケージしてデプロイする

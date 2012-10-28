@@ -1,7 +1,7 @@
-## オードブル（Hors d'oeuvre）:Remote Libs
+## オードブル（Hors d'oeuvre）:前菜 : リモートライブラリ
 
 ### FactQL：最強の言語を使って最強のオープンデータプラットフォームにクエリする
 ### 1、2、3でZencoder API
 ### TodoistでToDoリスト
 ### Googleにビッグクエリ
-### Mixpanel, or how to track millions of user events from within your application
+### Mixpanel：膨大なユーザイベントをトラックする

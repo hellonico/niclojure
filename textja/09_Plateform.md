@@ -1,5 +1,5 @@
-## プティ・フール（Petit fours）: Plateform
+## プティ・フール（Petit fours）:締めのお茶受け : プラットフォーム
 
-### I see! Ruby + Clojure = Rouge !
-### ClojureCLR (clojure on .NET)
-### ClojureScript (clojure compiling to Javascript)
+### Ruby + Clojure = Rouge !
+### ClojureCLR： .NET でClojure
+### ClojureScript： Clojure を Javascript にコンパイル

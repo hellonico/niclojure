@@ -1,7 +1,7 @@
-## ディジェスティフ（Digestif）: Appendix
+## ディジェスティフ（Digestif）: 付録
 
-### Appendix A: Basic tricks
-### Appendix B: References
-### Appendix C: Ready to be used clojure Applications
-### Appendix D: Talks and Interviews about Clojure
-### Appendix E : Great tutorials
+### 付録 A: 基本的なトリック
+### 付録 B: 参考資料
+### 付録 C: すぐに使える Clojure アプリ
+### 付録 D: Clojure に関する話題
+### 付録 E: 役に立つチュートリアル

@@ -1,4 +1,4 @@
-## サラデゥー (Salade): 音楽とクロージャー
+## サラデゥー (Salade):サラダ : 音楽とClojure
 
 ### Music
 
@@ -17,9 +17,9 @@
 #### OpenCL
 #### もっと OpenCL：JOCL
 #### OpenGL
-#### Blender exporter for Penumbra
+#### Penumbra 用 Blender エクスポータ
 
-### OpenCV and Imaging
+### OpenCV と画像処理
 
-#### You have Vision !
-#### Fiji, the best imaging tool in java can be clojure scripted !
+#### ビジョンを手に入れる
+#### javaの画像ツール Fiji をClojureで使う

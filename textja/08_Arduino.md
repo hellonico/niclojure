@@ -1,6 +1,6 @@
-## デセール（Les dessert）: Arduino
+## デセール（Les dessert）:デザート : Arduino
 
-### Physics with Clojure
+### Clojure で物理
 ### Cloduino
-### Having fun around moving Roomba around the house from Clojure
-### Going native
+### やっぱり動くものは楽しい： Roomba
+### ネイティブで行こう
