@@ -1,7 +1,9 @@
 # Clojure À la carte
+###### Clojure ア・ラ・カルト
 
-## アベリティフ（Aperitif）
-###### 食前酒のこと : 前書き
+## 今さらClojure勉強するって？へぇ？なんで？
+
+###### アベリティフ（Aperitif）: 食前酒のこと
 
 ### なぜClojureなのか？
 ### この本の内容

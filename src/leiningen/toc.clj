@@ -1,9 +1,8 @@
-(ns leiningen.toc)
-
-(require '[markdown :as md])
-(use 'jsoup.soup)
-(import 'java.awt.Desktop)
-(import 'java.io.File)
+(ns leiningen.toc
+	(:require [markdown :as md])
+	(:use jsoup.soup)
+	(:import [java.awt Desktop])
+	(:import [java.io File]))
 
 (load-file "code/57_grep2.clj")
 
@@ -42,3 +41,6 @@
 	(toc "textja"))
 (defn tocen[]
 	(toc "text"))
+
+(defn toc[project & args] 
+	(tocja))
