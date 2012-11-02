@@ -97,6 +97,7 @@ section {
 h1, h2 {
 	color: #000;
 	font-weight: 700;
+    line-height: 1.5em;
 }
 
 section h2 {
