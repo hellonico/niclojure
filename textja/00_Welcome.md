@@ -1,7 +1,7 @@
 # Clojure À la carte
 ###### Clojure ア・ラ・カルト
 
-## 今さらClojure勉強するって？へぇ？なんで？
+## 今さらClojure？ なんで？
 
 ###### アベリティフ（Aperitif）: 食前酒のこと
 

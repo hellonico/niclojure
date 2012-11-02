@@ -1,4 +1,4 @@
-## いろいろな世界と宇宙とつながるの楽々RabbitMQ, Hadoop等のすぐ出来るチャプター
+## RabbitMQだったら宇宙とだってつながる、、、かな。 Hadoopもあるよ
 ###### プラ（Plat） ヴィヤンド:メインのお肉料理
 
 ### JMS, AMQP, RabbitMQ用ツールキット：Clamq 

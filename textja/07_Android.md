@@ -1,4 +1,4 @@
-## 皆が遊んでるAndroid, Clojure使ってコードが簡単で短くなる
+## Androidアプリで稼ぐ？ 
 ###### アヴァン・デセール（Avant dessert）: デザート前のお料理
 
 ### 簡単な Android サンプル

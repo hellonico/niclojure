@@ -1,4 +1,4 @@
-## Java上だけではなく、RubyのVM, .NET, javascriptエンジンでも動かせるClojure		
+## JavaだけぢゃないClojure：Ruby、.NET、javascript		
 ###### プティ・フール（Petit fours）: 締めのお茶受け 
 
 ### Ruby + Clojure = Rouge !
