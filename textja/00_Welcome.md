@@ -1,4 +1,4 @@
-# Clojure À la carte
+# アジャイル開発に味を付けるのClojure ア・ラ・カルト。単品選んで、すぐプロになる。
 ###### Clojure ア・ラ・カルト
 
 ## 今さらClojure？ なんで？

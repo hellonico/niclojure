@@ -41,6 +41,6 @@
 	(toc "textja"))
 (defn tocen[]
 	(toc "text"))
-
-(defn toc[project & args] 
-	(tocja))
+;
+;(defn toc[project & args] 
+;   (tocja))
