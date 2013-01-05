@@ -8,7 +8,7 @@ This book is about sharing my love for Clojure, why I use it, and why I will kee
 
 I will not go too much into the first steps details, since this is not the aim of this book. There is a completely new online book written by [John](http://www.unexpected-vortices.com/clojure/brief-beginners-guide/index.html) that should get all the attention it deserves.
 
-Do not forget to do a few [clojure koans](https://github.com/functional-koans/clojure-koans) to make sure the basic and the roots are ok.
+You could also do a few [clojure koans](https://github.com/functional-koans/clojure-koans) to make sure the basic are solid and fun for you.
 
 I have added a few trips and ticks in the 00_zero.clj file (in the samples), so feel free to go along and try it by yourself, once you have read the next section about how to get started with clojure.
 

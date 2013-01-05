@@ -8,9 +8,12 @@
 
 ### Why would even I need Clojure now ? 
 
-Clojure is a rather new programming language, that appeared in 2007, created by Rich Hickey, originally targeting the Java Virtual Machine. While Java had and still has its up and down, and some times a clunky syntax, the virtual Machine it runs on is one of the best multi core ready environment for computing. 
+Clojure is a rather new programming language, that appeared in 2007, created by Rich Hickey, originally targeting the Java Virtual Machine. While Java had and still has its up and down, and some times a clunky syntax, the virtual Machine it runs on is one of the best multi core ready environment for computing.
+
 Clojure turns itself into (byte-)code that the Java Virtual Machine fully understands, and runs, as well as enhance performance of the most used part of your programs. 
+
 Clojure is not the only language to run on the Virtual Machine. Other famous and well performing languages like Scala, JRuby (a Ruby implementation implemented in Java). While those languages have also their strength, we the authors feel that Clojure is not only going to make your life easier, it will also change the way your think and create software, or whatever it is your want to create. 
+
 Once you have master Clojure, you have gained not only speed, but also clarity, and taste for what you deliver.
 
 ### Theme and approach of the book
@@ -26,10 +29,11 @@ I definitely think Clojure, under its different forms, is a one awesome knife to
 
 A few application examples would be:
 
-* Multi-cores processing Settlements application integrating with distributed messaging queues and complex trading systems
-* Heavily threaded Web based configuration management, monitoring and deployment application 
+* Multi-cores processing Settlements application integrating with distributed messaging queues and complex trading systems.
+* Heavily threaded Web based configuration management, monitoring and deployment application. 
 * Very fast to-market implementation of a social Platform service, using websockets and MongoDB on Heroku
-But also some command line scripts.
+
+And also countless command line scripts.
 
 ### What will you be achieve with this book
 
