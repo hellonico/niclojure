@@ -207,16 +207,16 @@ And we can of course, do the opposite, parse some string and turn it into a vali
     user=> (parse-string "{\"foo\":\"bar\"}")
     {"foo" "bar"}
 
-Unlimited power. Time for a second sip of that easy to drink South of France Chardonay 2010.
+Unlimited power. Time for a second sip of that easy to drink South of France Chardonnay 2010.
 
 ### Ibiblio, Java libraries at your fingertips
 
 You might be wondering where the cheshire dependency has been pulled from.
-In the Java world, Maven, however good or bad, has managed to impose a clean way of storing and retrieving Java code packaged as java archives onto something named ibiblio.
+In the Java world, Maven, however good or bad, has managed to impose a clean way of storing and retrieving Java code packaged as Java archives onto something named ibiblio.
 
 [http://mirrors.ibiblio.org/maven2/](http://mirrors.ibiblio.org/maven2/)
 
-In most cases pure java libraries, of which Clojure can make use straight away (yey!), will be retrieved from there. 
+In most cases pure Java libraries, of which Clojure can make use straight away (yey!), will be retrieved from there. 
 
 For example, you may remember the famous Apache library named common-io.
 There is a [descriptor](http://mirrors.ibiblio.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom) for it that can be found in something called a pom file. 
@@ -238,9 +238,9 @@ Now, without much more trouble, we interface to the java world with:
 
 We will see more Java interop code along this book, for now you can refer to the [Clojure interop page](http://clojure.org/java_interop).
 
-### Clojars, or your clojure libraries at your fingertips
+### Clojars, or your Clojure libraries at your fingertips
 
-A more clojure specific place to find your libraries is named [Clojar](https://clojars.org/).
+A more Clojure specific place to find your libraries is named [Clojar](https://clojars.org/).
 
 To find the Cheshire library we used earlier on, we would access:
 
@@ -264,7 +264,7 @@ Now, we define profiles that we write using Clojure syntax in a file named
 
     ~/.lein/profiles.clj
 
-One very simple but useful plugins is named _lein-pprint_, itself hosted on Clojar.
+One very simple but useful plugin is named _lein-pprint_, itself hosted on Clojar.
 
 The content of the file above is going to be:
 
@@ -288,19 +288,9 @@ Which will output all the metadata related to your Clojure project.
 
 ### Create code, and share it through clojars
 
-For interfacing with Clojar, we are going to use a plugin named clojar (!).
+For interfacing with Clojar, leiningen2 actually does not use a plug-in anymore. 
 
-Let's go back to the file from the previous section, _profiles.clj_, and add the clojar plugin:
-
-    {:user {:plugins [
-        [lein-pprint "1.1.1"] 
-        [lein-clojars "0.9.1"] ]}}
-
-A quick look at the [plugin documentation](https://github.com/ato/lein-clojars) tells us to generate some security keys. 
-
-Now, that we are set up, let's go back to our Clojure project from earlier on. We can now cheers and share our code with other people using:
-
-    lein push
+    lein deploy clojars
 
 That's it. 
 
@@ -332,13 +322,13 @@ The Eclipse plugin CounterClockWise is a very up to date, and slick integrated d
 
 [http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
 
-The plugin Counterclockwise install without glitches on modern Eclipse environment. 
+The plug-in Counterclockwise install without glitches on modern Eclipse environment. 
 
 Add the update site from the following menu:
 
 ![ccw0](../images/ccw0.png)
 
-And the following url:
+And the following URL:
 
     http://ccw.cgrand.net/updatesite/
 
@@ -374,15 +364,102 @@ And the completion will be present straight from the REPL:
 
 Wow. Let's eclipse some more of that very tasty wine !
 
-### 止めずにライブラリを追加する
-### 内緒でScalaのコードを走らせる
-### Javaのコードを走らせるっていうのは、ここだけの話
+### Dynamically add libraries to your current Clojure session
+
+Back from Eclipse to the command line, I do not know if you have noticed, but every time you order something from Clojar, you need to restart the REPL session so the new dependency is resolved.
+
+_Chas Emerick_ decided that was taking too much of his time and put together in a clean library called pomegranate some magic so you can add more dependencies at runtime.
+
+Note that in this case, we do not want the library to be included as a straight dependency of our project, but more of something like a tool or a development dependency.
+
+This is the way to declare it in the _project.clj_:
+
+    :profiles {:dev {:dependencies [
+        [com.cemerick/pomegranate "0.0.13"]]}}
+
+Now after running our REPL with
+
+    lein repl
+
+Let's import that new namespace where we need it with:
+
+    (use '[cemerick.pomegranate :only (add-dependencies)])
+
+And now we can import a fuzzy xml library with
+
+    (add-dependencies 
+        :coordinates '[[antler/xyzzy "0.1.0"]] 
+        :repositories {"clojars" "http://clojars.org/repo"})
+
+This will output the dependencies that were added to the classpath:
+
+    {[org.clojure/data.zip "0.1.0"] nil, [org.clojure/clojure "1.3.0"] nil, [antler/xyzzy "0.1.0"] #{[org.clojure/clojure "1.3.0"] [org.clojure/data.zip "0.1.0"]}}
+
+And we can call our new downloaded dependency straight away:
+
+    (require '[xyzzy.core :as xyzzy])
+
+    (xyzzy/parse-xml "<html><body><h1>It works</h1></body></html>")
+
+Which will return a lazy sequence, that prints out at the REPL:
+
+    [{:tag :html, :attrs nil, :content [{:tag :body, :attrs nil, :content [{:tag :h1, :attrs nil, :content ["It works"]}]}]} nil]
+
+Of course, you will eventually want to add that dependency in your _project.clj_ file.
+
+### Don't tell anyone you run Scala code from Clojure
+
+Since every source file in a lein project can be integrated, you can use the [scalac-plugin](https://github.com/technomancy/lein-scalac)
+
+The way to install the plugin is straight forward:
+
+* Add [lein-scalac "0.1.0"] to :plugins project.clj. 
+* Set :scala-source-path in project.clj, usually to "src/scala", and place your .scala source files in there.
+* To compile them to .class files:
+
+    lein scalac
+
+* If you want scalac to run automatically, add :prep-tasks ["scalac"] to project.clj
+* In most cases you will also need to declare a dependency on scala-library like so:
+
+    :dependencies [org.scala-lang/scala-library "2.9.1"]
+
+Now let's write some scala code:
+
+@@@ ruby chapter01/src/scala/sample.scala @@@
+
+and here is how you call it from Clojure:
+
+@@@ ruby chapter01/src/sample/scala.clj @@@
+
+And here is the expected output
+
+    sample.core=> (import HelloWorld)
+    HelloWorld
+    sample.core=> (.sayHelloToClojure (HelloWorld.) "Hi there")
+    "Here's the second echo message from Scala: Hi there"
+
+Now you can tell your friend you know more than one language on the JVM. :)
+
+Or you can also tell the waiter you can drink more than one type of wine.
+
+### Don't tell anyone you run Java code from Clojure
+
+Note that the scala integration right above is also supported for old fashioned java. This is actually built-in in leiningen. Here is how you put it together just in case.
+
+We first take a regular java class:
+
+@@@ ruby chapter01/src/java/HelloWorldJava.java @@@
+
+
+
 ### Clojureのメソッドをhookeでラップする
 ### おいしいプラグインのスープLeiningen仕立て
 ### Rubyをもう一つ： Jruby 
 ### Leiningen用のプラグインを書いてみる
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
+
 ### clojure-contribって知ってる？ ヤバいよ、それ。
 ### サンプル 
 ### 自分専用のWebベース Clojureインタープリタを作る
