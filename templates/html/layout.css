@@ -11,6 +11,7 @@ html * {
 @page {
 	margin: 12mm 16mm 10mm 16mm;
 	size: 7in 9.25in landscape;
+	/*size: 7in 9.25in ;*/
 
 	@footnotes {
 		border-top: thin solid black;
