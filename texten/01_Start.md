@@ -468,7 +468,21 @@ Now we can simply start the RPEL again, and type some Clojure:
     sample.core=> (.sayHello (HelloWorldJava.) "World")
     "This is a warm welcome from old Java to World"
 
-### Clojureのメソッドをhookeでラップする
+### Wrap any clojure method with hooke
+
+While searching for an example on the javac plugin above, I stumbled on a super example on how to add hooks on any function. 
+Awesome.
+
+Let's add a dependency to our _project.clj_ file again:
+
+    [robert/hooke "1.3.0"]
+
+And then, we can go through the sample code together:
+
+@@@ ruby chapter01/src/sample/hooke.clj @@@
+
+This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)
+
 ### おいしいプラグインのスープLeiningen仕立て
 ### Rubyをもう一つ： Jruby 
 ### Leiningen用のプラグインを書いてみる
