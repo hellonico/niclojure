@@ -252,10 +252,114 @@ And have our search returning the following:
 
 Most if not everyone in the Clojure community have given up and is only ordering from the Clojar infrastructure. All of the latest reliable code should be on it.
 
+So now you have two places to find all the bricks, bread, peaches and libraries you may need to make a perfect meal. 
+
+One more sip of wine ?
+
+### Bread and butter, installing and using some Leiningen plugins 
+
+Leiningen has a _new_ way of defining plugins. Ages ago (2010?) plugins were installed per project, so you were soon finding out that each time you were starting a new project, you were installing the same plugins over and over again. Waste of time, and time is good wine.
+
+Now, we define profiles that we write using Clojure syntax in a file named 
+
+    ~/.lein/profiles.clj
+
+One very simple but useful plugins is named _lein-pprint_, itself hosted on Clojar.
+
+The content of the file above is going to be:
+
+    {:user {:plugins [[lein-pprint "1.1.1"]]}}
+
+Now, lein will resolve the plugin, download it if needed, and make it accessible so that a call to _lein help_ will show:
+
+    Several tasks are available:
+    check               Check syntax and warn on reflection.
+    ...
+    pprint              Pretty-print a representation of the project map.
+    repl                Start a repl session either
+    test                Run the project's tests.
+    ...
+
+And now you can use this plugin with any of your project using:
+
+    lein pprint
+
+Which will output all the metadata related to your Clojure project.
+
 ### Create code, and share it through clojars
 
-### 書いたコードをClojarでシェア
-### Eclipseで一仕事
+For interfacing with Clojar, we are going to use a plugin named clojar (!).
+
+Let's go back to the file from the previous section, _profiles.clj_, and add the clojar plugin:
+
+    {:user {:plugins [
+        [lein-pprint "1.1.1"] 
+        [lein-clojars "0.9.1"] ]}}
+
+A quick look at the [plugin documentation](https://github.com/ato/lein-clojars) tells us to generate some security keys. 
+
+Now, that we are set up, let's go back to our Clojure project from earlier on. We can now cheers and share our code with other people using:
+
+    lein push
+
+That's it. 
+
+In the back scene, your code will be turned into a Java archive, _jar_ file and then pushed to Clojar along with some metadata. 
+
+Other developers can then use your code using the dependency syntax with have seen.
+
+### Sunny work with Eclipse
+
+Probably the best IDE environment for Clojure will be Eclipse that you can download at the usual location:
+
+    http://www.eclipse.org/downloads/index-developer.php
+
+The Eclipse plugin CounterClockWise is a very up to date, and slick integrated development environment for Clojure from within Eclipse.
+
+[http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
+
+The plugin Counterclockwise install without glitches on modern Eclipse environment. 
+
+Add the update site from the following menu:
+
+![ccw0](../images/ccw0.png)
+
+And the following url:
+
+    http://ccw.cgrand.net/updatesite/
+
+![ccw1](../images/ccw1.png)
+
+![ccw2](../images/ccw2.png)
+
+The plugin is installed and we can now import the project we created here. 
+
+We import the project as a regular java project:
+
+![ccw3](../images/ccw3.png)
+
+Then update the settings to reflect the fact we are using Leiningen:
+
+![ccw4](../images/ccw4.png)
+
+We can start a REPL straight from eclipse !
+
+![ccw5](../images/ccw5.png)
+
+The real reason you want to have eclipse running is for its awesome auto completion and integrated documentation. Start typing and see it in action:
+
+![ccw6](../images/ccw6.png)
+
+We have started a REPL, we can just add the new code we have been writing with _Command-Enter_
+
+![ccw7](../images/ccw7.png)
+
+And the completion will be present straight from the REPL:
+
+![ccw8](../images/ccw8.png)
+
+Wow. Let's eclipse some more of that very tasty wine !
+
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
 ### 止めずにライブラリを追加する
