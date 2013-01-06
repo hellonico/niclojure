@@ -451,7 +451,22 @@ We first take a regular java class:
 
 @@@ ruby chapter01/src/java/HelloWorldJava.java @@@
 
+Let's tell leiningen some useful metadata in _project.clj_:
 
+    ; where to find the java classes
+    :java-source-paths ["src/java"]
+    ; some compilation option. those are passed to javac
+    :javac-opts ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
+
+One more line in the same file, so lein does things for us:
+
+    :prep-tasks ["scalac" "javac"]
+
+This will ask lein to run scalac from our previous example, and then javac.
+Now we can simply start the RPEL again, and type some Clojure:
+
+    sample.core=> (.sayHello (HelloWorldJava.) "World")
+    "This is a warm welcome from old Java to World"
 
 ### Clojureのメソッドをhookeでラップする
 ### おいしいプラグインのスープLeiningen仕立て
@@ -459,7 +474,6 @@ We first take a regular java class:
 ### Leiningen用のプラグインを書いてみる
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
-
 ### clojure-contribって知ってる？ ヤバいよ、それ。
 ### サンプル 
 ### 自分専用のWebベース Clojureインタープリタを作る
