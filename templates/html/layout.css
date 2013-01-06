@@ -213,15 +213,18 @@ div.frontcover * {
 /* = CODING = */
 /* ========== */
 pre, code {
-	color: #090;
-	font-family: monaco, monospace;
-	font-size: 8pt;
+	border-top: 2px;
+	border-bottom: 2px;
+	border-color: black;
+	background-color: #EEEEEE;
+	font-family: courier, monospace;
+	font-size: 11pt;
 }
 
 pre, pre code {
-	font-size: 8pt;
+	font-size: 10pt;
 	line-height: 1.4;
-	padding-left: 25pt;
+	padding-left: 30pt;
 }
 
 /* ========= */
@@ -264,6 +267,7 @@ li ol {
 
 img {
 	max-width: none;
+	vertical-align: center;
 	prince-image-resolution: 96dpi;
 }
 
