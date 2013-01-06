@@ -10,15 +10,14 @@ So prepare your favorite text editor, and .... Here we go!
 ### Clojure References and links when you get lost
 
 There are tutorials to learn the basic baby steps of Clojure around the web. This book do not want to reinvent the wheel so if you need you should have a look at some of them.
-One of the most up-to-date could be 
+
+One of the most up-to-date could be:
 
 [http://learn-clojure.com/clojure_tutorials.html](http://learn-clojure.com/clojure_tutorials.html)
 
 I will not go too much into the first steps details, since this is not the aim of this book. There is a completely new online book written by [John](http://www.unexpected-vortices.com/clojure/brief-beginners-guide/index.html) that should get all the attention it deserves.
 
 You could also do a few [clojure koans](https://github.com/functional-koans/clojure-koans) to make sure the basic are solid and fun for you.
-
-I have added a few trips and ticks in the 00_zero.clj file (in the samples), so feel free to go along and try it by yourself, once you have read the next section about how to get started with clojure.
 
 Last one, if you get lost on your journey, be sure to refer to the [cheatsheet](http://clojuredocs.org/quickref/Clojure%20Core).
 
@@ -32,7 +31,7 @@ With a REPL, you first type a command, then the interpreter reads it, print the 
 
 All commands stays in memory and you can refer to old processed commands and use their result, refactor and so on.
 
-To start using clojure, we actually do not install it. We are going to install that tool named Leiningen, so most of the dependencies and environment problems will be solved.
+To start using clojure, we actually do not install it. We are going to install a tool named Leiningen, so most of the dependencies and environment problems will be solved and you can simply enjoy the core of the meal.
 
 The home page for Leiningen and its related command line, *lein* can be found at the following location:
 
@@ -59,9 +58,39 @@ Which should output something similar to:
 
 ![Lein Version](../images/00/lein_version.png)
 
+If things do not work load as expected, please refer to the leiningen documentation, check your internet connection, reboot and if all else fail ask the waiter.
+
+Now that we are sure lein is properly installed, let's start having fun, let's run our Read-Eval-Print-Loop on our own machine:
+
+    lein repl
+
+This will print some stuff:
+
+    [niko@Modrzyks-MacBook-Pro-2][11:42][~/projects/mascarpone/chapter01/] % lein repl
+    nREPL server started on port 54311
+    REPL-y 0.1.0-beta10
+    Clojure 1.4.0
+        Exit: Control+D or (exit) or (quit)
+    Commands: (user/help)
+        Docs: (doc function-name-here)
+              (find-doc "part-of-name-here")
+      Source: (source function-name-here)
+              (user/sourcery function-name-here)
+     Javadoc: (javadoc java-object-or-class-here)
+    Examples from clojuredocs.org: [clojuredocs or cdoc]
+              (user/clojuredocs name-here)
+              (user/clojuredocs "ns-here" "name-here")
+    user=> 
+
+Voila ! Time for a glass of wine to congratulate ourself.
+
+Now you are ready to try your first useful tricks in Clojure.
+
+Now is the time to jump to the first samples in the Appendix A, go along and try it by yourself.
+
+I insist. Try it by yourself *NOW* before the eggs are fried and the vinegar turns sour. 
 
 #### 誰かを頼りにしよう
-
 
 ### ClojarとClojureライブラリ
 ### 書いたコードをClojarでシェア
