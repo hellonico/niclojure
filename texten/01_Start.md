@@ -308,6 +308,20 @@ In the back scene, your code will be turned into a Java archive, _jar_ file and 
 
 Other developers can then use your code using the dependency syntax with have seen.
 
+### (I can) see your dependencies
+
+As a quick refresher, remember you can always see your dependencies with Leiningen using the following command:
+
+    lein deps :tree
+
+Which will output with the project we have had so far:
+
+     [cheshire "5.0.1"]
+       [com.fasterxml.jackson.core/jackson-core "2.1.1"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.1.1"]
+     [commons-io "2.4"]
+     [org.clojure/clojure "1.4.0"]
+
 ### Sunny work with Eclipse
 
 Probably the best IDE environment for Clojure will be Eclipse that you can download at the usual location:
@@ -360,8 +374,6 @@ And the completion will be present straight from the REPL:
 
 Wow. Let's eclipse some more of that very tasty wine !
 
-### JarkでJVMをリロード知らず
-### Jarkで激しくClojureスクリプティング
 ### 止めずにライブラリを追加する
 ### 内緒でScalaのコードを走らせる
 ### Javaのコードを走らせるっていうのは、ここだけの話
@@ -369,6 +381,8 @@ Wow. Let's eclipse some more of that very tasty wine !
 ### おいしいプラグインのスープLeiningen仕立て
 ### Rubyをもう一つ： Jruby 
 ### Leiningen用のプラグインを書いてみる
+### JarkでJVMをリロード知らず
+### Jarkで激しくClojureスクリプティング
 ### clojure-contribって知ってる？ ヤバいよ、それ。
 ### サンプル 
 ### 自分専用のWebベース Clojureインタープリタを作る
