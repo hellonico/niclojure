@@ -298,6 +298,12 @@ In the back scene, your code will be turned into a Java archive, _jar_ file and 
 
 Other developers can then use your code using the dependency syntax with have seen.
 
+Also, not that you should have a look at the output of:
+
+    lein help deploying
+
+To see how to deploy to other repositories, especially private ones. 
+
 ### (I can) see your dependencies
 
 As a quick refresher, remember you can always see your dependencies with Leiningen using the following command:
@@ -483,8 +489,52 @@ And then, we can go through the sample code together:
 
 This is like adding aspects to your clojure functions ! With no pointcuts  ?? :)
 
-### おいしいプラグインのスープLeiningen仕立て
-### Rubyをもう一つ： Jruby 
+### One more ruby: Jruby 
+
+Just for the sake of it, if you need to run a some Ruby code but do not want to go through the pain of the set up, you can just ask Leiningen.
+
+Add 
+
+    [lein-jruby "0.1.0"] 
+
+to the _:plugins_ section of your settings file _profile.clj_.
+
+Then, you can could scripts this way:
+
+    lein jruby -S src/ruby/fibonacci.rb 1000
+
+fibonacci.rb is a matrix way of computing fibonacci numbers in Ruby. See:
+
+@@@ ruby chapter01/src/ruby/fibonacci.rb @@@
+
+Again, you do not need to have ruby install to get this running. 
+The first example was without any dependencies, but if you need jruby to install a ruby gem for you, here is how you do it:
+
+    lein jruby -S gem install json-jruby
+
+Then you can can call the ruby example that can be found in the chapter01:
+
+@@@ ruby chapter01/src/ruby/json.rb @@@
+
+with 
+    
+    lein jruby -S src/ruby/json.rb 
+
+Voila. Ruby wine. But do not forget to keep reading this book and learn Clojure. 
+
+### The delicious Leiningen Plugins soup
+
+This is not the end, Leiningen provides plugins for all your needs. Groovy, Hadoop, ... you name it. It should be in the Leiningen plugins list:
+
+    https://github.com/technomancy/leiningen/wiki/Plugins
+
+I have found that I am using those ones the most:
+
+| Leiningen Plugin| What does it do | What's useful |
+| | |
+| lein-midje | It runs test | Not only useful, you have to install it. We will cover that later | 
+| lein-noir | To easily create webapps | We will cover that later | 
+
 ### Leiningen用のプラグインを書いてみる
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
