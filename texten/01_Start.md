@@ -91,6 +91,28 @@ Now is the time to jump to the first samples in the Appendix A, go along and try
 
 I insist. Try it by yourself *NOW* before the eggs are fried and the vinegar turns sour. 
 
+#### Do you have a friend with a REPL ? 
+
+This little trick has been made very easy with Leiningen 2, so I will briefly talk about it here.
+You can start a REPL and get different users to connect to it. That REPL can be local or remote, and only one port has to be opened to allow it to run. 
+
+For example, start a REPL with:
+
+    lein repl :headless 
+
+It will output something like:
+
+    nREPL server started on port 53337
+
+Then you can connect to it from a different terminal with:
+
+    lein repl :connect 53337
+
+Which will connect to the REPL that was created in the first place. 
+You can do could thing such as delegating computation to a better faster computer, getting some data from services running only on that computer or so on.
+
+Sweet.
+
 #### Workflow
 
 Most LISP-ified users have their own workflow while using the REPL. The workflow we expose in this section is only a proposition. Do what works best for you. 
