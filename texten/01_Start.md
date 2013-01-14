@@ -530,14 +530,159 @@ This is not the end, Leiningen provides plugins for all your needs. Groovy, Hado
 
 I have found that I am using those ones the most:
 
-| Leiningen Plugin| What does it do | What's useful |
-| | |
-| lein-midje | It runs test | Not only useful, you have to install it. We will cover that later | 
-| lein-noir | To easily create webapps | We will cover that later | 
+Leiningen Plugin| What does it do | What's useful |
+| |
+lein-midje | It runs test | Not only useful, you have to install it. We will cover that later | 
+lein-noir | To easily create webapps | We will cover that later | 
+lein-deps | This shows all your project transitive dependencies. | Try _lein deps :tree_ 
+lein-git-version | Use the git tag to store the version in a version.clj file. | Keeps dry. |
+lein-webrepl | This starts a REPL as a web server, so you can edit code straigth into your browser | 
 
-### Leiningen用のプラグインを書いてみる
-### JarkでJVMをリロード知らず
-### Jarkで激しくClojureスクリプティング
-### clojure-contribって知ってる？ ヤバいよ、それ。
-### サンプル 
-### 自分専用のWebベース Clojureインタープリタを作る
+![ccw6](../images/webrepl.png)
+
+Take some time to browse what's already existing and see how it can helps you writing code more easily. Lein has plenty of ingredients, so be sure to make a great meal.
+
+### Writing your own plugin for Leiningen
+
+Now at this stage, it is time to contribute back something to the community and start writing our own plugin.
+
+We are going to write a short plugin that retrieve some data online and prints the result on the command line.
+
+Let's add a:
+
+    :eval-in-leiningen true
+
+To the project.clj so we can write the plugin straight from our current project.
+
+The task  name will be named _stock_ and we willc all it this way:
+
+    lein stock YHOO
+
+With the last parameter the stock name.
+We will put the source code for the new task in _src/leiningen_ and will name the file _stock.clj_.
+Also the namespace will be _leiningen.stock_.
+
+Inside the source file, we will name the method _stock_.
+
+The rest of the code goes like this:
+
+@@@ ruby chapter01/src/leiningen/stock.clj @@@
+
+And then, we can get a bunch of results like:
+
+Company name | Command line | Result
+| | 
+Apple | lein stock AAPL | 520.00
+Microsoft | lein stock MSFT | 26.83
+Yahoo | lein stock YHOO | 19.29
+Google | lein stock GOOG | 520.30
+
+### Save time, do not reload the JVM with Jark
+Jark is a tool to run Clojure code on the JVM, interactively and remotely.
+
+You have notice that every time you launch a Clojure program in the JVM, and the JVM takes a long time to start. For overcoming this when developing, you use a REPL, but sometimes it is just better altogether without that extra time, and this is when Jark jumps in.
+
+You can find it at the following location:
+
+    http://icylisper.github.com/jark/
+
+Once you have the binary and put it into your shell path, make sure you run:
+
+    jark server install 
+
+To get the depedencies and then, once, start a Jark server with:
+
+    jark server start
+
+Once you have this, you have  a set of ways to execute code with the jark client:
+
+    jark -e "(+ 2 2)"
+    echo "(+ 2 2)" | jark -e 
+    jark -e < file.clj
+    cat file.clj | jark -e
+
+The code will be send to the jark server for execution. 
+
+@@@ ruby chapter01/src/jark/factorial @@@
+
+Lastly, jark also has a REPL, and you can start it with the expected command:
+
+    jark repl
+
+One of the feature I like, is that you can also embed the server in your own project with:
+
+    ;At time of writing
+    ; Add [jark "0.4.3-clojure-1.5.0-alpha5" :exclusions [org.clojure]] to project.clj 
+    (require 'clojure.tools.jark.server)
+    (clojure.tools.jark.server/start PORT)
+
+Anyway, no less waiting, more wine.
+
+### If you ever see something called, clojure-contrib, run away.
+
+In the early days, there used to be clojure-core, and clojure-contrib.
+Clojure core would be a small minimum of code, and clojure-contrib would contains all that was not part of the core but was decided to _almost_ in the core.
+
+The contrib library growed so big, every project was using it and it was spreading like some bad red grapes.
+It is not that the code was bad, far away from it. It is the way it was packaged at first that brought problems overtime. 
+
+Clojure Contrib is still somehow in the official Clojure documentation.
+
+    http://dev.clojure.org/display/doc/Clojure+Contrib
+
+But people are managing to gradually go away from it and separate each small contribution into a regular dependency.
+
+To make things in perspective, it is like getting to chef to bring all the food in the kitchen to the table in front of you, so then you can decide what to pick up.
+You would eventually get great food, but it is going to take a lot of time for you to get anything to eat, plus there will be a lot of dishes to wash aftewards.
+
+This is the current list of Modular contrib projects: 
+
+    * algo.generic - formerly clojure.contrib.generic
+    * algo.monads - formerly clojure.contrib.monads
+    * build.poms - example pom.xml file for new contrib libraries
+    * core.cache
+    * core.contracts
+    * core.incubator - some of clojure.contrib.def moved here, along with all of clojure.contrib.strint
+    * core.logic
+    * core.match
+    * core.memoize
+    * core.unify
+    * data.codec - replaces clojure.contrib.base64
+    * data.csv
+    * data.finger-tree
+    * data.generators - extracted from test.generative to provide the data generators separately
+    * data.json - formerly clojure.contrib.json
+    * data.priority-map - formerly clojure.contrib.priority-map
+    * data.xml - formerly clojure.contrib.lazy-xml
+    * data.zip - formerly clojure.contrib.zip-filter
+    * java.classpath - formerly clojure.contrib.classpath
+    * java.data
+    * java.jdbc - formerly clojure.contrib.sql
+    * java.jmx - formerly clojure.contrib.jmx
+    * math.combinatorics - formerly clojure.contrib.combinatorics
+    * math.numeric-tower - formerly clojure.contrib.math
+    * test.benchmark
+    * test.generative - testing library based on data generators (above).
+    * tools.cli - replaces clojure.contrib.command-line
+    * tools.logging - formerly clojure.contrib.logging
+    * tools.macro - formerly clojure.contrib.macro-utils, clojure.contrib.macros
+    * tools.namespace - formerly clojure.contrib.find-namespaces
+    * tools.nrepl
+    * tools.trace - formerly clojure.contrib.trace
+
+Make sure you take some time to have a look quickly at the list. You probably will need some code from those project and no need to re-write from scratch what has already spent time in other people production code.
+
+### Samples and Conclusion 
+
+Voila, this is it for our first chapter. We have seen:
+
+* start a project quickly with leiningen
+* manage our dependencies
+* start a REPL
+* how to write code in a text editor, a REPL, elipse and a web repl
+* how to integrate other languages into a clojure project
+* avoid restarting the Java Machine
+
+Now take some time to go through the sample found in the Appendix, learn some tricks, and let's move on to Chapter 02 which will teach us a bunch of useful code for different programming situation.
+
+But for now, a glass of wine ? 
