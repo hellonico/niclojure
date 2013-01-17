@@ -87,6 +87,7 @@ Incanter has become a full package to perform efficient stats just like the *R* 
 There are also plenty of examples on the author website, relevant to Clojure in general so definitely worth having a look.
 
 ####  Where the doc ? It's literate. 
+
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
 
 Marginalia is your best literate programming tool for clojure. Which means, if you write the necessary comments within your code, marginalia will generate the best documentation for your project. Then you just have to publish it online. 
@@ -95,15 +96,66 @@ Install it as a dependency in your *~/.lein/profiles.clj* file:
 
 
 	{:user {:plugins [
-                  [lein-marginalia "0.7.1"]
+                  [lein-marginalia "0.7.1"] ; <- add this
                   [lein-pprint "1.1.1"]]}}
-
 
 Then, just use it:
 
 	lein marg
 
-
 And dependending on the amount of comments you wrote in the code, you will get something similar to this:
 
 ![Alt text](../images/marginalia.png)
+
+It will show your dependencies, and comments inline with the code.
+
+####  Easy and beautiful graphs
+
+[https://github.com/pallix/lacij](https://github.com/pallix/lacij)
+
+Now you have all that data computed in Clojure, and you are in need of a great one liner library to turn this into a graph. Lacij is a library that can quickly create SVG diagram with automatic layout, like this one:
+
+![SVG](../images/circle.svg)
+
+Then, a graph can be drawn like this:
+
+@@@ ruby chapter02/src/lacij.clj @@@
+
+The advantage is that you can add and remove nodes dynamically, thus giving a dynamic view about live typologies.
+
+Try some other examples, to generate great graphs. Also, see how it is easy to open a Desktop window and embed the content of the graph within it:
+
+![Lacij](../images/lacijswing.png)
+
+####  Easy User Interface Applications with Seesaw
+
+Make cool Application UIs in no time. Like really no time.
+
+[https://github.com/daveray/seesaw](https://github.com/daveray/seesaw)
+
+Everything is about the web these days. But there are some customers that do not even want to hear about using their web browser for application. You can talk them into using a Webbrowser for a week, or you can make a cool UI in a day. Here comes Seesaw. 
+
+The best tutorial I have found so far is [here](https://gist.github.com/1441520)
+
+Seesaw was born out of the frustration on how to make useful UIs in whatever language on the JVM, or for that purpose any other environment. Here you can get user input, feedback, implement a controller as you wish.
+
+This is the simplest you can ever make with Seesaw:
+
+@@@ ruby chapter02/src/seesaw.clj @@@
+
+And by trying the examples on their website, here is a style you can get after a few lines:
+
+@@@ ruby chapter02/src/seesaw_02.clj @@@
+
+![seesaw](../images/seesaw.png)
+
+Impressed? 
+
+
+####  Xpath queries
+
+[https://github.com/kyleburton/clj-xpath](https://github.com/kyleburton/clj-xpath)
+
+Now you been looking on how to process those xml files as fast as possible, here is a super way to do it, clj-xpath.
+
+@@@ ruby 17_clj_xpath.clj @@@
