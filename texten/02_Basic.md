@@ -151,11 +151,46 @@ And by trying the examples on their website, here is a style you can get after a
 
 Impressed? 
 
-
 ####  Xpath queries
 
 [https://github.com/kyleburton/clj-xpath](https://github.com/kyleburton/clj-xpath)
 
-Now you been looking on how to process those xml files as fast as possible, here is a super way to do it, clj-xpath.
+Now you been looking on how to process those large xml files as fast as possible, here is a super way to do it, clj-xpath.
 
-@@@ ruby 17_clj_xpath.clj @@@
+You start by adding the dependencies for lein:
+
+	[org.clojars.kyleburton/clj-xpath "1.4.0"]
+
+The following code retrieves all the developpers, dependencies for a given online Maven pom.xml file:
+
+@@@ ruby chapter02/src/clj_xpath.clj @@@
+
+	There are two forms of many of the functions, with one set ending with a star ‘*’. The non-suffixed forms will perform their operation on a single result node, raising an exception if there isn’t exactly one result from applying the xpath expression to the XML document. The ‘*’ suffixed forms return all of the matched nodes for further processing.
+
+####  html parsing with delicious jsoup
+
+While we are doing a bit of XML, let's dive a bit into Jsoup is one of the most famous library in the java world to slurp some html across the web.
+
+[https://github.com/mfornos/clojure-soup](https://github.com/mfornos/clojure-soup)
+
+This is a wrapper to provide awesome parsing of html files, whether local or remote. Once you have added the library, check out the following example:
+
+The following example shows you how to retrieve some emoticons on the web:
+
+@@@ ruby chapter02/src/clojure_soup.clj @@@
+
+####  Templating the clojure way with Enlive
+
+HTML parser, and Templating framework at the same time, Enlive does a super job of making HTML fun. (yes you read me.)
+
+(https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-2%3A-Resources-and-Selectors)[https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-2%3A-Resources-and-Selectors]
+
+This is an example taken from a [slick tutorial](https://github.com/swannodette/enlive-tutorial/) by David Nolen.
+
+@@@ ruby 16_enlive.clj @@@
+
+You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
+Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
+
+[Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
+
