@@ -334,3 +334,17 @@ Now we can turn pure Clojure structure into JSON, and parse string in one go. Ve
 
 Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
 
+####  Compute digest for just about everything.
+
+[https://github.com/tebeka/clj-digest](https://github.com/tebeka/clj-digest)
+
+Digesting ! Digest is the easiest way to have a signature of a document, and to make sure that 
+
+What we have for you in this recipie is your everyday tool to compute digest on just about everything. It comes from clojars with:
+
+	[digest "1.3.0"]
+
+And voila. A few lines to compute digest from files, strings bytes etc ...
+
+@@ ruby chapter02/src/digests.clj @@@
+
