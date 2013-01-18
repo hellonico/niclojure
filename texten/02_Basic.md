@@ -252,3 +252,85 @@ Once this is in your project, you can perform some very simple but sexy templati
 
 For the story, the { and } are called moustache, make sure they do not get into your food tasting today. 
 
+
+####  When you need some CSV magic to generate Apple VCard.
+
+Now that we have mustache, we will see a longer example showing how to convert a csv files containing people addresses, to a vcard vcf file format.
+
+[https://github.com/davidsantiago/clojure-csv](https://github.com/davidsantiago/clojure-csv)
+
+Let's start by adding this to our project file:
+
+	[clojure-csv "2.0.0-alpha2"]
+
+Then see what we can do with it.
+
+@@@ ruby chapter02/src/csv.clj @@@
+
+This is greatly inspired by a web based address book application available on [github](https://github.com/KushalP/addressbook/blob/master/src/addressbook/format.clj).
+
+####  When google reader is not enough, some RSS magic.
+
+[https://github.com/yogthos/clj-rss](https://github.com/yogthos/clj-rss)
+
+	[clj-rss "0.1.2"]
+
+Could hardly be easier. We return a set of entries with :title, :link, :description and the RSS library does the rest for us. See in live here:
+
+@@@ ruby chapter02/src/rss.clj @@@
+
+This is taken from [here](http://yogthos.net/blog/17).
+
+####  You need to grrrowl to make great notifications
+[https://github.com/franks42/clj-growlnotify](https://github.com/franks42/clj-growlnotify)
+
+Growl is a famous notification application, that you can use to let you know something happened through a visual effect on the screen.
+You can get it from this place for Apple OSX:
+
+	http://growl.info/
+
+Or for Windows users:
+
+	http://www.growlforwindows.com/gfw/
+
+You can build it from source, using the information available on the following link:
+
+	http://growl.info/documentation/developer/growl-source-install.php
+
+And it will be free, or you can actually help the developpers and contribute a few yens for them and purchased the compiled version. Once Growl is in your system, check it is properly installed with the following code on the command line:
+
+	growlnotify -m hello
+
+Which should display the following on the screen:
+
+![Growl](../images/growl2.png)
+
+Now, let's use it from our Clojure code. Install it in your project with:
+
+	[clj-growlnotify "0.1.1"]
+
+Then:
+
+@@@ ruby chapter02/src/growl.clj @@@
+
+When you run the script above, you will get a nice message like the one below:
+
+!["Growl"](../images/growl2.png)
+
+####  All about JSON with Cheshire.
+[https://github.com/dakrone/cheshire](https://github.com/dakrone/cheshire)
+
+Or how to do proper json fun in the Clojure style. Cheshire is there for good. 
+	
+	Cheshire is fast JSON encoding, based off of clj-json and clojure-json, with additional features like Date/UUID/Set/Symbol encoding and SMILE support.
+
+Add it to your project with:
+
+	[cheshire "4.0.2"]
+
+Now we can turn pure Clojure structure into JSON, and parse string in one go. Very useful for exchanging data with other system.
+
+@@@ ruby chapter02/src/cheshire.clj @@@
+
+Note how you can get keywords back, or do some extra mapping on dates. No more JSON problems.♫
+
