@@ -278,6 +278,37 @@ So now you have two places to find all the bricks, bread, peaches and libraries 
 
 One more sip of wine ?
 
+### Search Clojars with Leiningen
+
+To search for a library on Clojars with Leiningen, be ready, it will take some explanation.
+
+  lein search "postal"
+
+That command takes some regular expression and can actually be used to do some complex things. Try a few libraries first and see what happens.
+The call above would return something like this:
+
+  Searching over Artifact ID...
+   == Showing page 1 / 1
+  [paddleguru/postal "1.7-SNAPSHOT"] 
+  [org.jmatt/postal "1.6-SNAPSHOT"] 
+  [org.clojars.sethtrain/postal "0.2.0"] Clojure email support
+  [org.clojars.sethtrain/postal "0.1.0-SNAPSHOT"] Clojure email support
+  [org.clojars.maxweber/postal "1.6-SNAPSHOT"] 
+  [org.clojars.doo/postal "1.8-SNAPSHOT"] 
+  [org.clojars.danlarkin/postal "1.3.2-SNAPSHOT"] 
+  [org.clojars.btw0/postal "1.4.0-SNAPSHOT"] 
+  [org.clojars.blucas/postal "1.8-SNAPSHOT"] 
+  [com.draines/postal "1.7.1"] 
+  ...
+  [com.draines/postal "1.9.1"] 
+  [com.draines/postal "1.9.2"] 
+
+Note: if your internet connection got bad at the wrong moment, the local search index may get corrupted, so you can delete the following folder:
+
+  ~/.lein/indices
+
+The next call to _lein search_ will regenerate the indexes and all will be back to normal.
+
 ### Bread and butter, installing and using some Leiningen plugins 
 
 Leiningen has a _new_ way of defining plugins. Ages ago (2010?) plugins were installed per project, so you were soon finding out that each time you were starting a new project, you were installing the same plugins over and over again. Waste of time, and time is good wine.

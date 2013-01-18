@@ -43,7 +43,7 @@ This is what needs to be added to your project.clj file:
 
 	[me.shenfeng/http-kit "2.0-SNAPSHOT"]
 
-This would be how you set up a server that reponds to web requests:
+This would be how you set up a server that responds to web requests:
 
 @@@ ruby chapter02/src/http_kit_01.clj @@@
 
@@ -56,7 +56,7 @@ And it even includes a way to handle web sockets. Start the server with:
 
 @@@ ruby chapter02/src/http_kit_02.clj @@@
 
-And then head online to a generic websocket testing site:
+And then head on line to a generic websocket testing site:
 
 [http://www.websocket.org/echo.html](http://www.websocket.org/echo.html)
 
@@ -90,7 +90,7 @@ There are also plenty of examples on the author website, relevant to Clojure in 
 
 [https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
 
-Marginalia is your best literate programming tool for clojure. Which means, if you write the necessary comments within your code, marginalia will generate the best documentation for your project. Then you just have to publish it online. 
+Marginalia is your best literate programming tool for Clojure. Which means, if you write the necessary comments within your code, marginalia will generate the best documentation for your project. Then you just have to publish it online. 
 
 Install it as a dependency in your *~/.lein/profiles.clj* file:
 
@@ -103,7 +103,7 @@ Then, just use it:
 
 	lein marg
 
-And dependending on the amount of comments you wrote in the code, you will get something similar to this:
+And depending on the amount of comments you wrote in the code, you will get something similar to this:
 
 ![Alt text](../images/marginalia.png)
 
@@ -133,7 +133,7 @@ Make cool Application UIs in no time. Like really no time.
 
 [https://github.com/daveray/seesaw](https://github.com/daveray/seesaw)
 
-Everything is about the web these days. But there are some customers that do not even want to hear about using their web browser for application. You can talk them into using a Webbrowser for a week, or you can make a cool UI in a day. Here comes Seesaw. 
+Everything is about the web these days. But there are some customers that do not even want to hear about using their web browser for application. You can talk them into using a Web browser for a week, or you can make a cool UI in a day. Here comes Seesaw. 
 
 The best tutorial I have found so far is [here](https://gist.github.com/1441520)
 
@@ -165,7 +165,7 @@ The following code retrieves all the developpers, dependencies for a given onlin
 
 @@@ ruby chapter02/src/clj_xpath.clj @@@
 
-	There are two forms of many of the functions, with one set ending with a star ‘*’. The non-suffixed forms will perform their operation on a single result node, raising an exception if there isn’t exactly one result from applying the xpath expression to the XML document. The ‘*’ suffixed forms return all of the matched nodes for further processing.
+	There are two forms of many of the functions, with one set ending with a star ‘*’. The non-suffixed forms will perform their operation on a single result node, raising an exception if there is not exactly one result from applying the xpath expression to the XML document. The ‘*’ suffixed forms return all of the matched nodes for further processing.
 
 ####  html parsing with delicious jsoup
 
@@ -185,9 +185,9 @@ This is one of my favorite feature in Clojure. Enlive. Enlive presents a differe
 
 * Code and markup are completely separate.
 * You get to use CSS like syntax to manipulate HTML.
-* Template inheritance isn’t some fancy trick, it’s just function composition.
+* Template inheritance is not some fancy trick, it is just function composition.
 
-HTML parser, and Templating framework at the same time, Enlive does a super job of integrating HTML fun. (yes you read me.)
+HTML parser, and templating framework at the same time, Enlive does a super job of integrating HTML fun. (yes you read me.)
 
 This is an example taken from the [best enlive tutorial](https://github.com/swannodette/enlive-tutorial/).
 
@@ -199,6 +199,56 @@ Reversly, you declare templates in regular html files, and apply some logic in C
 
 @@@ ruby chapter02/enlive_02.clj @@@
 
-Your great designer can do his Dreamweaver work the way he/she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
+Your great designer can do his Dreamweaver work the way he or she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
 
+
+####  Easy Spreadsheet with docjure
+
+[https://github.com/ative/docjure](https://github.com/ative/docjure)
+
+The best way to have fun with spreadsheet in clojure. Relies of course on the [Apache POI](http://poi.apache.org/) library but with some clojure sauce so it can actually be eaten.
+
+This is how you write a simple spreadsheet.
+
+@@@ ruby chapter02/src/docjure.clj @@@
+
+For more examples, I suggest you look at the ["horrible" documentationn](http://poi.apache.org/spreadsheet/how-to.html#sxssf) :)
+
+This horrible soup is disgusting, but it will help you help some big financial company from bankruptcy one day.
+
+####  Spam master with postal
+
+[https://github.com/drewr/postal](https://github.com/drewr/postal)
+
+Now you are on your way to reform, the whole Japanese Post faster than politician will do. Here you will get the power of postal.
+
+You may have known how to send an automated mail before, but taste this by yourself and look at the awesome way of doing this in Clojure. For this example to work, do not forget to set a valid gmail user and the password.
+
+@@@ ruby chapter02/src/postal.clj @@@
+
+This is of course including attachments handling and full Japanese encoding support. yey
+
+####  How's the DNS going ? 
+
+If you need to do some look up or reverse lookup for IPs or hostname. here are a few lines for you:
+
+@@@ ruby src/dns.clj @@@
+
+No need to leave the REPL, type this in anytime. This also does not depend on any external library.
+
+
+####  Don't touch my clostache: more on templating 
+
+[https://github.com/fhd/clostache](https://github.com/fhd/clostache)
+
+We have seen Enlive earlier on, but sometimes you just need some easy file based, or even in-line based templating.
+This is where clostache comes:
+
+	[de.ubercode.clostache/clostache "1.3.1"] 
+
+Once this is in your project, you can perform some very simple but sexy templating magic.
+
+@@@ ruby src/clostache.clj @@@
+
+For the story, the { and } are called moustache, make sure they do not get into your food tasting today. 
 
