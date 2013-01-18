@@ -181,16 +181,24 @@ The following example shows you how to retrieve some emoticons on the web:
 
 ####  Templating the clojure way with Enlive
 
-HTML parser, and Templating framework at the same time, Enlive does a super job of making HTML fun. (yes you read me.)
+This is one of my favorite feature in Clojure. Enlive. Enlive presents a different approach from your usual templating solution. 
 
-(https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-2%3A-Resources-and-Selectors)[https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-2%3A-Resources-and-Selectors]
+* Code and markup are completely separate.
+* You get to use CSS like syntax to manipulate HTML.
+* Template inheritance isn’t some fancy trick, it’s just function composition.
 
-This is an example taken from a [slick tutorial](https://github.com/swannodette/enlive-tutorial/) by David Nolen.
+HTML parser, and Templating framework at the same time, Enlive does a super job of integrating HTML fun. (yes you read me.)
 
-@@@ ruby 16_enlive.clj @@@
+This is an example taken from the [best enlive tutorial](https://github.com/swannodette/enlive-tutorial/).
 
-You declare templates in a regular html files, thus your designer can do his Dreamweaver work the way he/she usually does it. 
-Then as a developper you just come and stick content at the location that has been decided. Slick uh ?
+This is how you use enlive to for website scraping. Fetch the content of a URL then select the html tag you need:
 
-[Scrapping with Clojure and Enlive](http://bestinclassblog.tumblr.com/post/22729197447/how-clojure-got-me-banned-from-google)
+@@@ ruby chapter02/enlive.clj @@@
+
+Reversly, you declare templates in regular html files, and apply some logic in Clojure. See how:
+
+@@@ ruby chapter02/enlive_02.clj @@@
+
+Your great designer can do his Dreamweaver work the way he/she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
+
 
