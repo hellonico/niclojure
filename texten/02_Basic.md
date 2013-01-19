@@ -348,3 +348,38 @@ And voila. A few lines to compute digest from files, strings bytes etc ...
 
 @@ ruby chapter02/src/digests.clj @@@
 
+
+####  Terminal and user interfaction, with lanterna.
+[https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
+
+Fun with the terminal. 
+
+	[clojure-lanterna "0.9.2"]
+
+This simple script:
+
+@@@ ruby chapter02/src/lanterna.clj @@@
+
+will spawn a terminal, display some text, and finally wait for some input key.
+
+![Lanterna](../images/lanterna.png)
+
+It is also easy to wait for keys, and other terminal things fun.
+Have a look at the extensive [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/) to get you excited.
+
+####  What time is it ? It's clj time
+
+Every good language should have access to some clean way to play with dates. Here is one with _clj-time_:
+
+[https://github.com/seancorfield/clj-time](https://github.com/seancorfield/clj-time)
+
+This is mostly a wrapper around jodatime to do dates times and everything time related the clojure way.
+
+Add this to your project.clj
+
+	[clj-time "0.4.5-SNAPSHOT"]
+
+@@@ ruby 41_time.clj @@@
+
+Will make your life with timezones definitely better :) You will always be on the right time. 
+
