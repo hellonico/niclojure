@@ -178,7 +178,7 @@ Lein がディレクトリとファイルを作成します:
         [cheshire "5.0.1"]
         ])
 
-The next time we start the REPL, lein will output, only once, so more messages:
+ファイルを変更してREPLを実行すると、lein は1回だけ、以下のようなメッセージを出力します:
 
     Could not find artifact cheshire:cheshire:pom:5.0.1 in central (http://repo1.maven.org/maven2)
     Retrieving cheshire/cheshire/5.0.1/cheshire-5.0.1.pom (3k)
@@ -190,13 +190,13 @@ The next time we start the REPL, lein will output, only once, so more messages:
     Retrieving cheshire/cheshire/5.0.1/cheshire-5.0.1.jar (12k)
         from https://clojars.org/repo/
 
-Should be pretty fast, unless you are on a modem connection in a hotel in country side California waiting in the lobby for your glass of wine to be served.
+lein が自動的に必要な物をダウンロード開始します。 カリフォルニアの片田舎のホテルで、ワインでも飲みながらのんびりとモデム経由でインターネットしているのでなければ、おそらくあっという間にダウンロードが終了します。
 
-Now straight to our new downloaded library. Let's generate some JSON code with:
+ダウンロードが完了したら、早速試してみましょう。 JSON のコードを生成してみます:
 
     (use 'cheshire.core)
 
-As you remember from the Appendix samples, we can get the documentation for a function using _doc_:
+付録のサンプルにある通り、_doc_を使ってドキュメントを取得することが出来ます:
 
     user=> (doc generate-string)
     -------------------------
@@ -207,22 +207,162 @@ As you remember from the Appendix samples, we can get the documentation for a fu
       The default date format (in UTC) is: yyyy-MM-dd'T'HH:mm:ss'Z'
     nil
 
-And from a regular Clojure sequence, we can create some valid json:
+まず、通常のClojureシーケンスをJSONに変換します:
 
     user=> (generate-string '(1 2 3))
     "[1,2,3]"
     user=> (generate-string '{:name (1 2 3)})
     "{\"name\":[1,2,3]}"
 
-And we can of course, do the opposite, parse some string and turn it into a valid Clojure sequence with:
+そして、逆にJSON文字列をパースして、それをClojureシーケンスに置き換えることもできます:
 
     user=> (parse-string "{\"foo\":\"bar\"}")
     {"foo" "bar"}
 
-Unlimited power. Time for a second sip of that easy to drink South of France Chardonnay 2010.
+色々な可能性を感じますね。 とりあえず、南仏のシャルドネ 2010 で乾杯しますか。
+
+### Javaライブラリ、そしてIbiblio
+
+もしかしたら、cheshireの依存関係はどこから来るんだろう？と思うかもしれませんね。
+Javaの世界では、良いか悪いかは別にして、Mavenは必要なライブラリをibiblioと呼ばれるところにあるJavaのアーカイブから取得します。
+
+[http://mirrors.ibiblio.org/maven2/](http://mirrors.ibiblio.org/maven2/)
+
+純粋なJavaのライブラリであれば、たいていの場合、Clojureでも同じようにibiblioからダウンロードされます。
+
+例えば、有名なApacheのライブラリにcommon-ioというのがあります。
+それに対応するpomと呼ばれるファイルがあります:
+
+[descriptor](http://mirrors.ibiblio.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom)
+
+pomの中身は、大量のXMLですが、その中に以下の記述があります:
+
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.4</version>
+
+これをClojureの世界の言葉に置き換えると:
+
+    [commons-io/commons-io "2.4"]
+
+ということで、以下の記述でJavaの世界とつなげることができます:
+
+    user=> (org.apache.commons.io.FileUtils/readLines (java.io.File. "README.md") "UTF-8")
+    #<ArrayList [# sample, , A Clojure library designed to ... well, that part is up to you., , ## Usage, , FIXME, , ## License, , Copyright © 2013 FIXME, , Distributed under the Eclipse Public License, the same as Clojure.]>
+
+この本では、これからも色々なJavaとの連携について出てきますが、興味があれば次のサイトを参照すると良いでしょう。
+[Clojure interop page](http://clojure.org/java_interop).
 
 ### ClojarとClojureライブラリ
-### 書いたコードをClojarでシェア
+
+Clojureに特化したライブラリは、ここで見つけることができます:
+
+[Clojar](https://clojars.org/).
+
+前のセクションで使ったCheshireをClojarで見つけるには、次のようにアクセスします:
+
+    https://clojars.org/search?q=cheshire
+
+すると、以下のように表示されます:
+
+![Clojure](../images/clojar.png)
+
+Clojureを使う人はほとんど皆Clojarを利用しているので、そこには最新のコードが存在するはずです。
+
+以上、何か材料が必要になったときに探すべき2つの場所を紹介しました。 これで、素晴らしい献立が思いついても、材料が無くて断念。。ということが少なくなりそうですね。
+
+では、ワインをもう一杯？
+
+### LeiningenでClojarsを探す
+
+LeiningenでClojarsのライブラリを探すことが出来ますが、少し説明が必要です。
+
+  lein search "postal"
+
+このコマンドは、正規表現を使っていて、見た目よりも動作が少し複雑です。 実際にこのコマンドを実行すると、以下のような表示が出力されます:
+
+  Searching over Artifact ID...
+   == Showing page 1 / 1
+  [paddleguru/postal "1.7-SNAPSHOT"]
+  [org.jmatt/postal "1.6-SNAPSHOT"]
+  [org.clojars.sethtrain/postal "0.2.0"] Clojure email support
+  [org.clojars.sethtrain/postal "0.1.0-SNAPSHOT"] Clojure email support
+  [org.clojars.maxweber/postal "1.6-SNAPSHOT"]
+  [org.clojars.doo/postal "1.8-SNAPSHOT"]
+  [org.clojars.danlarkin/postal "1.3.2-SNAPSHOT"]
+  [org.clojars.btw0/postal "1.4.0-SNAPSHOT"]
+  [org.clojars.blucas/postal "1.8-SNAPSHOT"]
+  [com.draines/postal "1.7.1"]
+  ...
+  [com.draines/postal "1.9.1"]
+  [com.draines/postal "1.9.2"]
+
+※ もしインターネットの接続状態が悪いと、ローカルの検索インデックスが壊れてしまうことがあります。 その場合は、以下のフォルダを削除します:
+
+  ~/.lein/indices
+
+そうすることで、次回の _lein search_ 実行時に検索インデックスが再構築されます。
+
+### パンとバター。 Leiningenのプラグインをインストールする
+
+Leiningen にはプラグインの新しい定義方法があります。 数年前、プラグインはプロジェクトごとにインストールが必要でした。 なので、新しいプロジェクトを始めるたびに必要なプラグインをまたインストールして、別のプロジェクトを作ったらまた同じプラグインをインストールして。。ということを繰り返す必要がありました。 ま、ワインを飲みながらであれば、あまり時間も気にならないかも知れませんが。。
+
+今は、以下のファイルにClojure流の定義を書くことが出来るようになりました。
+
+    ~/.lein/profiles.clj
+
+Clojar自体がホストしているシンプルですがとても有用な _lein-pprint_ というプラグインがあります。
+
+このプラグインを使用する場合、上記のファイルには以下のように記述します:
+
+    {:user {:plugins [[lein-pprint "1.1.1"]]}}
+
+すると、leinはプラグインを見つけ、ダウンロードし、使えるようにします。 _lein help_ を実行すると、以下のように表示されます:
+
+    Several tasks are available:
+    check               Check syntax and warn on reflection.
+    ...
+    pprint              Pretty-print a representation of the project map.
+    repl                Start a repl session either
+    test                Run the project's tests.
+    ...
+
+そして、次のコマンドによって、すべてのプロジェクトからプラグインが使えるようになります:
+
+    lein pprint
+
+すべての関連するメタデータをClojureプロジェクトに出力します。
+
+### 作ったコードをClojarsで共有する
+
+Leiningen2 は Clojarと連携するのに、もうプラグインを必要としません。
+
+    lein deploy clojars
+
+これだけで、裏ではあなたのコードはアーカイブされ、_jar_ファイルはメタデータと共にClojarに転送されます。
+
+そして、他の開発者は我々が今やったことと同じ手順であなたのコードを使うことが出来るようになるのです。
+
+デプロイの状況を見るには:
+
+    lein help deploying
+
+と入力します。
+
+### 依存関係を見る
+
+依存関係を確認するには、以下のコマンドを実行するのでしたね:
+
+    lein deps :tree
+
+ここまでの作業をやっているのであれば、以下のように表示されます:
+
+     [cheshire "5.0.1"]
+       [com.fasterxml.jackson.core/jackson-core "2.1.1"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.1.1"]
+     [commons-io "2.4"]
+     [org.clojure/clojure "1.4.0"]
+
 ### Eclipseで一仕事
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
