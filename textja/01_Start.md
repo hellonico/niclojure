@@ -364,6 +364,56 @@ Leiningen2 は Clojarと連携するのに、もうプラグインを必要と�
      [org.clojure/clojure "1.4.0"]
 
 ### Eclipseで一仕事
+
+Clojureに最適なIDEはおそらくEclipseでしょう。 Eclipseは以下のサイトからダウンロード可能です:
+
+    http://www.eclipse.org/downloads/index-developer.php
+
+CounterClockWiseはClojureの開発にとても適したEclipseのプラグインで、頻繁にアップデートされています。
+
+[http://code.google.com/p/counterclockwise/](http://code.google.com/p/counterclockwise/)
+
+Counterclockwise のインストールは、下記メニューから行います:
+
+![ccw0](../images/ccw0.png)
+
+次のアップデートサイトのURLを追加します:
+
+    http://ccw.cgrand.net/updatesite/
+
+![ccw1](../images/ccw1.png)
+
+![ccw2](../images/ccw2.png)
+
+これでプラグインがインストールされ、生成したプロジェクトをインポートできるようになりました。
+
+通常のJavaプロジェクトとしてインポートします:
+
+![ccw3](../images/ccw3.png)
+
+続いて、Leiningenを使用するように設定を変更します:
+
+![ccw4](../images/ccw4.png)
+
+これでEclipseから直接REPLを開始できるようになりました !
+
+![ccw5](../images/ccw5.png)
+
+Eclipseを使う一番の理由は、やはりその素晴らしい補完機能でしょうか。 早速試してみましょう:
+
+![ccw6](../images/ccw6.png)
+
+新しいコード入力して、 _Command-Enter_ を押すと:
+
+![ccw7](../images/ccw7.png)
+
+REPLから直接補完されます:
+
+![ccw8](../images/ccw8.png)
+
+ちょー簡単ですね。
+
+
 ### JarkでJVMをリロード知らず
 ### Jarkで激しくClojureスクリプティング
 ### 止めずにライブラリを追加する
