@@ -395,17 +395,17 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 #### On parsing ANTLR grammars with Clojure
 [AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
 
-#### How to glob files
+#### How to grep and glob files
 [glob files](https://github.com/neatonk/clj-glob)
 
 #### Asynchronous HTTP Client
 [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 
-#### Google protobuffer for Clojure
-[https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
-
 #### Idiomatic pattern matching in Clojure
 [Matchure](https://github.com/dcolthorp/matchure)
+
+#### Google protobuffer for Clojure
+[https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
 
 #### Clojure interface to superb search engine Lucene
 [Clucy](https://github.com/weavejester/clucy) 
@@ -417,6 +417,8 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 #### When in need of pdf magic
 [PDF as a service](https://github.com/yogthos/instant-pdf)
 [iText wrapper](https://github.com/yogthos/clj-pdf)
+
+
 
 #### Clojure wrapper for complex event processing, based on Esper
 [Event Processing](https://github.com/pingles/clj-esper)

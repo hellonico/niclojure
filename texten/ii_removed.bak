@@ -10,3 +10,7 @@ It can be found on github at:
 [infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
 --> not compatible with recent Clojure macros :(
 
+#### Asynchronous HTTP Client
+[Async HTTP Client](http://neotyk.github.com/http.async.client/)
+
+--> too many http clients

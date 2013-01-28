@@ -600,4 +600,184 @@ See for yourself:
 In a later chapter, we will also see how to integrate hiccup with some web framework, but for now, you can generate quite a bit with it already.
 
 #### Ahead of time scheduler at
+
+Can also be found on github:
 [Ahead of time scheduler](https://github.com/overtone/at-at)
+
+at-at has been extracted from another great project called Overtone used for music generation, so pretty accurate timing is needed ! 
+
+The following code will show you how to prepare your pool of scheduled items, and how to start and stop at different timing from now. 
+
+@@@ ruby chapter02/src/at_at_clj @@@
+
+#### On parsing ANTLR grammars with Clojure
+
+ANTLR stands for _ANother Tool for Language Recognition_ and is a lexer and parser for grammars, that has enjoyed popularity in the Java ecosystem.
+
+ANTLR has just turned to version 4, [https://github.com/antlr/antlr4](https://github.com/antlr/antlr4) and is the fruit of about 15 years of continuous efforts and is used throughout tons of projects.
+
+lein-antlr is a Leiningen 2 plugin for generating source code from one or more ANTLR grammars in a Leiningen project. It has roughly the same functionality as the Maven ANTLR plugin, and is intended to allow developers to integrate ANTLR-generated source code into a Clojure project without resorting to Maven or some other manual process.
+
+[AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) and [lein-antlr](http://github.com/alexhall/lein-antlr)
+
+Lein antlr has just been upgraded to Lein2, and so we can just add it as plugin in our project.clj file:
+
+	:plugins [[lein-antlr "0.2.0"]]
+
+Also, we need a bit of extra configuration to find the grammar files, and a place to put the generated files:
+
+	:antlr-src-dir "antlr"
+	:antlr-dest-dir "gen-src"
+
+Once this is done, you can run
+
+	lein antlr
+
+To generate the java parser and lexer files from the grammar. Now your grammar can be used from clojure, using the usual java interop calls:
+
+@@@ ruby chapter02/src/antlr.clj @@@
+
+If you modify the input file with some random characters, you will see the parsing failing.
+
+#### How to grep and glob files
+
+You could write a glob library in no time with Clojure, but fortunately someone already did that for you:
+[glob files](https://github.com/neatonk/clj-glob)
+
+@@@ ruby chapter02/src/glob.clj @@@
+
+And since we are into manipulating files, here is a quick example on how to implement a grep method.
+
+@@@ ruby chapter02/src/grep.clj @@@
+
+Note especially the coolness of the _indexed_ method:
+
+	(defn indexed [coll]
+  		(map vector (iterate inc 1) coll))
+
+This is where the number of the line that matched the pattern search in grep will be computed.
+
+#### Idiomatic pattern matching in Clojure
+
+To expand from greps and globs, we are going to look at [Matchure](https://github.com/dcolthorp/matchure). 
+
+Matchure is pattern matching for clojure that can be used in quite a number of situation:
+
+* sequence destructuring
+* map destructuring
+* equality checks
+* regexp matches
+* variable binding
+* instance checking
+* arbitrary boolean expressions
+* boolean operators (and, or, not)
+* if, when, cond, fn, and defn variants
+
+A few sample usages are defined below:
+
+@@@ ruby chapter02/src/matchure.clj @@@
+
+Also note that you can do a bit of the core matching with the core Clojure library:
+
+@@@ ruby chapter02/src/match.clj @@@
+
+The advantage of the second version is that you can reuse the same code on Clojurescript, which we will go in more details in a later chapter.
+
+#### Google protobuffer for Clojure
+
+	clojure-protobuf provides a Clojure interface to Google's protocol buffers. Protocol buffers can be used to communicate with other languages over the network, and they are WAY faster to serialize and deserialize than standard Clojure objects.
+
+Here is the project page: [https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
+
+We are including here the Person protobuffer:
+
+	message Person {
+		required int32  id    = 1;
+		required string name  = 2;
+		optional string email = 3;
+		repeated string likes = 4;
+	}
+
+You need to add two things to your Leiningen project file. First the leiningen plugin in the plugins section:
+
+	[lein-protobuf "0.1.1"]
+
+Then the library itself
+
+	[org.flatland/protobuf "0.7.2"]
+
+Those dependencies include some native compilation that is part of the reason it is so blazing fast.
+
+The Person model being defined, and all our dependencies in place, we can play around our Protobuffer object:
+
+@@@ ruby chapter02/src/protobuffer.clj @@@
+
+Note that import and dump go through bytes so you loose in visibility what you gain in speed.
+
+#### Clojure interface to superb search engine Lucene
+
+This is for searching and indexing data easily. [Clucy](https://github.com/weavejester/clucy) builds on top of the famous Lucene search engine, used by thousands of companies, but also add an incredible amount of ... simplicity.
+
+The example below walks you through creating a memory index or a file based index, store some values and send some search queries.
+
+@@@ ruby chapter02/src/clucy.clj @@@
+
+Pretty fast uh ? Now there is no excuse not to propose some search feature into your application.
+
+#### Interface with your own Solr based search engine
+
+Now building on our previous example, we are going to install Solr, which is a full distribution of Lucene packaged and ready to be used.
+
+	Solr major features include powerful full-text search, hit highlighting, faceted search, near real-time indexing, dynamic clustering, database integration, rich document (e.g., Word, PDF) handling, and geospatial search. 
+
+Let's start by downloading Solr onto our machine
+
+	http://lucene.apache.org/solr/
+
+Now navigate to the _example_ folder, then type
+
+	java -jar start.jar
+
+in this example directory, and when Solr is started connect to 
+
+  http://localhost:8983/solr/
+
+If Solr started properly, you should see the following screen:
+
+![Solr](../images/chap02/solr.png)
+
+Now we can use some clojure code to play with it, just like we did for the Clucy example.
+
+@@@ ruby chapter02/src/solr.clj @@@
+
+Note, you can also retrieve the data through JSON with
+
+	http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true
+
+Short and sweet isn't ? 
+
+#### When in need of some pdf magic
+
+We have seen incanter in an earlier recipie, and to generate a PDF from the generated graph, we can almost reuse the same code we have seen before (taken from [here](http://data-sorcery.org/2010/02/05/pdf-charts/)):
+
+@@@ ruby chapter02/src/incanter_pdf.clj @@@
+
+Now for something more organized, we have a clojure version of itext, which can generate just about any kind of PDF you would want.
+
+Here's what to add to your _project.clj_
+
+	    [com.lowagie/itext "4.2.0"] ; use a more recent itext library
+    	[clj-pdf "1.0.5-SNAPSHOT" :exclusions [itext-min "0.2"]] 
+
+This time, we are taking a slightly new version of itext, that does not clash with some of our previous imports.
+
+In our example, we simply add a few document elements (essentially an array of pdf items) to the pdf, and at the same time ask for the pdf file to be generated.
+
+@@@ ruby chapter02/src/pdf.clj @@@
+
+Available document elements are described in detail on the [github page](https://github.com/yogthos/clj-pdf#document-elements).
+
+Here is the list for reference:
+
+Anchor, Chapter, Chart, Chunk, Heading, Image, Line, List, Pagebreak, Paragraph, Phrase, Section, Spacer, String, Subscript, Superscript, Table, Table Cell
+
