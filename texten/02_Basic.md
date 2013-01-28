@@ -554,4 +554,50 @@ As a reminder modern Neural Networks can be applied to a variety of useful tasks
 * Classification, including pattern and sequence recognition, novelty detection and sequential decision making.
 * Data processing, including filtering, clustering, blind signal separation and compression.
 
+#### Shake, or every shell program is now a clojure function
 
+This is an easy and crazy one. What about every single command of your shell could be accessible to your REPL ? 
+
+Here comes [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/)
+
+Shake is very useful to keep your original script with some structure and integrate them with Clojure logic and programming.
+
+Here's how to add it to your project.clj file:
+
+	[shake "0.2.1"]
+
+Then enjoy some instant gratification:
+
+@@@ ruby src/shake.clj @@@
+
+#### Timely, or your super easy scheduling in Clojure
+[Scheduler](https://github.com/Factual/timely)
+
+Timely takes the cron approach to easily schedule tasks for your script or for your application. It is very lightweight, has no dependency and can be integrated before the waiter comes in.
+
+Include, version 0.0.3, but it works like a charm:
+
+	[factual/timely "0.0.3"]
+
+@@@ ruby chapter02/src/timely.clj @@@
+
+#### Generate, string clean HTML in a clojure way without hiccups
+
+This is one of the most famous Clojure library and is in used in about half of the menus and samples you will find around the web. 
+
+	[hiccup](https://github.com/weavejester/hiccup)
+
+	Hiccup is a library for representing HTML in Clojure. It uses vectors to represent elements, and maps to represent an element's attributes.
+
+	[hiccup "1.0.2"]
+
+To explain what hiccup can do could not be easier, you just create some data structure with tags and some CSS patterns to make it easy to generate HTML.
+
+See for yourself:
+
+@@@ ruby chapter02/src/hiccup.clj @@@
+
+In a later chapter, we will also see how to integrate hiccup with some web framework, but for now, you can generate quite a bit with it already.
+
+#### Ahead of time scheduler at
+[Ahead of time scheduler](https://github.com/overtone/at-at)

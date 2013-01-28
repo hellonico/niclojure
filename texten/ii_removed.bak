@@ -1,0 +1,12 @@
+#### SSH Tunnels
+[SSH Tunnel](https://github.com/trampoline/clj-ssh-tunnel)
+--> doesn't work
+
+#### infer, inference and machine learning in Clojure
+
+	Infer is a library for machine learning and statistical inference, designed to be used in real production systems.
+
+It can be found on github at:
+[infer, inference and machine learning in Clojure](https://github.com/ssurgnier/infer)
+--> not compatible with recent Clojure macros :(
+
