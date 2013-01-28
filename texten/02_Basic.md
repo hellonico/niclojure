@@ -346,7 +346,7 @@ What we have for you in this recipie is your everyday tool to compute digest on 
 
 And voila. A few lines to compute digest from files, strings bytes etc ...
 
-@@ ruby chapter02/src/digests.clj @@@
+@@@ ruby chapter02/src/digests.clj @@@
 
 
 ####  Terminal and user interfaction, with lanterna.
@@ -379,7 +379,179 @@ Add this to your project.clj
 
 	[clj-time "0.4.5-SNAPSHOT"]
 
-@@@ ruby 41_time.clj @@@
+@@@ ruby chapter02/src/time.clj @@@
 
 Will make your life with timezones definitely better :) You will always be on the right time. 
+
+####  SSH shortcuts
+
+Sometimes you just wished you had that piece of data avaiable on a remote computer straigth here in your REPL.
+This is where clj-ssh comes in. 
+
+[https://github.com/hugoduncan/clj-ssh](https://github.com/hugoduncan/clj-ssh)
+
+	[clj-ssh "0.4.3"]
+
+A wrapper to automate ssh commands, using the default ssh agent on the local machine.
+There is probably more to read if you are on windows. 
+
+@@@ ruby chapter02/src/ssh.clj @@@
+
+####  Master of them all HTTP client
+[https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
+
+clj-http is your clojure wrapper around the java [apache http client](http://hc.apache.org/). That http client has been around for quite a few years, and propose a very robust api. Now with clojure, we can even have it short.
+
+	[clj-http "0.3.6"]
+
+The following example show how to send a post request to ask for some image processing to be done in the cloud through the [blitline API](http://www.blitline.com/docs/quickstart).
+The function applied is a blur, and the rest is just passing arond JSON parameters.
+
+@@@ ruby chapter02/src/http.clj @@@
+
+####  How's your serial port doing  ?
+
+[https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj](https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj)
+
+This recipie is about easy access to the USB port of your machine. This is going deep down the roots of the computer and may not work. Some other libraries like calx and penumbra that we will see later may have this embedded already. 
+
+@@@ ruby chapter02/src/serial.clj @@@
+
+Since this is going at the bit level and provide little bit abstraction, this is mostly for reference. 
+But hey, all you need to start your own driver for your custom USB device is here.
+
+####  No memory, but I know how to stream extra large XML files
+
+This is based on a special XML parsing library, called xml-picker-seq that has been specially written to handle extra big xml files. 
+[https://github.com/marktriggs/xml-picker-seq](https://github.com/marktriggs/xml-picker-seq)
+
+This is what to use when you have to deal with pretty big xml files. This library supports over 1Gb heavy files, more XML than you should eat on average.
+Here is how to grab it:
+
+	[xml-picker-seq "0.0.2"]
+
+@@@ ruby chapter02/src/large_xml.clj @@@
+
+[https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
+Natural Language Processing in Clojure.
+
+This is has to be one of the most technical subject available to be used just as is in this book.  OpenNLP allows you to parse text into something meaninful so you can reuse it in your application.
+
+	[clojure-opennlp "0.2.0"]
+
+This would be some simple examples on how to parse text with OpenNLP:
+
+@@@ ruby chapter02/src/opennlp.clj @@@
+
+Note that this is only the most basic use of the OpenNLP library.
+You can see a vast list of direct examples in the [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) and a full section has been written on how to [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown) new models to use in your application.
+
+Here is a more extensive way to tokenize a web page entirely
+
+@@@ ruby chapter02/src/opennlp2.clj @@@
+
+
+####  Full Clojure stream ahead ! Use conduit.
+
+You may need to go and look at the following stream processing page to learn more about stream processing:
+[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
+
+This is one of my favorite quick to explain but sweet to use recipie in Clojure.
+
+At the core of conduit are ways to get things in, and then pull things out, applying different transformation along defined steps in the conduit.
+
+	[net.intensivesystems/conduit "0.9.0"]
+
+In idea, this is also similar to Apache Camel, where you get messages from different messaging systems (RabbitMQ, IRC etc ..) and then apply your processing. 
+
+@@@ ruby chapter02/src/conduit.clj @@@
+
+####  Event workflow and stream processing in Clojure
+
+[https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
+Event workflow for clojure, stream processing in Clojure.
+
+Lamina defines the very awesome concept of queues to receive events or values and then process them as they are coming. Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+
+Import it in your project with:
+
+	[lamina "0.5.0-beta9"]
+
+You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data. On OSX, here is the way to do it simply with brew:
+
+	brew install graphviz
+
+@@@ ruby chapter02/src/lamina.clj @@@
+
+![Lamina](../images/chapter02/lamina1.png)
+
+@@@ ruby chapter02/src/lamina2.clj @@@
+
+![Lamina](../images/chapter02/lamina2.png)
+
+#### Everyday cryptography with Alice, but where is bob ? 
+[Cryptography for Clojure](https://github.com/laczoka/clj-crypto)
+
+This library is based on the efficient bounty castle library for Java. Basically, everything has been made so it's easy to generate key pairs and integrate proven security in your application.
+
+	[laczoka/clj-crypto "1.0.2-SNAPSHOT"]
+
+@@@ ruby chapter02/src/alice.clj @@@
+
+#### Unit of measures calculator in Clojure
+
+Here comes a very cute but powerful library to convert between units.
+
+The long version on how to use this can be found here: 
+[Unit of Measure Calculator](https://github.com/martintrojer/frinj) and [samples](https://github.com/martintrojer/frinj/blob/master/src/frinj/examples.clj)
+
+But let's got through a quick example of liquids and rooms.
+
+	[frinj "0.1.3"]
+
+This example shows how to convert the size of your room, in the required amount of water needed to fill the room completely.
+
+@@@ ruby chapter02/src/frinj.clj @@@
+
+Take the time to go through the other samples, the style of writing and the taste of the example is just fabulous.
+
+#### When you are in need of querying Json
+[JsonPath](https://github.com/gga/json-path)
+
+We have seen how to query xml over and over again, but these days, it's really more about query JSON data structure. Here comes, json-path. 
+The code has not been updated for a bit of time, but it works like a charm. 
+
+	[json-path "0.2.0"]
+
+The following example takes us through querying regular json-like structure, and then goes along with an example after parsing with Cheshire:
+
+@@@ ruby chapter02/src/jsonpath.clj @@@
+
+####  Clojure on your nerves ? Use Netz for your neural network things
+
+	Netz is a Clojure implementation of a multilayer perceptron (MLP), a type of feedforward artificial neural network. Netz provides functions for training and running MLPs. Training is accomplished via gradient descent batch Rprop or standard backpropagation.
+	Netz implements Rprop as described by Riedmiller in Rprop - Description and Implementation Details. 
+
+[Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
+
+Here is a very short example, showing how to train and run a Neural Network:
+
+@@@ ruby chapter02/src/netz.clj @@@
+
+In the example, we see we train the network with some hidden values. The options you are most likely to find interesting are:
+
+	:hidden-neurons - A vector containing the number of neurons in each hidden layer. Set to [2 2] for two hidden layers with two neurons each, or [] for no hidden layers. Setting this option is recommended. Default: One hidden layer with the same number of hidden neurons as inputs.
+
+and to change the learning algorithm:
+	
+	:learning-algorithm - The algorithm to use while training. Choose either :rprop for the Rprop algorithm or :bprop for standard back propagation. Default: :rprop.
+
+Also, each training variant has some specific options.
+
+As a reminder modern Neural Networks can be applied to a variety of useful tasks such as:
+
+* Function approximation, or regression analysis, including time series prediction and modeling.
+* Classification, including pattern and sequence recognition, novelty detection and sequential decision making.
+* Data processing, including filtering, clustering, blind signal separation and compression.
+
 
