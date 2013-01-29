@@ -781,3 +781,109 @@ Here is the list for reference:
 
 Anchor, Chapter, Chart, Chunk, Heading, Image, Line, List, Pagebreak, Paragraph, Phrase, Section, Spacer, String, Subscript, Superscript, Table, Table Cell
 
+#### Clojure wrapper for complex event processing
+
+This recipie is based on Esper, which is a super reliable message processing middleware.
+Esper itself can be found at: [http://esper.codehaus.org/tutorials/tutorial/quickstart.html](http://esper.codehaus.org/tutorials/tutorial/quickstart.html)
+
+	Esper and NEsper enable rapid development of applications that process large volumes of incoming messages or events. Esper and NEsper filter and analyze events in various ways, and respond to conditions of interest in real-time.
+
+	It provides a SQL-like language across a stream of data.
+
+Basically you can create your own event service bus with Esper. The integration in clojure is quite basic still, but you could very well enhance it, by increasing the api coverage.
+
+Anyway, for now, we are going to see how to create a local event bus, and how to add events to it, along with defined callbacks.
+
+@@@ ruby chapter02/src/esper.clj @@@
+
+On the performance side, the esper team has reported handling about 200.000 events per seconds on a regular laptop, so quite something to be proud of, and definitely some scaling at work.
+
+#### When your friends are in LDAP
+
+When you need to manage a directory running in LDAP, this is also very easy to do in Clojure.
+To run this example, you will need to get and install [Apache DS](http://directory.apache.org/apacheds/downloads.html). 
+
+Download the Zip version and start the LDAP server with:
+
+	./bin/apacheds.sh 
+
+or on Windows
+
+	apacheds.bat
+
+Now we can our Clojure wrapper for LDAP named [clj-ldap](https://github.com/pauldorman/clj-ldap)
+
+And then go on adding and deleting entries in our local server:
+
+@@@ ruby chapter02/src/ldap.clj @@@
+
+Now you can go and compare the code we have above, to what some IBM people have been writing a few years back. See by yourself !
+
+	http://www.ibm.com/developerworks/jp/java/library/j-apacheds2/
+
+If you use ApacheDS Studio, with the following settings:
+
+![ds1](../images/chap02/ldap1.png)
+
+And the following (default) authentication:
+
+![ds2](../images/chap02/ldap3.png)
+
+The default ApacheDS password is:
+
+	secret
+
+You can graphically validate when the users are created:
+
+![ds3](../images/chap02/ldap3.png)
+
+#### A few words on the new reducers sauce
+
+Rich Hickey has explained in a long post what 
+[Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html) are.
+
+First time I saw his post I thought wow. I actually thought wow a few times while reading Rich presentations or some code he presents from time to time.
+
+This one was pure simplicity. Once you get it, you cannot stop from ordering more. 
+
+More simplicity.
+
+Here are examples taken from Rich's post, enhanced with some comments.
+
+@@@ ruby chapter02/src/reducers.clj @@@
+
+### Domain Specific Language
+
+#### How to create your own parser
+
+We are only going to scratch the surface of that one, but here we present [Parsley](https://github.com/cgrand/parsley) generates total and _truly_ incremental parsers.
+
+	Truly incremental: a Parsley parser can operate as a text buffer, in best cases recomputing the parse-tree after a sequence of edits happens in logarithmic time (worst case: it behaves like a restartable parser).
+
+This is the grammar we are going to see:
+
+	:expr #{"x" ["(" :expr* ")"]}
+
+Which supports input like:
+
+	x () (xxx) ((x)(xxx))
+
+This is how we define our grammar, and apply some input to it:
+
+@@@ ruby chapter02/src/parsley_1.clj @@@
+
+Now we see that invalid input generates some _unexpected_ element in the tree.
+
+Now where Parsley really shines, is when using in incremental mode. What that means is that Parsley will modify the tree at the proper place instead of a reparsing everything. This brings some important performance gains.
+
+See by yourself in:
+
+@@@ ruby chapter02/src/parsley_2.clj @@@
+
+A grammar production right-hand side consists of a combination of:
+* vectors (sequence)
+* sets (alternatives)
+* keywords (non-terminal or operators: :*, :+, :?)
+* antything else is considered as a literal (a "matcher")
+
+Now, this is a great way to finish this chapter with some Domain Specific Brewage. ;)

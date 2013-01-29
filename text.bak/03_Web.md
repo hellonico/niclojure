@@ -3,6 +3,11 @@
 ### Lord of the Ring: your best ally for clojure web development
 [https://github.com/ring-clojure/ring](https://github.com/ring-clojure/ring)
 
+
+#### When you need an oauth, you have friends
+[friend oauth](https://github.com/ddellacosta/friend-oauth2)
+[examples](https://github.com/ddellacosta/friend-oauth2-examples)
+
 ### Not everything is Noir. But it sure help to develop a web site with so few lines of code
 
 [https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 

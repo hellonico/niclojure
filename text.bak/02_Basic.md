@@ -418,13 +418,9 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 [PDF as a service](https://github.com/yogthos/instant-pdf)
 [iText wrapper](https://github.com/yogthos/clj-pdf)
 
-
-
 #### Clojure wrapper for complex event processing, based on Esper
 [Event Processing](https://github.com/pingles/clj-esper)
 
-#### A few words on Monads in Clojure
-[Monad](https://github.com/clojure/algo.monads)
 
 #### A few words on the new reducers sauce
 [Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)

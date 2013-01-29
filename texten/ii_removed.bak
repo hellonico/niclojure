@@ -14,3 +14,15 @@ It can be found on github at:
 [Async HTTP Client](http://neotyk.github.com/http.async.client/)
 
 --> too many http clients
+
+#### A few words on Monads in Clojure
+[Monad](https://github.com/clojure/algo.monads)
+
+--> too complicated, not very practical at this stage
+
+
+#### A few words about haskell
+[Kessel](https://github.com/apgwoz/kessel) is a more clojure-fied version of clarsec, which itself is a port of Haskell's Parsec to Clojure, but should port to a newer version of clojure.
+[clarsec](https://github.com/jasonjckn/clarsec), 
+
+--> outdated ? 

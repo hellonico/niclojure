@@ -23,6 +23,9 @@ Two short introduction
 [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
 [Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
 
+#### A few logical words
+[core logic](https://github.com/clojure/core.logic/wiki/Examples)
+
 #### Simulation of a dynamical system of particles with NBody computation
 [NBody Computation](https://github.com/farr/Clojure-Nbody-Library)
 
