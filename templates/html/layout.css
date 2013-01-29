@@ -2,7 +2,7 @@
 /* = DEFAULTS = */
 /* ============ */
 html * {
-	font: normal normal normal 12pt/normal Bonveno, Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	font: normal normal normal 12pt/normal Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
 }
 
 /* ========= */
@@ -23,8 +23,9 @@ html * {
 	@bottom-right {
 	    color: #000;
 		content: counter(page);
-		font-family: helvetica, arial, sans-serif;
-        font-size: 12px;
+		/*font-family: helvetica, arial, sans-serif;
+        font-size: 12px;*/
+        font: normal normal normal 12pt/normal Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
         margin-top: -10px;
 		margin-right: -40px;
     }
@@ -218,13 +219,14 @@ pre, code {
 	border-color: black;
 	background-color: #EEEEEE;
 	font-family: courier, monospace;
-	font-size: 11pt;
+	font-size: 9pt;
+	/*padding-left: 30pt;*/
 }
 
 pre, pre code {
 	font-size: 10pt;
 	line-height: 1.4;
-	padding-left: 30pt;
+	/*padding-left: 30pt;*/
 }
 
 /* ========= */
