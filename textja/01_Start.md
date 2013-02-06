@@ -413,13 +413,159 @@ REPLから直接補完されます:
 
 ちょー簡単ですね。
 
+### セッションにライブラリをダイナミックに追加する
 
-### JarkでJVMをリロード知らず
-### Jarkで激しくClojureスクリプティング
-### 止めずにライブラリを追加する
+Eclipseからコマンドラインに話を戻すと、気がついているかも知れませんが、Clojureで何かを変更すると毎回REPLを起動し直さないと新しい依存関係が反映されません。
+
+_Chas Emerick_ は、こりゃ面倒だと思い、pomegranateという魔法のライブラリにすべてを取り込むようにして、実行時に依存関係を追加できるようにしました。
+
+プロジェクトでずっと利用するライブラリではなく、開発時にちょっと試すようなライブラリを追加してみましょう。
+
+まずは、pomegranateを _project.clj_ に定義します:
+
+    :profiles {:dev {:dependencies [
+        [com.cemerick/pomegranate "0.0.13"]]}}
+
+REPLを起動します。
+
+    lein repl
+
+必要な新しいネームスペースをインポートします:
+
+    (use '[cemerick.pomegranate :only (add-dependencies)])
+
+xyzzyというXMLライブラリをインポートしてみます
+
+    (add-dependencies
+        :coordinates '[[antler/xyzzy "0.1.0"]]
+        :repositories {"clojars" "http://clojars.org/repo"})
+
+classpathに追加された依存関係が出力されます:
+
+    {[org.clojure/data.zip "0.1.0"] nil, [org.clojure/clojure "1.3.0"] nil, [antler/xyzzy "0.1.0"] #{[org.clojure/clojure "1.3.0"] [org.clojure/data.zip "0.1.0"]}}
+
+これで、新たにダウンロードされたライブラリを呼び出すことが出来ます。:
+
+    (require '[xyzzy.core :as xyzzy])
+
+    (xyzzy/parse-xml "<html><body><h1>It works</h1></body></html>")
+
+ライブラリでパースした結果が表示されます:
+
+    [{:tag :html, :attrs nil, :content [{:tag :body, :attrs nil, :content [{:tag :h1, :attrs nil, :content ["It works"]}]}]} nil]
+
+もちろん、試して気に入ったら _project.clj_ に定義します。
+
+
 ### 内緒でScalaのコードを走らせる
+
+もし、leinプロジェクトのソースファイルを統合したいのであれば、 [scalac-plugin](https://github.com/technomancy/lein-scalac) を使うことが出来ます。
+
+プラグインのインストールはとても簡単です:
+
+* [lein-scalac "0.1.0"] を :plugins project.clj に追加する。
+* :scala-source-path in project.clj に .scala ソースファイルのある場所(通常、"src/scala")を設定する。
+* .class ファイルにコンパイルする:
+
+    lein scalac
+
+* もし、scalac を自動的に実行するのであれば、 :prep-tasks ["scalac"] を project.clj に追加する
+* たいていの場合、scala-library の設定も必要です:
+
+    :dependencies [org.scala-lang/scala-library "2.9.1"]
+
+では、実施の scala のコードを書いてみましょう:
+
+@@@ ruby chapter01/src/scala/sample.scala @@@
+
+で、それを Clojure から呼び出すには:
+
+@@@ ruby chapter01/src/sample/scala.clj @@@
+
+以下のように出力されます。
+
+    sample.core=> (import HelloWorld)
+    HelloWorld
+    sample.core=> (.sayHelloToClojure (HelloWorld.) "Hi there")
+    "Here's the second echo message from Scala: Hi there"
+
+お友達にJVM上で別の言語が使えるようになったと自慢しましょう。 :)
+
+それか、ウェイトレスさんに別の品種のワインをお願いしましょう！
+
 ### Javaのコードを走らせるっていうのは、ここだけの話
+
+前のセクションの内容は、昔のスタイルのJavaでも使うことが出来ます。
+
+まず、javaのclassを用意します:
+
+@@@ ruby chapter01/src/java/HelloWorldJava.java @@@
+
+_project.clj_ を設定します:
+
+    ; javaのクラスへのパス
+    :java-source-paths ["src/java"]
+    ; javacのコンパイルオプション
+    :javac-opts ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
+
+もう一行、以下の修正をします:
+
+    :prep-tasks ["scalac" "javac"]
+
+これで、scalacに加えてjavacが実行されるようになります。
+REPLを再起動して、以下のClojureコードを入力します:
+
+    sample.core=> (.sayHello (HelloWorldJava.) "World")
+    "This is a warm welcome from old Java to World"
+
 ### Clojureのメソッドをhookeでラップする
+
+前のセクションで紹介した javac プラグインのサンプルを探しているときに、偶然ですが、関数をフックする素晴らしい方法を見つけました。
+
+_project.clj_ ファイルに依存関係を記述しましょう:
+
+    [robert/hooke "1.3.0"]
+
+そして、サンプルを動かしてみましょう:
+
+@@@ ruby chapter01/src/sample/hooke.clj @@@
+
+これで、手軽に関数を拡張することができるようになりました！ しかも美しく・・？ :)
+
+### One more ruby: Jruby
+
+Just for the sake of it, if you need to run a some Ruby code but do not want to go through the pain of the set up, you can just ask Leiningen.
+
+Add
+
+    [lein-jruby "0.1.0"]
+
+to the _:plugins_ section of your settings file _profile.clj_.
+
+Then, you can could scripts this way:
+
+    lein jruby -S src/ruby/fibonacci.rb 1000
+
+fibonacci.rb is a matrix way of computing fibonacci numbers in Ruby. See:
+
+@@@ ruby chapter01/src/ruby/fibonacci.rb @@@
+
+Again, you do not need to have ruby install to get this running.
+The first example was without any dependencies, but if you need jruby to install a ruby gem for you, here is how you do it:
+
+    lein jruby -S gem install json-jruby
+
+Then you can can call the ruby example that can be found in the chapter01:
+
+@@@ ruby chapter01/src/ruby/json.rb @@@
+
+with
+
+    lein jruby -S src/ruby/json.rb
+
+Voila. Ruby wine. But do not forget to keep reading this book and learn Clojure.
+
+
 ### おいしいプラグインのスープLeiningen仕立て
 ### Rubyをもう一つ： Jruby
 ### Leiningen用のプラグインを書いてみる
