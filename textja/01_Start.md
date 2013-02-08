@@ -532,43 +532,137 @@ _project.clj_ ファイルに依存関係を記述しましょう:
 
 これで、手軽に関数を拡張することができるようになりました！ しかも美しく・・？ :)
 
-### One more ruby: Jruby
+### もう一つの ruby: Jruby
 
-Just for the sake of it, if you need to run a some Ruby code but do not want to go through the pain of the set up, you can just ask Leiningen.
+あるコードを動かしたい。 それはRubyで書かれている。 でも、わざわざRubyをセットアップするのは面倒だし。。
 
-Add
+そんなときは、Leiningenにお願いしましょう。
+
+以下の設定を
 
     [lein-jruby "0.1.0"]
 
-to the _:plugins_ section of your settings file _profile.clj_.
+_profile.clj_ ファイルの _:plugins_ セクションに追加します。
 
-Then, you can could scripts this way:
+あとは、次のようにスクリプトを実行します:
 
     lein jruby -S src/ruby/fibonacci.rb 1000
 
-fibonacci.rb is a matrix way of computing fibonacci numbers in Ruby. See:
+fibonacci.rb は、Rubyでフィボナッチ数列を計算します:
 
 @@@ ruby chapter01/src/ruby/fibonacci.rb @@@
 
-Again, you do not need to have ruby install to get this running.
-The first example was without any dependencies, but if you need jruby to install a ruby gem for you, here is how you do it:
+繰り返しますが、このコードを実行するのにRubyをインストールする必要はありません。
+
+最初のサンプルは依存関係のないものでしたが、もしjrubyにRuby gemをインストールさせる必要がある場合にはこのようにします:
 
     lein jruby -S gem install json-jruby
 
-Then you can can call the ruby example that can be found in the chapter01:
+続いて、以下のサンプルを:
 
 @@@ ruby chapter01/src/ruby/json.rb @@@
 
-with
+次のコマンドで実行します。
 
     lein jruby -S src/ruby/json.rb
 
-Voila. Ruby wine. But do not forget to keep reading this book and learn Clojure.
-
+ルビー色のワインで乾杯！ でも、この本を読むのを忘れない程度に。。
 
 ### おいしいプラグインのスープLeiningen仕立て
-### Rubyをもう一つ： Jruby
+
+Groovy、Hadoop、... Leiningenには本当に色々なプラグインが存在します。 ぜひ Leiningen のプラグイン一覧をチェックしてみてください:
+
+    https://github.com/technomancy/leiningen/wiki/Plugins
+
+ちなみに私がよく使うプラグインを紹介します:
+
+Leiningen プラグイン| 機能 | 備考 |
+| |
+lein-midje | テストを実行 | インストール必須！ この本でも取り上げている |
+lein-noir | Webアプリを簡単に作成 | この本で取り上げている |
+lein-deps | プロジェクトの依存関係を表示 | _lein deps :tree_
+lein-git-version | Gitタグを使って version.clj ファイルにバージョンを保存 |  |
+lein-webrepl | REPLをWebサーバとして開始。 ブラウザからコード編集可能 |  |
+
+![ccw6](../images/webrepl.png)
+
+まずはプラグイン一覧を眺めて、どんなものがあって何が出来そうかを検討してください。 Leinにはたくさんの素材がありますから、料理の幅がきっと広がると思います。
+
 ### Leiningen用のプラグインを書いてみる
+
+さて、ついに自分達のプラグインを作ってコミュニティに貢献する時がやってきました！
+
+まずは、オンラインからデータを取得してそれを表示する簡単なプラグインを書いてみましょう。
+
+以下の記述を:
+
+    :eval-in-leiningen true
+
+project.clj ファイルに追加して現在のプロジェクトから直接プラグインを書くことがきるようにします。
+
+タスクの名前は _stock_ として、以下のように呼ぶようにしましょう:
+
+    lein stock YHOO
+
+最後の引数は株のシンボル名です。
+作成したソースは、_stock.clj_というファイル名で_src/leiningen_に置き、ネームスペースは _leiningen.stock_ とします。
+
+ソース中のメソッド名は _stock_ です。
+
+すべてのソースは以下の通りです:
+
+@@@ ruby chapter01/src/leiningen/stock.clj @@@
+
+実際に実行すると、以下のようになります:
+
+Company name | Command line | Result
+| |
+Apple | lein stock AAPL | 520.00
+Microsoft | lein stock MSFT | 26.83
+Yahoo | lein stock YHOO | 19.29
+Google | lein stock GOOG | 520.30
+
+### JarkでJVMリロードの待ち時間をなくす
+JarkはインタラクティブにJVM上でリモートのClojureコードを実行します。
+
+気がついていると思いますが、Clojureプログラムを起動すると毎回JVMがスタートするまでに時間がかかりますよね。  特に開発している時はこの待ち時間が馬鹿にならないのでREPLを使うわけですが、それでもとにかく待ち時間をなくしたいことがありますよね。 そんな時はJarkの出番です。
+
+まず、Jarkを入手しましょう:
+
+    http://icylisper.github.com/jark/
+
+Jarkをダウンロードしてパスの通ったところに置いたら、以下のコマンドを実行します:
+
+    jark server install
+
+Jarkサーバを起動します:
+
+    jark server start
+
+あとは、Jarkクライアントを使ってコードを実行します:
+
+    jark -e "(+ 2 2)"
+    echo "(+ 2 2)" | jark -e
+    jark -e < file.clj
+    cat file.clj | jark -e
+
+コードはJarkサーバに送られ、実行されます。
+
+@@@ ruby chapter01/src/jark/factorial @@@
+
+また、JarkにはREPLもあります。 REPLを使うには以下のコマンドを実行します:
+
+    jark repl
+
+私のお気に入りは、次のようなコードで自分のプロジェクトにJarkサーバを埋め込むことが出来るんです！
+
+    ;At time of writing
+    ; Add [jark "0.4.3-clojure-1.5.0-alpha5" :exclusions [org.clojure]] to project.clj
+    (require 'clojure.tools.jark.server)
+    (clojure.tools.jark.server/start PORT)
+
+とにかくこれで待ち時間がなくなって、その分ワインを飲む時間が増えるはず。
+
 ### clojure-contribって知ってる？ ヤバいよ、それ。
 ### サンプル
 ### 自分専用のWebベース Clojureインタープリタを作る
