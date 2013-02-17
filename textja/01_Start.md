@@ -664,5 +664,70 @@ Jarkサーバを起動します:
 とにかくこれで待ち時間がなくなって、その分ワインを飲む時間が増えるはず。
 
 ### clojure-contribって知ってる？ ヤバいよ、それ。
-### サンプル
-### 自分専用のWebベース Clojureインタープリタを作る
+
+かつて Clojure が始まってまだ間もない頃は、 clojure-core 、そして clojure-contrib がありました。
+Clojure のコアは本当に最小限のコードから構成されていて、 clojure-contrib にはそれ以外、でも限りなくコアに近いものが含まれていました。
+
+しかし、あらゆるプロジェクトが contrib ライブラリを使ったため、ライブラリはとても大きなものになってしまいました。 そのため、コードそのものよりもパッケージが問題となってしまいました。
+
+Clojureのドキュメントには今もなぜか Contrib があります。
+
+    http://dev.clojure.org/display/doc/Clojure+Contrib
+
+しかし、人々は徐々にそこから離れ、通常の依存関係を使った個別の小さなプロジェクトを使うようになりました。
+
+ちょうどシェフが手持ちの材料をテーブルの上に広げるように、すべての物を見渡すことが出来れば何を使うか決めることができます。 いつかは美味しい料理に巡り会うでしょうけれど、それにはたくさんの美味しくない物を食べなくてはいけないかも知れないし、大量のお皿を洗うことになるかも知れないし、いずれにしても時間がかかるでしょう。
+
+現状モジュール化されているプロジェクトには以下の物があります:
+
+    * algo.generic - 以前の clojure.contrib.generic
+    * algo.monads - 以前の clojure.contrib.monads
+    * build.poms - 新しい contrib ライブラリ用のサンプル pom.xml
+    * core.cache
+    * core.contracts
+    * core.incubator - clojure.contrib.strint と共に clojure.contrib.def の一部もここに移った
+    * core.logic
+    * core.match
+    * core.memoize
+    * core.unify
+    * data.codec - 以前の clojure.contrib.base64
+    * data.csv
+    * data.finger-tree
+    * data.generators - test.generative からデータジェネレータを取り出したもの
+    * data.json - 以前の clojure.contrib.json
+    * data.priority-map - 以前の clojure.contrib.priority-map
+    * data.xml - 以前の clojure.contrib.lazy-xml
+    * data.zip - 以前の clojure.contrib.zip-filter
+    * java.classpath - 以前の clojure.contrib.classpath
+    * java.data
+    * java.jdbc - 以前の clojure.contrib.sql
+    * java.jmx - 以前の clojure.contrib.jmx
+    * math.combinatorics - 以前の clojure.contrib.combinatorics
+    * math.numeric-tower - 以前の clojure.contrib.math
+    * test.benchmark
+    * test.generative - 上記のデータジェネレータ用のテストライブラリ
+    * tools.cli - clojure.contrib.command-line 置き換え
+    * tools.logging - 以前の clojure.contrib.logging
+    * tools.macro - 以前の clojure.contrib.macro-utils, clojure.contrib.macros
+    * tools.namespace - 以前の clojure.contrib.find-namespaces
+    * tools.nrepl
+    * tools.trace - 以前の clojure.contrib.trace
+
+上記の一覧にある各プロジェクトを一通り見てみることをお勧めします。 ざっと何があるのかが分かれば、一からコードを書かなくてもかなりのことが他の人によってすでにあることが分かると思います。
+
+
+
+### サンプルとまとめ
+
+以上が最初の章です。 内容は:
+
+* leiningen でプロジェクトを始める
+* 依存関係を管理する
+* REPL を開始する
+* コードを書く：テキストエディタ、REPL、eclipse、Web REPL
+* 他の言語とClojureを使う
+* Java を再起動しない方法
+
+ぜひ付録にあるサンプルを試してみてください。 次の章では、いよいよ色々な場面で使えるコードを学んでいきましょう。
+
+でもその前に、一杯？
