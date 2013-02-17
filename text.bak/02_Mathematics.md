@@ -2,12 +2,9 @@
 ### It's only logical
 
 #### Fractals
-[Fractal](http://clojurefun.wordpress.com/2012/08/30/mandelbrot-fractals/)
 
-Where we learn about computing fractals ..
 
 #### your dose of genetic algorithm in Clojure
-
 Two short introduction
 
 ##### Gajure
@@ -15,13 +12,17 @@ Two short introduction
 
 ##### Clojush
 [Genetic Programming](https://github.com/lspector/Clojush)
+https://github.com/lspector/Clojush/tree/master/src/clojush/examples
+
+#### Monty Hall Problem seen with Incanter
+[Monty Hall with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
 
 #### Racing for MonteCarlo in Clojure
-[MonteCarlo](https://github.com/farr/mcmc-clojure
-[MC with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
+[MonteCarlo](https://github.com/farr/mcmc-clojure)
+
 [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
+
 [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
-[Probabilities Monte Carlo](http://richhickey.github.com/clojure-contrib/probabilities.monte-carlo-api.html)
 
 #### A few logical words
 [core logic](https://github.com/clojure/core.logic/wiki/Examples)
