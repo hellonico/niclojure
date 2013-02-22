@@ -86,11 +86,120 @@ Incanter は *R*言語のようなフルパッケージの統計ツールとな�
 作者のサイトにはたくさんのサンプルがあり、一見の価値があります。
 
 #### ドキュメント？ literateだよ
+
+[https://github.com/fogus/marginalia](https://github.com/fogus/marginalia)
+
+Marginalia は最高の Clojure用ドキュメンテーションツールです。 例えば、コードに対して必要なコメントを入れると、Marginalia がプロジェクトの最適なドキュメントを生成してくれます。 あとは、それをオンラインで公開するだけです。
+
+*~/.lein/profiles.clj* ファイルに依存関係を書いてインストールします:
+
+
+	{:user {:plugins [
+                  [lein-marginalia "0.7.1"] ; <- これを追加
+                  [lein-pprint "1.1.1"]]}}
+
+そして、実行します:
+
+	lein marg
+
+コードに記述したコメントの量にもよりますが、以下のように表示されます:
+
+![Alt text](../images/marginalia.png)
+
+コードに対する依存関係やコメントが表示されます。
+
 #### 簡単ステキなグラフ
+
+[https://github.com/pallix/lacij](https://github.com/pallix/lacij)
+
+さて、Clojureでデータが揃ったら次にすることは？ そのデータを基にチャートを作りたくなりますね。 Lacij はこんな風に自動的にレイアウトされたSVGのチャートを作成してくれます:
+
+![SVG](../images/circle.svg)
+
+そして、グラフはこんな感じで書くことが出来ます:
+
+@@@ ruby chapter02/src/lacij.clj @@@
+
+特長としては動的にノードを追加したり削除したり操作が出来ることでしょうか。
+
+他にも色々なグラフがあるのでサンプルを試してみてください。 簡単にウィンドウを開いてグラフを表示できることが分かると思います:
+
+![Lacij](../images/lacijswing.png)
+
 #### Seesawでユーザインターフェイス
+
+本当に時間の無いときにアプリケーション用のちょっと見た目のいいユーザインターフェイスを作らなくてはいけない。 どうする？
+
+[https://github.com/daveray/seesaw](https://github.com/daveray/seesaw)
+
+最近は何でもかんでもWebですね。 でも、たまにブラウザでアプリケーションを操作するのが嫌だってお客さんもいますよね。 ま、時間をかけてお客さんにブラウザを使うよう説得するのも手ですが、パパッとそこそこ見栄えのいいUIを作ってしまうというのはどうでしょう？ Seesawで。
+
+私が見つけた一番分かりやすそうなチュートリアルは [here](https://gist.github.com/1441520)
+
+Seesaw はJVM上で言語に拘らずに良いUIを作るにはどうしたら良いか？というフラストレーションから生まれました。 Seesaw を使えば、ユーザの入力、フィードバック、コントローラを思い通りに実装出来ます。
+
+Seesawを使った一番シンプルなものです:
+
+@@@ ruby chapter02/src/seesaw.clj @@@
+
+SeesawのWebサイトにもいくつかサンプルがあります。 スタイルをつけてみました:
+
+@@@ ruby chapter02/src/seesaw_02.clj @@@
+
+![seesaw](../images/seesaw.png)
+
+どうでしょう？
+
 #### xpathクエリ
-#### htmlの解析をおいしくjsoupで
+
+[https://github.com/kyleburton/clj-xpath](https://github.com/kyleburton/clj-xpath)
+
+さて、大きなxmlファイルを出来るだけ早く処理するにはどうすれば良いでしょう？ 答えは clj-xpath を使う、です。
+
+lein用に依存関係を追加します:
+
+	[org.clojars.kyleburton/clj-xpath "1.4.0"]
+
+以下のコードはオンライン上のMaven pom.xml ファイルからすべての開発者、依存関係を取得します:
+
+@@@ ruby chapter02/src/clj_xpath.clj @@@
+
+	There are two forms of many of the functions, with one set ending with a star ‘*’. The non-suffixed forms will perform their operation on a single result node, raising an exception if there is not exactly one result from applying the xpath expression to the XML document. The ‘*’ suffixed forms return all of the matched nodes for further processing.
+
+#### htmlのパースをおいしいjsoupで
+
+せっかくXMLに関連したことをやったので、javaでは有名なJsoupというhtmlパーサを使ってみましょう。
+
+[https://github.com/mfornos/clojure-soup](https://github.com/mfornos/clojure-soup)
+
+このラッパーを使って、ローカル/リモートに関係なくhtmlファイルのパースを行うことができます。 ライブラリを追加したら、早速試してみましょう:
+
+このサンプルでは、Web上の絵文字アイコンを取得します:
+
+@@@ ruby chapter02/src/clojure_soup.clj @@@
+
 #### Enliveを使ったテンプレート
+
+Enliveは私のお気に入りの一つです。 Enlive は他のテンプレートの仕組みとはちょっとひと味違います。
+
+* コードとマークアップが完全に分離されている
+* HTMLの操作にCSSライクな文法を使える
+* テンプレートの継承はファンクションのコンポジションで行う
+
+HTML parser, and templating framework at the same time, Enlive does a super job of integrating HTML fun. (yes you read me.)
+
+This is an example taken from the [best enlive tutorial](https://github.com/swannodette/enlive-tutorial/).
+
+This is how you use enlive to for website scraping. Fetch the content of a URL then select the html tag you need:
+
+@@@ ruby chapter02/enlive.clj @@@
+
+Reversly, you declare templates in regular html files, and apply some logic in Clojure. See how:
+
+@@@ ruby chapter02/enlive_02.clj @@@
+
+Your great designer can do his Dreamweaver work the way he or she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
+
 #### docjureで表計算
 #### postalでスパムブロック！
 #### DNSはどうなってる？
