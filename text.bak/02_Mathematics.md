@@ -10,19 +10,8 @@ Two short introduction
 ##### Gajure
 [Gajure, Genetic Algorithm in Clojure](https://github.com/Ejhfast/Gajure)
 
-##### Clojush
-[Genetic Programming](https://github.com/lspector/Clojush)
-https://github.com/lspector/Clojush/tree/master/src/clojush/examples
-
 #### Monty Hall Problem seen with Incanter
 [Monty Hall with Incanter](http://data-sorcery.org/category/monte-carlo-simulation/)
-
-#### Racing for MonteCarlo in Clojure
-[MonteCarlo](https://github.com/farr/mcmc-clojure)
-
-[MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
-
-[Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
 
 #### A few logical words
 [core logic](https://github.com/clojure/core.logic/wiki/Examples)
