@@ -70,7 +70,7 @@ The solution has also been explained, notably on [YouTube](http://www.youtube.co
 
 And the result displayed in a nice graphical frame:
 
-![monty hall](chap03/hall.png)
+![monty hall](../images/chap03/hall.png)
 
 #### A few logical words: where is prolog ? 
 
@@ -256,5 +256,65 @@ And you will get a message back directly:
 
 The rest of the recipie follow the usual steps of database examples. Let's enjoy it:
 
-@@@ ruby chapter02/src/fleet.clj @@@
+@@@ ruby chapter03/src/fleet.clj @@@
 
+### SQL
+
+Now we are back to the old-fashioned but proven SQL world. Clojure has at its hand a lot to offer when querying relational database.
+
+For this section we are going to rely on a famous embedded database named H2. We will integrate it in our project the way we do for regular Clojure dependencies, 
+
+    [com.h2database/h2 "1.3.154"]
+
+####  Manage your databases schema with lobos
+
+Here is comes [Lobos), or how to manage your database directly from a Clojure REPL.
+To include it in your project:
+
+    [lobos "1.0.0-beta1"]
+
+And the example below walks you through:
+- opening a connection
+- create a table
+- query the schema
+- drop the table
+- close the connection
+
+@@@ ruby chapter03/src/lobos.clj @@@
+
+Lobos is very useful for testing, but Lobos has a special key feature where you can implement migrations of your schema. We do prefer liquidbase for this, we will see that in a few pages.
+
+####  Write beautiful SQL queries with Korma
+
+Now that we have a beautiful database schema, 
+[http://sqlkorma.com/docs](http://sqlkorma.com/docs)
+
+Korma makes actually enjoyable to write SQL queries.
+
+    [korma "0.3.0-beta7"]
+
+Have a look at the following code:
+
+@@@ ruby chapter03/src/korma.clj @@@
+
+Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
+
+#### You are in control of your database migrations
+[https://github.com/kumarshantanu/clj-liquibase](https://github.com/kumarshantanu/clj-liquibase)
+
+### Remote Libs
+
+#### FactQL, for when you want to use the world's most powerful programming language to query the world's most powerful open data platform.
+[FactQL](https://github.com/dirtyvagabond/factql)
+
+#### Zencoder API in a few steps
+[Zen Client](https://github.com/rcampbell/zenclient)
+
+#### Todoist, your todo list from Clojure
+[clj-todoist](https://github.com/hellonico/clj-todoist)
+
+#### Google big query Clojure wrapper
+[BigQuery](https://github.com/forward/clj-bq)
+
+#### Mixpanel, or how to track millions of user events from within your application
+[https://mixpanel.com/about/](https://mixpanel.com/about/)
