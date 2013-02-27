@@ -180,36 +180,190 @@ lein用に依存関係を追加します:
 
 #### Enliveを使ったテンプレート
 
-Enliveは私のお気に入りの一つです。 Enlive は他のテンプレートの仕組みとはちょっとひと味違います。
+Enliveは私のお気に入りの一つです。 Enlive は他のテンプレートの仕組みとはひと味違います。
 
 * コードとマークアップが完全に分離されている
 * HTMLの操作にCSSライクな文法を使える
 * テンプレートの継承はファンクションのコンポジションで行う
 
-HTML parser, and templating framework at the same time, Enlive does a super job of integrating HTML fun. (yes you read me.)
+Enliveはテンプレートだけでなく、HTMLのパースもしてくれるスグレものです。
 
-This is an example taken from the [best enlive tutorial](https://github.com/swannodette/enlive-tutorial/).
+サンプルを一つ紹介します [best enlive tutorial](https://github.com/swannodette/enlive-tutorial/).
 
-This is how you use enlive to for website scraping. Fetch the content of a URL then select the html tag you need:
+このサンプルでは、enliveを使ってWebサイトをスクレイピングします。 コンテンツのURLを取得し、必要なHTMLタグを選択します:
 
 @@@ ruby chapter02/enlive.clj @@@
 
-Reversly, you declare templates in regular html files, and apply some logic in Clojure. See how:
+今度は逆にhtmlファイルでテンプレートを作り、Clojureからテンプレートを操作します:
 
 @@@ ruby chapter02/enlive_02.clj @@@
 
-Your great designer can do his Dreamweaver work the way he or she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
+デザイナーはDreamweaverを使っていつも通りにデザインし、プログラマはそれとは切り離してロジックを書けるということですね！
 
 #### docjureで表計算
-#### postalでスパムブロック！
+
+[https://github.com/ative/docjure](https://github.com/ative/docjure)
+
+Clojureで表計算するなら、[Apache POI](http://poi.apache.org/) のライブラリを頼るのが一番ですが、docjureを一緒に使うとちょっといい感じです。
+
+例えば、シンプルな表はこんなに簡単に書くことができます
+
+@@@ ruby chapter02/src/docjure.clj @@@
+
+ここにもサンプルがあります ["horrible" documentationn](http://poi.apache.org/spreadsheet/how-to.html#sxssf) :)
+
+ま、あまり見たくないコードですが、いつの日か会社を救うことになるかも知れません。
+
+#### postalでスパムマスター
+
+[https://github.com/drewr/postal](https://github.com/drewr/postal)
+
+メール送るならpostalで。
+
+メール送信についてはご存知かもしれませんが、ぜひこのサンプルを試してみてください。 Gmailのユーザ名/パスワードを有効なものに変えるのを忘れないように。
+
+@@@ ruby chapter02/src/postal.clj @@@
+
+添付もできますし、もちろん日本語のエンコードもサポートしています。
+
 #### DNSはどうなってる？
+
+IPアドレスやホスト名を取得するためにDNS lookupやリバース lookupが必要なら、こんな感じです:
+
+@@@ ruby src/dns.clj @@@
+
+特別なライブラリを使うことなく、いつでも実行可能です。
+
 #### オレのclostacheをイぢるな！：もう一つのテンプレート
+
+[https://github.com/fhd/clostache](https://github.com/fhd/clostache)
+
+少し前にEnliveについて説明しましたが、時にはもっと簡単なファイルベースもしくはインラインのテンプレートが良いこともあります。 そこで、clostache です:
+
+	[de.ubercode.clostache/clostache "1.3.1"]
+
+プロジェクトに上記の設定をしさえすれば、とてもシンプルでセクシーなテンプレートを使うことが出来るようになります。
+
+@@@ ruby src/clostache.clj @@@
+
+話のネタに。 { と } はmustache(ヒゲ)と呼ばれています。
+
 #### CSVのマジック見たい？
+
+さて、ヒゲを手に入れたので、次に住所の入ったcsvファイルをvcard(vcf)形式に変換してみましょう。
+
+[https://github.com/davidsantiago/clojure-csv](https://github.com/davidsantiago/clojure-csv)
+
+まずプロジェクトファイルを設定します:
+
+	[clojure-csv "2.0.0-alpha2"]
+
+そして、コードは以下の通りです。
+
+@@@ ruby chapter02/src/csv.clj @@@
+
+このサンプルは、Webベースのアドレス帳アプリケーションを参考にしました [github](https://github.com/KushalP/addressbook/blob/master/src/addressbook/format.clj)
+
 #### Googleリーダーで足りなければ、このRSSマジックをお試しあれ
+
+[https://github.com/yogthos/clj-rss](https://github.com/yogthos/clj-rss)
+
+	[clj-rss "0.1.2"]
+
+これ以上ないくらい簡単。 :title、:link、:descriptionをセットにしてエントリを返すと、あとはRSSライブラリがやってくれます:
+
+@@@ ruby chapter02/src/rss.clj @@@
+
+参考サイト： [here](http://yogthos.net/blog/17).
+
 #### お知らせするならgrrrowl
+
+[https://github.com/franks42/clj-growlnotify](https://github.com/franks42/clj-growlnotify)
+
+Growl は有名な通知アプリケーションで、何かが起こったことをスクリーン上でエフェクトを使って知らせることができます。
+Mac OS X用にはここからGrowlを入手出来ます:
+
+	http://growl.info/
+
+Windowsユーザはここから:
+
+	http://www.growlforwindows.com/gfw/
+
+ここを参考にソースからビルドすることも可能です:
+
+	http://growl.info/documentation/developer/growl-source-install.php
+
+フリーですが、いくらかの寄付をしてコンパイルされたバージョンを入手することも可能です。 Growlをシステムにインストールしたら、以下のコマンドを実行してGrowlがちゃんと動くことを確認しましょう:
+
+	growlnotify -m hello
+
+以下のようなポップアップがスクリーンに表示されるはずです:
+
+![Growl](../images/growl2.png)
+
+それではClojureのコードから使ってみましょう。 プロジェクトファイルに以下の設定をします:
+
+	[clj-growlnotify "0.1.1"]
+
+そして:
+
+@@@ ruby chapter02/src/growl.clj @@@
+
+このスクリプトを実行すると、Growlの通知ポップアップが表示されます:
+
+!["Growl"](../images/growl2.png)
+
 #### CheshireでJSONのすべて
-#### 色んなものをザックリ計算してみる
-#### ターミナルとユーザインターフェイス：lanterna
+
+[https://github.com/dakrone/cheshire](https://github.com/dakrone/cheshire)
+
+ClojureでJSONするには？ Cheshire が良いと思います。
+
+	Cheshire はclj-jsonとclojure-jsonを基にした高速なJSONエンコーダーで、Date/UUID/Set/SymbolのエンコードやSMILEサポートなど追加機能を持っています。
+
+プロジェクトに追加するには:
+
+	[cheshire "4.0.2"]
+
+これでClojureの構造をJSONにしたり、JSONを解析して文字列を取り出したり出来るようになりました。 別のシステムとの間でデータのやり取りにとても役立ちます。
+
+@@@ ruby chapter02/src/cheshire.clj @@@
+
+キーワードを戻したり、日付をマップし直したり、もうJSONで頭を悩ませる必要はありませんね。♫
+
+#### あらゆるファイルのダイジェストを計算する
+
+[https://github.com/tebeka/clj-digest](https://github.com/tebeka/clj-digest)
+
+Digest を使って、ファイルの正当性をチェックするために使用するダイジェストを簡単に計算することが出来ます。
+
+このレシピで紹介するのは、毎日使うツールとしてすべてのファイルのダイジェストを計算するサンプルです。 設定は以下の通りです:
+
+	[digest "1.3.0"]
+
+ほら、数行であらゆるもののダイジェストを計算することができます。
+
+@@@ ruby chapter02/src/digests.clj @@@
+
+#### ターミナルを使ってユーザと対話する：lanterna
+
+[https://github.com/sjl/clojure-lanterna/](https://github.com/sjl/clojure-lanterna/)
+
+さて、お次はターミナルでちょとお遊びを。
+
+	[clojure-lanterna "0.9.2"]
+
+上記の設定をしたら、このスクリプトを実行します:
+
+@@@ ruby chapter02/src/lanterna.clj @@@
+
+すると、ターミナルが実行されて、テキストが表示され、キー入力を待ちます。
+
+![Lanterna](../images/lanterna.png)
+
+もちろん、他のターミナルのイベントを待つこともできます。
+他にも色々と出来るので、ドキュメントを参照してください [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/)
+
 #### そろそろ、clj
 #### SSHのショートカット
 #### HTTP クライアント名人
