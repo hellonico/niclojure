@@ -381,8 +381,108 @@ Whenever you can look at how the code for the API has been written, it is pretty
 
 #### Mixpanel, or how to track millions of user events from within your application
 
-[Mixpanel](https://mixpanel.com/about/) is 
+[Mixpanel](https://mixpanel.com/about/) claims itself to have "built the most advanced analytics platform for mobile & web."
 
+Without commenting on the claim, it sures can get your started with collecting actions and gathering data from users in a no brainer no timer way.
+
+We are going to use a minimalist wrapper around the api named [clj-mixpanel](https://github.com/pingles/clj-mixpanel) and add it to our project:
+
+    [clj-mixpanel "0.0.1-SNAPSHOT"]
+
+The code to generate some data is ridiculously simple:
+
+@@@ ruby chapter03/src/mixpanel.clj @@@
+
+But with those few lines, you can gather who's using your code and how:
+
+![mixpanel1](../images/chap03/mixpanel1.png)
+
+And instantly gets some analytics:
+
+![mixpanel1](../images/chap03/mixpanel2.png)
+
+If you need to gather user related data, this is probably the easiest way to get this done. Try it !
 
 #### Todoist, your todo list from Clojure
-[clj-todoist](https://github.com/hellonico/clj-todoist)
+
+We are going to finish this quick web interaction tour with [clj-todoist](https://github.com/hellonico/clj-todoist), a simple wrapper around the [todoist.com](mv ~/Desktop/Screen\ Shot\ 2013-02-27\ at\ 8.50.31\ PM.png) API.
+
+Todoist is a Todo list, online, accessible from anywhere, and has been helping me to get the job done for the last few years. I am a full supporter of that team work. 
+
+Now I realize that I can use the API for tracking things I want to work on straight from the REPL without going all the way to open the browser.
+
+Let's add it:
+        
+    [clj-todoist "1.0.0"]
+
+And let's go through a few examples:
+
+@@@ ruby chapter03/src/todoist.clj @@@
+
+The complete Todoist API is [here](http://todoist.com/API/), and look at how short the code is to write a wrapper around the online API:
+
+@@@ ruby chapter03/doc/clj-todoist.clj @@@
+
+We mostly made use of cheshire inside http client, and then went on defining all the different endpoints as methods on the fly.
+Sweet sweet !
+
+### I will test some of that
+
+Now on our way to do proper engineering and test everything 
+
+#### Remember the basics
+
+    lein test
+
+#### You are lazy. Use lazytest
+
+####  You are not a midjet, so you use midje to test 
+[Midje](https://github.com/marick/Midje)
+
+Midge is a fantastic move in the world of Test Driven Development. Midge not only makes testing your code fun, it gives you the right mindset to do experiment and testing in your own project.
+
+To install Midge:
+<code>
+lein plugin install lein-midje 1.0.10
+</code>
+
+@@@ ruby 65_midje.clj @@@
+
+####  Web sites easy testing with selenium
+[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
+
+"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+
+<code>
+[clj-webdriver "0.6.0-alpha11"]
+</code>
+
+When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
+
+@@@ ruby 60_taxi.clj @@@
+
+There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
+
+#### Behavior Driven Development (BDD) with cucumber in Clojure
+[BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber) & [Cucumber](http://www.matthewtodd.info/?p=112)
+
+#### Benchmark your clojure code, with criterium
+[Benchmark](https://github.com/neatonk/criterium)
+
+#### Taxi !!! Test my web application quick !
+[Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
+
+#### Load testing and performance with perforate
+[Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
+
+#### VCR or your HTTP Playback 
+[VCR](https://github.com/fredericksgary/vcr-clj)
+
+#### Ring App Testing
+[Ring App Testing](https://github.com/xeqi/kerodon)
+
+#### Travis: Open Source hosted continuous integration service for Clojure
+[Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
+
+#### BDD and Rspec the clojure way
+[specj](https://github.com/slagyr/speclj)
