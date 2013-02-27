@@ -44,3 +44,9 @@ https://github.com/lspector/Clojush/tree/master/src/clojush/examples
 [MC with Clojure and Mahout](http://antoniogarrote.wordpress.com/2011/06/26/monte-carlo-integration-with-clojure-and-mahout/)
 
 [Compute PI With MC](http://alecbenzer.blogspot.jp/2010/07/computing-pi-with-monte-carlo-in.html)
+
+
+#### Google big query Clojure wrapper
+[BigQuery](https://github.com/forward/clj-bq)
+
+--> not sure ...

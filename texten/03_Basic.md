@@ -299,22 +299,90 @@ Have a look at the following code:
 
 Portable, compatible queries against a SQL database, with the feel of a no-sql one. When you have to insert or recover data, what else would you use ? 
 
+#### It's good when it is raw
+The liquidbase example we are going to see soon is using the very useful [clj-dbcp](https://github.com/kumarshantanu/clj-dbcp) to pool database connection, with a very large support of database backend out of the box coming from [oss-jdbc](https://github.com/kumarshantanu/oss-jdbc), which is a project gathering all those database drivers for you.
+
+Once you have added the the following two dependencies:
+
+    [clj-dbcp      "0.8.0"]  ; to create connection-pooling DataSource
+    [oss-jdbc      "0.8.0"]  ; for Open Source JDBC drivers
+
+to your project you should be setup for a bit of database work.
+
+We have found adapted a very easy CRUD sample so you can see how 
+
+* remember those database calls made with Clojure
+* you see how to create pooled connections at will.
+
+Here is how it goes:
+
+@@@ ruby chapter03/src/dbcp.clj @@@
+
+How we are ready for some database migrations. See you in a few lines.
+
 #### You are in control of your database migrations
-[https://github.com/kumarshantanu/clj-liquibase](https://github.com/kumarshantanu/clj-liquibase)
+
+[Clj-Liquibase](https://github.com/kumarshantanu/clj-liquibase) is a Clojure wrapper for Liquibase for database change management and migration.
+
+We already have the datasource and the drivers from the last meal, so let us see how to smoothly migrate schemas in a chaotic world, but in controlled way:
+
+@@@ ruby chapter03/src/liquidbase.clj @@@
+
+Now that was not so hard was it ?
+
+That closes it for the SQL section, we have seen how to:
+
+* handle SQL schema with lobos, 
+* insert queries in a nice cool way with korma
+* create pooled database source with dbcp
+* handle migrations gracefully with the clojure liquidbase wrapper.
+
+Now, let's move on to some fun into the world of the web.
 
 ### Remote Libs
 
+This section will briefly explores a few but fun APIs that are available online, as part of the programmable web.
+You can see how easy it is to tackle data coming from remote APIs but also, 
+
 #### FactQL, for when you want to use the world's most powerful programming language to query the world's most powerful open data platform.
-[FactQL](https://github.com/dirtyvagabond/factql)
+
+If you have not heard of [Factual](http://www.factual.com/) yet, it is a way to change the world. ;)
+
+    Factual Places combines data on 64 million local businesses and points of interest with rich APIs to bring context to every point worldwide.
+
+Or basically get impressive access to an impressive amount of impressive data in an impressive short time.
+
+To get yourself an account you can visit the create an account page. 
+
+Then we have this straight from Clojure with [FactQL](https://github.com/dirtyvagabond/factql) that is going to give you amazing access to all this amazingness.
+
+Here are a few examples:
+
+@@@ ruby chapter03/src/factql.clj @@@
+
+But be sure to go online and check more data by yourself ! So, for this reciepe, I suspect a glass of beer would be appropriate.
 
 #### Zencoder API in a few steps
-[Zen Client](https://github.com/rcampbell/zenclient)
+
+I am using Zencoder from time to time, when I cannot read some videos on the device I want at some urgent time.
+
+The original [Zen Client](https://github.com/rcampbell/zenclient) for Clojure was a bit old, but the code was pretty inspiring and, more than that, it still works 3 years later. This is probably what I like the most with Clojure. Once things work, they do work. And then you just need to bring some love to add more features when needed.
+
+Anyway, on to a sweet easy example, but before let's add a dependency to our project.clj
+
+    [hellonico/zenclient "1.2"]
+
+And then, on to the 30 seconds tutorial !
+
+@@@ ruby chapter03/src/zenclient.clj @@@
+
+Pretty sweet uh ? 
+Whenever you can look at how the code for the API has been written, it is pretty inspiring on how easy it is to write a Clojure wrapper for any kind of API. 
+
+#### Mixpanel, or how to track millions of user events from within your application
+
+[Mixpanel](https://mixpanel.com/about/) is 
+
 
 #### Todoist, your todo list from Clojure
 [clj-todoist](https://github.com/hellonico/clj-todoist)
-
-#### Google big query Clojure wrapper
-[BigQuery](https://github.com/forward/clj-bq)
-
-#### Mixpanel, or how to track millions of user events from within your application
-[https://mixpanel.com/about/](https://mixpanel.com/about/)
