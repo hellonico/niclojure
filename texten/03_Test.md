@@ -167,10 +167,75 @@ And then see together that the results are ...
 Almost there ! Now for you to take over, and get the test suite to pass properly. Only one word to change so sure you can do it ... now. 
 
 #### Benchmark your clojure code, with criterium
-[Benchmark](https://github.com/neatonk/criterium)
+
+[Criterium](https://github.com/neatonk/criterium) measures the computation time of an expression. It is designed to address some of the pitfalls of benchmarking, and benchmarking on the JVM in particular.
+
+There is not much to talk about on Criterium, it does the job of running your critical code like crazy for a period of time, and show you the average mean time, the lowest time, and the longest time it took to run the code.
+It gives a very detailed report after the run. It is very useful to have this for code that is going to be core to your application, so to make sure it is not going over some imposed time constraints.
+
+Adding it to your project is as usual:
+
+	[criterium "0.3.1"]
+
+And some samples on how to test the (rand) function with different parameters:
+
+@@@ ruby chapter03/src/criterium.clj @@@
+
+Now you have no excuse to make your code slow. 
 
 #### Load testing and performance with perforate
-[Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
+
+[Perforate](https://github.com/davidsantiago/perforate) buils on the library we have just seen, criterium, and allow you to run your benchmarks through lein, with profiles.
+
+We install it by adding it as a plugin to our lein profiles.clj file:
+
+	[perforate "0.3.0"]
+
+And then for example, with a benchmark like this:
+
+@@@ ruby chapter03/benchmarks/simple.clj @@@
+
+We can run perforate through line with the not so much surprising command:
+	
+	lein perforate 
+
+And get some impressive results:
+
+	======================
+	Goal:  A simple benchmark.
+	-----
+	Case:  :slightly-less-simple
+	Evaluation count : 13225789740 in 60 samples of 220429829 calls.
+	             Execution time mean : 4.490337 ns
+	    Execution time std-deviation : 0.032741 ns
+	   Execution time lower quantile : 4.474494 ns ( 2.5%)
+	   Execution time upper quantile : 4.580807 ns (97.5%)
+
+	Found 12 outliers in 60 samples (20.0000 %)
+		low-severe	 2 (3.3333 %)
+		low-mild	 10 (16.6667 %)
+	 Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+	Case:  :really-simple
+	Evaluation count : 9048943620 in 60 samples of 150815727 calls.
+	             Execution time mean : 6.971874 ns
+	    Execution time std-deviation : 0.781822 ns
+	   Execution time lower quantile : 6.622552 ns ( 2.5%)
+	   Execution time upper quantile : 7.857313 ns (97.5%)
+
+	Found 6 outliers in 60 samples (10.0000 %)
+		low-severe	 2 (3.3333 %)
+		low-mild	 4 (6.6667 %)
+	 Variance from outliers : 73.8351 % Variance is severely inflated by outliers
+
+By default, perforate runs all your benchmarks found in the benchmarks folder, but there are tons of customizations and profiles properties available to run only the ones you want.
+
+Now time to perform a benchmark on the following method:
+
+	(defn drink-glass-wine[]
+		(slurp "wine"))
+
+And hopefully it will not fail fast.
 
 #### VCR or your HTTP Playback 
 [VCR](https://github.com/fredericksgary/vcr-clj)
