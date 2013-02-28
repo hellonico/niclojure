@@ -103,28 +103,71 @@ Final note, you could also add the midje dependency:
 And execute everything from your usual REPL session. We are leaving this out as an exercice that you will finish while we are testing some tasty wine.
 
 ####  Web sites easy testing with selenium
-[https://github.com/semperos/clj-webdriver/wiki](https://github.com/semperos/clj-webdriver/wiki)
 
-"This library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
+[clj-webdriver](https://github.com/semperos/clj-webdriver/wiki) is a "library leverages the Selenium-WebDriver Java library to drive real GUI browsers like Firefox, Chrome, Safari and Internet Explorer, providing both a thin wrapper over the WebDriver API as well as higher-level Clojure functions to make interacting with the browser easier."
 
-<code>
-[clj-webdriver "0.6.0-alpha11"]
-</code>
+	[clj-webdriver "0.6.0-beta2"]
 
 When in need for some integrated testing using clojure, especially on website that do not have a public API.  Here is an example showing I forgot my github password. :)
 
-@@@ ruby 60_taxi.clj @@@
+@@@ ruby chapter03/src/taxi.clj @@@
 
 There is a very nice [blog post](http://corfield.org/blog/post.cfm/automated-browser-based-testing-with-clojure) entry that shows how to use the API in more details. 
+
+One more usage that I frequently use it for is to take screenshots of websites! This is detailed in a second example:
+
+@@@ ruby chapter03/src/taxi2.clj @@@
+
+Now you can go and use timers, or take screenshots depending on incoming emails or rest requests. Up to your imagination.
 
 #### Behavior Driven Development (BDD) with cucumber in Clojure
 [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber) & [Cucumber](http://www.matthewtodd.info/?p=112)
 
+I hope you have heard of [Cucumber](http://cukes.info) before. 
+It simply makes your testing life easier to read, with some great behavioral testing convention.
+
+I had an awesome time a few months ago putting together a test suite to validate an dodgy API for a customer using something similar to what we are going to see here.
+
+So first we start by adding the lein plugin for cucumber in profiles.clj:
+
+	[lein-cucumber "1.0.2"]
+
+We can specifiy where to find cucumber features with the following key in our project.clj:
+
+	:cucumber-feature-paths ["test/features/"]
+
+Then on to a bit of code that we want to test. This will be in:
+
+@@@ ruby chapter03/src/clojure_cukes/core.clj @@@
+
+Now on we go forward and straight and start peeling vegetables.
+In Cucumber we start by writing text that looks like it could be read by normal people, almost.
+
+@@@ ruby chapter03/test/features/cukes.feature @@@
+
+Then we write some support code so the actual "means" something to our vegetables. This file will be in a folder named _step_definitions_ in our test folder.
+
+@@@ ruby chapter03/test/step_definitions/cuke_steps.clj @@@
+
+Cucumber steps are defined by regular expression and string matching so once you have your regexp written properly, you can write more feature and test extreme cases.
+
+With all this setup, we can run our tests with:
+
+	lein cucumber 
+
+And then see together that the results are ...
+
+	Running cucumber...
+	Looking for features in:  [/Users/Niko/projects/mascarpone/chapter03/test/features]
+	Looking for glue in:  [/Users/Niko/projects/mascarpone/chapter03/test/features/step_definitions]
+	.......F
+
+	java.lang.AssertionError: Assert failed: (= (name (mood)) mood-name)
+
+Almost there ! Now for you to take over, and get the test suite to pass properly. Only one word to change so sure you can do it ... now. 
+
 #### Benchmark your clojure code, with criterium
 [Benchmark](https://github.com/neatonk/criterium)
-
-#### Taxi !!! Test my web application quick !
-[Taxi, testing with selenium](https://github.com/semperos/clj-webdriver)
 
 #### Load testing and performance with perforate
 [Load testing and performance with perforate](https://github.com/davidsantiago/perforate)
