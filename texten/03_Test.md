@@ -237,14 +237,66 @@ Now time to perform a benchmark on the following method:
 
 And hopefully it will not fail fast.
 
+#### BDD and Rspec the clojure way
+
+[speclj](https://github.com/slagyr/speclj) is a Behavior Driven Development Framework.
+We have seen how to drive our development test first, now we would like to *describe* how the code should behave, hence Behavior Driven. 
+
+The base for running this example needs an update to project.clj:
+
+	[speclj "2.5.0"]
+
+And some quick mathematics check:
+
+@@@ ruby chapter03/src/speclj.clj @@@
+
+Hopefully you have passed ? 
+
+After a run, speclj outputs some useful info:
+
+	..
+
+	Finished in 0.00013 seconds
+	2 examples, 0 failures
+
+In case of failure, say we modify the first test to fail, we would get a message that tells us exactly where our test has failed:
+
+	F.
+
+	Failures:
+
+	  1) Mathematics 1 plus 1 equals 2
+	     Expected truthy but was: <false>
+	     user.clj:7
+
+	Finished in 0.00034 seconds
+	2 examples, 1 failures
+
+You can also get some *Behavior* bonus points, if you add a Leiningen plugin to your profiles.clj file:
+
+	[speclj "2.5.0"]
+
+Then, specs that will be in the *spec* folder in your project could be run simply with:
+
+	lein spec
+
+The output would be the same. Or even better, watching for file resources to be changed and then run the suite again, you can just add a switch:
+
+	lein spec -a
+
+Now we can at last behave properly. My parents have been waiting for this good news since the day I was born.
+
 #### VCR or your HTTP Playback 
-[VCR](https://github.com/fredericksgary/vcr-clj)
+
+[vcr-clj](https://github.com/fredericksgary/vcr-clj) is a clojure library in the spirit of the VCR Ruby library. It lets you record HTTP interactions as you run your tests, and use the recordings later to play back the interaction so you can run your tests in a repeatable way without needing the external components to be available/accessible.
+
+@@@ ruby chapter03/src/vcr.clj @@@
 
 #### Ring App Testing
-[Ring App Testing](https://github.com/xeqi/kerodon)
+[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to test your Ring library:
+
+@@@ ruby chapter03/src/kerodon.clj @@@
 
 #### Travis: Open Source hosted continuous integration service for Clojure
 [Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 
-#### BDD and Rspec the clojure way
-[specj](https://github.com/slagyr/speclj)
