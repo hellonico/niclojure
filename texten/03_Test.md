@@ -66,9 +66,17 @@ Will run the test for you. At this stage, this will return something like this
 
 [Midje](https://github.com/marick/Midje) is a fantastic move in the world of Test Driven Development. Midge not only makes testing your code fun, it gives you the right mindset to do experiment and testing in your own project. 
 
-To install Midge, you add the depedency to your ~/.lein/profile.clj file with:
+To install Midge, there are two steps. 
 
-	[lein-midje "2.0.4"]
+One for Leinging, you will need to add the dependency to your ~/.lein/profile.clj file with:
+
+	[lein-midje "3.0-RC1"]
+
+And then add a new development dependency to project.clj with
+
+	:profiles {:dev {:dependencies 
+		[[midje "1.5-RC1"]]
+	}}
 
 Now, we are going to write a few simple tests with the midje syntax like these:
 
@@ -96,11 +104,13 @@ The first run will output test that were executed as well as failures:
 
 After each change in our source files, the tests will be run again without the need to type any command to rerun the tests.    
 
-Final note, you could also add the midje dependency:
-	
-	[midje "1.4.0"]   
+As of recently, there is a sweet new way to use midje through the REPL. You just need to import the package:
 
-And execute everything from your usual REPL session. We are leaving this out as an exercice that you will finish while we are testing some tasty wine.
+	(use 'midje.repl)
+
+Midje will import the namespaces you need to get you started for testing, so you can execute everything from your usual REPL session. 
+
+We are leaving this out as an exercice that you will finish while we are testing some tasty wine.
 
 ####  Web sites easy testing with selenium
 
@@ -286,17 +296,44 @@ The output would be the same. Or even better, watching for file resources to be 
 
 Now we can at last behave properly. My parents have been waiting for this good news since the day I was born.
 
-#### VCR or your HTTP Playback 
-
-[vcr-clj](https://github.com/fredericksgary/vcr-clj) is a clojure library in the spirit of the VCR Ruby library. It lets you record HTTP interactions as you run your tests, and use the recordings later to play back the interaction so you can run your tests in a repeatable way without needing the external components to be available/accessible.
-
-@@@ ruby chapter03/src/vcr.clj @@@
-
-#### Ring App Testing
-[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to test your Ring library:
-
-@@@ ruby chapter03/src/kerodon.clj @@@
-
 #### Travis: Open Source hosted continuous integration service for Clojure
-[Travis](http://about.travis-ci.org/docs/user/languages/clojure/)
 
+[Travis](http://about.travis-ci.org/docs/user/languages/clojure/) is your favorite hosted integration service. If it is not yet, read this, and see by yourself why.
+
+You first start to follow some easy to follow sign up instructions on the Travis page:
+
+	https://travis-ci.org
+
+It will ask you to sign up with your usual github account.	Happy be the power of Single Sign-On these days. 
+
+Once you are logged in, you can see a list of your projects:
+
+![Travis1](../images/chap03/travis1.png)
+
+To prepare one of your clojure project to be worked out and hammered by Travis, you need a configuration file named .travis.yml at the root folder of your project. Content would be around those lines:
+
+	language: clojure
+	lein: lein2
+
+That's it. We ready to take the cork out of the bottle.
+
+Switch the button in the web interface:
+
+![Travis2](../images/chap03/travis2.png)
+
+And then see it ... in action:
+
+![Travis3](../images/chap03/travis3.png)
+
+Note that travis is far from limited to [just Clojure](http://about.travis-ci.org/pt-BR/docs/user/languages/clojure/). 
+
+C, Haskell, Java, Ruby etc... [have a look](http://about.travis-ci.org/docs/user/getting-started/) and try it by yourself !
+
+See, now this is your favorite hosted integration service.
+
+#### Final Test
+
+So this is it for this section, we have seen how to run the simple tests in Clojure, then moved on to the core of automated testing with TDD and BDD frameworks. 
+Lastly, we have seen how to package all this into some sweet online testing for validation of hard work.
+
+Now, up to you to get this running now on your machine and put out together some cool Open Source projects. In Clojure of course.
