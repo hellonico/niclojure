@@ -1,5 +1,7 @@
 ### Remote Libs
 
+###### オードブル（Hors d'oeuvre）:前菜
+
 This section will briefly explores a few but fun APIs that are available online, as part of the programmable web.
 You can see how easy it is to tackle data coming from remote APIs but also, 
 

@@ -1,6 +1,8 @@
 ## Rapid And Fun Web Development in Clojure
 
-### Lord of the Ring: your best ally for clojure web development
+###### プラ（Plat） ポワソン:メインのお魚料理
+
+### Lord of the Ring: your best ally for Clojure web development
 
 [Ring](https://github.com/ring-clojure/ring) is a library, or more precisely a set of libraries inspired like Ruby's Rack.
 
@@ -11,7 +13,7 @@ The core components of a Ring application are:
 
 ##### Handler
 
-A ring handler is a Clojure function that receieve a request map in input and should return a response map. For a simple example:
+A ring handler is a Clojure function that receive a request map in input and should return a response map. For a simple example:
 
     (defn what-is-my-ip [request]
       {:status 200
@@ -93,6 +95,20 @@ Note also that there is nothing you need to do to refresh the webapp with new co
 
 Agile wine we call it. 
 
+#### Easy HTTP routes with Compojure
+
+So now we have the basics of our app, but we may want to do something slightly more sexy and not render the same 
+
+[Compojure](https://github.com/weavejester/compojure)  and [sample app](https://github.com/weavejester/compojure-example)
+
+#### Friends of the world. You have my oauth
+
+[Friend](https://github.com/cemerick/friend) is Rack's warden, or Java's Spring Security ported to simple-ness and Clojure so we can make more friends, relate to more people and bring peace to the world.
+
+
+[friend oauth](https://github.com/ddellacosta/friend-oauth2)
+[examples](https://github.com/ddellacosta/friend-oauth2-examples)
+
 #### Ring the world 3: Standalone server
 
 By using the lein-ring command we have seen above, we can generate a standalone customer web server !
@@ -157,14 +173,96 @@ And he will tell you:
 
 Which means you are now ready to copy that file into the deployment directory and beneciate of clustering, and a few other rubies well implemented in traditionnal java web servers.
 
-##### The boss of java webserver in two minutes of clojure
+##### JBoss AS 7
+
+A few years ago I could not go anywhere without seeing a JBoss server at the forefront of the architecture. There are a lot of friends working on cool projects there, (Salut Thomas!) so I thought I would do a quick favor by showing how to setup a war file into JBoss in a few steps.
+
+You can download the server from the [projects page](http://www.jboss.org/projects) and the [direct download page](http://www.jboss.org/jbossas/downloads/).
+
+Once downloaded, we can see the following set of files:
+
+![jboss1](../images/chap04/jboss1.png)
+
+This is not a JBook bokk. Sorry a JBoss book, so for detailed explanation on A..Z please refer to their documentation. 
+
+We will need a user for the JBoss admin console, and the script to perform this is in the bin folder, and is named *add_user.sh*.
+
+After a bit of old fashioned script interaction:
+
+    [Niko@Modrzyks-MacBook-Pro][17:58][~/Downloads/jboss-as-7.1.1.Final/] % ./bin/add-user.sh  
+
+    What type of user do you wish to add? 
+     a) Management User (mgmt-users.properties) 
+     b) Application User (application-users.properties)
+    (a): 
+
+    Enter the details of the new user to add.
+    Realm (ManagementRealm) : 
+    Username : clojure
+    Password : 
+    Re-enter Password : 
+    About to add user 'clojure' for realm 'ManagementRealm'
+    Is this correct yes/no? yes
+    Added user 'clojure' to file '/Users/Niko/Downloads/jboss-as-7.1.1.Final/standalone/configuration/mgmt-users.properties'
+    Added user 'clojure' to file '/Users/Niko/Downloads/jboss-as-7.1.1.Final/domain/configuration/mgmt-users.properties'
+
+We are almost ready to hit the admin console through the browser. But, first let's start the server:
+
+    ./bin/standalone.sh
+
+And now we can head to:
+
+    http://127.0.0.1:9990/console/App.html#server-overview
+
+It will greets you with a desperate need for authentication...
+
+![jboss2](../images/chap04/jboss2.png)
+
+That comes just in time, because we have just registered a user a few seconds ago didn't we ? 
+Let's use the same user and login.
+
+![jboss3](../images/chap04/jboss3.png)
+
+And following the few shots below we can upload our war file to jboss.
+
+![jboss4](../images/chap04/jboss4.png)
+![jboss5](../images/chap04/jboss5.png)
+
+And lastly enable the application context:
+
+![jboss6](../images/chap04/jboss6.png)
+
+Our application is located in a default context taken from the name of the war file, so we would go to:
+
+    http://localhost:8080/chapter04-0.1.0-SNAPSHOT-standalone/
+
+To see our wonderful time application ! The time has changed. And wine has probably come.
+
+What that means in simple terms is that a full on Java shop can now be a full Clojure shop without anyone complaining much about new powerful and simple language being pushed to production. There is simply no bad aspect of this deployment, ring and roll.
+
+##### Apache Tomcat 7
+
+The previous recipe was a bit long to explain because JBoss has a vast support for custom deployment solutions and a nice bunch of features for production quality services.
+
+Now this is going to be way shorter. Apache Tomcat has been enjoying continuous support and engineering for JVM based server deployment.
+A long long time ago, when the grapes were young, we introduced Tomcat 3 for a production quality application and the memory usage for superb enough that it actually improved the number of connections we could handle compared to other paid servers at the time. I cherished that time so much. We save money and we did better.
+
+You can [download Tomcat](http://tomcat.apache.org/download-70.cgi) and once you have unzipped the archive, we can start it with:
+
+    ./bin/startup.sh
+
+![tomcat](../images/chap04/tomcat1.png)
+
+We can copy the same war file we generated before to the webapp folder of the Tomcat install, and we can see the result just as before:
+
+    http://localhost:8080/chapter04-0.1.0-SNAPSHOT-standalone/
+
+We are still right on time !
+
+We are going to reuse Tomcat later, so let's stay focused. 
+
+### The boss of java webserver in two minutes of clojure
 [Immutant](http://immutant.org/tutorials/installation/index.html)
-
-#### When you need an oauth, you have friends
-[friend oauth](https://github.com/ddellacosta/friend-oauth2)
-[examples](https://github.com/ddellacosta/friend-oauth2-examples)
-
-
 
 
 ### Not everything is Noir. But it sure help to develop a web site with so few lines of code
@@ -195,10 +293,6 @@ This is not so much a library than a way to develop slick web application using 
 [https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
 [Original Vaadin Sampler](http://demo.vaadin.com/sampler) 
 (https://github.com/weavejester/lein-ring with Vaadin)[https://github.com/weavejester/lein-ring]
-
-### When you see something named Compojure, know it's a cool webframework
-[Compojure](https://github.com/weavejester/compojure) 
-more [weavejester](https://github.com/weavejester)
 
 ### Has websocket development become so simple ? Thanks Aleph
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)

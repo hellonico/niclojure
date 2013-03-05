@@ -80,9 +80,6 @@ And outputs our well deserved red liquid on the command line.
 #### Now I am on bitbucket, where are you ?
 [BitBucket](https://github.com/ohpauleez/clj-bitbucket/tree/17467d27bf0dbd3b3f39290fa66c4201d788d8b0)
 
-#### The boss of java webserver in two minutes of clojure
-[Immutant](http://immutant.org/tutorials/installation/index.html)
-
 #### Java Service Wrapper
 Use the GPL version for your own or open source project, and get your application as a nice service ready to deploy
 [Application as service or executable](http://wrapper.tanukisoftware.com/doc/english/integrate.html#method1)
