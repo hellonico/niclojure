@@ -72,6 +72,8 @@ And outputs our well deserved red liquid on the command line.
 [Debian Packaging](https://github.com/erickg/lein-debian)
 [Ant task to make deb packages](http://code.google.com/p/ant-deb-task/) and [https://clojars.org/tvachon/ant-deb-task](https://clojars.org/tvachon/ant-deb-task)
 
+[Lein deb](https://github.com/travis/lein-deb)
+
 #### When you want to go the OSGi way
 [OSGI](https://github.com/aav/clojure.osgi), with [blog post](http://paudo.posterous.com/clojure-osgi)
 
