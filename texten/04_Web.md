@@ -97,9 +97,68 @@ Agile wine we call it.
 
 #### Easy HTTP routes with Compojure
 
-So now we have the basics of our app, but we may want to do something slightly more sexy and not render the same 
+##### Routing to Celebrity
 
-[Compojure](https://github.com/weavejester/compojure)  and [sample app](https://github.com/weavejester/compojure-example)
+So now we have the basics of our app, but we may want to do something slightly more sexy and not render the same page each time.
+
+To achieve this we are going to use [Compojure](https://github.com/weavejester/compojure) and go through a very [sample app](https://github.com/weavejester/compojure-example).
+
+Compojure is already included in Ring , as we can see in the dependency list, but to get proper fine control over your application, here is how to rock your project.clj:
+
+    [compojure "1.1.5"]
+    [hiccup "1.0.2"]
+
+We will also include hiccup as we have seen in Chapter 01. The rest of the project definition should have no mystery for you now:
+
+@@@ ruby chapter04_01/project.clj @@@
+
+Our Application will have two files, one that defines the routing and another one that defines our views.
+
+Let's go through the routing part:
+
+@@@ ruby chapter04_01/src/compojure/example/routes.clj @@@
+
+The routing uses a line-based DSL, with each line splitted in 4 sections:
+
+    (GET "/" [] (index-page))
+
+GET : First comes the HTTP method that applies to that route, here we use GET. All the other ones are available, and a special ANY matches everything
+
+"/" : The matching route itself. In the second example, we have "/user/:id", so we can retrieve parameters later from the URL.
+
+[] : Here is an array that allows to retrieve information from the request map.
+
+(index-page) : From chapter 01 we have seen that hiccup generated calls are simple Clojure functions. For the record, here is the content of that function:
+
+@@@ ruby chatper04_01/src/compojure/example/views.clj @@@
+
+Now we are ready, we can fire our ring development environment with the method we have seen before and start hacking:
+
+    lein ring server
+
+Now, you realize you have all you need to also develop a simple but robust JSON based web service. We leave this out as an exercice, but try to include the library we have seen before, *cheshire* and return a JSON map with the correct content-type in the response.
+
+##### Notes on Clojure destructuring feature
+
+Now is the perfect to recall that Clojure comes with something named *destructuring*, which in other words means accessing only the data you want from a data sequence.
+
+You remember our second parameters, [], in the routing DSL. Let's get back to it.
+
+    (GET "/" [] (index-page))
+
+Let's say I want to retrieve the IP address of the visitor. We can use the second parameter as a desctructuring form, which means creating a subset of the map of the request itself. (You do remember the request is a simple map from earlier in the Chapter do you ?) Slightly updating the above sample, we will get:
+
+    (GET "/yourip" {ip :remote-addr} (str "Your IP is:" ip))
+
+What have we done here ? We have retrieved the :remote-addr parameter of the original request map. But .. wait. What was the original request map again ? Here we go:
+
+@@@ ruby chapter04_01/resources/public/request-sample.json @@@
+
+If you have started your ring server, you can also see it with by accessing:
+
+    http://localhost:3000/request-sample.json
+
+Next, onto some security stuff.
 
 #### Friends of the world. You have my oauth
 
@@ -108,6 +167,10 @@ So now we have the basics of our app, but we may want to do something slightly m
 
 [friend oauth](https://github.com/ddellacosta/friend-oauth2)
 [examples](https://github.com/ddellacosta/friend-oauth2-examples)
+
+#### JSON of the world
+
+https://github.com/ring-clojure/ring-json
 
 #### Ring the world 3: Standalone server
 
