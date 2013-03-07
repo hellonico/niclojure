@@ -164,13 +164,50 @@ Next, onto some security stuff.
 
 [Friend](https://github.com/cemerick/friend) is Rack's warden, or Java's Spring Security ported to simple-ness and Clojure so we can make more friends, relate to more people and bring peace to the world.
 
-
 [friend oauth](https://github.com/ddellacosta/friend-oauth2)
 [examples](https://github.com/ddellacosta/friend-oauth2-examples)
 
 #### JSON of the world
 
-https://github.com/ring-clojure/ring-json
+We all know we cannot really build a proper service these days without a kind of JSON API. No need to worry, our waiter is not going to keep you waiting.
+There was a time where calling a remote service was a pain, but today we are going to see how [ring-json](https://github.com/ring-clojure/ring-json) will make you finish work before you even started.
+
+To add it to your project, we go with:
+
+    [ring/ring-json "0.2.0"]
+
+This little piece of code shows us how to turn Clojure data structures into proper JSON without doing anything:
+
+@@@ ruby chapter04_03/src/chapter04_03/core.clj @@@
+
+We start by importing a new Ring middleware into the namespace, and wrap the Ring handler with a method called *wrap-json-response*. That's it.
+
+Accessing the server at [http://localhost:3000](http://localhost:3000) will return properly formatted json code.
+
+In our second example, we will post json data to our service, and directly retrieve Clojure data structures.
+
+The code on the server side do not even get complicated:
+
+@@@ ruby chapter04_03/src/chapter04_03/core2.clj @@@
+
+And using Curl on the command line, we can send our new service a request with:
+
+    curl -v \
+        -H "Accept: application/json" \
+        -H "Content-type: application/json" \
+        -X POST \
+        -d '{"user":"Clojure"}'  \
+        http://localhost:3000
+
+The following JSON: 
+
+    {"user":"Clojure"}
+
+Will be converted automatically with the middleware wrap-json-body to the structure:
+
+    {"user" "Clojure"}
+
+Merci Monsieur !
 
 #### Ring the world 3: Standalone server
 
@@ -326,9 +363,10 @@ We are going to reuse Tomcat later, so let's stay focused.
 
 ### The boss of java webserver in two minutes of clojure
 [Immutant](http://immutant.org/tutorials/installation/index.html)
-
+Deployment section ?
 
 ### Not everything is Noir. But it sure help to develop a web site with so few lines of code
+
 
 [https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 
 [http://www.webnoir.org/](http://www.webnoir.org/)
@@ -342,10 +380,6 @@ This is how it looks like in Clojure code
 and/or this is how you would have it started in a few seconds with the leiningen command we installed earlier on
 
 @@@ ruby 09_noir.sh @@@
-
-Now the guy from Noir has also started a very cute project named [Lighttable](http://www.kickstarter.com/projects/ibdknox/light-table). You can see the [Playground](http://app.kodowa.com/playground) where you can do live execution of your code with an awesome new type of UI for programming. 
-
-![Alt text](../images/LightTable.png)
 
 ### Vaadin, or Google Web Toolkit without all the plumbery, just with the fun
 [http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
