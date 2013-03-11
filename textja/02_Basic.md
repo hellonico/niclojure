@@ -383,23 +383,108 @@ Digest を使って、ファイルの正当性をチェックするために使�
 #### SSHのショートカット
 
 リモートにあるデータをREPLに持ってきたいなんてことがありますよね。
-This is where clj-ssh comes in.
+そういう時は clj-ssh があります。
 
 [https://github.com/hugoduncan/clj-ssh](https://github.com/hugoduncan/clj-ssh)
 
 	[clj-ssh "0.4.3"]
 
-A wrapper to automate ssh commands, using the default ssh agent on the local machine.
-There is probably more to read if you are on windows.
+ssh コマンドの自動実行を実現するラッバーで、デフォルトの ssh エージェントをローカルマシン上で使います。
 
 @@@ ruby chapter02/src/ssh.clj @@@
 
 #### HTTP クライアント名人
+
+[https://github.com/dakrone/clj-http](https://github.com/dakrone/clj-http)
+
+clj-http はjava http client のラッパーです [apache http client](http://hc.apache.org/). http クライアントは登場して数年が経ちますが、堅牢なAPIを提供しています。 以下の設定で、Clojureから使うことができます。
+
+	[clj-http "0.3.6"]
+
+次の例では、POSTリクエストを発行してイメージ処理をクラウド上で実施します [blitline API](http://www.blitline.com/docs/quickstart).
+実行するファンクションはblurで、残りはJSONのパラメータです。
+
+@@@ ruby chapter02/src/http.clj @@@
+
 #### シリアルポート使ってる？
+
+[https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj](https://github.com/samaaron/serial-port/blob/master/src/serial_port.clj)
+
+このレシピは、PCのUSBポートへのアクセスを実現するものです。 PCのハードウェアに依存するので、もしかしたらお使いのPCでは動かないかもしれません。 後のセクションで紹介するcalxやpenumbraといった別のライブラリもありますが。
+
+@@@ ruby chapter02/src/serial.clj @@@
+
+ここでは、本当にシンプルにポートをオープンして読み書きをしているだけですが、USBに接続する独自のデバイスをコントロールするためのヒントにはなると思います。
+
 #### メモリがない！ どうやってXMLをストリームする？
+
+ここでは、巨大なxmlファイルを処理するために書かれたxml-picker-seqというXMLパーサーを紹介します。
+[https://github.com/marktriggs/xml-picker-seq](https://github.com/marktriggs/xml-picker-seq)
+
+このライブラリは1GBを超えるXMLファイルをサポートします。
+
+設定は、いつもの通り:
+
+	[xml-picker-seq "0.0.2"]
+
+@@@ ruby chapter02/src/large_xml.clj @@@
+
+[https://github.com/dakrone/clojure-opennlp](https://github.com/dakrone/clojure-opennlp)
+
 #### Clojureで自然言語処理
-#### conduitでストリーム全開！
+
+このレシピは、この本の中で最も学術的要素の高いトピックの一つです。 OpenNLPにテキストをパースさせて、その結果を自分のアプリケーションで利用することが出来ます。
+
+	[clojure-opennlp "0.2.0"]
+
+ここでは、OpenNLPにテキストをパースさせています:
+
+@@@ ruby chapter02/src/opennlp.clj @@@
+
+上記は非常にシンプルなOpenNLPのサンプルですが、clojure-opennlpのサイトには色々なサンプルがあります [README](https://github.com/dakrone/clojure-opennlp/blob/master/README.markdown) また、独自のモデルをトレーニングする方法についても書かれています [train](https://github.com/dakrone/clojure-opennlp/blob/master/TRAINING.markdown)
+
+以下はWebのページを丸ごとトークンに切り出すサンプルです。
+
+@@@ ruby chapter02/src/opennlp2.clj @@@
+
+#### conduitでストリームプロセッシング全開！
+
+まず、ストリームプロセッシングについて、ここを参照してください:
+[http://www.intensivesystems.net/tutorials/stream_proc.html](http://www.intensivesystems.net/tutorials/stream_proc.html)
+
+ここではストリームプロセッシングについてとても良い説明がされているばかりか、Clojureでそれを実現する方法まで説明されています。
+
+conduitの基本は、物事を入れて、定義したステップに沿って変換して、取り出す、です。
+
+	[net.intensivesystems/conduit "0.9.0"]
+
+異なるメッセージングシステム(RabbitMQ、IRC、...)からメッセージを受け取り、処理するというのは、アイディアとしてはApache Camelに似ていますね。
+
+@@@ ruby chapter02/src/conduit.clj @@@
+
 #### イベント処理とストリーム
+
+[https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
+Clojureでのイベントワークフローとストリームプロセッシングです。
+
+Lamina はイベントを受信するキューとその後の処理について素晴らしいコンセプトを定義しています。 Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+
+Import it in your project with:
+
+	[lamina "0.5.0-beta9"]
+
+You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data. On OSX, here is the way to do it simply with brew:
+
+	brew install graphviz
+
+@@@ ruby chapter02/src/lamina.clj @@@
+
+![Lamina](../images/chapter02/lamina1.png)
+
+@@@ ruby chapter02/src/lamina2.clj @@@
+
+![Lamina](../images/chapter02/lamina2.png)
+
 #### Aliceが暗号化すればBobも安心
 #### 単位変換機
 #### JSONでクエリを投げるには
