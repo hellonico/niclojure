@@ -364,8 +364,36 @@ Digest を使って、ファイルの正当性をチェックするために使�
 もちろん、他のターミナルのイベントを待つこともできます。
 他にも色々と出来るので、ドキュメントを参照してください [documentation](http://sjl.bitbucket.org/clojure-lanterna/screens/)
 
-#### そろそろ、clj
+#### 今何時？
+
+良い言語は皆日付に対して分かりやすいアクセスの方法を持っています。 Clojureの _clj-time_ のように:
+
+[https://github.com/seancorfield/clj-time](https://github.com/seancorfield/clj-time)
+
+日付や時刻、時間に関する色々を Clojure 流にやってくれる jodatime のラッパーですね。
+
+いつものように project.clj に設定を追加しましょう。
+
+	[clj-time "0.4.5-SNAPSHOT"]
+
+@@@ ruby chapter02/src/time.clj @@@
+
+これで時刻はバッチリ、人生のタイムゾーンもきっと良くなりますね。 :)
+
 #### SSHのショートカット
+
+リモートにあるデータをREPLに持ってきたいなんてことがありますよね。
+This is where clj-ssh comes in.
+
+[https://github.com/hugoduncan/clj-ssh](https://github.com/hugoduncan/clj-ssh)
+
+	[clj-ssh "0.4.3"]
+
+A wrapper to automate ssh commands, using the default ssh agent on the local machine.
+There is probably more to read if you are on windows.
+
+@@@ ruby chapter02/src/ssh.clj @@@
+
 #### HTTP クライアント名人
 #### シリアルポート使ってる？
 #### メモリがない！ どうやってXMLをストリームする？
