@@ -467,13 +467,13 @@ conduitの基本は、物事を入れて、定義したステップに沿って�
 [https://github.com/ztellman/lamina](https://github.com/ztellman/lamina)
 Clojureでのイベントワークフローとストリームプロセッシングです。
 
-Lamina はイベントを受信するキューとその後の処理について素晴らしいコンセプトを定義しています。 Lamina makes it very easily to play and visualize what is happening troughout the different queues waiting for values.
+Lamina はイベントを受信するキューとその後の処理について素晴らしいやり方を定義しています。
 
-Import it in your project with:
+まず、プロジェクトにインポートしましょう:
 
 	[lamina "0.5.0-beta9"]
 
-You would need [Graphiz](http://www.graphviz.org/Download..php) installed on your machine to display how the channels are handling data. On OSX, here is the way to do it simply with brew:
+次に、チャネルがどのようにデータを処理するのかを表示するために [Graphiz](http://www.graphviz.org/Download..php) をインストールしましょう。 Mac OS Xの場合は、ここにbrewを使ったインストール方法があります:
 
 	brew install graphviz
 
@@ -486,8 +486,45 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 ![Lamina](../images/chapter02/lamina2.png)
 
 #### Aliceが暗号化すればBobも安心
-#### 単位変換機
+
+[Cryptography for Clojure](https://github.com/laczoka/clj-crypto)
+
+このライブラリはJava用の暗号ライブラリであるBouncyCastleをベースにしています。 そのため、キーペアの生成も自前のアプリケーションへの実装も簡単です。
+
+	[laczoka/clj-crypto "1.0.2-SNAPSHOT"]
+
+@@@ ruby chapter02/src/alice.clj @@@
+
+#### Clojureで単位換算
+
+ここでは、なかなかパワフルな単位換算ライブラリを紹介します。
+
+詳細な説明はここにあります:
+[Unit of Measure Calculator](https://github.com/martintrojer/frinj) and [samples](https://github.com/martintrojer/frinj/blob/master/src/frinj/examples.clj)
+
+とりあえず、サンプルとして体積と容量の換算を行います。
+
+	[frinj "0.1.3"]
+
+ここでは、まず箱の体積を求めるための3辺の長さを渡して、その箱を水で一杯に満たすために必要な水の量を換算しています。
+
+@@@ ruby chapter02/src/frinj.clj @@@
+
+時間があれば是非他のサンプルを試してみてください。 普段は思いつかないような意外な発見があるかも知れません。
+
 #### JSONでクエリを投げるには
+
+[JsonPath](https://github.com/gga/json-path)
+
+XMLのクエリというと、きっと今までに何度もやってきたことと思いますが、最近はJSONでのやり取りが多いですよね。 というワケで、json-pathです。
+コード自体は最近ほとんどアップデートされていませんが、おまじないのように問題なく動きます！
+
+	[json-path "0.2.0"]
+
+以下のサンプルでは、JSON形式のデータをクエリして、Cheshireでパースします:
+
+@@@ ruby chapter02/src/jsonpath.clj @@@
+
 #### ニューラルネットワークにはNetz
 #### SSHトンネリング
 #### Clojureに学習させるならinfer
