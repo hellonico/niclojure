@@ -304,6 +304,29 @@ And he will tell you:
 
 Which means you are now ready to copy that file into the deployment directory and beneciate of clustering, and a few other rubies well implemented in traditionnal java web servers.
 
+
+##### Apache Tomcat 7
+
+The previous recipe was a bit long to explain because JBoss has a vast support for custom deployment solutions and a nice bunch of features for production quality services.
+
+Now this is going to be way shorter. Apache Tomcat has been enjoying continuous support and engineering for JVM based server deployment.
+A long long time ago, when the grapes were young, we introduced Tomcat 3 for a production quality application and the memory usage for superb enough that it actually improved the number of connections we could handle compared to other paid servers at the time. I cherished that time so much. We save money and we did better.
+
+You can [download Tomcat](http://tomcat.apache.org/download-70.cgi) and once you have unzipped the archive, we can start it with:
+
+    ./bin/startup.sh
+
+![tomcat](../images/chap04/tomcat1.png)
+
+We can copy the same war file we generated before to the webapp folder of the Tomcat install, and we can see the result just as before:
+
+    http://localhost:8080/chapter04-0.1.0-SNAPSHOT-standalone/
+
+We are still right on time !
+
+We are going to reuse Tomcat later, so let's stay focused. 
+
+
 ##### JBoss AS 7
 
 A few years ago I could not go anywhere without seeing a JBoss server at the forefront of the architecture. There are a lot of friends working on cool projects there, (Salut Thomas!) so I thought I would do a quick favor by showing how to setup a war file into JBoss in a few steps.
@@ -371,30 +394,95 @@ To see our wonderful time application ! The time has changed. And wine has proba
 
 What that means in simple terms is that a full on Java shop can now be a full Clojure shop without anyone complaining much about new powerful and simple language being pushed to production. There is simply no bad aspect of this deployment, ring and roll.
 
-##### Apache Tomcat 7
+### The boss of Java Web Servers, JBoss, built for Clojure. Welcome to Immutant.
 
-The previous recipe was a bit long to explain because JBoss has a vast support for custom deployment solutions and a nice bunch of features for production quality services.
+#### Here comes the beast
 
-Now this is going to be way shorter. Apache Tomcat has been enjoying continuous support and engineering for JVM based server deployment.
-A long long time ago, when the grapes were young, we introduced Tomcat 3 for a production quality application and the memory usage for superb enough that it actually improved the number of connections we could handle compared to other paid servers at the time. I cherished that time so much. We save money and we did better.
+In this section, we are going to introduce a specific version of JBoss that responds to all what we have seen so far. In the previous section we have seen how to use a generic version of JBoss and deploy to it using standard ways. 
 
-You can [download Tomcat](http://tomcat.apache.org/download-70.cgi) and once you have unzipped the archive, we can start it with:
+[Immutant](http://immutant.org/tutorials/installation/index.html) has probably made in Clojure heaven, meaning it removes all the complexity you don't need, while bringing the features you do need.
 
-    ./bin/startup.sh
+Immutant has a lein plugin that we can install in profiles.clj with:
+    
+    {:user {:plugins [[lein-immutant "0.17.1"]]}}
 
-![tomcat](../images/chap04/tomcat1.png)
+Now we are going to present how to create and deploy a fresh ring webapp to a immutant slash JBoss server.
 
-We can copy the same war file we generated before to the webapp folder of the Tomcat install, and we can see the result just as before:
+Leiningen takes care of downloading the server to our local machine with:
 
-    http://localhost:8080/chapter04-0.1.0-SNAPSHOT-standalone/
+    lein immutant install
 
-We are still right on time !
+The server will be downloaded and extracted. Now, we can create a new project:
 
-We are going to reuse Tomcat later, so let's stay focused. 
+    lein immutant new chapter04_05
 
-### The boss of java webserver in two minutes of clojure
-[Immutant](http://immutant.org/tutorials/installation/index.html)
-Deployment section ?
+We will modify a few bits so as to have this new project with a ring handler.
+
+Let's add ring and ring-json to our project metadata:
+
+    [ring/ring-json "0.2.0"]
+
+Then, a quick ring handler that return some json:
+
+@@@ ruby chapter04_05/src/chapter04_05/core.clj @@@
+
+Nothing unusual here, so we will promptly jump to the only new file added for immutant. This file is located in the immutant folder of the src folder.
+
+@@@ ruby chapter04_05/src/immutant/init.clj @@@
+
+Voila. We are asking Monsieur to put our ring handler at the context page "/". That file is also where we can put the different setup for messaging, caching and scheduling. One place to rule them all !
+
+We can deploy it with:
+    
+    lein immutant deploy
+
+The command itself is quite quiet...
+    
+    Deployed chapter04_05 to /Users/Niko/.lein/immutant/current/jboss/standalone/deployments/chapter04_05.clj
+
+But our application has been properly installed in 
+
+Now, in a different shell, we will start Immutant with a quite simple Leiningen command:
+
+    lein immutant run
+
+And finally, our long awaited JSON will be showing up at:
+
+    http://localhost:8080/chapter04_05
+
+Another foo and another bar.
+
+    {
+    "foo": "bar"
+    }
+
+Now, in a bit of details, we are not copying our project to immutant, we are copying a reference to it. If you are curious enough to see the deployed file, it will be:
+
+    {:root "/Users/Niko/projects/mascarpone/chapter04_05"}
+
+What that means is, we can update our code. I let you work what kind of JSON will be return with the following handler:
+
+    (defn handler [request]
+       (response {:foo "bar me"}))
+
+#### Money for nothing, Caching for free
+
+So for all these immutants in our way, we actually do get free stuff. Among them, we get free [caching](http://immutant.org/tutorials/caching/index.html). Yey. No need to ask for the same thing twice. 
+
+We would define a new handler with some simple caching code:
+
+@@@ ruby chapter04_05/src/chapter04_05/caching.clj @@@
+
+And that's it, we can add a new context to our application:
+
+    (web/start "/app" app)
+    (web/start "/cached" cached) 
+
+And get the cached value accordingly.
+
+![cached](../images/chap04/immutant.png)
+
+Nice. Hopefully the wine itself has not been cached so much.
 
 ### Bootstrap your ring project in seconds with Luminus
 
@@ -406,6 +494,7 @@ The only problem was that it was not compatible with most of ring plugins, and t
 Now with all we have seen in this chapter, we know a thing or two about ring, and Luminus is exactly what we are looking for. Package all our knowledge in single step to development.
 
 We are going to use a leiningen template named [luminus](https://github.com/yogthos/luminus-template) to bootstrap a new web project for us.
+
 
 
 ### Has websocket development become so simple ? Thanks Aleph
