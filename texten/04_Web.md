@@ -160,12 +160,43 @@ If you have started your ring server, you can also see it with by accessing:
 
 Next, onto some security stuff.
 
-#### Friends of the world. You have my oauth
+#### Friends of the world. Authenticate my Facebook friends
 
-[Friend](https://github.com/cemerick/friend) is Rack's warden, or Java's Spring Security ported to simple-ness and Clojure so we can make more friends, relate to more people and bring peace to the world.
+[Friend](https://github.com/cemerick/friend) is Rack's warden, or Java's Spring Security ported to simple-ness and Clojure so we can make more friends, relate to more people and bring peace to an even better world.
 
-[friend oauth](https://github.com/ddellacosta/friend-oauth2)
-[examples](https://github.com/ddellacosta/friend-oauth2-examples)
+In quite a few web applications these days, or any application for that matters, we tend to reuse logins from other service, Google, Twitter etc ...
+The goal of this recipie is to show how we can retrieve data after Log in into Facebook.
+
+[friend oauth](https://github.com/ddellacosta/friend-oauth2) does exactly what we need, which is re-create the oauth authentication workflow for us through simple configuration. 
+
+After importing a few libraries, the core of our example will be here:
+
+@@@ ruby chapter04_02/src/friend_oauth2_examples/facebook_handler.clj @@@
+
+The application configuration itself is in a simple map:
+
+    (def client-config
+      {:client-id "233100973389749"
+       :client-secret "0772afb21ddf0d0fab8200c1ff707319"
+       :callback {:domain "http://localhost:3000" :path "/facebook.callback"}})
+
+This configuration should match your application settings from the [Facebook developer page](https://developers.facebook.com/)
+
+Now onto our local application, after starting the ring handler with
+
+    lein ring server
+
+We will be welcomed with a very basic page. If we navigate to 
+
+    http://localhost:3000/authlink
+
+The oauth workflow will start up, and we will be redirected to the Facebook login page:
+
+![Facebook](../images/chap04/facebook.png)
+
+If the login is successful, Facebook redirects us to our local ring server, to the exact location we pointed. That's it.
+
+The example also have github, and .Net version included so you should keep this for homework. 
 
 #### JSON of the world
 
@@ -381,15 +412,6 @@ and/or this is how you would have it started in a few seconds with the leiningen
 
 @@@ ruby 09_noir.sh @@@
 
-### Vaadin, or Google Web Toolkit without all the plumbery, just with the fun
-[http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
-
-This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
-
-#### Sample Vaadin Application to get started
-[https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
-[Original Vaadin Sampler](http://demo.vaadin.com/sampler) 
-(https://github.com/weavejester/lein-ring with Vaadin)[https://github.com/weavejester/lein-ring]
 
 ### Has websocket development become so simple ? Thanks Aleph
 [https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)

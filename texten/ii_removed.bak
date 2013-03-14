@@ -50,3 +50,16 @@ https://github.com/lspector/Clojush/tree/master/src/clojush/examples
 [BigQuery](https://github.com/forward/clj-bq)
 
 --> not sure ...
+
+
+### Vaadin, or Google Web Toolkit without all the plumbery, just with the fun
+[http://dev.vaadin.com/wiki/Articles/ClojureScripting](http://dev.vaadin.com/wiki/Articles/ClojureScripting)
+
+This is not so much a library than a way to develop slick web application using Vaadin, but without the java boiler plate code. 
+
+#### Sample Vaadin Application to get started
+[https://github.com/hsenid-mobile/clj-vaadin](https://github.com/hsenid-mobile/clj-vaadin)
+[Original Vaadin Sampler](http://demo.vaadin.com/sampler) 
+(https://github.com/weavejester/lein-ring with Vaadin)[https://github.com/weavejester/lein-ring]
+
+--> not enough time
