@@ -484,9 +484,11 @@ And get the cached value accordingly.
 
 Nice. Hopefully the wine itself has not been cached so much.
 
-### Bootstrap your ring project in seconds with Luminus
+### Bootstrap your web project in seconds with Luminus, a template for Leiningen
 
-[Luminus](http://www.luminusweb.net/) has taken the fire from [noir](http://www.webnoir.org/) recently in the easyness needed to get you started with a Ring project.
+Template is one of those words that every body talks about, but no one really understand what any one is actually talking about. 
+
+[Luminus](http://www.luminusweb.net/) has taken the fire from [noir](http://www.webnoir.org/) recently in the easyness needed to get you started with a Ring project in seconds.
 
 If you look here and there in the interweb, you will still find many mention of the Noir framework which was exactly what the Clojure Web community needed to get started. 
 The only problem was that it was not compatible with most of ring plugins, and thus things like authentication would fall apart and the easyness of your application was not there anymore.
@@ -495,14 +497,124 @@ Now with all we have seen in this chapter, we know a thing or two about ring, an
 
 We are going to use a leiningen template named [luminus](https://github.com/yogthos/luminus-template) to bootstrap a new web project for us.
 
+Let's move on.
 
+So, templates for new project in Leiningen are actually using an internal plugin named, [newnew](https://github.com/Raynes/lein-newnew). Newnew, is actually not so new anymore, and is now included in Leiningen so ... there is basically nothing new to install new. Nor Luminus.
 
-### Has websocket development become so simple ? Thanks Aleph
-[https://github.com/ztellman/aleph](https://github.com/ztellman/aleph)
-Websockets
+So we will create a new project directly with the following command:
+
+    lein new luminus chapter04_06
+
+And that's it. If we cd into that folder, and use our favorite ring command:
+
+    lein ring server
+
+Our favorite browser will open a nice window...
+
+![luminus](../images/chap04/luminus.png)
+
+and we are ready to code. 
+
+Luminus integrates most of the common ring libraries for you, routing, markup, database, Twitter's bootstrap are already included. You just need to code. 
+
+### Has websocket development become so simple ? 
+
+In the server side javascript world, Node.js has had the "Vent en poupe" for a bit of time, but there is a Clojure library we have seen already that does a fantastic job with websockets.
+
+I am using this on an every day basis nowadays for all my server side websocket work.
+
+So first, welcome back our earlier contender, http-kit. We will welcome it back to our project.clj file:
+
+    [http-kit "2.0.0-RC4"]
+
+I have also added the :main directive to start the project with lein:
+
+    :main chapter04-07.core
+
+Then onto the shortest code ever:
+
+@@@ ruby chapter04_07/src/chapter04_07/core.clj @@@
+
+Now, try to use the websocket test website at:
+
+    http://www.websocket.org/echo.html
+
+With the following URL:
+
+    ws://localhost:8080/chat
+
+Sweet yeah ? "Rock it with HTML5 WebSocket !" ;)
+
+This looks like a perfect extension for our usual Ring code ! It is actually slightly more complicated under the hood, but ... if you really need to know, spend some time on the guy website. He has a real passion for what he is doing !
+
+Note: 
+
+[Aleph](https://github.com/ztellman/aleph) is also a wicked way to do Websockets in Clojure. Aleph is actually more versatile and can handle a series of different protocols other than the usual, such as TCP, UDP etc. I especially like the [UDP](https://github.com/ztellman/aleph/blob/perf/src/aleph/udp.clj) feature, but this goes beyond the scope of this chapter focused on Web. 
+Anyway, do take the time to have a browse the web. 
 
 ### Building RESTful applications has no more secret to you
-[https://github.com/clojure-liberator/liberator](https://github.com/clojure-liberator/liberator)
+
+I discovered [Liberator](https://github.com/clojure-liberator/liberator) only recently. I actually typed bluntly Clojure and Rest in a Google search, and something quite intriguing named Liberator came from Github.
+The documentation is a little bit scarce, that is also a reason for this book after all, but the result is just so very impressively great.
+
+As always, we will go through a very simple example, of creating a counter resource that we can increment with a POST method, and get the value with a GET method. 
+
+We will be using the dependencies we have seen so far, plus this new one. So on to our project.clj file:
+
+    [compojure "1.0.2"]
+    [ring/ring-jetty-adapter "1.1.0"]
+    [liberator "0.8.0"]
+
+Also, let's not forget abou the usual suspects 
+
+    :plugins [[lein-ring "0.8.3"]]
+    :ring {:handler chapter04-08.core/app}
+
+Liberator defines the concept of Restful *resources* that are made available and can be action-ed upon given a list of decisions.
+
+The easiest way to define a resource is through using the *resource* keyword:
+
+    (resource :handle-ok "Hello World!")
+
+We need that resource do not only return a result, but respond to request, we will do that by exposing its availability:
+
+    (resource :available-media-types ["text/plain"] :handle-ok "Hello World!")
+
+Now we can turn this resource to a full routing this through a compojure route with:
+
+    (ANY "/" [] (resource :available-media-types ["text/plain"] :handle-ok "Hello World!"))
+
+Yes. Now that is very cool. How do we access it ? A simple get to the URL will do it.
+
+![liberator](../images/chap04/liberator.png)
+
+Now on to something more substancial example. We will briefly show how to handle a counter, accepting only GET and POST methods.
+
+@@@ ruby chapter04_08/src/chapter04_08/core.clj @@@
+
+We have seen the :available media types before, so let's go through the other ones:
+
+We can select which methods are allowed with:
+
+    :method-allowed? (request-method-in :post :get)
+
+Implement the method that responds to post. In this case, we just increment out counter
+
+    :post! (fn [_] (swap! postbox-counter inc))
+
+When a new resource has been created, we return a specific message:
+
+    :handle-created (fn [_] (str "Your submission was accepted. The counter is now " @postbox-counter))
+
+And finally, when we do a simple GET, we have a simple method that returns the value of the counter:
+
+    :handle-ok (fn [_] (str "The counter is " @postbox-counter))
+
+Now that is a very good start. 
+
+We can send a POST call to our post with a curl command:
+
+    curl -Xpost http://localhost:3000/post
 
 ### Some more on Web Testing 
 
