@@ -396,21 +396,16 @@ We are going to reuse Tomcat later, so let's stay focused.
 [Immutant](http://immutant.org/tutorials/installation/index.html)
 Deployment section ?
 
-### Not everything is Noir. But it sure help to develop a web site with so few lines of code
+### Bootstrap your ring project in seconds with Luminus
 
+[Luminus](http://www.luminusweb.net/) has taken the fire from [noir](http://www.webnoir.org/) recently in the easyness needed to get you started with a Ring project.
 
-[https://github.com/ibdknox/noir](https://github.com/ibdknox/noir) 
-[http://www.webnoir.org/](http://www.webnoir.org/)
+If you look here and there in the interweb, you will still find many mention of the Noir framework which was exactly what the Clojure Web community needed to get started. 
+The only problem was that it was not compatible with most of ring plugins, and thus things like authentication would fall apart and the easyness of your application was not there anymore.
 
-It's dark in here ! Noir is probably *the* simplest way to write a functional web application in clojure.
+Now with all we have seen in this chapter, we know a thing or two about ring, and Luminus is exactly what we are looking for. Package all our knowledge in single step to development.
 
-This is how it looks like in Clojure code
-
-@@@ ruby 08_noir.clj @@@
-
-and/or this is how you would have it started in a few seconds with the leiningen command we installed earlier on
-
-@@@ ruby 09_noir.sh @@@
+We are going to use a leiningen template named [luminus](https://github.com/yogthos/luminus-template) to bootstrap a new web project for us.
 
 
 ### Has websocket development become so simple ? Thanks Aleph
