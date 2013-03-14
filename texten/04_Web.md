@@ -616,6 +616,12 @@ We can send a POST call to our post with a curl command:
 
     curl -Xpost http://localhost:3000/post
 
+And be returned a nice message:
+
+    Your submission was accepted. The counter is now 1
+
+There is a long [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) available. Take the time to experiment and enjoy being Restful.
+
 ### Some more on Web Testing 
 
 #### VCR or your HTTP Playback 
