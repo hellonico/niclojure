@@ -620,9 +620,51 @@ And be returned a nice message:
 
     Your submission was accepted. The counter is now 1
 
-There is a long [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) available. Take the time to experiment and enjoy being Restful.
+There is a long [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) available. Take the time to experiment and enjoy being Restful!
 
 ### Some more on Web Testing 
+
+Well we cannot really say we are efficient if we are not throwing some well thought tests. That applies all the same to web testing.
+
+The way handlers are defined in Ring makes it really easy to write test suite to validate all the hard work.
+To close this chapter, let's see how to include tests to fit it all in !
+
+#### Do not mock me !
+
+[Ring mock](https://github.com/weavejester/ring-mock) has been written and implemented by the inventor of the Ring framework.
+
+
+#### Ring App Testing
+
+[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to test your Ring HTML based web site.
+
+You start by creating a session directly onto the ring handler:
+
+    (-> (session app)
+        (visit "/"))
+
+And then use a set of kerodon keywords to navigate through your application, follow links, filling forms and submit them.
+Pretty standard.
+
+We will need a few libraries to our project.clj for the test to runs:
+
+    [kerodon "0.0.7"]
+        ; routing
+        [net.cgrand/moustache "1.2.0-alpha1"]
+        ; html markup
+        [hiccup "1.0.2"]
+
+Here is a pretty standalone example:
+
+@@@ ruby chapter03/src/kerodon.clj @@@
+
+Note that even though the applicating is ring based, the routing is done not with compujure, but with another routing library named [moustache](https://github.com/cgrand/moustache).
+
+The test example is pretty explicit, the only thing that needs to be pointed at is the *follow-redirect* directive, since we have to tell kerodon when a redirect will happen.
+
+Apart from that, the DSL is so well made, the code reads by itself ! 
+
+Now let's move to record ourselves.
 
 #### VCR or your HTTP Playback 
 
@@ -630,7 +672,3 @@ There is a long [list of decisions](https://github.com/clojure-liberator/liberat
 
 @@@ ruby chapter03/src/vcr.clj @@@
 
-#### Ring App Testing
-[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to test your Ring library:
-
-@@@ ruby chapter03/src/kerodon.clj @@@
