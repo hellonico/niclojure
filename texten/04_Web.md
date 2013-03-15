@@ -631,12 +631,28 @@ To close this chapter, let's see how to include tests to fit it all in !
 
 #### Do not mock me !
 
-[Ring mock](https://github.com/weavejester/ring-mock) has been written and implemented by the inventor of the Ring framework.
+In this recipie we will see how to mock ring requests and check the result of requests to our handler.
 
+[Ring mock](https://github.com/weavejester/ring-mock) has been written and implemented by the inventor of the Ring framework. It creates request maps for the pure goal of testing.
 
-#### Ring App Testing
+To include it in our project:
+    
+    [ring-mock "0.1.3"]
 
-[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to test your Ring HTML based web site.
+Probably the only function we need to remember for now is the *request* function. That is the function mocking ring requests.
+
+Let's see it in a quick example:
+
+@@@ ruby chapter03/test/chapter03/mock.clj @@@
+
+The Ring handler *your-handler* is the original ring handler, the remaining of the code create a test for a given request.
+
+No heavy server, we can target and test straight at the code level.
+
+#### HTML based Ring App Navigation and Testing
+
+In this recipie we will see how to check the navigation and the content of a ring based html website.
+[Kerodon](https://github.com/xeqi/kerodon) could be the easiest way to achieve this.
 
 You start by creating a session directly onto the ring handler:
 
@@ -664,11 +680,51 @@ The test example is pretty explicit, the only thing that needs to be pointed at 
 
 Apart from that, the DSL is so well made, the code reads by itself ! 
 
+Kerodon itself is based on [peridot](https://github.com/xeqi/peridot) which also has a bunch of samples you should be looking at.
+
 Now let's move to record ourselves.
 
 #### VCR or your HTTP Playback 
 
+I have been surprised by this little recipie myself. 
+
 [vcr-clj](https://github.com/fredericksgary/vcr-clj) is a clojure library in the spirit of the VCR Ruby library. It lets you record HTTP interactions as you run your tests, and use the recordings later to play back the interaction so you can run your tests in a repeatable way without needing the external components to be available/accessible.
+
+Get the code to your project with:
+
+    [com.gfredericks/vcr-clj "0.2.2"]
+
+For this test we will actually start a jetty server. To make that easy we will write some glueing code. (This should really be in the library itself ...)
+
+Let's go through the example:
 
 @@@ ruby chapter03/src/vcr.clj @@@
 
+We see the most important part of the test is the *with-cassette*. Once we have recorded requests, we can reorder them transparently, so /foo then /bar becomes first /bar then /foo.
+
+    (with-cassette :bar-bar
+      (is (= "foo" (get "/foo")))
+      (is (= "bar" (get "/bar"))))
+    (is (= 2 (count (server-requests))))
+    (with-cassette :bar-bar
+      (is (= "bar" (get "/bar")))
+      (is (= "foo" (get "/foo"))))
+
+It is worth pointing to the fact that *get* is a regular http client.
+
+### "This is the end of the world as we know it" - R.E.M
+
+The Ruby and Python worlds has given us some joy when writing pages. The vibrant Clojure ecosystem is bringing sheer ecstasy. 
+
+In this chapter we have seen how to fit it all together.
+
+* Create the bones of a Ring application to server and handle requests
+* Route requests to our application
+* Authenticate requests 
+* Server and handle json seemlessly
+* Deploy to production servers
+* Write websockets in seconds
+* Implements REST APIs
+* and Finally go through testing our application end to end.
+
+Now, leave this book on the table, call the waiter, and start writing some websites and bring your own part to the programmable web.  
