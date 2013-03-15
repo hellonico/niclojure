@@ -526,18 +526,169 @@ XMLのクエリというと、きっと今までに何度もやってきたこ�
 @@@ ruby chapter02/src/jsonpath.clj @@@
 
 #### ニューラルネットワークにはNetz
+
+	Netz は多層パーセプトロン(Multilayer perceptron = MLP)、	人工ニューラルネットワークモデルの一つをClojureに実装したものです。 Netz provides functions for training and running MLPs. Training is accomplished via gradient descent batch Rprop or standard backpropagation.
+	Netz implements Rprop as described by Riedmiller in Rprop - Description and Implementation Details.
+
+[Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
+
+Here is a very short example, showing how to train and run a Neural Network:
+
+@@@ ruby chapter02/src/netz.clj @@@
+
+In the example, we see we train the network with some hidden values. The options you are most likely to find interesting are:
+
+	:hidden-neurons - A vector containing the number of neurons in each hidden layer. Set to [2 2] for two hidden layers with two neurons each, or [] for no hidden layers. Setting this option is recommended. Default: One hidden layer with the same number of hidden neurons as inputs.
+
+and to change the learning algorithm:
+
+	:learning-algorithm - The algorithm to use while training. Choose either :rprop for the Rprop algorithm or :bprop for standard back propagation. Default: :rprop.
+
+Also, each training variant has some specific options.
+
+As a reminder modern Neural Networks can be applied to a variety of useful tasks such as:
+
+* Function approximation, or regression analysis, including time series prediction and modeling.
+* Classification, including pattern and sequence recognition, novelty detection and sequential decision making.
+* Data processing, including filtering, clustering, blind signal separation and compression.
+
+
 #### SSHトンネリング
+
+
 #### Clojureに学習させるならinfer
-#### Shakeでシェルプログラムを自由自在
-#### 予定を組む？Timely
-#### hiccups無しで美しくHTMLを生成する
-#### タイムスケジューラ
+#### Shakeでシェルプログラム自由自在
+
+これはちょっと面白いですよ。 それぞれのシェルコマンドがREPLにアクセス出来たらどうでしょう？
+
+それが [Shake](http://sunng.info/blog/2012/09/shake-every-program-can-be-a-clojure-function/) です。
+
+Shake を使うとClojureのロジック/プログラミングの中でシェルコマンドを使うことが出来ます。
+
+以下の設定で、shakeをプロジェクトに追加します:
+
+	[shake "0.2.1"]
+
+サンプルを実行してみましょう:
+
+@@@ ruby src/shake.clj @@@
+
+#### Timelyでタイムリーなスケジューリング
+
+[Scheduler](https://github.com/Factual/timely)
+
+Timely はcron経由でアプリケーションやスクリプトの実行をスケジュールすることができます。 Timelyは非常に軽く、特別な依存関係もありません。
+
+バージョンはまだ 0.0.3 ですが、問題なく動作します:
+
+	[factual/timely "0.0.3"]
+
+@@@ ruby chapter02/src/timely.clj @@@
+
+#### クリーンなHTMLを生成する
+
+これは非常に有名なClojureのライブラリで、Webで見つかる半分くらいのサンプルで使われています。
+
+	[hiccup](https://github.com/weavejester/hiccup)
+
+	Hiccup はClojureでHTMLを表現するライブラリです。 ベクターで各要素を表現し、マップで要素の属性を表現します。
+
+	[hiccup "1.0.2"]
+
+hiccup が出来ることを一口で説明するのは難しいですが、タグとCSSでデータを定義することで簡単にHTMLを生成することが出来ます。
+
+以下、サンプルです:
+
+@@@ ruby chapter02/src/hiccup.clj @@@
+
+後の章では、hiccupとWebフレームワークとを組み合わせて使いますが、ここではひとまずhiccupを使ってシンプルなHTMLを作っています。
+
+#### タイムスケジューラ at
+
+[Ahead of time scheduler](https://github.com/overtone/at-at)
+
+at-at はOvertoneという非常に良く出来た音楽生成プロジェクトから派生しただけあって、非常にシビアなタイミングをさぽーとします。
+
+以下の例では、at-atを使ってどのようにスケジューリングし、スケジュールの開始/停止を行うかを見せています。
+
+@@@ ruby chapter02/src/at_at_clj @@@
+
 #### ANTLR構文解析を使う
-#### Clojureでglobするには？
-#### 非同期HTTPクライアント
-#### プロトコルバッファー
+
+ANTLR とは _ANother Tool for Language Recognition_ の略で、Javaでは広く使われている lexer(字句解析器)とParser(構文解析器)です。
+
+ANTLR の最新バージョンは4で、[https://github.com/antlr/antlr4](https://github.com/antlr/antlr4) 登場してから15年以上経過し、今でもたくさんのプロジェクトに利用されています。
+
+lein-antlr Leiningenプロジェクト中の1つまたはそれ以上のANTLR構文からソースコードを生成するLeiningen 2 プラグインです。 MavenのANTLRプラグインとほぼ同等の機能を持ち、Mavenまたは手動のプロセス無しにANTLRが生成したソースコードをClojureのプロジェクトに統合することを可能にします。
+
+[AntLR via Clojure](http://briancarper.net/blog/554/antlr-via-clojure) と [lein-antlr](http://github.com/alexhall/lein-antlr)
+
+Lein antlr は Lein2 にアップグレードされているので、プラグインをプロジェクトに設定します:
+
+	:plugins [[lein-antlr "0.2.0"]]
+
+さらに、構文ファイルについては別に下記の設定が必要です:
+
+	:antlr-src-dir "antlr"
+	:antlr-dest-dir "gen-src"
+
+設定出来たら、実行してみましょう。
+
+	lein antlr
+
+構文からjavaのParserとLexerファイルを生成したら、Clojureから使用するためにjavaの相互呼び出しを使います:
+
+@@@ ruby chapter02/src/antlr.clj @@@
+
+当り前ですが、入力ファイルにメチャクチャな文字列をセットするとパースに失敗します。
+
+#### Clojureでgrep/globするには？
+
+もちろん、自分でglobのライブラリを作ることもできますが、幸いなことにすでにあるのでそれを使いましょう:
+[glob files](https://github.com/neatonk/clj-glob)
+
+@@@ ruby chapter02/src/glob.clj @@@
+
+ファイルを書き換える例として、どのようにgrepのメソッドを使うかを見てみましょう。
+
+@@@ ruby chapter02/src/grep.clj @@@
+
+特に _indexed_ メソッドがいい感じです:
+
+	(defn indexed [coll]
+  		(map vector (iterate inc 1) coll))
+
+grepでパターンにマッチする行数を数えています。
+
 #### パターンマッチング
+
+grepとglobの拡張として、[Matchure](https://github.com/dcolthorp/matchure)を見てみましょう。
+
+Matchure はClojureにおけるパターンマッチングで色々な場面で使うことができます:
+
+* シーケンス分解
+* マップ分解
+* 等価チェック
+* 正規表現マッチ
+* 変数代入
+* インスタンスチェック
+* arbitrary boolean expressions
+* boolean operators (and, or, not)
+* if, when, cond, fn, and defn variants
+
+A few sample usages are defined below:
+
+@@@ ruby chapter02/src/matchure.clj @@@
+
+Also note that you can do a bit of the core matching with the core Clojure library:
+
+@@@ ruby chapter02/src/match.clj @@@
+
+The advantage of the second version is that you can reuse the same code on Clojurescript, which we will go in more details in a later chapter.
+
+#### プロトコルバッファー
 #### Luceneにつなげる
+#### 非同期HTTPクライアント
 #### Solrベースの検索エンジンとつなぐ
 #### PDFにしたいときは
 #### Esperを使って複雑なイベントを処理する
