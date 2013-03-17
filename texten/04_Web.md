@@ -198,6 +198,32 @@ If the login is successful, Facebook redirects us to our local ring server, to t
 
 The example also have github, and .Net version included so you should keep this for homework. 
 
+#### Forms, Validation and bouncing balls
+
+In this recipie we will get a brief overview on how to validate fields on data sets, given a certain number of rules.
+
+In Clojure, data being code and the reverse, it is easier to go and validate expected data on maps and collections.
+Like the bouncer at the door of some trendy night club, we will introduce the bouncer library that will validate the data given certain rules.
+
+We start by adding the following to project.clj:
+
+    [bouncer "0.2.3-beta1"]
+
+The sample code we will be looking at will present how to:
+
+* validate a hashmap with simple rules
+* define a validator, and then apply it to validate a hashmap
+* lastly, we see how to validate sub-collection, along with regular expression matching
+
+@@@ ruby chapter03/src/validation.clj @@@
+
+
+The first element is nil when the data set is validated, or returns a map of the the parameters that did not match the validation.
+
+And .. that's it.
+
+We are all set to validate our next order. 
+
 #### JSON of the world
 
 We all know we cannot really build a proper service these days without a kind of JSON API. No need to worry, our waiter is not going to keep you waiting.
