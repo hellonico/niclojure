@@ -672,32 +672,216 @@ Matchure はClojureにおけるパターンマッチングで色々な場面で�
 * 正規表現マッチ
 * 変数代入
 * インスタンスチェック
-* arbitrary boolean expressions
-* boolean operators (and, or, not)
-* if, when, cond, fn, and defn variants
+* 2値評価
+* 論理演算 (and, or, not)
+* 条件分岐 (if, when, cond, fn) と変数
 
-A few sample usages are defined below:
+以下、サンプルです:
 
 @@@ ruby chapter02/src/matchure.clj @@@
 
-Also note that you can do a bit of the core matching with the core Clojure library:
+また、core Clojure ライブラリを使って、コアマッチングを行うことができます:
 
 @@@ ruby chapter02/src/match.clj @@@
 
-The advantage of the second version is that you can reuse the same code on Clojurescript, which we will go in more details in a later chapter.
+2番目のバージョンの利点は同じコードをClojurescriptでも使うことが出来ることです。 Clojurescriptについては後の章で取り上げています。
 
-#### プロトコルバッファー
+#### CLojure用Google protobuffer
+
+	clojure-protobuf は Clojure向けにGoogle プロトコルバッファ用インターフェイスを提供します。 プロトコルバッファを使うと、ネットワーク越しに他の言語と通信することが可能で、標準のClojureオブジェクトよりも高速にシリアライズ/デシリアライズすることが出来ます。
+
+clojure-protobufのプロジェクトページ: [https://github.com/flatland/clojure-protobuf](https://github.com/flatland/clojure-protobuf)
+
+以下の Person モデルをresources/proto/personclj.protoとしてインクルードしています:
+
+	message Person {
+		required int32  id    = 1;
+		required string name  = 2;
+		optional string email = 3;
+		repeated string likes = 4;
+	}
+
+Leiningen プロジェクトファイルに２つの変更が必要です。 まず、pluginセクションにプラグインの設定を追加します:
+
+	[lein-protobuf "0.1.1"]
+
+そして、ライブラリ自体を設定します。
+
+	[org.flatland/protobuf "0.7.2"]
+
+Person モデルの定義と依存関係のセットが済めば、Protobufferオブジェクトを使ってみましょう:
+
+@@@ ruby chapter02/src/protobuffer.clj @@@
+
 #### Luceneにつなげる
-#### 非同期HTTPクライアント
+
+データの検索とインデックス付けを簡単に行うには: [Clucy](https://github.com/weavejester/clucy) は多くの企業に採用している有名な検索エンジン Lucene をベースにしており、シンプルさが特徴です。
+
+以下のサンプルでは、インデックスを作り、いくつかの値をストアして検索クエリを送っています。
+
+@@@ ruby chapter02/src/clucy.clj @@@
+
+簡単ですよね？ これで、検索機能の実装ができない言い訳ができなくなりますね。。
+
 #### Solrベースの検索エンジンとつなぐ
+
+前セクションに続いて、ここでは Luceneのフルパッケージを搭載した Solr をインストールします。
+
+	Solr の主な特長は、フルテキスト検索、ファセット検索、リアルタイム(に近い)インデクシング、動的クラスタリング、データベース統合、色々なドキュメント(Word、PDF等)の対応などがあります。
+
+下記のサイトからSolrをダウンロードしましょう。
+
+	http://lucene.apache.org/solr/
+
+_example_ フォルダを探して、そこで以下の通り実行しましょう。
+
+	java -jar start.jar
+
+起動したら、ブラウザでSolrにアクセスします。
+
+  http://localhost:8983/solr/
+
+Solrが正しく起動していれば、次のような画面が表示されます:
+
+![Solr](../images/chap02/solr.png)
+
+それでは、前のセクションでやったのと同じようにClojureのコードからつなげてみましょう。
+
+@@@ ruby chapter02/src/solr.clj @@@
+
+ところで、以下のようにアクセスするとJSON形式のデータを受け取ることが出来ます。
+
+	http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true
+
+便利ですね！
+
 #### PDFにしたいときは
+
+以前のレシピで incanter を使ってグラフを作りました。 ここでは、出来上がったグラフをPDFに保存してみましょう。 コード自体は非常にシンプルです ([here](http://data-sorcery.org/2010/02/05/pdf-charts/)):
+
+@@@ ruby chapter02/src/incanter_pdf.clj @@@
+
+Incanterに依らず、普通にPDFを作りたい場合は、ClojureバージョンのiTextを使います。
+
+_project.clj_ に追加します。
+
+	    [com.lowagie/itext "4.2.0"] ; use a more recent itext library
+    	[clj-pdf "1.0.5-SNAPSHOT" :exclusions [itext-min "0.2"]]
+
+iTextの以前のバージョンではクラッシュすることが分かっているため、iTextのバージョンを指定しています。
+
+このサンプルでは、いくつかのドキュメント項目を追加し、PDFを生成しています。
+
+@@@ ruby chapter02/src/pdf.clj @@@
+
+生成しているドキュメント項目については、ここに説明があります [github page](https://github.com/yogthos/clj-pdf#document-elements).
+
+リファレンス一覧:
+
+Anchor, Chapter, Chart, Chunk, Heading, Image, Line, List, Pagebreak, Paragraph, Phrase, Section, Spacer, String, Subscript, Superscript, Table, Table Cell
+
 #### Esperを使って複雑なイベントを処理する
-#### Monads について
-#### 新しい reducers sauce について
-#### logical について少々
-#### haskell について
-#### oauth を使う
+
+ここでは、とても信頼性のあるメッセージ処理ミドルウェア Esperを紹介します。
+
+Esper のサイト: [http://esper.codehaus.org/tutorials/tutorial/quickstart.html](http://esper.codehaus.org/tutorials/tutorial/quickstart.html)
+
+	Esper と NEsper は大量のメッセージやイベントを処理する必要のあるアプリケーションの開発を可能にします。 どちらも色々な方法でイベントのフィルタリングと解析を行い、リアルタイムに応答します。
+
+	また、SQLに似たスクリプトを提供します。
+
+基本的には、Esperでイベントサービスバスを作成し、Clojure と統合します。 APIを使って容易に拡張することが出来ます。
+
+ここでは、ローカルのイベントバスを作成し、コールバックを定義してイベントを追加します。
+
+@@@ ruby chapter02/src/esper.clj @@@
+
+パーフォーマンスに関しては、Esperチームのサポートによると、一般的なラップトップPC上で1秒間におよそ20万個のイベントの処理が可能だそうです。 充分なパフォーマンスですね。
+
 #### LDAP にお友達がいるときは
 
-### DSL
+LDAP ディレクトリへのアクセスが必要な場合も、Clojureにはとても簡単な方法があります。
+このレシピを試してみるには、[Apache DS](http://directory.apache.org/apacheds/downloads.html) のダウンロードとインストールが必要です。
+
+Zipをダウンロードして、LDAPサーバをスタートしましょう:
+
+	./bin/apacheds.sh
+
+Windowsの場合は、以下のバッチファイルを実行します。
+
+	apacheds.bat
+
+今回使用するClojure用のLDAPラッパー: [clj-ldap](https://github.com/pauldorman/clj-ldap)
+
+ローカルサーバのエントリの追加と削除:
+
+@@@ ruby chapter02/src/ldap.clj @@@
+
+ここで、ぜひご自分の目で、上記のコードと何年か前にIBMの人が書いたコードを見比べてみてください。
+
+	http://www.ibm.com/developerworks/jp/java/library/j-apacheds2/
+
+ApacheDS Studioを使っているのであれば、設定をこんな感じ:
+
+![ds1](../images/chap02/ldap1.png)
+
+認証設定:
+
+![ds2](../images/chap02/ldap3.png)
+
+デフォルトの ApacheDS パスワードは:
+
+	secret
+
+作成したユーザを確認することができます:
+
+![ds3](../images/chap02/ldap3.png)
+
+#### 新しい reducers sauce について
+
+Rich Hickey による Reduvers の説明:
+[Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html)
+
+初めて読んときは、スゲーっと思いました。 彼のプレゼンとかコードを見てスゴいと思ったことはあまり無かったのですけど。。
+
+これは、正に簡潔です。 一度使ったら、病みつきになると思います。
+
+以下、Rich の所にあったサンプルにコメントを加えたものです。
+
+@@@ ruby chapter02/src/reducers.clj @@@
+
+### ドメイン特化言語 (DSL)
+
 #### パーサーを作る
+
+パーサーを作るといっても、ここで紹介するのは触りの部分です。 が、ここで紹介するインクリメンタルなパーサーを生成するParsleyはここにあります: [Parsley](https://github.com/cgrand/parsley)
+
+	インクリメンタル: Parsley パーサーはテキストバッファとして動作します。 最高の状況では編集後のパースツリーの再計算はあっという間に終わります(最悪の場合は再開可能なパーサーとして動作)。
+
+パーサーの構文はこんな感じで:
+
+	:expr #{"x" ["(" :expr* ")"]}
+
+以下のような入力を受け取ります:
+
+	x () (xxx) ((x)(xxx))
+
+次のサンプルは、構文を定義し、入力を受け取ります:
+
+@@@ ruby chapter02/src/parsley_1.clj @@@
+
+無効な入力に対しては、期待しない要素がツリーに生成されることが分かります。
+
+Parsleyの素晴らしいところは、インクリメンタルモードで使うときです。 Parsleyはすべてをパースし直すのではなく、適切な場所だけを変更します。 これにより、非常に良いパーフォーマンスを維持します。
+
+次のサンプルで試してみましょう:
+
+@@@ ruby chapter02/src/parsley_2.clj @@@
+
+右側の構文生成は以下の組み合わせで構成されています:
+* ベクタ (シーケンス)
+* セット (重複しない)
+* キーワード (シンボルやオペレータを除く: :*, :+, :?)
+* その他のリテラル
+
+さて、ドメイン特化ビールで乾杯してこの章を終わりにしましょうか ;)
