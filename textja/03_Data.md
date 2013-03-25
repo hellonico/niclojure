@@ -81,24 +81,154 @@ Gajure はフルスペックのプロジェクトではありませんが、遺�
 
 論理プログラミングは命令型、オブジェクト指向、関数型と並んで４大プログラミングの一つなのだそうです。
 
-[Core Logic](https://github.com/clojure/core.logic/wiki/Examples) came a little bit later in the Clojure game but now offers Prolog-like relational programming, constraint logic programming, and nominal logic programming straight form within Clojure.
+[Core Logic](https://github.com/clojure/core.logic/wiki/Examples) はClojureゲームの中では遅れて出てきましたが、Prologライクでリレーショナルな制約論理プログラミングをClojureで提供します。
 
-The first samples are very easy to go through:
+最初のサンプルはとても簡単です:
 
 @@@ ruby chapter03/src/logic0.clj @@@
 
-And then you can see the program, just like genetic programming earlier is looking for something where there are just too many possibilities to try by yourself.
+ソースを見ると、ちょっと前にやったプログラムに似ていますが、複数の選択肢からある条件に合致するものを選んでいます。
 
-Now, logic programming fits perfectly the case of Game AI. See how core.logic will help you to find the path to get the object on the box and then get out. This is superb:
+そして、論理プログラミングはゲームAIにパーフェクトにマッチします。 次のサンプルでは、箱の中の目的地を見つけて外に出るまでのパスを探しています。 これは面白いですよ:
 
 @@@ ruby chapter03/src/logic1.clj @@@
 
-##### Clojush
+#### ルールエンジンが熱い
 
+ウィキペディアによると、Reteアルゴリズムはプロダクションシステム実装のための効率的なパターンマッチングアルゴリズムなのだそうです。
+
+論理プログラミングついでに、ここではClojureで書かれたルールエンジンである [mimir](https://github.com/hraberg/mimir) を紹介しましょう。
+
+mimirを使うとcore.logicより少し簡単にルールを書くことができるので、紹介しました。
+
+@@@ ruby chapter03/src/mimir.clj @@@
+
+    このサンプルでは、ファクト中のそれぞれの値がClojureのアトムであるトリプレットを使っています。
+
+
+### NoSQL
+
+最近、というか、ここ数年はNoSQLの話題に事欠きませんね。
+私は、特にMongoDBの熱烈なサポーターで、これまで何度も色々なシーンで検討してきましたが、一番重要なのは実際にどうやってデータを保存してそれを使うかですよね。
+
+#### Clojure Monger：Mongo クライアント
+
+どこかにデータを保存してそれを使うとしたら、おそらく MongoDB が一番簡単かもしれません。 ご存知のとおり、MongoDBはJSON的なデータでやり取りするので、非常に直感的でClojureにフィットします。
+MongoDB はMTVネットワークスやその他大量のデータ処理を必要とするような所で使われています。
+
+Mongoサーバのインストールは、以下のサイトからダウンロードして好きな場所で解凍します:
+
+    http://www.mongodb.org/downloads
+
+サーバをスタートするには、下記のコマンドを実行します:
+
+    mongod --rest --dbpath data
+
+実は上記のコマンドパラメータは必須ではありませんが、--rest フラグを指定するとダイレクトストアとRESTインターフェイスでデータを返すので、ブラウザを使ってアクセスする場合は便利だと思います。
+
+また、dbpathでデータがストアされる場所を指定します。
+
+次にClojure側です。 ClojureでMongoにアクセスするには [Monger](http://clojuremongodb.info/) という小さなドライバを使います。
+project.clj に入れましょう:
+
+    [com.novemberain/monger "1.4.2"]
+
+これで、サンプルが動くようになりました。
+
+@@@ ruby chapter02/src/mongo.clj @@@
+
+以下のURLでMongoデータベースの中身を見ることができます:
+
+    http://localhost:28017/monger/documents/
+
+これが、--rest オプションを指定した理由です。 より詳しい説明はMongoDBのWebサイトで見ることが出来ます:
+
+    http://docs.mongodb.org/ecosystem/tools/http-interfaces/
+
+とても簡単でしたね。
+
+#### マジめにredisライブラリ
+
+Redis は高速なKey-Valueストアです。 memcachedに似ていますが、データセットは永続します。 値はmemcachedの様に文字列が使えますが、さらにリスト、セットなどが使えます。
+Redis はin-memoryモードで使うと驚異的なパフォーマンスを発揮します。
+
+Mac OS Xでは、_brew_ を使ってインストールできます:
+
+    brew install redis
+
+または、下記のサイトからパッケージをダウンロードして使うことが出来ます:
+
+    http://redis.io/download
+
+サーバーをスタートしましょう:
+
+    redis-server
+
+または
+
+    redis-server <path_to_configuration_file>
+
+さて、Clojureの世界にはRedisの機能を余す所無く使えるナイスなドライバがあります [Carmine](https://github.com/ptaoussanis/carmine)
+
+Carmineを使えるようにするには:
+
+    [com.taoensso/carmine "1.5.0"]
+
+早速、サーバに接続して基本的なところを試してみましょう:
+
+@@@ ruby src/chapter03/carmine.clj @@@
+
+次に、Redisでとても気になるpublish/subscribeをどうやって使うのか見てみましょう:
+
+@@@ ruby src/chapter03/carmine2.clj @@@
+
+最後に、Redisの新しい機能は永続的なメッセージングキューとして動作します。 それはどうやって使うかは以下のサンプルをご覧ください:
+
+@@@ ruby src/chapter03/carmine3.clj @@@
+
+ここで、もう一度 Redisの特徴を挙げておきますね :
+
+- key/value ストア
+- 信頼性の高い出版-購読型モデル(publish/subscribe)
+- 永続性a persistent keystore
+
+このレシピだけでも、色々な用途が頭に浮かびますね！
+
+#### マメにメンテナンスされているRabbitMQ
+
+RabbitMQ は「使えるメッセージング」を誇りとしており、非常に信頼性のある高速なメッセージング環境です。
+そして、この本はフランス料理のレシピ本なので、ウサギが出てくるのも違和感がありませんね！
+
+Mac OS Xへのインストール:
+
+    brew install rabbitmq
+
+その他のプラットフォームへのインストール:
+
+    http://www.rabbitmq.com/download.html
+
+サーバのスタート:
+
+     rabbitmq-server
+
+And now we are ready to go with some Clojure excercises with some one called [langohr](https://github.com/michaelklishin/langohr).
+
+Langohr compared to other Clojure drivers may seems slightly *raw* but it does it so as to avoid a complete introduction of a new DSL.
+
+We will go through a basic but extensive messaging example:
+
+@@@ ruby chapter03/src/rabbitmq.clj @@@
+
+Now, RabbitMQ also has work queues, publish/subscribe, Routing, Topics and full on RPC in its feature lists and the Clojure driver we have seen supports pretty much all of it.
+
+#### スキーマいらずな FleetDB
+#### 組み込みデータベース：cupboard
+
+
+##### Clojush
 ### MonteCarloでレース。  じゃなくてシミュレーション
 #### N-Body シミュレーション
 #### 知識表現と推論システム：PowerLoom
-#### ルールエンジンが熱い
 #### 確率的推論
 #### テキストによる機械学習
 
@@ -106,10 +236,3 @@ Now, logic programming fits perfectly the case of Game AI. See how core.logic wi
 #### マイグレーション自由自在
 #### lobosでスキーマ管理
 #### Kormaで粋なクエリを書く
-
-### NoSQL
-#### Clojure Monger：Mongo クライアント
-#### マジめにredisライブラリ
-#### マメにメンテナンスされているRabbitMQ クライアント
-#### スキーマいらずな FleetDB
-#### 組み込みデータベース：cupboard
