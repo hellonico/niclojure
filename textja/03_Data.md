@@ -211,28 +211,134 @@ Mac OS Xへのインストール:
 
      rabbitmq-server
 
-And now we are ready to go with some Clojure excercises with some one called [langohr](https://github.com/michaelklishin/langohr).
+さぁ、これで準備は整いました。 [langohr](https://github.com/michaelklishin/langohr) を使って、いくつかのClojureサンプルを試してみましょう。
 
-Langohr compared to other Clojure drivers may seems slightly *raw* but it does it so as to avoid a complete introduction of a new DSL.
+Langohr は他のClojureドライバと比べると、少しばかり未熟に見えるかも知れません。 が、新しいDSLを一からやらなくても済むというのが良いところでもあります。
 
-We will go through a basic but extensive messaging example:
+ベーシックですが、メッセージングのサンプルです:
 
 @@@ ruby chapter03/src/rabbitmq.clj @@@
 
-Now, RabbitMQ also has work queues, publish/subscribe, Routing, Topics and full on RPC in its feature lists and the Clojure driver we have seen supports pretty much all of it.
+さて、RabbitMQにはキュー、publish/subscribe、ルーティング、トピックスに加え、RPCも機能リストにありますが、ここで紹介したClojureドライバはそれらをほとんどサポートしています。
 
-#### スキーマいらずな FleetDB
 #### 組み込みデータベース：cupboard
 
+[cupoard](https://github.com/gcv/cupboard) は最小のリソースと依存関係で実現する埋め込み型データベースです。
 
-##### Clojush
-### MonteCarloでレース。  じゃなくてシミュレーション
-#### N-Body シミュレーション
-#### 知識表現と推論システム：PowerLoom
-#### 確率的推論
-#### テキストによる機械学習
+いつものように、設定は:
+
+    [cupboard "1.0beta1"]
+
+サンプルでは、シンプルに接続してインサート、そしてクエリしています。
+
+@@@ ruby chapter03/src/cupboard.clj @@@
+
+ローレベルでは、CupboardはBerkeley DB JEを使用しているので安心して使うことができますね。
+
+#### スキーマいらずな FleetDB
+
+NoSQLの最後は、Clojure データベースの [fleetdb](http://fleetdb.org/docs/introduction.html) です。
+
+有り難いことに jar ファイルにパッケージされているので、まず下記サイトからダウンロードします:
+
+     wget http://fleetdb.s3.amazonaws.com/fleetdb-standalone.jar
+
+スタートするには:
+
+     java -cp fleetdb-standalone.jar fleetdb.server -f mydatabase.fdb
+
+私が気に入っているのは、なんと直接 telnet できるんです！
+
+    telnet 127.0.0.1 3400
+
+そして、直接コマンドを送ることが出来きます。
+
+例えば、接続した後で以下のようにタイプします:
+
+    ["ping"]
+
+すると、こんなレスポンスが帰ってきます:
+
+    [0, "pong"]
+
+それでは、いつものデータベース用サンプルをトライしてみてください:
+
+@@@ ruby chapter03/src/fleet.clj @@@
 
 ### SQL
-#### マイグレーション自由自在
+
+それでは昔ながらの、でも実績のあるSQLに戻りましょう。 Clojureでは、リレーショナルデータベースに於いてはたくさんの選択肢があります。
+
+このセクションでは、信頼性で定評のあるH2という組み込みデータベースを取り上げます。 まずはプロジェクトの依存関係にいつものように追加します。
+
+    [com.h2database/h2 "1.3.154"]
+
 #### lobosでスキーマ管理
-#### Kormaで粋なクエリを書く
+
+Clojure REPLから直接データベースを管理する Lobos を紹介します。
+プロジェクトに lobos を設定します:
+
+    [lobos "1.0.0-beta1"]
+
+サンプルでは以下のことを行っています:
+- コネクションのオープン
+- テーブルの作成
+- スキーマのクエリ
+- テーブルのドロップ
+- コネクションのクローズ
+
+@@@ ruby chapter03/src/lobos.clj @@@
+
+Lobos はテストとかに大変便利ですが、スキーマのマイグレーションを実装出来るという機能を持っています。 後のセクションで、liquidbaseを使ってこの機能を見ます。
+
+#### Kormaでキレイなクエリを書く
+
+美しいデータベースのスキーマを手に入れましょう。
+[http://sqlkorma.com/docs](http://sqlkorma.com/docs)
+
+Kormaを使うとSQLクエリを書くのが楽しくなります。
+
+    [korma "0.3.0-beta7"]
+
+Kormaを使ったサンプルを見てください:
+
+@@@ ruby chapter03/src/korma.clj @@@
+
+SQLデータベースに対して、まるでNoSQLのようなポータブルで互換性のあるクエリ。 ちょっと他には見当たりません。
+
+#### It's good when it is raw
+
+次のセクションで見る Liquidbase のサンプルは、データベースのコネクションプールに大変便利な [clj-dbcp](https://github.com/kumarshantanu/clj-dbcp) と、clj-dbcpはほとんどすべてのデータベースドライバを集めたプロジェクト [oss-jdbc](https://github.com/kumarshantanu/oss-jdbc) を使っています。
+
+まずはプロジェクトに必要な依存関係を設定しましょう:
+
+    [clj-dbcp      "0.8.0"]  ; コネクションプール
+    [oss-jdbc      "0.8.0"]  ; オープンソースのJDBCドライバ
+
+サンプルは非常に簡単なCRUDですが、コードを見ると以下のことに気がつくと思います。
+
+* データベース呼び出しはClojureが行っている
+* プールされたコネクションをどのように生成するか
+
+@@@ ruby chapter03/src/dbcp.clj @@@
+
+続いて、データベースのマイグレーションについてです。
+
+#### マイグレーション自由自在
+
+[Clj-Liquibase](https://github.com/kumarshantanu/clj-liquibase) はデータベースの変更管理とマイグレーションを提供するLiquidbaseのClojureラッパーです。
+
+既に前のセクションでデータベースドライバとデータソースの準備は出来ていますね。 早速、混沌とした世界でどれだけスムースにマイグレーション出来るのか見てみましょう:
+
+@@@ ruby chapter03/src/liquidbase.clj @@@
+
+それほどハードでもないですよね？
+
+これで、SQLのセクションは終わりです。 以下、このセクションのサマリーです:
+
+* lobosでSQL スキーマを扱う
+* Kormaで楽しくクエリ
+* プールされたデータソースをdbcpで
+* Clojureのliquidbaseラッパーでマイグレーション
+
+さて、次はお楽しみにWebの世界です。
