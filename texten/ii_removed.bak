@@ -84,3 +84,14 @@ This is not so much a library than a way to develop slick web application using 
 (https://github.com/weavejester/lein-ring with Vaadin)[https://github.com/weavejester/lein-ring]
 
 --> not enough time
+
+Messaging
+
+### Actors library for Clojure, using Zookeeper and RabbitMQ
+[https://github.com/antoniogarrote/jobim](https://github.com/antoniogarrote/jobim)
+
+--> Too old
+
+
+### Easy JBoss Rules Integration
+[JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)

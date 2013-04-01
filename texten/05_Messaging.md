@@ -32,7 +32,12 @@ If all goes well, you should see the following screen:
 
 ![ActiveMQ](../images/chap05/activemq.png)
 
-Now we are all ready for some quick examples. 
+Now we are all ready for some quick examples. To start working with clamq, we will require two dependencies:
+
+	[clamq/clamq-jms "0.4"]
+	[clamq/clamq-activemq "0.4"]
+
+One for the core of clamq, the other one for the extra activemq extension. We could as well work with a simple JMS provider, but I like ActiveMQ all the same.
 
 Our code presents how to write a simple producer/consumer test using a remote messaging queue, that will be created in ActiveMQ:
 
@@ -58,14 +63,54 @@ For more of the ActiveMQ fun, you can have a look at the [ActiveMQ test suite](h
 
 Suiiiiite.
 
-### Easy JBoss Rules Integration
-[JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)
+### I have my horse, ride your Camel, easy messaging bus with everyone
 
-### I have my horse, ride your Camel
-[Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure)
+I took exampes from [Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure) and 
+[Camel Routes with Clojure](https://github.com/hellonico/clj-camel) to create this really short introduction to using Apache Camel, which acts as a *versatile open-source integration framework* or how to pretty much connects any kind of protocol to any other one in a snap. Snaps.
 
-#### Camel Routes with Clojure
-[Camel Routes with Clojure](https://github.com/hmanish/clj-camel)
+#### Camel on files 
+
+In the first example we are going to connect a file to .. a file. Not very useful you might say, but wait, we will get the basics and ride on a nice wave of communication.
+
+For this tutorial, we will use a somewhat custom dependency of clj-camel (see above) that we have thrown in the pot of clojars. Let's grab it with:
+
+	[clj-camel "1.0.1"]
+
+Once our REPL is sorted out, let's go through the file to file connection:
+
+	@@@ ruby chapter05/src/camel_file.clj @@@
+
+So we start by configuring routes the Camel way to point from an endpoint :from to and endpoint :to. 
+
+Then we start the Camel context which is now able to listen to all the endpoints that were defined.
+
+Programmatically we can check that when we send a message to the queue :from, we will get a new file created in the folder we have defined, here *in*.
+
+The next obvious step is to check whether we can create a file in the folder *in* and see if it appears in folder *out*. On *nix machines we can use:
+
+	echo "hello" in/test.txt
+
+In Windows all the same we can create a simple text file, with some "hello" the world of wine content. And there we go:
+
+![camel](../images/chap05/camel.png)
+
+Files are created as we put some content in the in folder.
+
+We have commented out the line:
+
+	   ; [:to "log:com.mycompany.order?level=INFO"]
+
+But if you put it back, you will see a logging message in the REPL showing that the message was properly processed. 
+
+#### Camel on queues 
+
+Our next example will extend our first example with some queues to connect to ActiveMQ since we put some time to set it up earlier on. The ActiveMQ endpoint is not part of the core camel components so we added that to our set of dependencies already with clj-camel.
+
+	@@@ ruby chapter05/src/camel_queue.clj @@@
+
+Only one added line to register the ActiveMQ component. But then adding a file to our :from folder will send directly a message to active mq with the content of the message.
+
+But this is not all. Camel has an impressive set of [default components](http://camel.apache.org/components.html) that you can use just by accessing them through their URL scheme. All this at your Clojure hands. 
 
 ### Sometimes you need some Quartz, to schedule your Clojure
 [Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
