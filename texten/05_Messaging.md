@@ -263,7 +263,59 @@ And way more.
 In the past, we have used Redis to enqueue messages coming from many concurrent clients as fast as possible and allow the processing to be done later on by another system, which proved to work quite well.
 
 ### Distribute your application state with zookeeper and avout
-[Avout](https://github.com/AlexBaranosky/avout)
+
+Clojure came along with a [powerful Multiversion Concurrency Control](http://en.wikipedia.org/wiki/Multiversion_concurrency_control) (MVCC) [STM](http://en.wikipedia.org/wiki/Software_transactional_memory) to manage transactions.
+
+For this example we are going to present shared references stored in Zookeeper.
+
+	ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
+
+#### Installing and Running Zookeeper
+
+There are a few ways to get running, we will only show the one that get you up to speed the quickest.
+
+Download the package from the [official page](http://zookeeper.apache.org/)
+As of writing 3.4.5 was the latest version for it.
+
+Once expanded, you need to rename the file in the *conf* directory named *zoo_sample.cfg* to *zoo.cfg*.
+We will only use the default settings here.
+
+After that, from the top folder, we can run:
+
+	./bin/zkServer.sh start-foreground
+
+or the equivalent Windows command, 
+	
+	bin¥zkServer.cmd start-foreground
+
+And our zookeeper server should start without some exciting output.
+
+	[Niko@Modrzyks-MacBook-Pro][17:53][~/Downloads/zookeeper-3.4.5/] % ./bin/zkServer.sh start-foreground
+	JMX enabled by default
+	Using config: /Users/Niko/Downloads/zookeeper-3.4.5/bin/../conf/zoo.cfg
+	2013-04-02 17:53:15,411 [myid:] - INFO  [main:QuorumPeerConfig@101] - Reading configuration from: /Users/Niko/Downloads/zookeeper-3.4.5/bin/../conf/zoo.cfg
+	...
+	2013-04-02 17:53:15,462 [myid:] - INFO  [main:ZooKeeperServer@744] - maxSessionTimeout set to -1
+	2013-04-02 17:53:15,473 [myid:] - INFO  [main:NIOServerCnxnFactory@94] - binding to port 0.0.0.0/0.0.0.0:2181
+
+#### Now let's play in the Zoo
+
+[Avout](https://github.com/AlexBaranosky/avout) has been build by some serious people at Relevance.
+They have been writing all the [proper documentation](http://avout.io/index.html#background) and the metaphysics of things behind it. I seriously recommend you go through it. It explains both the reasons behind Clojure and the thoughts behind distributed Software Transactional Memory.
+
+We slightly updated the dependencies for avout, so to add it to our project we will use a customize version of it:
+
+	[hellonico/avout "0.5.4"]
+
+The example we have created here is separated in two parts, one to set up the distributed reference. 
+
+@@@ ruby chapter05/src/avout_1.clj @@@
+
+The other will retrieve the value from the distributed system.
+
+@@@ ruby chapter05/src/avout_2.clj @@@
+
+That is very interesting feature. That means there is almost nothing to setup to share references between different Clojure applications. 
 
 ### Every one talks about Hadoop, so let's talk to it with Clojure
 [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
