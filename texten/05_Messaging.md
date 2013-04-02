@@ -154,7 +154,113 @@ And now we can use the familiar cron notation to schedule some so exciting print
 Not that difficult to get our order to the waiter properly is it ? So, wine or Champagne ? 
 
 ### Redis in your clojure
-[Redis](https://github.com/wallrat/labs-redis-clojure)
+
+#### Getting Ready for Redis
+
+You have probably heard of [Redis](http://redis.io/topics/introduction) in the world of key value stores. Redis can contain way more than just a handful of key values, it also supports strings, hashes, lists sets and sorted sets.
+It also supports master slave replication that is meant to be trivial to setup.
+
+To install redis on OSX, use homebrew with:
+
+	brew install redis
+
+To install redis on other plateforms, download and run from:
+
+	http://redis.io/download
+
+And to start with the default configuration, just run:
+
+	redis-server
+
+#### Some command line pong
+
+You will notice there is a *redis-cli* command available to you, that we can start as is.
+
+	redis-cli
+
+And some very basic things you can do straight from the command line to test that everything is more or less ok:
+
+	redis 127.0.0.1:6379> ping
+	PONG
+	redis 127.0.0.1:6379> set mykey somevalue
+	OK
+	redis 127.0.0.1:6379> get mykey
+	"somevalue"
+	redis 127.0.0.1:6379> 
+
+Voila. All the commands can be tested from here, and the help menu is for once, very useful. Just try
+
+	help <tab>
+
+To display the different help sections.
+
+#### Some Redis to use Clojure
+
+Now that our Redis server is ready, we can start by preparing our project for Redis with [labs-redis](
+[Redis](https://github.com/wallrat/labs-redis-clojure)). To insert it in our project, we do:
+
+	[labs-redis "0.1.0"]
+
+We have prepared a simple example to store and retrieve values. Please have a red wine look at it:
+
+@@@ ruby chapter05/src/redis.clj @@@
+
+You will not that the simple methods without *@* sign will return futures, meaning evaluation will not be done straight away. Also, the values are returned as byte arrays, because this is the way Redis handles data, and that is one of the reason why it makes it so fast too.
+
+We have prepared also a simple pub-sub example, because this is one very good way of using Redis for real time analysis and execution. 
+You will need to start the following in one REPL session first:
+
+@@@ ruby chapter05/src/redis_sub.clj @@@
+
+It will start a client waiting for specific kind of messages, in this case "msgs", "msg2" ...
+
+In another REPL, you would start the companion Clojure code with:
+
+@@@ ruby chapter05/src/redis_pub.clj @@@
+
+If all goes well, the REPL of the subscriber should start writing a few things like this:
+
+	user=> (load-file "src/redis_sub.clj")
+	R  msgs hello 0
+	R  msgs hello 1
+	R  msgs hello 2
+	R  msgs hello 3
+	R  msgs hello 4
+
+Saying that the messages were received properly.
+
+#### Alternative Client
+
+We would not have been very complete without talking about the [Carmine](https://github.com/ptaoussanis/carmine) redis client.
+
+For basic usage, it is slightly more convoluted than the other client we have been using, but it's actually slightly more robust.
+
+This is how you add it to your project:
+
+	[com.taoensso/carmine "1.6.0"]
+
+And look at the basic pong example at:
+
+@@@ ruby chapter05/src/carmine.clj @@@
+
+The rest is up to read the excellent [carmine documentation](https://github.com/ptaoussanis/carmine) available online.
+
+We particularly like the [Message Queue](https://github.com/ptaoussanis/carmine#message-queue) section. It simple and concise !
+
+#### What does Redis solve ? 
+
+Redis has a number of common key IT usages, such as:
+
+* Caching, is the most obvious choice, when you want to store something that should be computed somewhere and be made available to a range of different machines.
+* Queues, when you just want to receive values and handle them later on.
+* Pub/Sub, when you want to have multiple clients aware of some data change
+* Unique N Items, Redis has a direct command to uniquely add to sets, so it is easy to know the number of concurrent users at a given time.
+* Counting, more generally, keeping stats of different kinds is an easy and recurrent pattern usage for Redis.
+
+etc..
+
+And way more. 
+In the past, we have used Redis to enqueue messages coming from many concurrent clients as fast as possible and allow the processing to be done later on by another system, which proved to work quite well.
 
 ### Distribute your application state with zookeeper and avout
 [Avout](https://github.com/AlexBaranosky/avout)
