@@ -41,7 +41,7 @@ One for the core of clamq, the other one for the extra activemq extension. We co
 
 Our code presents how to write a simple producer/consumer test using a remote messaging queue, that will be created in ActiveMQ:
 
-	@@@ ruby chapter05/src/clamq.clj @@@
+@@@ ruby chapter05/src/clamq.clj @@@
 
 If we look, at the admin web console, we can see the queue is empty before the code is run:
 
@@ -53,7 +53,7 @@ and contains the message we sent using our small snippet:
 
 Our next example will be showing how to use a Topic. Remember a topic is the way to broadcast the same message to multiple subscribers. 
 
-	@@@ ruby chapter05/src/clamq_topic.clj @@@
+@@@ ruby chapter05/src/clamq_topic.clj @@@
 
 And, we pretty much notice that the code was very similar that the one for queues with the extra addition of:
 
@@ -78,7 +78,7 @@ For this tutorial, we will use a somewhat custom dependency of clj-camel (see ab
 
 Once our REPL is sorted out, let's go through the file to file connection:
 
-	@@@ ruby chapter05/src/camel_file.clj @@@
+@@@ ruby chapter05/src/camel_file.clj @@@
 
 So we start by configuring routes the Camel way to point from an endpoint :from to and endpoint :to. 
 
@@ -106,14 +106,52 @@ But if you put it back, you will see a logging message in the REPL showing that 
 
 Our next example will extend our first example with some queues to connect to ActiveMQ since we put some time to set it up earlier on. The ActiveMQ endpoint is not part of the core camel components so we added that to our set of dependencies already with clj-camel.
 
-	@@@ ruby chapter05/src/camel_queue.clj @@@
+@@@ ruby chapter05/src/camel_queue.clj @@@
 
 Only one added line to register the ActiveMQ component. But then adding a file to our :from folder will send directly a message to active mq with the content of the message.
 
 But this is not all. Camel has an impressive set of [default components](http://camel.apache.org/components.html) that you can use just by accessing them through their URL scheme. All this at your Clojure hands. 
 
 ### Sometimes you need some Quartz, to schedule your Clojure
-[Clojure with Quartz](http://clojurequartz.info/articles/getting_started.html)
+
+This short section will in no way go over the extensive documentation that is available the official [Quartzite](http://clojurequartz.info/articles/guides.html) documentation, because it so very good as almost any of the other [Clojurewerkz](http://clojurewerkz.org/) libraries.
+
+No this section will get you started over how to schedule things with it, and then you should go and see how you can do more.
+
+Quartz is the Grandfather of them scheduler on the Java platform, but while powerful, it was a little bit awkward to use it. With some Clojure DSL added to the mix, now at last it's easy to integrate it in a robust manner into your Clojure application.
+
+To add it to our project:
+
+	[clojurewerkz/quartzite "1.0.1"]
+
+Quartz is known to work with a set of three main objects:
+
+* Job: the task to be executed
+* Trigger: When to execute the task
+* Scheduler: Responsible to execute task at times defined by a trigger
+
+Now that we have the concepts defined we can have an example and give it a go:
+
+@@@ ruby chapter05/src/quartzite.clj @@@
+
+Voila. 
+We have a production proven scheduling engine taking care of our tasks.
+There is more to come with grouping jobs, persisted stores, etc... and everything is clearly written in the documentation so time to give it a try.
+
+### When in need of portable cron jobs
+
+Sometimes you do not really need an incredibly difficult system to schedule jobs, but just in need of hacking some code at regular intervals.
+For this kind of hard moments, we have [cronj](https://github.com/zcaudate/cronj).
+
+We add it to the project with:
+
+	[cronj "0.6.1"]
+
+And now we can use the familiar cron notation to schedule some so exciting printing jobs. Have a look.
+
+@@@ ruby chapter05/src/cronj.clj @@@
+
+Not that difficult to get our order to the waiter properly is it ? So, wine or Champagne ? 
 
 ### Redis in your clojure
 [Redis](https://github.com/wallrat/labs-redis-clojure)
@@ -139,9 +177,6 @@ Hadoop Query from Clojure
 
 ### Apache Cassandra, at your clojure tips
 [Cassaforte](https://github.com/clojurewerkz/cassaforte)
-
-### The best Actor model concurrency in the scala world coming to Clojure
-[Akka wrapper for Clojure](https://github.com/gaverhae/okku)
 
 ### Simple Apache Thrift, powering Facebook, in Clojure
 [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)

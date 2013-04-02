@@ -93,5 +93,9 @@ Messaging
 --> Too old
 
 
+--> not enough time and too complicated
 ### Easy JBoss Rules Integration
 [JBoss Rules Integration](http://www.gettingcirrius.com/2010/12/using-jboss-rules-drools-in-clojure.html)
+
+### The best Actor model concurrency in the scala world coming to Clojure
+[Akka wrapper for Clojure](https://github.com/gaverhae/okku)
