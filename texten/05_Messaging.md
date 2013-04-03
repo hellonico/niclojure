@@ -315,7 +315,35 @@ The other will retrieve the value from the distributed system.
 
 @@@ ruby chapter05/src/avout_2.clj @@@
 
-That is very interesting feature. That means there is almost nothing to setup to share references between different Clojure applications. 
+That is such an interesting feature. That means there is almost nothing to setup to share references between different Clojure applications. 
+It could for example be used to know the global state of a system, and each module takes different action depending on that global state. (In recovery, in production, in test mode etc...)
+
+#### Using distributed locks
+
+Avout comes with a reliable implementation of distributed locks. As in our previous example, we rely on persistence in Zookeeper in the background, but most of it is transparent from a client code point of view.
+
+If we look (and run!) at the following example:
+
+@@@ ruby chapter05/src/avout_lock.clj @@@
+
+We notice that the *if-lock* calls gives you the alternative of doing different branch of code depending on whether the lock was obtained or not.
+
+If we run the above in two different REPLs, we will notice two different outputs:
+
+The first time, we will get the lock and wait for a bit...
+
+	user=> (load-file "src/avout_lock.clj")
+	Have the lock
+	Release lock
+
+The second time we can simply not get the lock.
+
+	user=> (load-file "src/avout_lock.clj")
+	Could not get the lock
+
+This recipe is very useful when accessing shared data on systems that do not support locking, or we are not sure accessing the data in writable mode is safe.
+
+Short recipe, but you can put it straight to action.
 
 ### Every one talks about Hadoop, so let's talk to it with Clojure
 [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
