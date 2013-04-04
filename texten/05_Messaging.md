@@ -428,22 +428,20 @@ Two interesting approaches have been proposed to make things for a better world 
 
 That is most of it to get you started with memcached. Get it up and ready right now on your high traffic website !
 
-### Hadoop queries from Clojure with Cascalog
-[https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
-Hadoop Query from Clojure
-[Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
-
-http://nathanmarz.com/blog/introducing-cascalog-a-clojure-based-query-language-for-hado.html
-https://github.com/nathanmarz/cascalog
-http://twitch.nervestaple.com/2012/01/12/clojure-hbase/
-https://github.com/Quantisan/Impatient/wiki
-http://thecomputersarewinning.com/post/simple-thrift-in-clojure/
-
-### Basic Apple Push Notifications
-[Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
-
 ### Calling SIP, calling clojure
-[SIP](https://github.com/Ruiyun/cljain)
+
+This is only going to scrap the surface of the SIP protocol for you. But it should enough to raise your interest into implementing or building upon the example.
+
+The [SIP Library for clojure](https://github.com/Ruiyun/cljain) does most of the work for us, but gives us a fair bit of understanding on how things work.
+It is build upon the JAIN-SIP veteran SIP library in the JVM world. Then it also makes use of slightly easier notation and set up. This we are going to see in a few minutes.
+
+The purpose of this recipe will be to get Bob who is longing for Alice to get in touch with each other through some SIP messages. The messages will be delivered through the UDP protocol. The messages exchanged between the two lovers will be only text based, but sooner or later they will be longing for sound, so you will need to help them.
+
+We start by adding the dependencies, and we do this with:
+
+	[cljain "0.4.0"]
+
+Our example will be di
 
 ### Apache Cassandra, at your clojure tips
 [Cassaforte](https://github.com/clojurewerkz/cassaforte)
