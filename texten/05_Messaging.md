@@ -428,12 +428,10 @@ Two interesting approaches have been proposed to make things for a better world 
 
 That is most of it to get you started with memcached. Get it up and ready right now on your high traffic website !
 
-### Every one talks about Hadoop, so let's talk to it with Clojure
-[Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
-
 ### Hadoop queries from Clojure with Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure
+[Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 
 ### Basic Apple Push Notifications
 [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
@@ -445,6 +443,7 @@ Hadoop Query from Clojure
 [Cassaforte](https://github.com/clojurewerkz/cassaforte)
 
 ### Simple Apache Thrift, powering Facebook, in Clojure
+Protobuffer from Google
 [Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
 
 ### Storm is a distributed realtime computation system, accessible from Clojure
