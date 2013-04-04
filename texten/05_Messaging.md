@@ -345,6 +345,89 @@ This recipe is very useful when accessing shared data on systems that do not sup
 
 Short recipe, but you can put it straight to action.
 
+
+### Where would you be without a spyglass (and a proper memcache client)
+
+There is probably no need to present memcached in much details since it has now been the de facto caching solution for many companies including Facebook.
+The reason you would want to use it is to avoid having to recompute expensive values, or maybe a place where the data is taken from while the next value is computed in the background. 
+Whatever the reason, it is very easy to integrate, so let's have look
+
+#### Getting ready.
+
+Installing and starting memcached on OSX, is about as difficult as typing those two commands:
+
+Install:
+
+	brew install memcached
+
+Start:
+
+	memcached
+
+Windows users, should find the custom build that has been created:
+
+	http://www.urielkatz.com/archive/detail/memcached-64-bit-windows/
+
+And run it all the same.
+
+#### Clojure it
+
+[Spyglass](http://clojurememcached.info/articles/getting_started.html) will be our friend when connecting to memcached. We add it with:
+
+	[clojurewerkz/spyglass "1.1.0-beta3"]
+
+And we can start playing at the REPL.
+
+##### Insert and retrieve a cached timed key
+
+Our first example shows the core basics of inserting and retrieving values from memcached:
+
+@@@ ruby chapter05/src/memcached_text.clj @@@
+
+Most of the difficulty comes from including the spyglass client:
+
+	clojurewerkz.spyglass.client
+
+The rest reads very easily. The test waits for a few seconds to show the key expires properly after the time setup.
+
+##### Distributed Binaries cached key 
+
+The two next examples shows simply the distributed nature of memcached. We will complicate things a tiny bit by connecting to two memcached servers. Let's start a new memcached server on a different port (11212) with the following command:
+
+	memcached -p 11212 
+
+The next two examples will connect to both our first server and to the second new one. 
+The connection url has been updated to connect to the two servers with:
+
+	127.0.0.1:11211 127.0.0.1:11212
+
+The following will connect, store and retrieve the binary key. As binary we use a simple Clojure array:
+
+@@@ ruby chapter05/src/memcached_binary.clj @@@
+
+The next even shorter piece of code, will connect and only retrieve the key:
+
+@@@ ruby chapter05/src/memcached_binary_2.clj @@@
+
+You will notice that if one server drops, you can still connect to the second one and retrieve the value.
+
+##### Some notes on caching
+
+There is some inherent problems when using caching about managing the cache. The timing is very important. You do not want the cache to expire at the exact time 10000 clients try to connect simultaneously.
+
+Two interesting approaches have been proposed to make things for a better world so we will expose them here.
+
+	Set the cache item expire time way out in the future.
+	Embed the "real" timeout serialized with the value. For example, set the item to timeout in 24 hours, but the embedded timeout might be five minutes in the future.
+	On a get from the cache determine if the stale timeout expired and on expiry immediately set a time in the future and re-store the data as is. This closes down the window of risk.
+	Fetch data from the DB and update the cache with the latest value.
+	
+	Alexey describes a different two key approach:
+	Create two keys in memcached: MAIN key with expiration time a bit higher than normal + a STALE key which expires earlier.
+	On a get read STALE key too. If the stale has expired, re-calculate and set the stale key again.
+
+That is most of it to get you started with memcached. Get it up and ready right now on your high traffic website !
+
 ### Every one talks about Hadoop, so let's talk to it with Clojure
 [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
 
@@ -354,9 +437,6 @@ Hadoop Query from Clojure
 
 ### Basic Apple Push Notifications
 [Apple Push Notifications](https://github.com/HEROLABS/herolabs-apns)
-
-### Where would you be without a spyglass (and a proper memcache client)
-[Memcache](http://clojurememcached.info/articles/getting_started.html)
 
 ### Calling SIP, calling clojure
 [SIP](https://github.com/Ruiyun/cljain)
