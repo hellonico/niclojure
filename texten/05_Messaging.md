@@ -441,10 +441,48 @@ We start by adding the dependencies, and we do this with:
 
 	[cljain "0.4.0"]
 
-Our example will be di
+Our example will be divided into two pieces of code, one for Bob and one for Alice. Note that you do not need any other dependencies to make this running.
+
+@@@ ruby chapter05/src/sip_bob.clj @@@
+
+@@@ ruby chapter05/src/sip_bob.clj @@@
 
 ### Apache Cassandra, at your clojure tips
+
+#### Some background
+
+	Apache Cassandra's Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. 
+
+	Data is automatically replicated to multiple nodes for fault-tolerance. Replication across multiple data centers is supported. Failed nodes can be replaced with no downtime. 
+
+	Cassandra is in use at Netflix, eBay, Twitter, Urban Airship, Constant Contact, Reddit, Cisco, OpenX, Digg, CloudKick, Ooyala, and more companies that have large, active data sets. The largest known Cassandra cluster has over 300 TB of data in over 400 machines. 
+
+	There are no single points of failure. There are no network bottlenecks. Every node in the cluster is identical.
+
+DataStax's CTO [presents Cassandra](http://devopsangle.com/2012/08/09/datastax-cto-says-cassandra-is-for-practical-problem-solvers/) as the persistence solution for practical problem solvers. 
+
+We have been personally impressed at how easy it was to setup a cluster and replicate data consistently accross different machines and networks.
+
+#### Getting ready
+
+To install Cassandra on OSX, you can use the usual brewery:
+
+	 brew install cassandra
+
+Also, pre-built packages for most plateforms are being created by DataStax, you can find them at the following pages:
+
+	http://planetcassandra.org/Download/DataStaxCommunityEdition
+
+Once this is done, you should be able to start a one node cluster with the simple command:
+
+	cassandra
+
+
+
+#### 
+
 [Cassaforte](https://github.com/clojurewerkz/cassaforte)
+
 
 ### Simple Apache Thrift, powering Facebook, in Clojure
 Protobuffer from Google
