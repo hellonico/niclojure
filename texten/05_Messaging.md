@@ -505,12 +505,4 @@ Notice we also need to specify how to serialize the values.
 
 This is not even scratching the top of cassandra, so you should go ahead and read the full [test suite](https://github.com/pingles/clj-hector/blob/master/src/clj_hector/core.clj) and walk around the [Cassandra wiki](http://wiki.apache.org/cassandra/GettingStarted).
 
-We do hope that you have grasped how to setup and get started with the technologies empowering big data companies.
-
-### Simple Apache Thrift, powering Facebook, in Clojure
-Protobuffer from Google
-[Thrift from Clojure](http://thecomputersarewinning.com/post/simple-thrift-in-clojure/)
-
-### Storm is a distributed realtime computation system, accessible from Clojure
-[https://github.com/nathanmarz/storm/wiki/Clojure-DSL](https://github.com/nathanmarz/storm/wiki/Clojure-DSL)
-
+We do hope that you have grasped how to setup and get started with the technologies empowering big data companies, notably Facebook.
