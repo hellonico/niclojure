@@ -443,9 +443,17 @@ We start by adding the dependencies, and we do this with:
 
 Our example will be divided into two pieces of code, one for Bob and one for Alice. Note that you do not need any other dependencies to make this running.
 
-@@@ ruby chapter05/src/sip_bob.clj @@@
+Now we setup the phone for bob first, who will send a message to himself, to check that the connection is properly established:
 
 @@@ ruby chapter05/src/sip_bob.clj @@@
+
+Then we will see Alice sending a message to Bob, and getting, of course, a prompt reply:
+
+@@@ ruby chapter05/src/sip_bob.clj @@@
+
+And this is where the story starts. You can send any kind of messages, including media content, so do go ahead and experiment to your wildest dreams.
+
+Unfortunately, wine cannot be streamed yet, so time for another glass of red wine I guess.
 
 ### Apache Cassandra, at your clojure tips
 
@@ -477,12 +485,27 @@ Once this is done, you should be able to start a one node cluster with the simpl
 
 	cassandra
 
+#### Basic operations
 
+This is really just to get started storing some values in creating a schema, storing some value, and retrieving it from Cassandra.
 
-#### 
+[clj-hector](https://github.com/pingles/clj-hector) will be our friend, and we will add it to our project with:
 
-[Cassaforte](https://github.com/clojurewerkz/cassaforte)
+	[org.clojars.paul/clj-hector "0.2.8"]
 
+Our example will connect to the cluster we created earlier on by running the cassandra command, then goes on to defining the schema.
+
+@@@ ruby chapter05/src/hector.clj @@@
+
+get-rows [ks cf pks & options] is a bit cryptic, but, more or less it means:
+
+	 "In keyspace ks, retrieve rows for pks within column family cf."
+
+Notice we also need to specify how to serialize the values.
+
+This is not even scratching the top of cassandra, so you should go ahead and read the full [test suite](https://github.com/pingles/clj-hector/blob/master/src/clj_hector/core.clj) and walk around the [Cassandra wiki](http://wiki.apache.org/cassandra/GettingStarted).
+
+We do hope that you have grasped how to setup and get started with the technologies empowering big data companies.
 
 ### Simple Apache Thrift, powering Facebook, in Clojure
 Protobuffer from Google
