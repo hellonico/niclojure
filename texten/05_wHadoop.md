@@ -8,6 +8,10 @@ To start hbase in master mode, here how we do it:
 
     hbase master start
 
+There is a UI webapp at:
+
+    http://localhost:60010/master-status
+
 ### Hadoop queries from Clojure with Cascalog
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure
