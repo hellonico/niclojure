@@ -86,6 +86,7 @@ Now on the road for some querying in our next section.
 [https://github.com/nathanmarz/cascalog/wiki](https://github.com/nathanmarz/cascalog/wiki)
 Hadoop Query from Clojure
 [Hadoop](HBase: http://twitch.nervestaple.com/2012/01/12/clojure-hbase/)
+http://ianrumford.github.io/blog/2012/09/29/using-cascalog-for-extract-transform-and-load/
 
 http://nathanmarz.com/blog/introducing-cascalog-a-clojure-based-query-language-for-hado.html
 https://github.com/nathanmarz/cascalog
