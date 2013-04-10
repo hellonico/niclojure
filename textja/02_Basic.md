@@ -479,11 +479,11 @@ Lamina はイベントを受信するキューとその後の処理について�
 
 @@@ ruby chapter02/src/lamina1.clj @@@
 
-![Lamina](../images/chapter02/lamina1.png)
+![Lamina](../images/chap02/lamina1.png)
 
 @@@ ruby chapter02/src/lamina2.clj @@@
 
-![Lamina](../images/chapter02/lamina2.png)
+![Lamina](../images/chap02/lamina2.png)
 
 #### Aliceが暗号化すればBobも安心
 

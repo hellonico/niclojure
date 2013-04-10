@@ -481,13 +481,13 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 	brew install graphviz
 
-@@@ ruby chapter02/src/lamina1.clj @@@
+@@@ ruby chap02/src/lamina1.clj @@@
 
-![Lamina](../images/chapter02/lamina1.png)
+![Lamina](../images/chap02/lamina1.png)
 
-@@@ ruby chapter02/src/lamina2.clj @@@
+@@@ ruby chap02/src/lamina2.clj @@@
 
-![Lamina](../images/chapter02/lamina2.png)
+![Lamina](../images/chap02/lamina2.png)
 
 #### Everyday cryptography with Alice, but where is bob ? 
 [Cryptography for Clojure](https://github.com/laczoka/clj-crypto)
