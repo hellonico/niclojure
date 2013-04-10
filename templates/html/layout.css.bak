@@ -67,8 +67,8 @@ h1, h2, h3, h4, h5, h6 {
 div.container {
 	height: 7in;
 	left: 0;
-	/*page: cover;*/
-	/*position: absolute;*/
+	page: cover;
+	position: absolute;
 	top: 0;
 	width: 9.25in;
 	z-index: -1;
@@ -84,7 +84,7 @@ div.frontcover {
 div.frontcover div {
 	left: 1in;
 	padding-top: 0.25in;
-	/*position: absolute;*/
+	position: absolute;
 	top: 2.5in;
 	width: 7.25in;
 }
@@ -107,7 +107,7 @@ div.frontcover p.description {
 div.frontcover p.authors {
 	color: #000;
 	font-style: italic;
-	/*position: absolute;*/
+	position: absolute;
 	top: 0;
 }
 
@@ -189,13 +189,13 @@ div.frontcover * {
 /* = IMPRINT = */
 /* =========== */
 .imprint {
-	/*background: #E2E7E2;*/
-	/*page: cover;*/
+	background: #E2E7E2;
+	page: cover;
 	string-set: header "";
 }
 
 .imprint, .imprint * {
-	/*color: #5b5b5b;*/
+	color: #5b5b5b;
 }
 
 .imprint * {
@@ -206,7 +206,7 @@ div.frontcover * {
 
 .imprint div {
 	left: 0.5in;
-	/*position: absolute;*/
+	position: absolute;
 	bottom: 0.3in;
 }
 
