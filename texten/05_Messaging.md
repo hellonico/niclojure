@@ -382,7 +382,7 @@ And we can start playing at the REPL.
 
 Our first example shows the core basics of inserting and retrieving values from memcached:
 
-@@@ ruby chapter05/src/memcached_text.clj @@@
+@@@ ruby chapter05/src/spyglass_text.clj @@@
 
 Most of the difficulty comes from including the spyglass client:
 
@@ -403,11 +403,11 @@ The connection url has been updated to connect to the two servers with:
 
 The following will connect, store and retrieve the binary key. As binary we use a simple Clojure array:
 
-@@@ ruby chapter05/src/memcached_binary.clj @@@
+@@@ ruby chapter05/src/spyglass_binary.clj @@@
 
 The next even shorter piece of code, will connect and only retrieve the key:
 
-@@@ ruby chapter05/src/memcached_binary_2.clj @@@
+@@@ ruby chapter05/src/spyglass_binary_2.clj @@@
 
 You will notice that if one server drops, you can still connect to the second one and retrieve the value.
 

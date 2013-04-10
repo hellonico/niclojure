@@ -135,7 +135,7 @@ project.clj に入れましょう:
 
 これで、サンプルが動くようになりました。
 
-@@@ ruby chapter02/src/mongo.clj @@@
+@@@ ruby chapter03/src/mongo.clj @@@
 
 以下のURLでMongoデータベースの中身を見ることができます:
 
@@ -176,15 +176,15 @@ Carmineを使えるようにするには:
 
 早速、サーバに接続して基本的なところを試してみましょう:
 
-@@@ ruby src/chapter03/carmine.clj @@@
+@@@ ruby chapter03/src/carmine.clj @@@
 
 次に、Redisでとても気になるpublish/subscribeをどうやって使うのか見てみましょう:
 
-@@@ ruby src/chapter03/carmine2.clj @@@
+@@@ ruby chapter03/src/carmine2.clj @@@
 
 最後に、Redisの新しい機能は永続的なメッセージングキューとして動作します。 それはどうやって使うかは以下のサンプルをご覧ください:
 
-@@@ ruby src/chapter03/carmine3.clj @@@
+@@@ ruby chapter03/src/carmine3.clj @@@
 
 ここで、もう一度 Redisの特徴を挙げておきますね :
 

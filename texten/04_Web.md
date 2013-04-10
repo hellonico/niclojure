@@ -130,7 +130,7 @@ GET : First comes the HTTP method that applies to that route, here we use GET. A
 
 (index-page) : From chapter 01 we have seen that hiccup generated calls are simple Clojure functions. For the record, here is the content of that function:
 
-@@@ ruby chatper04_01/src/compojure/example/views.clj @@@
+@@@ ruby chapter04_01/src/compojure/example/views.clj @@@
 
 Now we are ready, we can fire our ring development environment with the method we have seen before and start hacking:
 

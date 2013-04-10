@@ -159,7 +159,7 @@ In Cucumber we start by writing text that looks like it could be read by normal 
 
 Then we write some support code so the actual "means" something to our vegetables. This file will be in a folder named _step_definitions_ in our test folder.
 
-@@@ ruby chapter03/test/step_definitions/cuke_steps.clj @@@
+@@@ ruby chapter03/test/features/step_definitions/cuke_steps.clj @@@
 
 Cucumber steps are defined by regular expression and string matching so once you have your regexp written properly, you can write more feature and test extreme cases.
 

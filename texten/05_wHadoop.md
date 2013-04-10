@@ -37,14 +37,14 @@ Note that it seems the project does not support Clojure 1.5.1 yet.
 
 Once we have this, let's define a very basic schema:
 
-@@@ ruby chapter05_hadoop/src/hbase/setup.clj @@@
+@@@ ruby chapter05_hadoop/hbase/src/hbase/setup.clj @@@
 
 One table and one family only, but that will be enough for our easy playing around.
 Note also, that the table needs to be disabled when adding families to the table schema.
 
 Next on our list, is to do some basic CRUD operations:
 
-@@@ ruby chapter05_hadoop/src/hbase/core.clj @@@
+@@@ ruby chapter05_hadoop/hbase/src/hbase/core.clj @@@
 
 Since, hbase talks only byte arrays, we are introducing methods
 
@@ -55,7 +55,7 @@ to see the content of result values slightly more easily.
 
 The next example, shows how to see maps results directly:
 
-@@@ ruby chapter05_hadoop/src/hbase/core2.clj @@@
+@@@ ruby chapter05_hadoop/hbase/src/hbase/core2.clj @@@
 
 To retrieve a set of values from hbase, we use a scanner. The arguments for your filters are in this list:
 
@@ -75,7 +75,7 @@ To retrieve a set of values from hbase, we use a scanner. The arguments for your
 
 And now to put it in brief action, see how to use the scanner to retrieve rows:
 
-@@@ ruby chapter05_hadoop/src/hbase/scan.clj @@@
+@@@ ruby chapter05_hadoop/hbase/src/hbase/scan.clj @@@
 
 That would be it for some crud operations in hbase. Using Clojure is a great way to actually go inside rapidly and see the data that is stored directly in hbase. 
 You will get use to the tooling pretty rapidly. 

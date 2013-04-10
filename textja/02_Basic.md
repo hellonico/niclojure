@@ -176,7 +176,7 @@ lein用に依存関係を追加します:
 
 このサンプルでは、Web上の絵文字アイコンを取得します:
 
-@@@ ruby chapter02/src/clojure_soup.clj @@@
+@@@ ruby chapter02/src/jsoup.clj @@@
 
 #### Enliveを使ったテンプレート
 
@@ -192,11 +192,11 @@ Enliveはテンプレートだけでなく、HTMLのパースもしてくれる�
 
 このサンプルでは、enliveを使ってWebサイトをスクレイピングします。 コンテンツのURLを取得し、必要なHTMLタグを選択します:
 
-@@@ ruby chapter02/enlive.clj @@@
+@@@ ruby chapter02/src/enlive.clj @@@
 
 今度は逆にhtmlファイルでテンプレートを作り、Clojureからテンプレートを操作します:
 
-@@@ ruby chapter02/enlive_02.clj @@@
+@@@ ruby chapter02/src/enlive_02.clj @@@
 
 デザイナーはDreamweaverを使っていつも通りにデザインし、プログラマはそれとは切り離してロジックを書けるということですね！
 
@@ -230,7 +230,7 @@ Clojureで表計算するなら、[Apache POI](http://poi.apache.org/) のライ
 
 IPアドレスやホスト名を取得するためにDNS lookupやリバース lookupが必要なら、こんな感じです:
 
-@@@ ruby src/dns.clj @@@
+@@@ ruby chapter02/src/dns.clj @@@
 
 特別なライブラリを使うことなく、いつでも実行可能です。
 
@@ -244,7 +244,7 @@ IPアドレスやホスト名を取得するためにDNS lookupやリバース l
 
 プロジェクトに上記の設定をしさえすれば、とてもシンプルでセクシーなテンプレートを使うことが出来るようになります。
 
-@@@ ruby src/clostache.clj @@@
+@@@ ruby chapter02/src/clostache.clj @@@
 
 話のネタに。 { と } はmustache(ヒゲ)と呼ばれています。
 
@@ -477,7 +477,7 @@ Lamina はイベントを受信するキューとその後の処理について�
 
 	brew install graphviz
 
-@@@ ruby chapter02/src/lamina.clj @@@
+@@@ ruby chapter02/src/lamina1.clj @@@
 
 ![Lamina](../images/chapter02/lamina1.png)
 
@@ -571,7 +571,7 @@ Shake を使うとClojureのロジック/プログラミングの中でシェル
 
 サンプルを実行してみましょう:
 
-@@@ ruby src/shake.clj @@@
+@@@ ruby chapter02/src/shake.clj @@@
 
 #### Timelyでタイムリーなスケジューリング
 
@@ -611,7 +611,7 @@ at-at はOvertoneという非常に良く出来た音楽生成プロジェクト
 
 以下の例では、at-atを使ってどのようにスケジューリングし、スケジュールの開始/停止を行うかを見せています。
 
-@@@ ruby chapter02/src/at_at_clj @@@
+@@@ ruby chapter02/src/at_at.clj @@@
 
 #### ANTLR構文解析を使う
 

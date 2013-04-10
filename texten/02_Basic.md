@@ -177,7 +177,7 @@ This is a wrapper to provide awesome parsing of html files, whether local or rem
 
 The following example shows you how to retrieve some emoticons on the web:
 
-@@@ ruby chapter02/src/clojure_soup.clj @@@
+@@@ ruby chapter02/src/jsoup.clj @@@
 
 ####  Templating the clojure way with Enlive
 
@@ -193,11 +193,11 @@ This is an example taken from the [best enlive tutorial](https://github.com/swan
 
 This is how you use enlive to for website scraping. Fetch the content of a URL then select the html tag you need:
 
-@@@ ruby chapter02/enlive.clj @@@
+@@@ ruby chapter02/src/enlive.clj @@@
 
 Reversly, you declare templates in regular html files, and apply some logic in Clojure. See how:
 
-@@@ ruby chapter02/enlive_02.clj @@@
+@@@ ruby chapter02/src/enlive_02.clj @@@
 
 Your great designer can do his Dreamweaver work the way he or she usually does it and you can plug in your own logic without stepping on each other's foot. Sweet. Slick.
 
@@ -232,7 +232,7 @@ This is of course including attachments handling and full Japanese encoding supp
 
 If you need to do some look up or reverse lookup for IPs or hostname. here are a few lines for you:
 
-@@@ ruby src/dns.clj @@@
+@@@ ruby chapter02/src/dns.clj @@@
 
 No need to leave the REPL, type this in anytime. This also does not depend on any external library.
 
@@ -248,7 +248,7 @@ This is where clostache comes:
 
 Once this is in your project, you can perform some very simple but sexy templating magic.
 
-@@@ ruby src/clostache.clj @@@
+@@@ ruby chapter02/src/clostache.clj @@@
 
 For the story, the { and } are called moustache, make sure they do not get into your food tasting today. 
 
@@ -481,7 +481,7 @@ You would need [Graphiz](http://www.graphviz.org/Download..php) installed on you
 
 	brew install graphviz
 
-@@@ ruby chapter02/src/lamina.clj @@@
+@@@ ruby chapter02/src/lamina1.clj @@@
 
 ![Lamina](../images/chapter02/lamina1.png)
 
@@ -568,7 +568,7 @@ Here's how to add it to your project.clj file:
 
 Then enjoy some instant gratification:
 
-@@@ ruby src/shake.clj @@@
+@@@ ruby chapter02/src/shake.clj @@@
 
 #### Timely, or your super easy scheduling in Clojure
 [Scheduler](https://github.com/Factual/timely)
@@ -608,7 +608,7 @@ at-at has been extracted from another great project called Overtone used for mus
 
 The following code will show you how to prepare your pool of scheduled items, and how to start and stop at different timing from now. 
 
-@@@ ruby chapter02/src/at_at_clj @@@
+@@@ ruby chapter02/src/at_at.clj @@@
 
 #### On parsing ANTLR grammars with Clojure
 

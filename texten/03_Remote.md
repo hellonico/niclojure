@@ -82,7 +82,7 @@ And let's go through a few examples:
 
 The complete Todoist API is [here](http://todoist.com/API/), and look at how short the code is to write a wrapper around the online API:
 
-@@@ ruby chapter03/doc/clj-todoist.clj @@@
+@@@ ruby chapter03/doc/clj-todoist.core.clj @@@
 
 We mostly made use of cheshire inside http client, and then went on defining all the different endpoints as methods on the fly.
 Sweet sweet !

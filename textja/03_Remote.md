@@ -82,6 +82,6 @@ Todoist はオンラインのTodoリストです。 私もここ数年間使っ�
 
 APIの完全なドキュメントは [here](http://todoist.com/API/) にあります:
 
-@@@ ruby chapter03/doc/clj-todoist.clj @@@
+@@@ ruby chapter03/doc/clj-todoist.core.clj @@@
 
 http clientの内側ではcheshireを使い、その場ですべてのエンドポイントをメソッドとして定義しています。

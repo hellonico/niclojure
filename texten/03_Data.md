@@ -127,7 +127,7 @@ Let's put it in our project.clj with:
 
 And now we can go along some short examples.
 
-@@@ ruby chapter02/src/mongo.clj @@@
+@@@ ruby chapter03/src/mongo.clj @@@
 
 At any point in time, you can also view the content of your mongo database by accessing:
 
@@ -168,15 +168,15 @@ Here is you invite Carmine for dinner:
 
 And on we go with the basics of connecting to the server:
 
-@@@ ruby src/chapter03/carmine.clj @@@
+@@@ ruby chapter03/src/carmine.clj @@@
 
 In a second section, we see in details how to use the publish/subscribe mechanismn that is so very impressive to redis:
 
-@@@ ruby src/chapter03/carmine2.clj @@@
+@@@ ruby chapter03/src/carmine2.clj @@@
 
 Lastly, the all new feature of Redis is to act as a persistent messaging queue. Here is how you would go to use it:
 
-@@@ ruby src/chapter03/carmine3.clj @@@
+@@@ ruby chapter03/src/carmine3.clj @@@
 
 So, we have seen that Redis is great as :
 
