@@ -5,7 +5,7 @@
             ServletContextHandler
             ServletHolder]))
 
-(def server (Server. 8080))
+(def server (Server. 8090))
 
 (defn start [& args]
   (let [context (ServletContextHandler. ServletContextHandler/SESSIONS)
