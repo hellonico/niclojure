@@ -175,6 +175,20 @@ We set up some privacy settings needed so not anyone can destroy our code with:
 In the last line, we can configure any of the system environment needed for our Heroku application.
 
 
+### A short note on Google App Engine deployment
+
+
+There used to be two main ways of deploying Clojure applications to Google App Engine.
+[AppEngine](https://github.com/gcv/appengine-magic)
+
+And a ready to be used CMS to deploy on the app engine:
+[Sample Webapp](https://github.com/thurn/ackbar)
+
+
+### Beanstalk
+
+http://www.ctdean.com/2012/04/10/aws-beanstalk-on-clojure.html
+
 ### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
@@ -202,10 +216,6 @@ Mixpanel allows you to track any kind of event from Within your Application.
 Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 
 They are actually doing this through [jclouds](http://www.jclouds.org/)
 
-
-Lein Plugin for deployment on heroku
-[Lein Heroku](https://github.com/technomancy/lein-heroku)
-
 ### Easy VirtualBox wrapper for easy cloud management
 [https://github.com/tbatchelli/vmfest](https://github.com/tbatchelli/vmfest)
 
@@ -219,11 +229,6 @@ Make sure you also look at the [playground](https://github.com/pallet/vmfest-pla
 ### Ever wanted to deploy on Redhat's openshift plateform ?
 [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
 
-### Google App Engine deployment
-[AppEngine](https://github.com/gcv/appengine-magic)
-
-And a ready to be used CMS to deploy on the app engine:
-[Sample Webapp](https://github.com/thurn/ackbar)
 
 ### Deploying clojure app in the cloud with jetlastic. it's super easy !
 [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
