@@ -121,4 +121,7 @@ http://nathanmarz.com/blog/introducing-cascalog-a-clojure-based-query-language-f
 http://twitch.nervestaple.com/2012/01/12/clojure-hbase/
 http://thecomputersarewinning.com/post/simple-thrift-in-clojure/
 
+--> too old
+Lein Plugin for deployment on heroku
+[Lein Heroku](https://github.com/technomancy/lein-heroku)
 
