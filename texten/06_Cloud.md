@@ -64,18 +64,66 @@ Once this is done, we just have to perform a git push:
 
     git push heroku master 
 
-And our application is up and running at:
+And hop, the wine is poured, and our application is up and running in the cloud:
 
-[http://glacial-tundra-7926.herokuapp.com/](http://glacial-tundra-7926.herokuapp.com/)
+[http://glacial-tundra-7926.herokuapp.com/](http://glacial-tundra-7926.herokuapp.com/)]
+
+#### Heroku toolbelt
+
+You may have been missing the git client earlier on, also we do hope you had it already.
+Heroku provides what they call a Toolbelt, available at:
+
+[https://toolbelt.heroku.com/](https://toolbelt.heroku.com/)
+
+It provides you for most famous platforms, including Windows and OSX a set of tools to control your Heroku applications.
 
 #### Some explanations
 
-Heroku runs on top of Amazon AWS, and performs all the dirty tasks for you. 
+Heroku runs on top of Amazon AWS, and performs all the dirty tasks for you. Heroku relies heavily on a Ruby based infrastructure mostly based on the [Foreman gem](ddollar.github.io/foreman/).
 
-Do a diagram of Heroku running
+We need a _Procfile_ file to tell heroku what to do with our application. That file is a one liner:
 
-[Deploying Application on Heroku](https://devcenter.heroku.com/articles/clojure-web-application)
-[Debugging clojure on Heroku](https://devcenter.heroku.com/articles/debugging-clojure)
+    web: lein with-profile production trampoline ring server
+
+It could be even simplified to:
+
+    web: lein ring server
+
+Which contains exactly the command we used earlier on. The simplest version to run our _ring based_ Clojure web application.
+
+The toolbelt you have installed earlier on contains the Foreman utilities which can locally start your application the way Heroku does.
+
+    foreman start
+
+Puts your application to the forefront.
+
+#### One off script
+
+In the chapter06/test-heroku sample project, we provided a simple fibonacci script:
+
+@@@ ruby chapter06/test-heroku/src/demo.clj @@@
+
+That can be run as a one off script on Heroku infrastructure.
+
+To run the script locally from the project folder we do:
+    
+    lein trampoline run -m demo 100
+
+To run this on heroku, we simply add a prefix command:
+
+    heroku run lein trampoline run -m demo 100
+
+We suppose you have installed the heroku toolbelt to have heroku on your path.
+
+More on this [one-off script](https://devcenter.heroku.com/articles/clojure#oneoff-scripts) feature on the Heroku wiki.
+
+#### More with Clojure on Heroku
+
+We scratched the top of what is needed to have your application on heroku, but we hope we have you hooked.
+
+The rest is on the fantastic Heroku onlin documentation:
+* [Deploying Application on Heroku](https://devcenter.heroku.com/articles/clojure-web-application)
+* [Debugging clojure on Heroku](https://devcenter.heroku.com/articles/debugging-clojure)
 
 ### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
