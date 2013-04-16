@@ -8,9 +8,9 @@ This recipe takes some steps from the following excellent documentation on herok
 
 In order to have a sweet web app on Heroku, we will quickly go over the steps we have seen before in the Web chapter to generate a Ring based application.
 
-We will reuse the laminus template for now, and run the leiningen new template to generate a project for us:
+We will reuse the luminus template for now, and run the leiningen new template to generate a project for us:
 
-    lein new laminus test-project
+    lein new luminus test-project
 
 To make sure the resulting ring project is working fine, by running 
 
@@ -292,9 +292,85 @@ That means, everything about _clojure futures_ are not usable.
 
 But if you can go around that limitation, GAE is sure a great way to put your application online pretty reliably fast and on Google infrastructure.
 
-### Beanstalk
+### Beanstalk or Clojure on Amazone Web Service
 
-http://www.ctdean.com/2012/04/10/aws-beanstalk-on-clojure.html
+In the world of Cloud computing, it is hard to go without Amazon AWS these days. Even our earlier example on Heroku was, without us knowing it, based on the Amazon infrastructure.
+
+This recipe will be based on the excellent blog post entry:
+
+[http://www.ctdean.com/2012/04/10/aws-beanstalk-on-clojure.html](http://www.ctdean.com/2012/04/10/aws-beanstalk-on-clojure.html)
+
+#### Preparing (yet again) a Clojure Web application
+
+Same as the Heroku recipe we will use Luminus to quickly have a prototyped Clojure web application:
+
+    lein new luminus test2
+
+We need to be careful to not have a *_* character in the name of your application, so for example, trying to use *test_2* will later on end up in:
+
+    Created /Users/Niko/projects/mascarpone/chapter06/test_2/target/test_2-0.1.0-SNAPSHOT-20130416172805.war
+    java.lang.IllegalArgumentException: Bucket name should not contain '_'
+
+#### Setting up the AWS Account
+
+The first time you try to access the Amazon Web Service page, you will need to go through a few registration steps:
+
+![beanstalk](../images/amazon_first.png)
+
+Once you have gone through the registration step, and the oh so cool phone call with the real time web automated form, we go directly to the beanstalk section:
+
+![beanstalk](../images/amazon_beanstalk.png)
+
+or
+
+![beanstalk](../images/amazon_beanstalk2.png)
+
+When the time comes to choose the infrastructure type, make sure you choose Tomcat, whichever version is fine:
+
+![beanstalk](../images/amazon_tomcat.png)
+
+The Amazon registration is ready, let's go back to our application.
+
+#### Use the beanstalk Leiningen plugin
+
+To make use of the Leiningen plugin for AWS, named beanstalk, we will add it to our profiles.clj file with:
+
+    {:user {:plugins [
+                  [lein-beanstalk "0.2.7"]
+
+The plugin code itself is hosted at:
+
+[https://github.com/weavejester/lein-beanstalk](https://github.com/weavejester/lein-beanstalk)
+
+We then need to write our AWS credentials so Leiningen can find them. Add a lein-beanstalk-credentials definition to your ~/.lein/init.clj file that contains your AWS credentials:
+
+    (def lein-beanstalk-credentials
+      {:access-key "XXXXXXXXXXXXXXXXXX"
+       :secret-key "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"})
+
+As a reminder, your credentials are stored in:
+
+[https://portal.aws.amazon.com/gp/aws/securityCredentials](https://portal.aws.amazon.com/gp/aws/securityCredentials)
+
+Once this is done, we can use the beanstalk command:
+
+    lein beanstalk deploy development
+
+Which will start creating the war file, and deploying it to a tomcat instance on Amazon infrastructure:
+
+    Created /Users/Niko/projects/mascarpone/chapter06/test2/target/test2-0.1.0-SNAPSHOT-20130416174902.war
+    Uploaded test2-0.1.0-SNAPSHOT-20130416174902.war to S3 Bucket
+    Created new app version 0.1.0-SNAPSHOT-20130416174902
+    Creating 'development' environment (this may take several minutes)
+    ...................
+
+Eventually succeeding:
+
+    Creating 'development' environment (this may take several minutes)
+    ........................................................... Done
+    Environment deployed at: test2-dev.elasticbeanstalk.com
+
+Your application is ready, enjoy some more red wine ! 
 
 ### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
@@ -335,7 +411,6 @@ Make sure you also look at the [playground](https://github.com/pallet/vmfest-pla
 
 ### Ever wanted to deploy on Redhat's openshift plateform ?
 [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
-
 
 ### Deploying clojure app in the cloud with jetlastic. it's super easy !
 [Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
