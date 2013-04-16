@@ -413,4 +413,17 @@ Make sure you also look at the [playground](https://github.com/pallet/vmfest-pla
 [Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
 
 ### Deploying clojure app in the cloud with jetlastic. it's super easy !
-[Jelastic](http://jelastic.com/ja/docs/clojure) and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
+
+Along the lines of deploying a war file in the Cloud, jetlastic has done some pretty award-type job recently and even put some detailed documentation on how to get Clojure started with Jetlastic
+
+[http://jelastic.com/ja/docs/clojure)](http://jelastic.com/ja/docs/clojure) 
+
+There is a Japanese provider right beside your door at:
+
+    https://app.jelastic.tsukaeru.net/
+
+
+
+
+
+and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
