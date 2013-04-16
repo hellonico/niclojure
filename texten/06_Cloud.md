@@ -177,13 +177,120 @@ In the last line, we can configure any of the system environment needed for our 
 
 ### A short note on Google App Engine deployment
 
-
 There used to be two main ways of deploying Clojure applications to Google App Engine.
-[AppEngine](https://github.com/gcv/appengine-magic)
 
-And a ready to be used CMS to deploy on the app engine:
-[Sample Webapp](https://github.com/thurn/ackbar)
+* [AppEngine-magic](https://github.com/gcv/appengine-magic)
+* [Gaeshi](https://github.com/slagyr/gaeshi)
 
+The first one is slightly outdated, and the second one has been recently deprecated. 
+
+Anyway .. let's get googled. And maybe you will be the one involved to save Clojure on Google App Engine !
+
+#### Here comes Gaeshi, prepare yourself
+
+We will go quickly through the easiness of Gaeshi for a quick ride, and put an application on the app engine in ... 5 minutes. Deal ? If not, wine's on us.
+
+First, we are going to need a few command line tools, that are provided by Google. Those can be downloaded from:
+
+[https://developers.google.com/appengine/downloads](https://developers.google.com/appengine/downloads)
+
+We will not be using them directly, just unzip and remember the path where you have downloaded them, it will come handy in a few minutes.
+
+Then we add a plugin for Leiningen in our ~/.lein/profiles.clj
+
+    {:user {:plugins [
+                  [gaeshi/lein-gaeshi "0.10.0"]
+                  ...
+                  ]}}
+
+Now, to prepare a new project from scratch, let's issue a few commands with the newly installed plugin:
+
+    lein gaeshi new test_1 
+    cd test_1  
+    lein gaeshi server
+
+That is it. We have replicated the google app engine locally, so we can directly start developing against it.
+
+To see the result locally:
+
+[http://localhost:8080/](http://localhost:8080/)
+
+If you need to start on a different port, we can check the parameters for that:
+
+    gaeshi/lein-gaeshi 0.10.0: Command line component for Gaeshi; A Clojure framework for Google App Engine.
+    Usage: [lein] gaeshi [options] <command> [command options]
+      command  The name of the command to execute. Use --help for a listing of command.
+      -v, --version  Shows the current joodo/kuzushi version.
+      -h, --help     You're looking at it.
+      Commands:
+      deploy    Deploy the project to Google AppEngine
+      generate  Generates files for various components at the specified namespace:
+                    controller - new controller and spec file
+      help      Prints help message for commands: gaeshi help <command>
+      new       Creates all the needed files for new Gaeshi project.
+      prepare   Build a deployable directory structure of the app
+      server    Starts the app in on a local web server
+      version   Prints the current version of gaeshi/lein-gaeshi
+
+#### Prepare Google for our arrival
+
+In the World of the web, let's create an application on google app engine. We access it through:
+
+[https://appengine.google.com/start/createapp](https://appengine.google.com/start/createapp)
+
+And go through the steps of creating an application. This is pretty easy and left up as a task to the reader of this book:
+
+![AppEngine](../images/chap06/appengine.png)
+
+The application name will be reuse later on, so let's pay attention to not forget it.
+
+#### Attaching our application to Google App Engine
+
+Make sure your 
+
+    config/production/appengine-web.xml 
+
+file reflects the domain name <application>sub_domain_name</application>. For example, if you named your app pure_natto, and you got the domain pure-natto.appspot.com, then you should have 
+
+    <application>pure-natto</application> 
+
+in that file.
+
+    Finally you will need to have a config file in ~/.gaeshi/ named the same as your Clojure project.
+
+So if your project has been named test-1, you should have a file 
+
+    ~/.gaeshi/test-1
+
+The content of the file should be like this:
+
+    {
+    :appengine-sdk-dir "/path/to/appengine-java-sdk-1.4.3"
+    :appengine-email "sato.satoshi@gmail.com"
+    :appengine-password "yourpassword"
+    }
+
+That's it, now we can run the gaeshi plugin again to deploy:
+
+    lein gaeshi deploy production 
+
+And in a few seconds we have our application at:
+
+    http://<application_name>.appspot.com/
+
+The old version of this documentation can be found online at:
+
+    http://gaeshidocs.appspot.com/
+
+Please have a look !
+
+#### Limitations
+
+Now you probably know that GAE has a severe limitations on threading, meaning you have virtually no control on them, and cannot even spawn new ones.
+
+That means, everything about _clojure futures_ are not usable. 
+
+But if you can go around that limitation, GAE is sure a great way to put your application online pretty reliably fast and on Google infrastructure.
 
 ### Beanstalk
 
