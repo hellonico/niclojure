@@ -292,6 +292,11 @@ That means, everything about _clojure futures_ are not usable.
 
 But if you can go around that limitation, GAE is sure a great way to put your application online pretty reliably fast and on Google infrastructure.
 
+### Cloudbees
+http://blog.cloudbees.com/2011/11/easy-deployment-of-clojure-apps-on.html
+https://clojars.org/lein-cloudbees
+
+
 ### Beanstalk or Clojure on Amazone Web Service
 
 In the world of Cloud computing, it is hard to go without Amazon AWS these days. Even our earlier example on Heroku was, without us knowing it, based on the Amazon infrastructure.
