@@ -130,43 +130,43 @@ APIについて詳しく紹介しているブログがあります: [blog post](
 
 これで、タイマーを使って定期的にWebサイトのスクリーンショットを取るとか、様々な使い道がありそうですね。
 
-### 振る舞い駆動開発(Behavior Driven Development (BDD))：cucumber
+### ビヘイビア駆動開発(Behavior Driven Development (BDD))：cucumber
 
 [BDD with Cucumber and Lein](https://github.com/nilswloka/lein-cucumber) & [Cucumber](http://www.matthewtodd.info/?p=112)
 
 [Cucumber](http://cukes.info) をご存知でしょうか。
-Cucumber は振る舞いテストの手法を使って、テスト生活を簡単なものにします。
+Cucumber はビヘイビアテストの手法を使って、テスト生活を簡単なものにします。
 
-I had an awesome time a few months ago putting together a test suite to validate an dodgy API for a customer using something similar to what we are going to see here.
+こないだ、お客さんのために怪しげなAPIを検証するテストセットをまとめたのですが、CUcumberがとても役に立ちましたね。
 
-So first we start by adding the lein plugin for cucumber in profiles.clj:
+まずは、profiles.cljにcucumberのプラグインを追加します:
 
 	[lein-cucumber "1.0.2"]
 
-We can specifiy where to find cucumber features with the following key in our project.clj:
+また、project.cljに以下のキーを記述をすることで、cucumberの機能を見つける場所を指定することが出来ます:
 
 	:cucumber-feature-paths ["test/features/"]
 
-Then on to a bit of code that we want to test. This will be in:
+そして、テストしたいコードは:
 
 @@@ ruby chapter03/src/clojure_cukes/core.clj @@@
 
-Now on we go forward and straight and start peeling vegetables.
-In Cucumber we start by writing text that looks like it could be read by normal people, almost.
+では、実際にテストを始めましょう。
+Cucumberでは、まず誰でも何となくは意味の分かるようなテキストを書くことから始めます。
 
 @@@ ruby chapter03/test/features/cukes.feature @@@
 
-Then we write some support code so the actual "means" something to our vegetables. This file will be in a folder named _step_definitions_ in our test folder.
+次に、それを手助けするためのコードを書くことで、それに意味を持たせることができます。 このファイルはテストフォルダの　_step_definitions_ という名前のフォルダに置きます。
 
 @@@ ruby chapter03/test/features/step_definitions/cuke_steps.clj @@@
 
-Cucumber steps are defined by regular expression and string matching so once you have your regexp written properly, you can write more feature and test extreme cases.
+Cucumber ステップは正規表現で定義するので、慣れればさらに複雑なテストケースも作ることが出来るようになるでしょう。
 
-With all this setup, we can run our tests with:
+すべての準備が出来たら、テストを実行します:
 
 	lein cucumber
 
-And then see together that the results are ...
+実行結果を一緒に見てみましょう ...
 
 	Running cucumber...
 	Looking for features in:  [/Users/Niko/projects/mascarpone/chapter03/test/features]
@@ -175,12 +175,161 @@ And then see together that the results are ...
 
 	java.lang.AssertionError: Assert failed: (= (name (mood)) mood-name)
 
-Almost there ! Now for you to take over, and get the test suite to pass properly. Only one word to change so sure you can do it ... now.
+もう少しですね！ あとはお任せしますので、テストケースが正しく通るようチャレンジしてみてください。
+... 一箇所直せば動くはずです ...
 
 ### ベンチマークをcriteriumで
-### ちょっと!  急いでWebアプリをテストして!!
+
+[Criterium](https://github.com/neatonk/criterium) はコードの実行時間を計測します。 ベンチマークの落とし穴、特にJVMにおけるベンチマークの潜在的な落とし穴を見つけるために開発されました。
+
+Criteriumについてはそれ以上特に説明することは無いのですが、クリティカルなコードを実行し、その実行時間の平均、最短、最長を得ることが出来ます。
+Criteriumは非常に詳細なレポートを出力しますので、アプリケーションのコアとなるような重要なコードの検証にはとても役に立つことでしょう。 ま、何でもかんでも実行時間が短くなれば良いということではありませんが。
+
+いつものように、プロジェクトに追加しましょう:
+
+	[criterium "0.3.1"]
+
+色々なパラメータを使ってrand関数をテストするサンプルです:
+
+@@@ ruby chapter03/src/criterium.clj @@@
+
+作った関数があんまり遅いと、言い訳が出来なくなりますね。。
+
 ### 負荷とパフォーマンスチェックならperforate
-### ビデオみたいにHTTPリクエストを再生
-### Ringを使ったアプリケーションテスト
-### Travis: オープンソースな継続的インテグレーションサービス
-### かったるいので、lazytest
+
+[Perforate](https://github.com/davidsantiago/perforate) は、ちょうど今やった criterium を使って作られていて、プロファイルを使ってleinからベンチマークを実行することが出来ます。
+
+leinのprofiles.cljにプラグインとして追加します:
+
+	[perforate "0.3.0"]
+
+まずはシンプルなサンプルです:
+
+@@@ ruby chapter03/benchmarks/simple.clj @@@
+
+leinからperforateを実行するには？ お察しの通り、以下のコマンドです:
+
+	lein perforate
+
+結果は、興味深いですね:
+
+	======================
+	Goal:  A simple benchmark.
+	-----
+	Case:  :slightly-less-simple
+	Evaluation count : 13225789740 in 60 samples of 220429829 calls.
+	             Execution time mean : 4.490337 ns
+	    Execution time std-deviation : 0.032741 ns
+	   Execution time lower quantile : 4.474494 ns ( 2.5%)
+	   Execution time upper quantile : 4.580807 ns (97.5%)
+
+	Found 12 outliers in 60 samples (20.0000 %)
+		low-severe	 2 (3.3333 %)
+		low-mild	 10 (16.6667 %)
+	 Variance from outliers : 1.6389 % Variance is slightly inflated by outliers
+
+	Case:  :really-simple
+	Evaluation count : 9048943620 in 60 samples of 150815727 calls.
+	             Execution time mean : 6.971874 ns
+	    Execution time std-deviation : 0.781822 ns
+	   Execution time lower quantile : 6.622552 ns ( 2.5%)
+	   Execution time upper quantile : 7.857313 ns (97.5%)
+
+	Found 6 outliers in 60 samples (10.0000 %)
+		low-severe	 2 (3.3333 %)
+		low-mild	 4 (6.6667 %)
+	 Variance from outliers : 73.8351 % Variance is severely inflated by outliers
+
+デフォルトでは、perforateはbenchmarksフォルダにあるすべてのベンチマークを実行します。 プロファイルのプロパティ等、多くのオプションがありますので、色々なカスタマイズが可能です。
+
+では、以下のメソッドのベンチマークを実行してみましょう:
+
+	(defn drink-glass-wine[]
+		(slurp "wine"))
+
+すぐに失敗しないと良いのですが。。
+
+#### Clojure流 BDD と Rspec
+
+[speclj](https://github.com/slagyr/speclj) はビヘイビア駆動開発のフレームワークです。
+これまではテストファーストな開発について見てきましたが、ここではコードがどのように振る舞うべきかに注目し、ビヘイビア駆動について説明します。
+
+サンプルを実行するためにproject.cljをアップデートします:
+
+	[speclj "2.5.0"]
+
+まずは簡単な算数のチェック:
+
+@@@ ruby chapter03/src/speclj.clj @@@
+
+パスしましたか？
+
+実行すると、specljはいくつかの情報を表示します:
+
+	..
+
+	Finished in 0.00013 seconds
+	2 examples, 0 failures
+
+これはエラーなく実行が完了した場合ですが、例えば、上記のサンプルをちょっと細工して失敗するようにすると、どこでエラーしたかが表示されます:
+
+	F.
+
+	Failures:
+
+	  1) Mathematics 1 plus 1 equals 2
+	     Expected truthy but was: <false>
+	     user.clj:7
+
+	Finished in 0.00034 seconds
+	2 examples, 1 failures
+
+プロジェクトの *spec* フォルダにあるspecsを実行するには:
+
+	lein spec
+
+表示される内容は同じです。 リソースの変更を監視し、テストを再実行するのであれば、下記のコマンドライン・スイッチを指定します:
+
+	lein spec -a
+
+これでやっとお行儀よく(behave)できるようになりました。 お父さんとお母さんもきっと喜びますね！
+
+### Travis: オープンソースの継続的インテグレーションサービス
+
+[Travis](http://about.travis-ci.org/docs/user/languages/clojure/) はお気に入りですよね？ インテグレーションサービスの。 え、知らない？ チェックしといた方が良いですよ。
+
+まずは、下記Travisのページからサインアップしましょう:
+
+	https://travis-ci.org
+
+githubのアカウントを使ってサインアップするよう促されます。 シングルサインオンって便利ですね。
+
+Travisのログインすると、プロジェクトが表示されます:
+
+![Travis1](../images/chap03/travis1.png)
+
+ClojureのプロジェクトをTravisで使うためには、.travis.ymlという設定ファイルをプロジェクトのルートフォルダに作ります。 ファイルの内容はこんな感じです。:
+
+	language: clojure
+	lein: lein2
+
+これだけで準備が整いました。
+
+ブラウザの画面中のボタンを切り換えましょう:
+
+![Travis2](../images/chap03/travis2.png)
+
+そして:
+
+![Travis3](../images/chap03/travis3.png)
+
+ちなみに、TravisはClojureに特化している訳ではありません [just Clojure](http://about.travis-ci.org/pt-BR/docs/user/languages/clojure/).
+
+C、Haskell、Java、Ruby などなど [have a look](http://about.travis-ci.org/docs/user/getting-started/) 、様々な言語をサポートしています。 ぜひ、ご自分で色々と試してみてください。
+
+ね、お気に入りのサービスになったでしょ。
+
+#### 最終テスト
+
+これで、このセクションはおしまいです。 Clojureでどのようにテストを実行するかをシンプルなサンプルを使って見てきました。 また、TDDとBDDフレームワークを使った自動テストにも触れました。
+最後は、それらをオンラインのテストサービスで使ってみました。
