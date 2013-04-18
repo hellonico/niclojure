@@ -1,7 +1,12 @@
 https://github.com/zcaudate/cronj
 
-javafx
+javafx -> in apps folder
 
-vaadin
+vaadin -> in apps folder
 
-lein-exec
+lein-exec -> in lein chapter, how to execute scripts
+
+in API:
+Mixpanel allows you to track any kind of event from Within your Application.
+[https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
+[https://mixpanel.com/account/](https://mixpanel.com/account/)

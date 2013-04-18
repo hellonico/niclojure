@@ -125,3 +125,21 @@ http://thecomputersarewinning.com/post/simple-thrift-in-clojure/
 Lein Plugin for deployment on heroku
 [Lein Heroku](https://github.com/technomancy/lein-heroku)
 
+--> too obscure
+### Ever wanted to deploy on Redhat's openshift plateform ?
+[Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
+
+
+### Deploying clojure app in the cloud with jetlastic. it's super easy !
+
+Along the lines of deploying a war file in the Cloud, Jetlastic has done some pretty award-type job recently and even put some detailed documentation on how to get Clojure started with Jetlastic.
+
+Jetlastic also has special Japanese support and there is a Japanese provider right beside your door at:
+
+    https://app.jelastic.tsukaeru.net/
+
+What's more ? The Clojure Documentation at:
+
+[http://jelastic.com/ja/docs/clojure)](http://jelastic.com/ja/docs/clojure) 
+
+is pretty to the point and easy to understand, and Chas Emerick has created a [sample app](https://github.com/cemerick/clojure-web-deploy-conj) for you to use and deploy.

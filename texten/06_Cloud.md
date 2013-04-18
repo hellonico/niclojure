@@ -375,10 +375,6 @@ Your application is ready, enjoy some more red wine !
 ### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
-Mixpanel allows you to track any kind of event from Within your Application.
-[https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
-[https://mixpanel.com/account/](https://mixpanel.com/account/)
-
 ### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
 [https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
 
@@ -408,22 +404,3 @@ Make sure you also look at the [playground](https://github.com/pallet/vmfest-pla
 
 ### Lemur, your friend to launch hadoop jobs locally or on EMR
 [Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)
-
-### Ever wanted to deploy on Redhat's openshift plateform ?
-[Deploy on Redhat's openshift](http://sisciatech.tumblr.com/post/29614188595/webnoir-in-openshift)
-
-### Deploying clojure app in the cloud with jetlastic. it's super easy !
-
-Along the lines of deploying a war file in the Cloud, jetlastic has done some pretty award-type job recently and even put some detailed documentation on how to get Clojure started with Jetlastic
-
-[http://jelastic.com/ja/docs/clojure)](http://jelastic.com/ja/docs/clojure) 
-
-There is a Japanese provider right beside your door at:
-
-    https://app.jelastic.tsukaeru.net/
-
-
-
-
-
-and [sample app](https://github.com/cemerick/clojure-web-deploy-conj)
