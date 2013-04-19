@@ -10,3 +10,5 @@ in API:
 Mixpanel allows you to track any kind of event from Within your Application.
 [https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)
 [https://mixpanel.com/account/](https://mixpanel.com/account/)
+
+export JAVA_OPTS="-XX:+TieredCompilation -XX:+AggressiveOpts -Xmx16m" 
