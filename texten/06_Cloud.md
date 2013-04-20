@@ -372,22 +372,27 @@ Eventually succeeding:
 
 Your application is ready, enjoy some more red wine ! 
 
-### Monitor your amazon ec2 instance directly from Clojure
+### DIY System Monitoring in 3 steps
+
+This is going to be a brief 3 parts tutorial, on how to put in place a simple but practical system monitoring in Clojure. This is based on the excellent [post entry on monitoring](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and) available on DZone.
+
+#### Parallel SSH
+[https://github.com/RJMetrics/Parallel-SSH](https://github.com/RJMetrics/Parallel-SSH)
+
+
+
+#### Monitor your amazon ec2 instance directly from Clojure
 [http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
 
-### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
+#### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
 [https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
 
-### Monitor your clojure application using clojure-control
+#### Monitor your clojure application using clojure-control
 [https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 
-### Parallel SSH
+#### Parallel SSH
 [http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
-[https://github.com/RJMetrics/Parallel-SSH](https://github.com/RJMetrics/Parallel-SSH)
 [Monitoring EC2 with clojure](http://paulosuzart.github.com/blog/2012/04/17/monitoring-ec2-with-clojure-and-server-stats/)
-
-### robin: a RRDtool or system graphing and monitoring in Clojure
-[http://www.jrobin.org/index.php/Main_Page](http://www.jrobin.org/index.php/Main_Page)
 
 ### Your cloud infrastructure right at your fingertips
 [http://palletops.com/](http://palletops.com/)
@@ -401,6 +406,3 @@ They are actually doing this through [jclouds](http://www.jclouds.org/)
 @@@ ruby 14_vmfest.clj @@@
 
 Make sure you also look at the [playground](https://github.com/pallet/vmfest-playground) and have a look at the [tutorial](https://github.com/pallet/vmfest-playground/blob/master/src/play.clj)
-
-### Lemur, your friend to launch hadoop jobs locally or on EMR
-[Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)

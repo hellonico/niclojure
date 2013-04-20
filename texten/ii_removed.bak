@@ -143,3 +143,14 @@ What's more ? The Clojure Documentation at:
 [http://jelastic.com/ja/docs/clojure)](http://jelastic.com/ja/docs/clojure) 
 
 is pretty to the point and easy to understand, and Chas Emerick has created a [sample app](https://github.com/cemerick/clojure-web-deploy-conj) for you to use and deploy.
+
+--> Disappeared ? 
+
+### robin: a RRDtool or system graphing and monitoring in Clojure
+[http://www.jrobin.org/index.php/Main_Page](http://www.jrobin.org/index.php/Main_Page)
+
+--> Out of scope ? 
+
+
+### Lemur, your friend to launch hadoop jobs locally or on EMR
+[Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)
