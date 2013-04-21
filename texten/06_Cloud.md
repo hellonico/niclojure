@@ -292,10 +292,79 @@ That means, everything about _clojure futures_ are not usable.
 
 But if you can go around that limitation, GAE is sure a great way to put your application online pretty reliably fast and on Google infrastructure.
 
-### Cloudbees
-http://blog.cloudbees.com/2011/11/easy-deployment-of-clojure-apps-on.html
-https://clojars.org/lein-cloudbees
+Also, recently, Google is pushing to help its Google Glass project through GAE applications, so it may be the time to go through the limitations and get working on something great.
 
+### Cloudbees
+
+[Cloudbees](http://www.cloudbees.com/) is a great vendor proposing  reliable support for cloud deployment. 
+
+They have a super simple and [brilliant page](http://blog.cloudbees.com/2011/11/easy-deployment-of-clojure-apps-on.html) that explains everything you need to get going.
+
+You first go to the [Cloudbees login page](https://grandcentral.cloudbees.com/login)
+
+![cloudbees](../images/chap06/cloudbees_0.png)
+
+You can simply sign in with your google address and get going !
+
+Get your Cloudbees keys from the following place:
+![cloudbees](../images/chap06/cloudbees_1.png)
+
+Copy your keys, and put them in a file in your home folder named:
+
+    ~/.bees/bees.config
+
+With the two following lines:
+
+    bees.api.secret=<your api secret> 
+    bees.api.key=<your api key>
+
+From the Cloudbees console that you can access from the Application tab, or going through the following URL:
+
+  https://run.cloudbees.com
+
+Create a new application, with most of the default settings:
+
+![cloudbees](../images/chap06/cloudbees_2.png)
+
+![cloudbees](../images/chap06/cloudbees_3.png)
+
+![cloudbees](../images/chap06/cloudbees_4.png)
+
+That's. The application container is ready in the cloud, we just have to push something to it.
+
+I have re-used the same Ring application template as usual, and added two lines to the project.clj file.
+
+Have a look:
+
+@@@ ruby chapter06/cloudbees/project.clj @@@
+
+We have the [leiningen plugin for cloudbees](https://clojars.org/lein-cloudbees):
+
+    :plugins [
+    [lein-cloudbees "1.0.4"]
+    ]
+
+And the application id: 
+
+      :cloudbees-app-id "hellonico/sundayafternoon"
+
+We can check our application and our settings are all good with:
+
+    lein cloudbees list-apps
+
+And finally, deploy our ring application with the simple command:
+
+    lein cloudbees deploy
+
+The application is ready to be accessed at:
+
+    http://<applicationname>.<accountid>.cloudbees.net/
+
+In this case:
+
+[http://sundayafternoon.hellonico.cloudbees.net/](http://sundayafternoon.hellonico.cloudbees.net/)
+
+You have 5 applications ready to be deployed for free ! So go on, and launch some great honey tasting wine with some cloud bees !
 
 ### Beanstalk or Clojure on Amazone Web Service
 
