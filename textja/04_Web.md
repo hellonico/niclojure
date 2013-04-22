@@ -159,6 +159,104 @@ Ringサーバをスタートしているのであれば、以下のアドレス�
 
 次は、セキュリティ関連です。
 
+#### Friend: Facebookの友達を認証する
+
+[Friend](https://github.com/cemerick/friend) はシンプルさを以てClojureにポートされたRackのwarden、JavaのSpring Securityです。 これを使って、お友達をたくさん作って世の中をもっと良くしましょう。
+
+最近のWebアプリケーションの傾向として、サービスにいちいち個別にログインするのではなく、GoogleやTwitter等他のサービスのログイン情報を再利用しています。 このレシピのゴールは、Facebookにログインした後で、Facebookのログイン情報を受け取ることです。
+
+[friend oauth](https://github.com/ddellacosta/friend-oauth2) が正にそれをやってくれます。 簡単なコンフィギュレーションを通して、oauthを再作成します。
+
+いくつかのライブラリをインポートして、サンプルです:
+
+@@@ ruby chapter04_02/src/friend_oauth2_examples/facebook_handler.clj @@@
+
+アプリケーションのコンフィギュレーション自体はシンプルなマップです:
+
+    (def client-config
+      {:client-id "233100973389749"
+       :client-secret "0772afb21ddf0d0fab8200c1ff707319"
+       :callback {:domain "http://localhost:3000" :path "/facebook.callback"}})
+
+コンフィギュレーションの中身は、[Facebook developer page](https://developers.facebook.com/) のアプリケーション設定に合わせてください。
+
+以下のコマンドでRingハンドラをスタートします。
+
+    lein ring server
+
+以下のアドレスにアクセスすると、
+
+    http://localhost:3000/authlink
+
+oauthのワークフローが開始され、Facebookのログインページにリダイレクトされます:
+
+![Facebook](../images/chap04/facebook.png)
+
+ログインに成功すると、FacebookはローカルのRingサーバの最初にポイントしたロケーションにリダイレクトします。 シンプルですね。
+
+サンプルはgithubと.Net版があるので宿題としてやってみてください。
+
+#### フォーム、バリデーション、バウンス
+
+このレシピでは、どのようにフィールドのバリデーションを行うかについて見てみましょう。
+
+Clojureでは、マップとコレクション上でバリデーションを行うのが簡単です。 おしゃれなナイトクラブでは、厳ついお兄さんのバリデーションに引っかかるとお店に入れないわけですが、そこにはきっと「サンダル厳禁」とか「泥酔してたら駄目」とかバリデーションのルールというものがあるのでしょう。 Bouncerも与えられたルールに沿ってバリデーションを行います。
+
+project.clj に追加する設定は以下の通りです:
+
+    [bouncer "0.2.3-beta1"]
+
+サンプルでは以下のことを行っています:
+
+* シンプルなルールでハッシュマップを検証
+* バリデータを定義し、それを使ってハッシュマップを検証
+* 最後に、正規表現のマッチングに加えて、サブコレクションの検証
+
+@@@ ruby chapter03/src/validation.clj @@@
+
+データセットが無事検証されれば最初の要素はnilとなり、検証に失敗すればパラメータのマップが返されます。
+
+#### 世界のJSON
+
+今どきはJSON抜きではWebサービスを語れない、っていうか作れないですよね。 かつてはリモートサービスを利用するのがあれこれ面倒だったこともありますが、今では [ring-json](https://github.com/ring-clojure/ring-json) が全てのお膳立てをしてくれます。
+
+いつものようにプロジェクトに追加します:
+
+    [ring/ring-json "0.2.0"]
+
+以下の通り、これだけのコードで何もしなくてもClojureのデータ構造を適切なJSONに変換してくれます:
+
+@@@ ruby chapter04_03/src/chapter04_03/core.clj @@@
+
+コードでは、まずネームスペースにRingのミドルウェアをインポートし、*wrap-json-response*というメソッドをRIngのハンドラに設定しています。 それだけです。
+
+[http://localhost:3000](http://localhost:3000) のサーバにアクセスすると、フォーマットされたJSONコードが返されます。
+
+２番目のサンプルでは、サービスにJSONのデータをポストし、直接Clojureのデータ構造を取得します。
+
+サーバサイドのコードも決して複雑ではありません:
+
+@@@ ruby chapter04_03/src/chapter04_03/core2.clj @@@
+
+以下のように、コマンドラインでCurlを使ってサービスにリクエストを送ります:
+
+    curl -v \
+        -H "Accept: application/json" \
+        -H "Content-type: application/json" \
+        -X POST \
+        -d '{"user":"Clojure"}'  \
+        http://localhost:3000
+
+次のJSONが:
+
+    {"user":"Clojure"}
+
+ミドルウェアのwrap-json-bodyによって以下のように変換されます:
+
+    {"user" "Clojure"}
+
+Merci Monsieur !
+
 ### 何でもかんでもNoirなワケじゃないけど、数行のコードでWebサイトが出来上がる
 ### 面倒な作業はVaadinとかGoogle Web Toolkitにお任せ
 #### 初めての Vaadin アプリケーション
