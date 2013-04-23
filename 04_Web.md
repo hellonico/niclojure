@@ -355,7 +355,7 @@ Tomcatは後でまた使いますので、環境を残しておきましょう�
 
 JBossの管理コンソール使うためにはユーザを追加する必要があります。 binフォルダにある*add_user.sh*というスクリプトを使ってユーザを作りましょう。
 
-ちょっと古くさい感じがしますが、スクリプトを実行例です:
+After a bit of old fashioned script interaction:
 
     [Niko@Modrzyks-MacBook-Pro][17:58][~/Downloads/jboss-as-7.1.1.Final/] % ./bin/add-user.sh
 
@@ -374,38 +374,39 @@ JBossの管理コンソール使うためにはユーザを追加する必要が
     Added user 'clojure' to file '/Users/Niko/Downloads/jboss-as-7.1.1.Final/standalone/configuration/mgmt-users.properties'
     Added user 'clojure' to file '/Users/Niko/Downloads/jboss-as-7.1.1.Final/domain/configuration/mgmt-users.properties'
 
-これでブラウザを使って管理コンソールにアクセスする準備が出来ました。 まずは、サーバをスタートしましょう:
+We are almost ready to hit the admin console through the browser. But, first let's start the server:
 
     ./bin/standalone.sh
 
-そして、ブラウザから下記にアクセスしてみましょう:
+And now we can head to:
 
     http://127.0.0.1:9990/console/App.html#server-overview
 
-認証の画面が表示されます。
+It will greets you with a desperate need for authentication...
 
 ![jboss2](../images/chap04/jboss2.png)
 
-さっき作成したユーザとパスワードを使ってログインします。
+That comes just in time, because we have just registered a user a few seconds ago didn't we ?
+Let's use the same user and login.
 
 ![jboss3](../images/chap04/jboss3.png)
 
-以下のスクリーンショットを参考にwarファイルをJBossにアップロードします。
+And following the few shots below we can upload our war file to jboss.
 
 ![jboss4](../images/chap04/jboss4.png)
 ![jboss5](../images/chap04/jboss5.png)
 
-最後にアプリケーションを有効にします:
+And lastly enable the application context:
 
 ![jboss6](../images/chap04/jboss6.png)
 
-アプリケーションはwarファイル名をデフォルトのコンテキストとするので、以下のURLでアクセスしてみましょう:
+Our application is located in a default context taken from the name of the war file, so we would go to:
 
     http://localhost:8080/chapter04-0.1.0-SNAPSHOT-standalone/
 
-無事に時刻が表示されたでしょうか？ さっきよりずいぶんと時間が経ちましたね。 そろそろ、次のワインも届くでしょう。
+To see our wonderful time application ! The time has changed. And wine has probably come.
 
-ここでお伝えしたいのは、かつてはJavaで作ったフルスペックのショッピングサイトが、今や新しいけどパワフルでシンプルなClojureで作れてデプロイ出来てしまうということなんです。 これだったら、文句を言うデベロッパはあまりいないんじゃないんでしょうか？
+What that means in simple terms is that a full on Java shop can now be a full Clojure shop without anyone complaining much about new powerful and simple language being pushed to production. There is simply no bad aspect of this deployment, ring and roll.
 
 ### 何でもかんでもNoirなワケじゃないけど、数行のコードでWebサイトが出来上がる
 ### 面倒な作業はVaadinとかGoogle Web Toolkitにお任せ
