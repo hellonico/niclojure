@@ -10,15 +10,15 @@ In order to have a sweet web app on Heroku, we will quickly go over the steps we
 
 We will reuse the luminus template for now, and run the leiningen new template to generate a project for us:
 
-    lein new luminus test-project
+		lein new luminus test-project
 
 To make sure the resulting ring project is working fine, by running 
 
-    lein ring server
+		lein ring server
 
 and then we can directly be checking the local URL:
 
-    http://localhost:3000/
+		http://localhost:3000/
 
 Voila. First sip of Heroku-ness.
 
@@ -45,7 +45,7 @@ The short version is simply to add your existing ssh key to your heroku account.
 
 The second version is actually to go through the Heroku login with the toolbelt provided command line interface. This is done with:
 
-    heroku login
+		heroku login
 
 This command will ask you for your heroku email and password, and will log you in Heroku as well as authenticate subsequent calls to Heroku services.
 
@@ -56,19 +56,19 @@ Now the slightly longer version, in case you:
 
 Indeed, while you can use your existing keys, we suggest you generate a new set of SSH key with: 
 
-     ssh-keygen -t rsa -f ~/.ssh/id_rsa_heroku
+		 ssh-keygen -t rsa -f ~/.ssh/id_rsa_heroku
 
 Add it to your local ssh agent:
 
-    ssh-add ~/.ssh/id_rsa_heroku
+		ssh-add ~/.ssh/id_rsa_heroku
 
 Make sure that the new key is showing up in the ssh-agent with: 
 
-     ssh-add -l
+		 ssh-add -l
 
 Remove unnecessary keys with the -d flag. (This will not delete the key, only remove it from the ssh-agent.)
 
-    ssh-add -d /Users/Niko/.ssh/id_rsa_hellonico
+		ssh-add -d /Users/Niko/.ssh/id_rsa_hellonico
 
 Add the ssh key to your account:
 
@@ -88,11 +88,11 @@ Prepare for creating a new application on Heroku. Let's head to our account page
 
 Then back to our application, we can add the necessary git remote.
 
-    git remote add heroku git@heroku.com:glacial-tundra-7926.git
+		git remote add heroku git@heroku.com:glacial-tundra-7926.git
 
 Once this is done, we just have to perform a git push:
 
-    git push heroku master 
+		git push heroku master 
 
 And hop, the wine is poured, and our application is up and running in the cloud:
 
@@ -100,7 +100,7 @@ And hop, the wine is poured, and our application is up and running in the cloud:
 
 Note that with the Heroku tool belt, a shorter version of this would be:
 
-    heroku apps:create
+		heroku apps:create
 
 
 
@@ -110,17 +110,17 @@ Heroku runs on top of Amazon AWS, and performs all the dirty tasks for you. Hero
 
 We need a _Procfile_ file to tell heroku what to do with our application. That file is a one liner:
 
-    web: lein with-profile production trampoline ring server
+		web: lein with-profile production trampoline ring server
 
 It could be even simplified to:
 
-    web: lein ring server
+		web: lein ring server
 
 Which contains exactly the command we used earlier on. The simplest version to run our _ring based_ Clojure web application.
 
 The toolbelt you have installed earlier on contains the Foreman utilities which can locally start your application the way Heroku does.
 
-    foreman start
+		foreman start
 
 Puts your application to the forefront of the web with a locally running web application.
 
@@ -133,12 +133,12 @@ In the chapter06/test-heroku sample project, we provided a simple fibonacci scri
 That can be run as a one off script on Heroku infrastructure.
 
 To run the script locally from the project folder we do:
-    
-    lein trampoline run -m demo 100
+		
+		lein trampoline run -m demo 100
 
 To run this on heroku, we simply add a prefix command:
 
-    heroku run lein trampoline run -m demo 100
+		heroku run lein trampoline run -m demo 100
 
 We suppose you have installed the heroku toolbelt to have heroku on your path.
 
@@ -154,23 +154,23 @@ This is mostly inspired from the following Heroku article on [Debugging clojure 
 
 To checkout the code that we will review, please get it with:
 
-    git clone https://github.com/technomancy/chortles.git
+		git clone https://github.com/technomancy/chortles.git
 
 Chortles is the official application of the world wide web to:
 
-    Calculate the magnitude of a given laugh over HTTP and JSON.
+		Calculate the magnitude of a given laugh over HTTP and JSON.
 
 Now that we have clone the application, let's set it up for our own personal Heroku account with:
 
-    heroku apps:create
+		heroku apps:create
 
 A new application will be created for your account, and we can push to it with the simple git command we have seen before:
 
-    git push heroku master 
+		git push heroku master 
 
 We set up some privacy settings needed so not anyone can destroy our code with:
 
-    heroku config:set AUTH_USER=nico AUTH_PASS=nico
+		heroku config:set AUTH_USER=nico AUTH_PASS=nico
 
 In the last line, we can configure any of the system environment needed for our Heroku application.
 
@@ -198,16 +198,16 @@ We will not be using them directly, just unzip and remember the path where you h
 
 Then we add a plugin for Leiningen in our ~/.lein/profiles.clj
 
-    {:user {:plugins [
-                  [gaeshi/lein-gaeshi "0.10.0"]
-                  ...
-                  ]}}
+		{:user {:plugins [
+									[gaeshi/lein-gaeshi "0.10.0"]
+									...
+									]}}
 
 Now, to prepare a new project from scratch, let's issue a few commands with the newly installed plugin:
 
-    lein gaeshi new test_1 
-    cd test_1  
-    lein gaeshi server
+		lein gaeshi new test_1 
+		cd test_1  
+		lein gaeshi server
 
 That is it. We have replicated the google app engine locally, so we can directly start developing against it.
 
@@ -217,20 +217,20 @@ To see the result locally:
 
 If you need to start on a different port, we can check the parameters for that:
 
-    gaeshi/lein-gaeshi 0.10.0: Command line component for Gaeshi; A Clojure framework for Google App Engine.
-    Usage: [lein] gaeshi [options] <command> [command options]
-      command  The name of the command to execute. Use --help for a listing of command.
-      -v, --version  Shows the current joodo/kuzushi version.
-      -h, --help     You're looking at it.
-      Commands:
-      deploy    Deploy the project to Google AppEngine
-      generate  Generates files for various components at the specified namespace:
-                    controller - new controller and spec file
-      help      Prints help message for commands: gaeshi help <command>
-      new       Creates all the needed files for new Gaeshi project.
-      prepare   Build a deployable directory structure of the app
-      server    Starts the app in on a local web server
-      version   Prints the current version of gaeshi/lein-gaeshi
+		gaeshi/lein-gaeshi 0.10.0: Command line component for Gaeshi; A Clojure framework for Google App Engine.
+		Usage: [lein] gaeshi [options] <command> [command options]
+			command  The name of the command to execute. Use --help for a listing of command.
+			-v, --version  Shows the current joodo/kuzushi version.
+			-h, --help     You're looking at it.
+			Commands:
+			deploy    Deploy the project to Google AppEngine
+			generate  Generates files for various components at the specified namespace:
+										controller - new controller and spec file
+			help      Prints help message for commands: gaeshi help <command>
+			new       Creates all the needed files for new Gaeshi project.
+			prepare   Build a deployable directory structure of the app
+			server    Starts the app in on a local web server
+			version   Prints the current version of gaeshi/lein-gaeshi
 
 #### Prepare Google for our arrival
 
@@ -248,39 +248,39 @@ The application name will be reuse later on, so let's pay attention to not forge
 
 Make sure your 
 
-    config/production/appengine-web.xml 
+		config/production/appengine-web.xml 
 
 file reflects the domain name <application>sub_domain_name</application>. For example, if you named your app pure_natto, and you got the domain pure-natto.appspot.com, then you should have 
 
-    <application>pure-natto</application> 
+		<application>pure-natto</application> 
 
 in that file.
 
-    Finally you will need to have a config file in ~/.gaeshi/ named the same as your Clojure project.
+		Finally you will need to have a config file in ~/.gaeshi/ named the same as your Clojure project.
 
 So if your project has been named test-1, you should have a file 
 
-    ~/.gaeshi/test-1
+		~/.gaeshi/test-1
 
 The content of the file should be like this:
 
-    {
-    :appengine-sdk-dir "/path/to/appengine-java-sdk-1.4.3"
-    :appengine-email "sato.satoshi@gmail.com"
-    :appengine-password "yourpassword"
-    }
+		{
+		:appengine-sdk-dir "/path/to/appengine-java-sdk-1.4.3"
+		:appengine-email "sato.satoshi@gmail.com"
+		:appengine-password "yourpassword"
+		}
 
 That's it, now we can run the gaeshi plugin again to deploy:
 
-    lein gaeshi deploy production 
+		lein gaeshi deploy production 
 
 And in a few seconds we have our application at:
 
-    http://<application_name>.appspot.com/
+		http://<application_name>.appspot.com/
 
 The old version of this documentation can be found online at:
 
-    http://gaeshidocs.appspot.com/
+		http://gaeshidocs.appspot.com/
 
 Please have a look !
 
@@ -311,16 +311,16 @@ Get your Cloudbees keys from the following place:
 
 Copy your keys, and put them in a file in your home folder named:
 
-    ~/.bees/bees.config
+		~/.bees/bees.config
 
 With the two following lines:
 
-    bees.api.secret=<your api secret> 
-    bees.api.key=<your api key>
+		bees.api.secret=<your api secret> 
+		bees.api.key=<your api key>
 
 From the Cloudbees console that you can access from the Application tab, or going through the following URL:
 
-  https://run.cloudbees.com
+	https://run.cloudbees.com
 
 Create a new application, with most of the default settings:
 
@@ -340,25 +340,25 @@ Have a look:
 
 We have the [leiningen plugin for cloudbees](https://clojars.org/lein-cloudbees):
 
-    :plugins [
-    [lein-cloudbees "1.0.4"]
-    ]
+		:plugins [
+		[lein-cloudbees "1.0.4"]
+		]
 
 And the application id: 
 
-      :cloudbees-app-id "hellonico/sundayafternoon"
+			:cloudbees-app-id "hellonico/sundayafternoon"
 
 We can check our application and our settings are all good with:
 
-    lein cloudbees list-apps
+		lein cloudbees list-apps
 
 And finally, deploy our ring application with the simple command:
 
-    lein cloudbees deploy
+		lein cloudbees deploy
 
 The application is ready to be accessed at:
 
-    http://<applicationname>.<accountid>.cloudbees.net/
+		http://<applicationname>.<accountid>.cloudbees.net/
 
 In this case:
 
@@ -378,12 +378,12 @@ This recipe will be based on the excellent blog post entry:
 
 Same as the Heroku recipe we will use Luminus to quickly have a prototyped Clojure web application:
 
-    lein new luminus test2
+		lein new luminus test2
 
 We need to be careful to not have a *_* character in the name of your application, so for example, trying to use *test_2* will later on end up in:
 
-    Created /Users/Niko/projects/mascarpone/chapter06/test_2/target/test_2-0.1.0-SNAPSHOT-20130416172805.war
-    java.lang.IllegalArgumentException: Bucket name should not contain '_'
+		Created /Users/Niko/projects/mascarpone/chapter06/test_2/target/test_2-0.1.0-SNAPSHOT-20130416172805.war
+		java.lang.IllegalArgumentException: Bucket name should not contain '_'
 
 #### Setting up the AWS Account
 
@@ -409,8 +409,8 @@ The Amazon registration is ready, let's go back to our application.
 
 To make use of the Leiningen plugin for AWS, named beanstalk, we will add it to our profiles.clj file with:
 
-    {:user {:plugins [
-                  [lein-beanstalk "0.2.7"]
+		{:user {:plugins [
+									[lein-beanstalk "0.2.7"]
 
 The plugin code itself is hosted at:
 
@@ -418,9 +418,9 @@ The plugin code itself is hosted at:
 
 We then need to write our AWS credentials so Leiningen can find them. Add a lein-beanstalk-credentials definition to your ~/.lein/init.clj file that contains your AWS credentials:
 
-    (def lein-beanstalk-credentials
-      {:access-key "XXXXXXXXXXXXXXXXXX"
-       :secret-key "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"})
+		(def lein-beanstalk-credentials
+			{:access-key "XXXXXXXXXXXXXXXXXX"
+			 :secret-key "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"})
 
 As a reminder, your credentials are stored in:
 
@@ -428,21 +428,21 @@ As a reminder, your credentials are stored in:
 
 Once this is done, we can use the beanstalk command:
 
-    lein beanstalk deploy development
+		lein beanstalk deploy development
 
 Which will start creating the war file, and deploying it to a tomcat instance on Amazon infrastructure:
 
-    Created /Users/Niko/projects/mascarpone/chapter06/test2/target/test2-0.1.0-SNAPSHOT-20130416174902.war
-    Uploaded test2-0.1.0-SNAPSHOT-20130416174902.war to S3 Bucket
-    Created new app version 0.1.0-SNAPSHOT-20130416174902
-    Creating 'development' environment (this may take several minutes)
-    ...................
+		Created /Users/Niko/projects/mascarpone/chapter06/test2/target/test2-0.1.0-SNAPSHOT-20130416174902.war
+		Uploaded test2-0.1.0-SNAPSHOT-20130416174902.war to S3 Bucket
+		Created new app version 0.1.0-SNAPSHOT-20130416174902
+		Creating 'development' environment (this may take several minutes)
+		...................
 
 Eventually succeeding:
 
-    Creating 'development' environment (this may take several minutes)
-    ........................................................... Done
-    Environment deployed at: test2-dev.elasticbeanstalk.com
+		Creating 'development' environment (this may take several minutes)
+		........................................................... Done
+		Environment deployed at: test2-dev.elasticbeanstalk.com
 
 Your application is ready, enjoy some more red wine ! 
 
@@ -451,12 +451,127 @@ Your application is ready, enjoy some more red wine !
 This is going to be a brief 3 parts tutorial, on how to put in place a simple but practical system monitoring in Clojure. This is based on the excellent [post entry on monitoring](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and) available on DZone.
 
 #### Parallel SSH
-[https://github.com/RJMetrics/Parallel-SSH](https://github.com/RJMetrics/Parallel-SSH)
 
+RJMetrics's [Parallel SSH](https://github.com/RJMetrics/Parallel-SSH) is the base that will pave the way to monitoring. We can run the same shell command on multiple servers at the same time. This requires you have all of your SSH keys setup properly in place.
 
+For example, if you want to know the disk space left for a certain number of machines in one go, you would just use the command this way:
+
+@@@ ruby chapter06/parallelssh/space.sh @@@
+
+And the output could be:
+
+		df -ah | grep sda1
+		This command will run on all servers, please type 'yes' to confirm: yes
+		JP-1
+		/dev/sda1             236M   25M  200M  11% /boot
+		JP-2
+		/dev/sda1             228M   16M  201M   8% /boot
+		JP-3
+		/dev/sda1             142G  109G   26G  81% /
+
+Note that the way it was simply implemented, ParallelSSH does not run on Windows, you would need to use the recipe we saw in Chapter2 with the [clj-ssh](https://github.com/hugoduncan/clj-ssh) dependency to get something similar running on the Microsoft Operating System.
+
+#### Simple monitoring
+
+Building on the previous recipe we will build a simple monitoring system that runs commands on a set of servers, and send alerts when some threshold are reached.
+
+[ServerStats](https://github.com/RJMetrics/Server-Stats) does exactly that. 
+We will do a simple check out and review how that works.
+
+First we have a simple configuration file in Clojure syntax:
+
+@@@ ruby chapter06/ServerStats/server-stats.clj @@@
+
+As you see first we defined some alert handlers, one that simply prints a message when an alert was detected. 
+
+Then we set up our username, and finally different group of servers to run parallel commands on. 
+This is where the parallel ssh feature comes useful and pretty much the core of it.
+
+After that we define a set of commands, that will be recognize as argument of our executable.
+
+Here a command to see the top processes and another one to disk how much disk space is left on the remote server.
+
+The top command doesn't trigger any alert but the disk command will do.
+The disk command can be run with 
+
+		lein run disk
+
+or, via the jar file, (after using lein uberjar) with:
+
+		java -jar target/server-stats-0.1-standalone.jar disk
+
+The output, provided you have servers accessible through ssh would look like:
+
+		JP-9
+		Filesystem            Size  Used Avail Use% Mounted on
+		udev                   12G  156K   12G   1% /dev
+
+The top command itself would return a list of the top ten processes.
+
+Based on this output, we can create alert handlers, those alerts being triggered when some values are over or below some defined limit.
+
+In our configuration file above, the following is a list of alerts:
+
+		[{:column "Use%"
+						 :value-type percent
+						 :handlers [email]
+						 :msg "Disk space over 90% full"
+						 :trigger (> 90)}]}
+
+Meaning the email alert handler will be triggered if the percentage value of the disk space is over 90%.
+Et voila!
+
+Note that the list of commands is generated automatically for you:
+
+A run with no parameters would return:
+
+		Usage: [switches] command-name
+
+		Switches                   Default  Desc              
+		--------                   -------  ----              
+		-h, --no-help, --help      false    Show help         
+		-a, --no-alerts, --alerts  false    Send email alerts 
+
+		Valid commands are:
+		disk                            Get the disk usage using df   
+		top                             Get the top 10 processes by CPU
+
+And you are ready to go. Implement different alerts for different servers.
 
 #### Monitor your amazon ec2 instance directly from Clojure
-[http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
+
+Based on the previous recipe, we can take a look at how we can perform [monitoring of a running clojure application on ec2](http://architects.dzone.com/articles/how-monitoring-ec2-clojure-and)
+
+Nothing should be new to you at this stage, since this pretty much the same as what we had before, including some basic cron setups.
+
+Note the boolean alert trigger, in the following command:
+
+	(add-cmd is-artifactory
+		{:doc "Is Artifactory Running?"
+		:servers [web-servers]
+		:cmd "[[ -z `ps aux | grep org.artifactory.standalone.main.Main` ]] && echo 'false' || echo 'true'"
+		:alerts [{:value-type bool
+		:msg "Artifactory is not running"
+		:handlers [email]
+		:trigger (= false)
+		:mute-for 1860000}]})
+
+We are checking for the presence or the absence of a shell script. Easy no ? 
+
+The original configuration for the [ServerStats](https://github.com/RJMetrics/Server-Stats/blob/master/server-stats.cfg) also has a trivial Twilio configuration to send a SMS in case you are in a supported country:
+
+    (import com.twilio.sdk.TwilioRestClient)
+    (set-command-failure-handler [server-name]
+        (let [client (TwilioRestClient. "ACCOUNT_SID" "AUTH_TOKEN")
+        account (. client getAccount)
+        smsFactory (. account getSmsFactory)]
+        (. smsFactory (create {"To" "5554155484"
+                          "From" "2675551234"
+                          "Body" (str server-name " is not responding to ssh")}))))
+
+Sweet. Nice. Simple.
+
+Enjoy some wine while your cluster is running in peace.
 
 #### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
 [https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
