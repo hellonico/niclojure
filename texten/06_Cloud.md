@@ -573,17 +573,161 @@ Sweet. Nice. Simple.
 
 Enjoy some wine while your cluster is running in peace.
 
+### Controlling with Clojure
+
+The next two recipes are simply deliciously tasty.
+
+We are going to define clusters of machines, and start performing tasks on them.
+
+In a second step, we will build upon running tasks and perform a complex but simple to use monitoring system.
+
 #### Define clusters and tasks for system administration or code deployment, then execute them on one or many remote machines
-[https://github.com/killme2008/clojure-control/](https://github.com/killme2008/clojure-control/)
+
+[clojure control/](https://github.com/killme2008/clojure-control/) will be the best of this recipe. What we can achieve is define a set of machines, and a set of tasks that can then reliably be run on defined clusters.
+
+To get started, we will download the control script from the following URL:
+
+	wget https://raw.github.com/killme2008/clojure-control/master/bin/control
+	chmod 744 control 
+
+And check we have everything we need:
+
+	./control 
+
+Will output:
+
+	[chapter06/control/] % ./control 
+	Usage:control [-f control.clj] command args
+	Commands available:
+	init                           Initialize clojure-control, create a sample control file in current folder
+	run <cluster> <task> <args>    Run user-defined clojure-control tasks against certain cluster
+	show <cluster>                 Show cluster info
+	server                         Start a control server for handling requests from clients
+	upgrade                        Upgrade clojure-control to a latest version.
+
+As indicated, we will create a sample control file with:
+
+	./control init
+
+A file named _control.clj_ will be created with the following content:
+
+	 (defcluster :default-cluster
+         :clients [
+                  {:host "localhost" :user "root"}
+         ])
+
+     (deftask :date "echo date on cluster"  []
+         (ssh "date"))
+
+We have defined a cluster, and task to run on it.
+
+We can now run a task on a cluster with the following command:
+
+	control run default-cluster date
+
+We can also run a task directly on a host with the _@_ mark. For example:
+
+	./control run nicolas@jp-1 date
+
+
+
+	Performing nicolas@jp-1
+	Performing date for nicolas@jp-1
+	jp-1:ssh:  date
+	jp-1:stdout: Wed Apr 24 17:01:15 JST 2013
+
+	jp-1:exit: 0 
+
+Every task's running result is a map contains output and status,you can get them by:
+
+	  (let [rt (ssh "date")]
+       (println (:status rt))
+       (println (:stdout rt))
+       (println (:stderr rt)))
+
+In short, the task definition goes like this:
+
+	 (deftask :ps [process]
+        (ssh (str "ps aux | grep " process)))
+
+* deftask 
+* a symbol
+* name that can be passed as argument to the control script
+* a command to run in the body of deftask
+
+You can run the above with the same script, and an additional parameter:
+
+	control run [cluster-name] ps java
+
+Sweet ?
+
+Lastly, here is how you would go to deploy a generic java application using this framework:
+
+	  (deftask :deploy-app []
+          (local "tar zcvf app.tar.gz app/")
+          (scp "app.tar.gz" "/home/user/")
+          (ssh
+               (run 
+                   (cd "/home/user"
+                       (run
+                          (run "tar zxvf app.tar.gz")
+                          (env "JAVA_OPTS" "-XMaxPermSize=128m"
+                             (run "bin/app.sh restart")))))))
+
+Note the usage of the run command here. *run* accept several commands at one time to execute.
+
+Note also the usage of *local*, which will run a command on the local machine.
+
+##### Further Readings
+
+The website takes you further in details with:
+
+* [Define clusters](https://github.com/killme2008/clojure-control/wiki/Define-clusters)
+* [Define tasks](https://github.com/killme2008/clojure-control/wiki/Define-tasks)
+* [Clojure Control DSL](https://github.com/killme2008/clojure-control/wiki/commands)
+* [Shell Commands](https://github.com/killme2008/clojure-control/wiki/Control-shell-commands)
+
+That should be enough to get going smoothly for a while.
 
 #### Monitor your clojure application using clojure-control
-[https://github.com/killme2008/clj.monitor](https://github.com/killme2008/clj.monitor)
 
-#### Parallel SSH
-[http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/](http://blog.rjmetrics.com/Parallel-SSH-and-system-monitoring-in-Clojure/)
-[Monitoring EC2 with clojure](http://paulosuzart.github.com/blog/2012/04/17/monitoring-ec2-with-clojure-and-server-stats/)
+[clj.monitor](https://github.com/killme2008/clj.monitor) builds up where Clojure Control left. Now that we can run any number of commands on remote machines and clusters, we reuse the same notations, namely:
 
-### Your cloud infrastructure right at your fingertips
+* defcluster
+* deftask
+
+And we add to the mix a new keyword:
+
+	defmonitor
+
+For a simple example:
+
+	   (defmonitor mysql-monitor
+         :tasks [(ping-mysql "root" "password")]
+         :clusters [:mysql])
+
+
+This will check that Mysql is indeed running properly on the mysql cluster.
+
+A set of defined tasks is ready for you to use. You can have a look at:
+
+[https://github.com/killme2008/clj.monitor/blob/master/src/clj/monitor/tasks.clj](https://github.com/killme2008/clj.monitor/blob/master/src/clj/monitor/tasks.clj)
+
+The count process task reads pretty cleanly with:
+
+	(deftask count-process
+		[process min]
+		(let [
+			rt (cast-int (:stdout 
+				(ssh 
+					(format "ps aux|grep %s |grep -v -c grep" process))))]
+    	(>= rt min)))	
+
+This will check the number of processes running and return true if we have the minimum required.
+
+You can of course define your own tasks and go wild. But do not spill wine all over the Cluster. It's bad for the wine !
+
+### Your cloud infrastructure right at your fingertips with Pallet
 [http://palletops.com/](http://palletops.com/)
 
 Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 
