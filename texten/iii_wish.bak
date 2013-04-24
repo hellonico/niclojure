@@ -6,6 +6,10 @@ vaadin -> in apps folder
 
 lein-exec -> in lein chapter, how to execute scripts
 
+Contracts:
+https://github.com/clojure/core.contracts
+https://github.com/fogus/trammel
+
 in API:
 Mixpanel allows you to track any kind of event from Within your Application.
 [https://github.com/pingles/clj-mixpanel](https://github.com/pingles/clj-mixpanel)

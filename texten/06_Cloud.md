@@ -727,15 +727,62 @@ This will check the number of processes running and return true if we have the m
 
 You can of course define your own tasks and go wild. But do not spill wine all over the Cluster. It's bad for the wine !
 
-### Your cloud infrastructure right at your fingertips with Pallet
-[http://palletops.com/](http://palletops.com/)
+### The best cloud infrastructure right at your fingertips with Pallet
 
-Pallet is the mother of them all of cloud infrastructure tool. See the [list of providers](http://www.jclouds.org/documentation/reference/supported-providers/) it supports! 
-They are actually doing this through [jclouds](http://www.jclouds.org/)
+[Pallet ](http://palletops.com/)is the culmination of this chapter. It is a reliable and proven cloud infrastructure tool. 
 
-### Easy VirtualBox wrapper for easy cloud management
-[https://github.com/tbatchelli/vmfest](https://github.com/tbatchelli/vmfest)
+Pallet is platform for agile and programmatic automation of infrastructure in the cloud, on server racks or directly on virtual machines.
+
+#### Why Pallet ? 
+
+Pallet is similar in features to [chef](http://www.opscode.com/chef/), and [puppet](https://puppetlabs.com/) which are also infrastructure automation tools.
+
+Basically, as we have seen continuously all along this chapter we want to have a reliable way of controlling and monitoring our cluster.
+
+At my current customer, we now use this kind of tool and infrastructure to build, manage and expand on demand the necessary power to handle the user demand.
+
+These days it is pretty much a given that you do not want to go and run the command one by one on the production environment, but have tested and reliable set of commands to achieve this.
+
+In the Clojure world, Pallet is the word for it.
+
+#### Getting started with Pallet: Zero to running in five minutes with lein.
+
+[pallet-lein-new](https://github.com/pallet/pallet-lein-new) is the Leiningen new template to get started. We do remember that with Leiningen 2 we only need to run the command itself so here go.
+
+	lein new pallet quickstart
+
+Pallet works with a list of Clouds provider. Sample examples of providers are:
+
+ * Amazon Web Services' EC2
+ * RackSpace Cloud Servers
+ * Virtualbox
+ * GoGrid Cloud Hosting
+ * Eucalyptus
+
+The full list is currently hosting on the [jclouds website](http://www.jclouds.org/documentation/reference/supported-providers/).
+
+Now most of the pallets recipe are run from the REPL, so we will start a REPL and get ready to pallet the way.
+
+Navigate to the newly create folder from the previous lein command then:
+
+	lein repl
+
+And from the REPL:
+
+	(require 'pallet.core 'pallet.compute 'pallet.configure)
+
+Good. We are ready.
+But first let's step back a bit.
+
+#### VMFest: A VirtualBox wrapper 
+[vmfest](https://github.com/tbatchelli/vmfest)
 
 @@@ ruby 14_vmfest.clj @@@
 
 Make sure you also look at the [playground](https://github.com/pallet/vmfest-playground) and have a look at the [tutorial](https://github.com/pallet/vmfest-playground/blob/master/src/play.clj)
+
+[http://ianrumford.github.io/blog/2012/10/13/using-vmfest-with-virtualbox-4-dot-2/](http://ianrumford.github.io/blog/2012/10/13/using-vmfest-with-virtualbox-4-dot-2/)
+
+#### Code as Infrastructure with Pallet
+
+[http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/)
