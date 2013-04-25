@@ -407,9 +407,235 @@ JBossの管理コンソール使うためにはユーザを追加する必要が
 
 ここでお伝えしたいのは、かつてはJavaで作ったフルスペックのショッピングサイトが、今や新しいけどパワフルでシンプルなClojureで作れてデプロイ出来てしまうということなんです。 これだったら、文句を言うデベロッパはあまりいないんじゃないんでしょうか？
 
+### Java WebサーバのボスJBossのClojure版: Immutant
+
+#### まさに野獣
+
+前のセクションでは通常のJBossをどのように使い、デプロイするかを見てきましたが、このセクションではJBossの特別バージョンを紹介したいと思います。
+
+[Immutant](http://immutant.org/tutorials/installation/index.html) は不要な複雑さを排除し、あなたに必要な機能だけにしたおそらくClojureにとって理想的なものでしょう。
+
+Immutant はプラグインなので、profiles.clj の中に追加しましょう:
+
+    {:user {:plugins [[lein-immutant "0.17.1"]]}}
+
+それでは、Ring アプリケーションをどのように作成し、どのようにImmutant/JBossサーバにデプロイするのかを見ていきましょう。
+
+以下のコマンドで、Leiningen がローカルマシンにサーバをダウンロードしてくれます:
+
+    lein immutant install
+
+サーバがダウンロードされ、解凍されますので、新しいプロジェクトを作成しましょう:
+
+    lein immutant new chapter04_05
+
+続いて、プロジェクトでRingハンドラを使うための設定をします。
+
+プロジェクトのメタデータにringとring-jsonを追加します:
+
+    [ring/ring-json "0.2.0"]
+
+そして、jsonを返すRingハンドラ:
+
+@@@ ruby chapter04_05/src/chapter04_05/core.clj @@@
+
+ここまで特に変わったことはしていませんが、immutantに追加したファイルはsrcフォルダのimmutantフォルダにあります。
+
+@@@ ruby chapter04_05/src/immutant/init.clj @@@
+
+これで、"/"に対するハンドラが設定されました。 メッセージング、キャッシング、スケジューリングなどの設定もこのファイルで行います。
+
+以下のコマンドでデプロイを行います:
+
+    lein immutant deploy
+
+デプロイコマンドは物静かなようで、あまり多くを語りません...
+
+    Deployed chapter04_05 to /Users/Niko/.lein/immutant/current/jboss/standalone/deployments/chapter04_05.clj
+
+でも、アプリケーションはちゃんとデプロイされているようです。
+
+では、別のシェルを開いて、以下のLeiningenコマンドでImmutantを実行してみましょう:
+
+    lein immutant run
+
+そしてついに待ちわびたJSONがここに:
+
+    http://localhost:8080/chapter04_05
+
+foo と bar ですね。
+
+    {
+    "foo": "bar"
+    }
+
+少し説明すると、immutantへはプロジェクトそのものをコピーしているわけではなく、プロジェクトへの参照をコピーしています。 そして、デプロイされたファイルはここにあります:
+
+    {:root "/Users/Niko/projects/mascarpone/chapter04_05"}
+
+ということは、コードを更新出来るということです。 試しに以下のようにコードを変えてみてください:
+
+    (defn handler [request]
+       (response {:foo "bar me"}))
+
+#### 無駄遣いはやめて、無料のキャッシングを試す
+
+Immutantを使うと基本お金はかかりません。 加えて、こんなのもあります [caching](http://immutant.org/tutorials/caching/index.html). タダですよ、タダ！
+
+キャッシング用のコードを書いて、新しいハンドラを定義します:
+
+@@@ ruby chapter04_05/src/chapter04_05/caching.clj @@@
+
+これで、アプリケーションに新しいコンテキストを追加することが出来ます:
+
+    (web/start "/app" app)
+    (web/start "/cached" cached)
+
+すると、キャッシュされた値が得られます。
+
+![cached](../images/chap04/immutant.png)
+
+ま、ワインはあまりキャッシュされない方が良いですけど。。
+
+### 一瞬でWebプロジェクトを立ち上げる: Leiningen用テンプレートLuminus
+
+テンプレートって色んな場面で話に出てきますが、正直よく分からないことがありますね。。
+
+[Luminus](http://www.luminusweb.net/) は手軽にプロジェクトをスタート出来るところから [noir](http://www.webnoir.org/) から火のついたフレームワークです。
+
+インターネットを探すと、Noirについては未だに色々な情報を散見できます。 ClojureのWebコミュニティが始める必要があったとか。
+問題はほとんどのRingプラグインに対して互換性がないことで、したがって手軽にアプリケーションを立ち上げるというわけには行かないのです。
+
+Ringについては、この章で見てきたことはその一部に過ぎませんが、Luminusを使ってそれらを一つにパッケージしてみましょう。
+
+[luminus](https://github.com/yogthos/luminus-template) と名前のLeiningenのテンプレートを使い、新しいWebプロジェクトを立ち上げます。
+
+新しいLeiningenのプロジェクト用テンプレートは [newnew](https://github.com/Raynes/lein-newnew) と呼ばれる内部プラグインを使用しています。 Newnew は実際はそう新しくありませんが、今ではLeiningenに含まれています。 ですので、特にインストールを行う必要はありません。
+
+それでは、以下のコマンドで新しいプロジェクトを作成しましょう:
+
+    lein new luminus chapter04_06
+
+そして、、、これだけです。 プロジェクトのフォルダに移動してサーバを起動しましょう:
+
+    lein ring server
+
+ブラウザで開いてみると...
+
+![luminus](../images/chap04/luminus.png)
+
+コーディングする準備が出来ました。
+
+Luminus はルーティング、マークアップ、データベース、Twitter連携等、大抵のRingライブラリを統合してくれます。 後は、コードを書くだけです！
+
+### WebSocketの開発はラクになったのか？
+
+サーバサイドのJavaScriptの世界では、ここのところ Node.js 順風満帆という感じですが、ClojureにもWebSocketを簡単にしてくれる素晴らしいライブラリがあります。
+
+最近、私はサーバサイドのWebSocketにほとんどすべてこれを使っています。
+
+実はもうすでに紹介しているのですが、http-kitです。 まずは、project.cljに追加しましょう:
+
+    [http-kit "2.0.0-RC4"]
+
+私はまた、leinでプロジェクトをスタートするときに :main ディレクティブを追加しています:
+
+    :main chapter04-07.core
+
+そして、とても短いコードはこちら:
+
+@@@ ruby chapter04_07/src/chapter04_07/core.clj @@@
+
+下記のWebSocketのテストサイトを使って:
+
+    http://www.websocket.org/echo.html
+
+ローカルのURLを指定します:
+
+    ws://localhost:8080/chat
+
+良いでしょう？ これなら、HTML5 の WebSocket で色々出来そうじゃないですか？ ;)
+
+これこそ Ringにバッチリ合うんじゃないでしょうか。 実際のところ、裏側ではもう少し複雑なのですが、もし詳細を知る必要があるのであれば、ぜひ時間を使ってWebサイトを見てみてください。
+
+ノート：
+
+[Aleph](https://github.com/ztellman/aleph) はClojureでWebSocketを使うもう一つのとても良い方法です。 Alephはより幅広いように使え、普通のプロトコル(TCPやUDP)以外のプロトコルを扱うことが出来ます。 この本の範疇からは外れますが、私は特に [UDP](https://github.com/ztellman/aleph/blob/perf/src/aleph/udp.clj) 機能がお気に入りです。
+
+とにかく、Webには色々ありますね。
+
+### RESTful なアプリケーションは今や当たり前
+
+見つかったのは [Liberator](https://github.com/clojure-liberator/liberator) だけでした。。 適当に "Clojure Rest" でググったのですが、実際に興味をそそられたのは Github の Liberator でした。
+ドキュメントも決して多いとは言えないのですが、ま、この本を書くためだけに調べたのですが、結果から言うと非常に良いものですた。
+
+いつものように、シンプルなサンプルから始めます。 POSTでカウンタをインクリメントし、GETでカウンタの値を取得します。
+
+project.clj には、Liberatorを含む以下の設定をします:
+
+    [compojure "1.0.2"]
+    [ring/ring-jetty-adapter "1.1.0"]
+    [liberator "0.8.0"]
+
+今やお馴染みの設定も忘れずに。
+
+    :plugins [[lein-ring "0.8.3"]]
+    :ring {:handler chapter04-08.core/app}
+
+Liberator では与えられた決定木に基づいたRestful *resources* のコンセプトを定義します。
+
+一番簡単なリソースの定義は、*resource* キーワードを使います:
+
+    (resource :handle-ok "Hello World!")
+
+リソースは戻り値として使うだけではなく、属性も指定することでリクエストに対するレスポンスとしても使います:
+
+    (resource :available-media-types ["text/plain"] :handle-ok "Hello World!")
+
+そして、Compojureのルーティングにこのリソースを設定します:
+
+    (ANY "/" [] (resource :available-media-types ["text/plain"] :handle-ok "Hello World!"))
+
+さて、準備はできましたがどうやって試したら良いでしょう？ 単純にブラウザでアクセスすれば良いですね。
+
+![liberator](../images/chap04/liberator.png)
+
+Now on to something more substancial example. We will briefly show how to handle a counter, accepting only GET and POST methods.
+
+@@@ ruby chapter04_08/src/chapter04_08/core.clj @@@
+
+We have seen the :available media types before, so let's go through the other ones:
+
+We can select which methods are allowed with:
+
+    :method-allowed? (request-method-in :post :get)
+
+Implement the method that responds to post. In this case, we just increment out counter
+
+    :post! (fn [_] (swap! postbox-counter inc))
+
+When a new resource has been created, we return a specific message:
+
+    :handle-created (fn [_] (str "Your submission was accepted. The counter is now " @postbox-counter))
+
+And finally, when we do a simple GET, we have a simple method that returns the value of the counter:
+
+    :handle-ok (fn [_] (str "The counter is " @postbox-counter))
+
+Now that is a very good start.
+
+We can send a POST call to our post with a curl command:
+
+    curl -Xpost http://localhost:3000/post
+
+And be returned a nice message:
+
+    Your submission was accepted. The counter is now 1
+
+There is a long [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) available. Take the time to experiment and enjoy being Restful!
+
 ### 何でもかんでもNoirなワケじゃないけど、数行のコードでWebサイトが出来上がる
 ### 面倒な作業はVaadinとかGoogle Web Toolkitにお任せ
 #### 初めての Vaadin アプリケーション
 ### Compojure はクールなWebフレームワーク
 ### AlephのおかげでWebソケットはとてもシンプルになりました
-### RESTful なアプリケーションは今や当たり前
