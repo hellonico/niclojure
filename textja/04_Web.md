@@ -600,42 +600,143 @@ Liberator では与えられた決定木に基づいたRestful *resources* の�
 
 ![liberator](../images/chap04/liberator.png)
 
-Now on to something more substancial example. We will briefly show how to handle a counter, accepting only GET and POST methods.
+それでは、カウンタを扱うサンプルに移りましょう。 GETとPOSTメソッドだけ実装しています。
 
 @@@ ruby chapter04_08/src/chapter04_08/core.clj @@@
 
-We have seen the :available media types before, so let's go through the other ones:
+先ほどは :available メディアタイプを設定しました。 ここでは、別の設定をしましょう:
 
-We can select which methods are allowed with:
+受け付けるメソッドを指定します:
 
     :method-allowed? (request-method-in :post :get)
 
-Implement the method that responds to post. In this case, we just increment out counter
+次にPOSTに応答するメソッドを実装します。 このメソッドでは、カウンタをインクリメントします。
 
     :post! (fn [_] (swap! postbox-counter inc))
 
-When a new resource has been created, we return a specific message:
+新しいリソースが生成された時、特別なメッセージを返します:
 
     :handle-created (fn [_] (str "Your submission was accepted. The counter is now " @postbox-counter))
 
-And finally, when we do a simple GET, we have a simple method that returns the value of the counter:
+最後に、GETに対してカウンタの値を返すシンプルなメソッドを実装します:
 
     :handle-ok (fn [_] (str "The counter is " @postbox-counter))
 
-Now that is a very good start.
+いい感じです。
 
-We can send a POST call to our post with a curl command:
+curlコマンドを使って、POSTリクエストを送信してみましょう:
 
     curl -Xpost http://localhost:3000/post
 
-And be returned a nice message:
+すると、以下のメッセージが返ってきます:
 
     Your submission was accepted. The counter is now 1
 
-There is a long [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) available. Take the time to experiment and enjoy being Restful!
+ここに長いリストがあります [list of decisions](https://github.com/clojure-liberator/liberator#reference-list-of-decisions) ので、ぜひ一度目を通してRestfulを楽しんでください。
 
-### 何でもかんでもNoirなワケじゃないけど、数行のコードでWebサイトが出来上がる
-### 面倒な作業はVaadinとかGoogle Web Toolkitにお任せ
-#### 初めての Vaadin アプリケーション
-### Compojure はクールなWebフレームワーク
-### AlephのおかげでWebソケットはとてもシンプルになりました
+### Webのテストをもう少し
+
+テストについてはよく考えないとなかなか効率的に出来ないですよね。 Webでのテストもまたしかり。
+
+Ringで定義されたハンドラは非常に簡単に一連のテストを書くことができます。
+この章を終わるにあたって、どのようにテストを盛り込むかを見ていきましょう。
+
+#### 私のマネをしないで！
+
+このレシピでは、Ringのリクエストをマネることでハンドラのリクエストの処理結果を検証する方法を紹介します。
+
+[Ring mock](https://github.com/weavejester/ring-mock) はRingフレームワークの発案者によって開発されました。 Ring-mockでは、純粋にリクエストとその結果のマップを作成します。
+
+プロジェクトにインクルードするには:
+
+    [ring-mock "0.1.3"]
+
+実際にring-mockで覚えるのは *request* ファンクションでしょう。 これがRingのリクエストをマネするファンクションです。
+
+以下のサンプルで見てみましょう:
+
+@@@ ruby chapter03/test/chapter03/mock.clj @@@
+
+*your-handler* が元々のRingのハンドラです。 コードの残りの部分で、テストをするためのリクエストを設定しています。
+
+重たいサーバは必要ありません。 コードレベルでサクっとテスト出来ます。
+
+#### HTMLベースのRingアプリケーションのナビとテスト
+
+このレシピでは、RingベースのHTML Webサイトのナビゲーションとコンテンツのチェックについて見てみましょう。
+[Kerodon](https://github.com/xeqi/kerodon) がこのレシピに最適でしょう。
+
+始めに、Ringハンドラで直接セッションを生成します:
+
+    (-> (session app)
+        (visit "/"))
+
+後は、kerodonキーワードを使ってリンクを辿ったり、フォームに値を入れて送信したり、アプリケーションの様々な機能をチェックします。
+ごく普通の使い方ですね。
+
+テストを実行するにはprojekut.cljファイルにいくつかのライブラリを追加します:
+
+    [kerodon "0.0.7"]
+        ; routing
+        [net.cgrand/moustache "1.2.0-alpha1"]
+        ; html markup
+        [hiccup "1.0.2"]
+
+以下、サンプルです:
+
+@@@ ruby chapter03/src/kerodon.clj @@@
+
+※ アプリケーションはRingベースですが、ルーティングはCompojureではなく、[moustache](https://github.com/cgrand/moustache) という別のルーティングライブラリで行っています。
+
+テストのサンプルの内容はほとんど明解だと思います。 *follow-redirect* ディレクティブについては、kerodonに対してリダイレクトが起こったことを知らせるために使用しています。
+
+それ以外は、DSLを見ていただけばお分かりいただけると思います。
+
+Kerodon は [peridot](https://github.com/xeqi/peridot)　ベースとしており、peridotにも見ておくべきサンプルがたくさんあります。
+
+次は、気に入った番組を繰り返し何度も見たい時のレシピです。
+
+#### VCR で HTTP を再生
+
+このレシピは、自分自身ちょっと驚きました。
+
+[vcr-clj](https://github.com/fredericksgary/vcr-clj) はRubyのVCRライブラリのClojure版です。 これを使うと、HTTPのやり取りを記録し、そのやり取りを任意に再生することができます。 例えば、同じテストを何度も繰り返し実行することが、特別な機材を別に用意すること無く出来てしまうのです。
+
+プロジェクトに取り込むには:
+
+    [com.gfredericks/vcr-clj "0.2.2"]
+
+このテストでは、jettyサーバを使いますが、それを簡単にするためにちょっとしたコードを書きます。 (本来はライブラリそのものにあって然るべきだと思いますが ...)
+
+では、サンプルを見ていきましょう:
+
+@@@ ruby chapter03/src/vcr.clj @@@
+
+テストで最も重要なのは *with-cassette* の部分です。 リクエストは一旦記録してしまえば、順番を変えることが出来ます。 例えば、/foo、/barだったのを/bar、/fooに。
+
+    (with-cassette :bar-bar
+      (is (= "foo" (get "/foo")))
+      (is (= "bar" (get "/bar"))))
+    (is (= 2 (count (server-requests))))
+    (with-cassette :bar-bar
+      (is (= "bar" (get "/bar")))
+      (is (= "foo" (get "/foo"))))
+
+ここで、 *get* は通常の httpクライアントです。
+
+### "世界が終わる日" - R.E.M
+
+RubyやPythonは書く喜びを与えてくれました。 そして、Clojureは書くことに夢中にさせてくれます。
+
+この章では、色々なことをどうやって一つにまとめるかを見てきました。
+
+* Ringアプリケーションを作成し、リクエストを処理する
+* リクエストをアプリケーションにルーティングする
+* 認証する
+* サーバとJSONを透過的に扱う
+* 運用サーバにデプロイする
+* サクっとWebSocketを書く
+* REST APIを実装する
+* アプリケーションをテストする
+
+では、本を一旦閉じて、自分のWebサイトにプログラマブルなページを追加してみましょう！
