@@ -737,17 +737,19 @@ Pallet is platform for agile and programmatic automation of infrastructure in th
 
 Pallet is similar in features to [chef](http://www.opscode.com/chef/), and [puppet](https://puppetlabs.com/) which are also infrastructure automation tools.
 
-Basically, as we have seen continuously all along this chapter we want to have a reliable way of controlling and monitoring our cluster.
+Basically, as we have seen continuously all along this chapter we want to have a reliable way of controlling and monitoring our cluster of servers.
 
-At my current customer, we now use this kind of tool and infrastructure to build, manage and expand on demand the necessary power to handle the user demand.
+At my current customer, we now use this kind of tools and infrastructure to build, manage and expand on demand the necessary power to handle the user demand.
 
 These days it is pretty much a given that you do not want to go and run the command one by one on the production environment, but have tested and reliable set of commands to achieve this.
 
-In the Clojure world, Pallet is the word for it.
+In the Clojure world, Pallet is currently the project for it.
 
-#### Getting started with Pallet: Zero to running in five minutes with lein.
+#### Getting started with Pallet
 
-[pallet-lein-new](https://github.com/pallet/pallet-lein-new) is the Leiningen new template to get started. We do remember that with Leiningen 2 we only need to run the command itself so here go.
+[pallet-lein-new](https://github.com/pallet/pallet-lein-new) is the Leiningen new template to get started. 
+
+We (You!) do remember that with Leiningen 2 we only need to run the command itself so here go.
 
 	lein new pallet quickstart
 
@@ -761,6 +763,122 @@ Pallet works with a list of Clouds provider. Sample examples of providers are:
 
 The full list is currently hosting on the [jclouds website](http://www.jclouds.org/documentation/reference/supported-providers/).
 
+But first let's step back a bit and see what we can do with a virtual box wrapper.
+
+#### VMFest: A VirtualBox wrapper 
+
+VirtualBox is a general purpose virtualizer, that makes it a no brainer to start using virtual machines on your host.
+
+We start by downloading it from the VirtualBox website at:
+
+	https://www.virtualbox.org/wiki/Downloads
+
+Once this is done, on OSX this will install a command line web server for us.
+The default is blocked by authorized calls but for the purpose of this tutorial we will simply disable it:
+
+	VBoxManage setproperty websrvauthlibrary null
+
+Then we can start a local virtual box webserver with:
+
+	vboxwebsrv -t0
+
+You can check accessible by accessing its local URL:
+
+	http://localhost:18083/
+
+That's it. Our VirtualBox waiter is ready to receive orders from us.
+
+This is where [vmfest](https://github.com/tbatchelli/vmfest) comes into play. VMFest is a Clojure wrapper around the command line tool for VirtualBox.
+
+As usual, the easiest way to get up and running is by updating our project.clj file with a dependency:
+	
+	[vmfest "0.2.8"]
+
+And start a REPL with Leiningen.
+
+Most of the following file is available in the code of this book in the chapter06/vmfest project, but let's go through it together. You should be typing the lines one by one to avoid surprises.
+
+	; We start with the vmfest namespace imports
+	(use 'vmfest.manager)
+	(use '[vmfest.virtualbox.image :only [setup-model]])
+
+	; We create a connection reference to the webserver 
+	; that we started before. This is the same local URL
+	; it could also be remote so you can have your models
+	; hosted remotely
+	(def my-server (server "http://localhost:18083"))
+
+	; We need an image model. We will go for a lightweight ubuntu server image
+	(setup-model "resources/lubuntu.vdi" my-server)
+	;; This will also look for an associated .meta file in the same folder.
+	;; {:image-file "/var/folders...}
+
+	;; let's check that the image model has been installed
+	(models)
+	;; (:lubuntu) <-- you should see something like this
+
+	;; Time do create a VM instance. We'll call it my-vmfest-vm. This is
+	;; the name that will appear in VirtualBox's GUI.
+	(def my-machine (instance my-server "my-vmfest-vm" :lubuntu :micro))
+
+	;; Notice that once we have created a VM we don't need to reference
+	;; the server anymore
+	(start my-machine)
+
+	;; Get the IP address of the machine. At this point, you can SSH into
+	;; this machine with user/password: vmfest/vmfest
+	(get-ip my-machine)
+	;; "192.168.56.103"
+
+	;; You can pause and resume the VM.
+	(pause my-machine)
+	(resume my-machine)
+
+	;; Stopping the VM will send a signal to the OS to shutdown. 
+	;; This will not close the VM itself, 
+	;; just the OS run by the VM
+	(stop my-machine)
+
+	;; This will turn off the VM completely and immediately.
+	(power-down my-machine)
+
+	;; Once we are done with this VM, we can destroy it, which will remove
+	;; any trace of it's existence. Your data will be lost, but not the
+	;; original image this VM was booted off.
+	(destroy my-machine)
+
+So we have seen how to 
+
+* connect to the VirtualBox web service layer
+* create models for virtual machines
+* create virtual machines 
+* control the lifecycle of the virtual machines
+
+Now, as you have seen, everything we have written is pure Clojure, so we can now apply our concept of code as infrastructure and create multiple VMs on-demand.
+
+This is in the following example:
+
+@@@ ruby chapter06/vmfest/src/vmfest/multiple.clj @@@
+
+Et voila. 
+
+Most of this recipe comes from the simple introduction available at the [vmfest playground](https://github.com/pallet/vmfest-playground).
+
+I especially like the fact that since this is call code, all this workflow can be recreated from a code source checkout.
+
+Ian Rumfort has some more detailed [notes](http://ianrumford.github.io/blog/2012/10/13/using-vmfest-with-virtualbox-4-dot-2/) on how he went to use VMFest, and I recommend you have a look.
+Also, he details how to add your own hardware models.
+
+If you noticed, VMFest is very close to the Ruby project named [Vagrant](http://www.vagrantup.com/), which is the side kick of [Chef](http://www.opscode.com/chef/). 
+
+So who's the sidekick of VMFest? 
+
+Let's see in the next section.
+
+#### Code as Infrastructure with Pallet
+
+
+
 Now most of the pallets recipe are run from the REPL, so we will start a REPL and get ready to pallet the way.
 
 Navigate to the newly create folder from the previous lein command then:
@@ -772,17 +890,5 @@ And from the REPL:
 	(require 'pallet.core 'pallet.compute 'pallet.configure)
 
 Good. We are ready.
-But first let's step back a bit.
-
-#### VMFest: A VirtualBox wrapper 
-[vmfest](https://github.com/tbatchelli/vmfest)
-
-@@@ ruby 14_vmfest.clj @@@
-
-Make sure you also look at the [playground](https://github.com/pallet/vmfest-playground) and have a look at the [tutorial](https://github.com/pallet/vmfest-playground/blob/master/src/play.clj)
-
-[http://ianrumford.github.io/blog/2012/10/13/using-vmfest-with-virtualbox-4-dot-2/](http://ianrumford.github.io/blog/2012/10/13/using-vmfest-with-virtualbox-4-dot-2/)
-
-#### Code as Infrastructure with Pallet
 
 [http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/)
