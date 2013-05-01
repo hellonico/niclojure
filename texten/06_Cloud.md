@@ -877,18 +877,97 @@ Let's see in the next section.
 
 #### Code as Infrastructure with Pallet
 
-
-
-Now most of the pallets recipe are run from the REPL, so we will start a REPL and get ready to pallet the way.
+Now most of the pallets recipe can be run directly from the REPL, so we will start a REPL and get ready to pallet the way.
 
 Navigate to the newly create folder from the previous lein command then:
 
 	lein repl
 
-And from the REPL:
-
-	(require 'pallet.core 'pallet.compute 'pallet.configure)
-
 Good. We are ready.
 
-[http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/)
+
+	; First we prepare vmfest/virtual box appliance
+	; this is the cloud provider, or more exactly the middleware that we will interface with
+	(use '[pallet.configure :only [compute-service]])
+	; 
+	; The compute-service method prepares that provider and returns a compute service object that we will use to perform actions on a cloud provider.
+	(def vmfest (compute-service "vmfest" nil nil))
+
+	(use '[pallet.compute.vmfest :only [add-image]])
+
+	; now we add a server image to be use with the virtual box provider
+	; this is very close to what we saw in the previous recipe
+	; this is still using a .meta [data] file to describe the virtual box configuration.
+	(add-image vmfest "../vmfest/resources/ubuntu-10-10-64bit-server.vdi" :model-name "tutorial1")
+
+	;  we will reuse that model name throughout the recipe so be sure to keep it in your glass. 
+
+The code below checks that our image was registered properly with the vmfest provider
+
+	(require 'pallet.core 'pallet.compute 'pallet.configure)
+	(pprint (pallet.compute/images vmfest))
+
+The specification of a node in pallet has 3 main components:
+
+* A node spec: The choices include the scale of hardware to be used (:min-cores, :min-ram), the operating system image, the network connectivity, and quality of serivce options.
+* A Server spec: is used to specify plan functions describing the installation, configuration an control of a single component in your stack (e.g. nginx). 
+* A group spec: connects nodes to their configuration by defining a mapping from a compute node’s group-name (as returned by pallet.compute/group-name) to a server-spec.
+
+Now that we have the main terms in head, let's define a node and a group with:
+
+	(def mynode 
+		(pallet.core/node-spec :image {:image-id "tutorial1"}))
+	; (pprint mynode)
+	(def mygroup
+	    (pallet.core/group-spec "mygroup" :count 1 :node-spec mynode))
+	; (pprint mygroup)
+
+And that's the core of it. Now we can boot up our group configuration onto the vmfest provider with:
+
+	; (pallet.core/converge mygroup :compute vmfest)
+
+This will spawn something like this if you look in the VirtualBox UI:
+
+![vbox](../images/chap06/vboxui.png)
+
+We can check the ip of the new node:
+
+	(pallet.compute/nodes vmfest)
+
+And at this stage you are ready to ssh into your created virtual machine.
+
+Shutdown works by reducing the number of available instances to 0:	
+
+	(pallet.core/converge 
+		(pallet.core/group-spec "mygroup" :count 0) 
+		:compute vmfest)
+
+#### Create users and install packages
+
+Creating a super user to achieve our tasks works by using a crate that will create a superuser for us.
+
+What is a Crate you ask me ? It is simply a function that encapsulate some usually small unit of configuration or administration. 
+
+We add this crate inside a _bootstrap_ phase. See by yourself: 
+
+@@@ ruby chapter06/pallet/src/tutorial02.clj @@@
+
+Then can install some packages onto the VM with a *:configure* keyword into the phases section as well.
+
+@@@ ruby chapter06/pallet/src/tutorial03.clj @@@
+
+#### Take it from there
+
+There is much more wine to be drunk, and grapes to be collected with pallet. 
+
+It takes a sharp curve to get use to Pallet, as [Ian noticed before](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/)
+
+But with a very extensive set of [Documentations](http://palletops.com/doc/), an [extensive API](http://palletops.com/pallet/api/0.8/index.html) and a [set of tutorials](http://palletops.com/doc/reference-0.8/) to explain the Pallet concepts in details, you should see the good wine flow sooner than later.
+
+### What did you learn high up there ? 
+
+Wow. This is has been a very packed but fun chapter to go along with. We have gone all the way from execute commands on remote servers, to build a custom minimal management server infrastructure.
+
+Then we moved on to more advanced recipes with local VMs set up and management to a full PAAS example.
+
+Take some time to digest it, read it over it will make you fly faster than others.
