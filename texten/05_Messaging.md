@@ -1,8 +1,8 @@
 ## Messaging
 
-Because your application will probably not be standalone, but will be talking to a horde of different systems, we have created the Messaging chapter. I had the experience, though, to connect a clojure system to an impossible to configure banking system. The messages were so big I was only hoping the messaging queues will not blow up. What Clojure brought to me is the incredible flexibility to just say, "Yes, I can handle that message." or "Yes I can handle that timing and react in realtime" and have a pretty good certitude that if a problem was coming in the integration, it was not coming from the people at the dining table that we are. 
+Because your application will probably not be standalone, but will be talking to a horde of different systems, we have created the Messaging chapter. I had the experience, though, to connect a clojure system to an impossible to configure banking system. The messages were so big I was only hoping the messaging queues will not blow up. What Clojure brought to me is the incredible flexibility to just say, "Yes, I can handle that message." or "Yes I can handle that timing and react in realtime" and have a pretty good certitude that if a problem was coming in the integration, it was not coming from the people at the dining table that we are.
 
-Here, we would like to show you a bit of this, and give you some insurance about easiness, readability and performances. 
+Here, we would like to show you a bit of this, and give you some insurance about easiness, readability and performances.
 
 This section will go in a bit details how to connect to different middleware like RabbitMQ, MemCache, Redis, JMS... and a few others, so you can get started quickly to core level of your work.
 
@@ -12,7 +12,7 @@ Here comes the most generic [JMS, AMQP/RabbitMQ](https://github.com/sbtourist/cl
 
 For a short example, we will use [ActiveMQ](http://activemq.apache.org/download.html), not only for efficiency but because it is probably the fatest way to get started.
 Let's start by downloading the package from:
-	
+
 	http://activemq.apache.org/download.html
 
 Or your favorite package manager.
@@ -51,7 +51,7 @@ and contains the message we sent using our small snippet:
 
 ![Queue](../images/chap05/queue2.png)
 
-Our next example will be showing how to use a Topic. Remember a topic is the way to broadcast the same message to multiple subscribers. 
+Our next example will be showing how to use a Topic. Remember a topic is the way to broadcast the same message to multiple subscribers.
 
 @@@ ruby chapter05/src/clamq_topic.clj @@@
 
@@ -65,10 +65,10 @@ Suiiiiite.
 
 ### I have my horse, ride your Camel, easy messaging bus with everyone
 
-I took exampes from [Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure) and 
+I took exampes from [Apache Camel from Clojure](https://github.com/denlab/apache-camel-clojure) and
 [Camel Routes with Clojure](https://github.com/hellonico/clj-camel) to create this really short introduction to using Apache Camel, which acts as a *versatile open-source integration framework* or how to pretty much connects any kind of protocol to any other one in a snap. Snaps.
 
-#### Camel on files 
+#### Camel on files
 
 In the first example we are going to connect a file to .. a file. Not very useful you might say, but wait, we will get the basics and ride on a nice wave of communication.
 
@@ -80,7 +80,7 @@ Once our REPL is sorted out, let's go through the file to file connection:
 
 @@@ ruby chapter05/src/camel_file.clj @@@
 
-So we start by configuring routes the Camel way to point from an endpoint :from to and endpoint :to. 
+So we start by configuring routes the Camel way to point from an endpoint :from to and endpoint :to.
 
 Then we start the Camel context which is now able to listen to all the endpoints that were defined.
 
@@ -100,9 +100,9 @@ We have commented out the line:
 
 	   ; [:to "log:com.mycompany.order?level=INFO"]
 
-But if you put it back, you will see a logging message in the REPL showing that the message was properly processed. 
+But if you put it back, you will see a logging message in the REPL showing that the message was properly processed.
 
-#### Camel on queues 
+#### Camel on queues
 
 Our next example will extend our first example with some queues to connect to ActiveMQ since we put some time to set it up earlier on. The ActiveMQ endpoint is not part of the core camel components so we added that to our set of dependencies already with clj-camel.
 
@@ -110,7 +110,7 @@ Our next example will extend our first example with some queues to connect to Ac
 
 Only one added line to register the ActiveMQ component. But then adding a file to our :from folder will send directly a message to active mq with the content of the message.
 
-But this is not all. Camel has an impressive set of [default components](http://camel.apache.org/components.html) that you can use just by accessing them through their URL scheme. All this at your Clojure hands. 
+But this is not all. Camel has an impressive set of [default components](http://camel.apache.org/components.html) that you can use just by accessing them through their URL scheme. All this at your Clojure hands.
 
 ### Sometimes you need some Quartz, to schedule your Clojure
 
@@ -134,7 +134,7 @@ Now that we have the concepts defined we can have an example and give it a go:
 
 @@@ ruby chapter05/src/quartzite.clj @@@
 
-Voila. 
+Voila.
 We have a production proven scheduling engine taking care of our tasks.
 There is more to come with grouping jobs, persisted stores, etc... and everything is clearly written in the documentation so time to give it a try.
 
@@ -151,7 +151,7 @@ And now we can use the familiar cron notation to schedule some so exciting print
 
 @@@ ruby chapter05/src/cronj.clj @@@
 
-Not that difficult to get our order to the waiter properly is it ? So, wine or Champagne ? 
+Not that difficult to get our order to the waiter properly is it ? So, wine or Champagne ?
 
 ### Redis in your clojure
 
@@ -186,7 +186,7 @@ And some very basic things you can do straight from the command line to test tha
 	OK
 	redis 127.0.0.1:6379> get mykey
 	"somevalue"
-	redis 127.0.0.1:6379> 
+	redis 127.0.0.1:6379>
 
 Voila. All the commands can be tested from here, and the help menu is for once, very useful. Just try
 
@@ -207,7 +207,7 @@ We have prepared a simple example to store and retrieve values. Please have a re
 
 You will not that the simple methods without *@* sign will return futures, meaning evaluation will not be done straight away. Also, the values are returned as byte arrays, because this is the way Redis handles data, and that is one of the reason why it makes it so fast too.
 
-We have prepared also a simple pub-sub example, because this is one very good way of using Redis for real time analysis and execution. 
+We have prepared also a simple pub-sub example, because this is one very good way of using Redis for real time analysis and execution.
 You will need to start the following in one REPL session first:
 
 @@@ ruby chapter05/src/redis_sub.clj @@@
@@ -247,7 +247,7 @@ The rest is up to read the excellent [carmine documentation](https://github.com/
 
 We particularly like the [Message Queue](https://github.com/ptaoussanis/carmine#message-queue) section. It simple and concise !
 
-#### What does Redis solve ? 
+#### What does Redis solve ?
 
 Redis has a number of common key IT usages, such as:
 
@@ -259,7 +259,7 @@ Redis has a number of common key IT usages, such as:
 
 etc..
 
-And way more. 
+And way more.
 In the past, we have used Redis to enqueue messages coming from many concurrent clients as fast as possible and allow the processing to be done later on by another system, which proved to work quite well.
 
 ### Distribute your application state with zookeeper and avout
@@ -284,8 +284,8 @@ After that, from the top folder, we can run:
 
 	./bin/zkServer.sh start-foreground
 
-or the equivalent Windows command, 
-	
+or the equivalent Windows command,
+
 	bin¥zkServer.cmd start-foreground
 
 And our zookeeper server should start without some exciting output.
@@ -307,7 +307,7 @@ We slightly updated the dependencies for avout, so to add it to our project we w
 
 	[hellonico/avout "0.5.4"]
 
-The example we have created here is separated in two parts, one to set up the distributed reference. 
+The example we have created here is separated in two parts, one to set up the distributed reference.
 
 @@@ ruby chapter05/src/avout_1.clj @@@
 
@@ -315,7 +315,7 @@ The other will retrieve the value from the distributed system.
 
 @@@ ruby chapter05/src/avout_2.clj @@@
 
-That is such an interesting feature. That means there is almost nothing to setup to share references between different Clojure applications. 
+That is such an interesting feature. That means there is almost nothing to setup to share references between different Clojure applications.
 It could for example be used to know the global state of a system, and each module takes different action depending on that global state. (In recovery, in production, in test mode etc...)
 
 #### Using distributed locks
@@ -349,7 +349,7 @@ Short recipe, but you can put it straight to action.
 ### Where would you be without a spyglass (and a proper memcache client)
 
 There is probably no need to present memcached in much details since it has now been the de facto caching solution for many companies including Facebook.
-The reason you would want to use it is to avoid having to recompute expensive values, or maybe a place where the data is taken from while the next value is computed in the background. 
+The reason you would want to use it is to avoid having to recompute expensive values, or maybe a place where the data is taken from while the next value is computed in the background.
 Whatever the reason, it is very easy to integrate, so let's have look
 
 #### Getting ready.
@@ -390,13 +390,13 @@ Most of the difficulty comes from including the spyglass client:
 
 The rest reads very easily. The test waits for a few seconds to show the key expires properly after the time setup.
 
-##### Distributed Binaries cached key 
+##### Distributed Binaries cached key
 
 The two next examples shows simply the distributed nature of memcached. We will complicate things a tiny bit by connecting to two memcached servers. Let's start a new memcached server on a different port (11212) with the following command:
 
-	memcached -p 11212 
+	memcached -p 11212
 
-The next two examples will connect to both our first server and to the second new one. 
+The next two examples will connect to both our first server and to the second new one.
 The connection url has been updated to connect to the two servers with:
 
 	127.0.0.1:11211 127.0.0.1:11212
@@ -421,7 +421,7 @@ Two interesting approaches have been proposed to make things for a better world 
 	Embed the "real" timeout serialized with the value. For example, set the item to timeout in 24 hours, but the embedded timeout might be five minutes in the future.
 	On a get from the cache determine if the stale timeout expired and on expiry immediately set a time in the future and re-store the data as is. This closes down the window of risk.
 	Fetch data from the DB and update the cache with the latest value.
-	
+
 	Alexey describes a different two key approach:
 	Create two keys in memcached: MAIN key with expiration time a bit higher than normal + a STALE key which expires earlier.
 	On a get read STALE key too. If the stale has expired, re-calculate and set the stale key again.
@@ -459,15 +459,15 @@ Unfortunately, wine cannot be streamed yet, so time for another glass of red win
 
 #### Some background
 
-	Apache Cassandra's Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. 
+	Apache Cassandra's Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data.
 
-	Data is automatically replicated to multiple nodes for fault-tolerance. Replication across multiple data centers is supported. Failed nodes can be replaced with no downtime. 
+	Data is automatically replicated to multiple nodes for fault-tolerance. Replication across multiple data centers is supported. Failed nodes can be replaced with no downtime.
 
-	Cassandra is in use at Netflix, eBay, Twitter, Urban Airship, Constant Contact, Reddit, Cisco, OpenX, Digg, CloudKick, Ooyala, and more companies that have large, active data sets. The largest known Cassandra cluster has over 300 TB of data in over 400 machines. 
+	Cassandra is in use at Netflix, eBay, Twitter, Urban Airship, Constant Contact, Reddit, Cisco, OpenX, Digg, CloudKick, Ooyala, and more companies that have large, active data sets. The largest known Cassandra cluster has over 300 TB of data in over 400 machines.
 
 	There are no single points of failure. There are no network bottlenecks. Every node in the cluster is identical.
 
-DataStax's CTO [presents Cassandra](http://devopsangle.com/2012/08/09/datastax-cto-says-cassandra-is-for-practical-problem-solvers/) as the persistence solution for practical problem solvers. 
+DataStax's CTO [presents Cassandra](http://devopsangle.com/2012/08/09/datastax-cto-says-cassandra-is-for-practical-problem-solvers/) as the persistence solution for practical problem solvers.
 
 We have been personally impressed at how easy it was to setup a cluster and replicate data consistently accross different machines and networks.
 
