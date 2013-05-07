@@ -2,7 +2,9 @@
 
 ###### Salade: Salad, what you get right before the cheese of course
 
-In the previous sections we have seen how to be serious and have some secrets for when the time is needed to work and be serious. From now on, we will be going a little bit on the fun side of things, with for a start working with 
+Well, we may have been going too far in the last chapter !! All this PAAS and Cloud management is great, but .. you know.
+
+I think it's time we switched to something more fun.
 
 ### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)

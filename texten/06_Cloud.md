@@ -966,7 +966,7 @@ But with a very extensive set of [Documentations](http://palletops.com/doc/), an
 
 ### What did you learn high up there ? 
 
-Wow. This is has been a very packed but fun chapter to go along with. We have gone all the way from execute commands on remote servers, to build a custom minimal management server infrastructure.
+Wow. This is has been a very packed but fun chapter 6 to go along with. We have gone all the way from execute powerful commands on remote servers, to build a custom minimal management server infrastructure.
 
 Then we moved on to more advanced recipes with local VMs set up and management to a full PAAS example.
 
