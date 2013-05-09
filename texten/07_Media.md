@@ -9,6 +9,8 @@ I think it's time we switched to something more fun.
 ### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
 
+http://overtone.github.io/
+
 Because you really need to live audio programming to be a real VJ these days.
 This is how you install it:
 
@@ -50,6 +52,9 @@ And make some sound !
 ### Speech Recognition: Clojure with speeech !
 [Clojure with speech](https://github.com/klutometis/speech-recognition)
 
+And speaking text as well:
+https://github.com/klutometis/speech-synthesis
+
 ### Control your sound
 [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
 
@@ -60,6 +65,8 @@ And make some sound !
 
 ### Processing, the best visual tool ported to Clojure for easy animation
 [https://github.com/quil/quil](https://github.com/quil/quil)
+
+https://github.com/gtrak/quilltest/
 
 Quil is to [Processing](http://processing.org/) what Clojure is to Java, some fresh air.
 
