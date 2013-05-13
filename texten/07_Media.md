@@ -66,9 +66,39 @@ That is all. We just added some lines to recognize Japanese sentence for us.
 
 ### Midi sound with Clojure
 
-Transitioning from recording and playing sound, we will now move to Midi sounds. The JVM already has by default everything needed to play them.
+Transitioning from recording and playing sound, we will now move to Midi sounds. The JVM already has by default everything needed to play them. 
 
-We will go over the [Clojure Midi Library](https://github.com/pcsanwald/clojure-midi) so see how we can mix 
+We will go over the [Clojure Midi Library](https://github.com/pcsanwald/clojure-midi) so see how we can turn data to music and at the same time this will be a great introduction for the coming audio recipes concepts.
+
+Let's start a REPL from the clojure-midi folder in the examples. And let's go through the following code line by line.
+
+@@@ ruby chapter07/clojure-midi/src/music/simple.clj @@@
+
+We first start by defining a scale. Here A Major. If you remember your classes of music from junior high school, or your latest DJ sets, you'll remember that the scale of A is _A B C# D E F# G#_ and we declare it as is here.
+
+We then make a chord, using that scale, and the base note of the chord. We have triads and seventh chords implemented, that will return a set of 3 or 4 notes depending.
+
+Now we prepare a sound by using each of the note, and a duration, the default duration being 2000ms, and we have something that is ready to play through the midi interface.
+
+And that is it, we last use the *perform* method to actually make the sound go through the speaker.
+
+My favorite scale is E Dorian, which goes like:
+
+    (def e-dorian [:E :F :G :A :B :C :D])
+
+So please, be sure to try a few chords with that scale.
+
+Now this little piece of recipe, while very short, has gained us some knowledge and insight as to how to use data, or simple text, to make sound. This is the core concept of Clojure here again exposed as code is data is code. 
+
+### Live Samples
+[https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
+
+[https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
+
+### Control your sound
+[Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library), 
+[https://github.com/overtone/osc-clj]
+Barebone of overtone
 
 
 ### All you need to perform live music is here
@@ -106,14 +136,6 @@ And make some sound !
 ### Mini-beast
 [https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
 
-### Live Samples
-[https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
-
-[https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
-
-
-### Control your sound
-[Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
 
 ## GPU, Processing and other visual tools
 
@@ -128,7 +150,7 @@ This is how your quil-ed processing sketch now looks like:
 
 @@@ ruby 10_quil.clj @@@
 
-Note the decor set to false, that hides most of the uglyness of the Window borders.
+Note the decor set to false, that hides most of the ugliness of the Window borders.
 
 And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
 
