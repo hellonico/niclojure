@@ -259,7 +259,7 @@ and to display it on screen:
 
 Your turn to hack !
 
-## GPU, Processing and other visual tools
+## Clojure on GPU, Processing, OpenCV, OpenCL, appellations controlees. 
 
 ### Processing, the best visual tool ported to Clojure for easy animation
 [https://github.com/quil/quil](https://github.com/quil/quil)
@@ -276,9 +276,6 @@ Note the decor set to false, that hides most of the ugliness of the Window borde
 
 And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
 
-### The rootbeer GPU compiler
-[https://github.com/pcpratts/rootbeer1](https://github.com/pcpratts/rootbeer1)
-
 ### OpenCL
 [https://github.com/ztellman/calx](https://github.com/ztellman/calx)
 
@@ -290,8 +287,10 @@ And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art
 
 @@@ ruby 42_calx.clj@@@
 
-### More OpenCL, using JOCL
-[OpenCL Playground](https://github.com/hraberg/sleipnir)
+#### More on Clojure with OpenCL, using SimpleCL
+
+Simple CL
+https://bitbucket.org/postspectacular/simplecl
 
 ### OpenGL for Clojure is here
 [https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
@@ -305,7 +304,7 @@ The version we are including here is not from the original author but is compati
 
 @@@ ruby 43_penumbra.clj @@@
 
-### Blender exporter for Penumbra
+#### Blender exporter for Penumbra
 [https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
 
 ## OpenCV and Imaging

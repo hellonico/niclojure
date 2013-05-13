@@ -168,3 +168,8 @@ is pretty to the point and easy to understand, and Chas Emerick has created a [s
 [https://github.com/overtone/osc-clj]
 Barebone of overtone
 
+--> not in clojure :(
+
+### The rootbeer GPU compiler
+[https://github.com/pcpratts/rootbeer1](https://github.com/pcpratts/rootbeer1)
+-> [OpenCL Playground](https://github.com/hraberg/sleipnir) DEAD 
