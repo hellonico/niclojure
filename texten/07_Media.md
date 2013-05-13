@@ -90,52 +90,174 @@ So please, be sure to try a few chords with that scale.
 
 Now this little piece of recipe, while very short, has gained us some knowledge and insight as to how to use data, or simple text, to make sound. This is the core concept of Clojure here again exposed as code is data is code. 
 
-### Live Samples
-[https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
+### All you need to perform live music, is here
 
-[https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
+#### Overtone basics
 
-### Control your sound
-[Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library), 
-[https://github.com/overtone/osc-clj]
-Barebone of overtone
+[Overtone](http://overtone.github.io/) is for me one of the most successful project for the Clojure community. 
 
+It is based on [open standards](https://github.com/overtone/osc-clj), has everything from [great code](https://github.com/overtone/overtone), to [great documentation](https://github.com/overtone/overtone/wiki/Getting-Started), the awesome [cheatsheet](https://github.com/overtone/overtone/raw/master/docs/cheatsheet/overtone-cheat-sheet.pdf) and even more, a [great community](http://groups.google.com/group/overtone) around it.
 
-### All you need to perform live music is here
-[https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
+We will not go through all the details of Overtone in this book, because that in itself, could be the idea for another book.
 
-http://overtone.github.io/
+Instead we will briefly present, or actually simply give a short introduction so you can get going and have some fun, because you really need to live audio programming to be a real VD, Visual Developer these days.
 
-Because you really need to live audio programming to be a real VJ these days.
-This is how you install it:
+Our working folder is in the chapter07/overtone folder of the sources to this book, and note how the single dependency to the project is:
 
-@@@ ruby 12_overtone.clj @@@
+    [overtone "0.8.1"]
 
-Once the library is in your project, type
+We are ready for a REPL session.
 
-<code>
+At its core, overtone sends wave signals to a server, that will respond to message it receives from overtone itself. The protocol is also written in Clojure, and wraps some core audio functionalities using native libraries.
+
+But, enough with the details and let's get some beats going:
+
     (use 'overtone.live)
-</code>
+    (def kick (sample (freesound-path 2086)))
+    
+   
+We include the overtone.live namespace in our current namespace, then start by downloading a free sound from the [http://www.freesound.org/](http://www.freesound.org/) website.
+This is already done for us, and the sound file itself will be downloaded and cached for later use.
 
-And now you can define an instrument
-<code>
-    (definst foo [] (saw 220))
-</code>
+We can play with our kick with:
 
-And make some sound !
+    (kick)
 
-<code>
+or
 
-> (foo) ; Call the function returned by our synth
-4      ; returns a synth ID number
-> (kill 4) ; kill the synth with ID 4
-> (kill foo) ; or kill all instances of synth foo
+    (kick 2)
 
-</code>
+Which will raise the pitch of our sound. But enough play on one sound. We now define a metronome, on a 120 beat per minute tempo. It reads well in Clojure/Overtone:
 
-### Mini-beast
-[https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
+    (def one-twenty-bpm (metronome 120))
 
+In the loop we are going to create, we are coming back to a library we described a long time ago in Chapter02. Remember ? The wine was sparking *at* the time, pun intended.
+
+If you forgot how the library was used, please go again and check again some [examples](https://github.com/overtone/at-at)
+
+To put at-at in practice right now, let's look at the following line:
+
+    (apply-at ((metronome 120) 4) println 2 [])
+
+This will print *2* in exactly 4 beats at 120bpm. So wait, printing is out of fashion, we can do the same with our kick sample:
+
+    (apply-at ((metronome 120) 4) kick 2 [])
+
+That's it. in 4 bears, we will have a kick. Now let's define our loop with:
+
+     (defn looper [nome sound]    
+        (let [beat (nome)]
+            (at (nome beat) (sound))
+            (apply-at (nome (inc beat)) looper nome sound [])))
+
+And start it with:
+
+    (looper one-twenty-bpm kick)
+
+Sweeeet? 
+
+Once the neighbors are banging at the door, maybe it's time for a ..
+
+    (stop)
+
+Now is your turn to play with different beats, and different sound !
+
+#### Overtone swings
+
+The next overtone example will show how to define instruments using a macro named definst.
+
+The easiest way to create a instrument, or a sound, it to use a saw tooth wave, given its name not from an old Viking, but from the curve it shows when displaying Amplitude versus time. See the [wikipedia](http://en.wikipedia.org/wiki/Sawtooth_wave) viking.  
+
+Here is a functions taken from the tutorial, that shows how to create a sound:
+
+    (definst saw-wave 
+        [ frequency 440 
+          attack 0.01 
+          sustain 0.4 
+          release 0.1 
+          volume 0.4] 
+         (* 
+            (env-gen (lin-env attack sustain release) 1 1 0 1 FREE)
+            (saw frequency)
+            volume))
+
+The parameters to define an instrument are ... anything. You give a default value to each of them. So in the above example, we have 5 parameters, each with a default value.
+
+The instrument sound itself is using a generator (env-gen), a curve (saw) and the volume to generate a *player* in overtone language.
+
+So, we can use saw-wave to generate different sounds, using different parameters for the frequency, or the attack:
+
+    (saw-wave 440)
+    (saw-wave 440 0.02)
+
+etc...
+You can go along the *chords.clj* for more on chords ... 
+
+For now, we will swing our way with:
+
+@@@ ruby chapter07/src/overtone/swing.clj @@@
+
+If you look carefully, you see the open hat and the close hat are using same generators and same curves but with different parameters.
+
+That keeps the rhythm !
+
+#### Overtone rocks
+
+Lastly, and this is mostly for the fun, we can implement some famous hard rock riffs in just a few lines:
+
+@@@ ruby chapter07/src/overtone/acdc.clj @@@
+
+Most of the code above is about importing a predefined instrument, *guitar* and play with the *guitar-strum*. Note how conveniently the chords can be drawn using Clojure arrays. It reads like your usual guitar tab !
+
+#### Over the tone
+
+
+Up to now, we have seen how to play around and create loops, schedule sounds, repeat sounds, create chords and play some swing and basically have some audio fun.
+
+Overtone is actually way more than that. It's a full on sound creator. You can design any kind of sound with it to some very high level of professionalism.
+
+In this book, we have taken the choice to not go too far into how to generate sounds and instruments. Personally, I usually copy and paste some, change the parameters, or simply download some free samples and play with them.
+
+For more details on how sound works, we recommend the same book that Overtone does, [Designing Sound](http://www.amazon.co.jp/Designing-Sound-Andy-Farnell/dp/0262014416/)
+It will expose the concepts slowly, gradually and better than the time we have here.
+
+#### Live Samples with the beast
+
+[mini beast](https://github.com/overtone/mini-beast) is a great extension for live programming of music. There's not much to add to it as this is really a finished product, and you can just run it with:
+
+    git clone https://github.com/overtone/mini-beast.git
+    cd mini-beast
+    lein run
+
+And this will launch a ready to play interface, based on overtone, and some graphical library, named quil, we will go over in a few minutes.
+
+![beast](../images/chap07/minibeast.png)
+
+Up to your keyboard to play the music now.
+
+#### Clojure and Chicago pizza
+
+The best (and only?) place to find Chicago pizza in Tokyo is called the [Devil's Craft](http://www.devilcraft.jp/), near Kanda station.
+
+![pizza](../images/chap07/pizza.jpg)
+
+While this is not the main point of this note, I stumbled upon some [creative work from Chicago](https://github.com/neatonk/overtone-quil-hacknight), during a nice hacking night.
+
+Mostly the only commands you need to run to get going with it:
+
+    git clone https://github.com/neatonk/overtone-quil-hacknight.git
+    overtone-quil-hacknight
+    lein run
+
+And you get some very interactive way of controlling sound:
+
+![controller](../images/chap07/controller.png)
+
+and to display it on screen:
+
+![visual](../images/chap07/visual.png)
+
+Your turn to hack !
 
 ## GPU, Processing and other visual tools
 
