@@ -4,7 +4,65 @@
 
 Well, we may have been going too far in the last chapter !! All this PAAS and Cloud management is great, but .. you know.
 
-I think it's time we switched to something more fun.
+I think it's time we switched to something more fun. So we will go through this section with some sound fun. Speech, voice, sounds of sound. Then on to do a bit of live music programming to make the wine dance with the salad.
+Last part, we will go through some graphic samples on how to make pictures and graphics dancing along with the music.
+Bring your glass and enjoy !
+
+### Clojure with Speeech, Clojure with Recognition!
+
+#### Voice Recognition with Clojure
+
+To get your wine order properly you need to get it recognized properly. We will be using a semi-hidden Google API to analyze our recorded sound for this. 
+
+To add the necessary glue to do our work, we will add the following dependency:
+
+    [hellonico/speech-recognition "1.0.2"]
+
+[Our customized Speech Recognition](https://github.com/hellonico/speech-recognition) is entirely based on [speech-recognition](https://github.com/klutometis/speech-recognition) with just enough updated code to perform.
+I found [Peter Danenberg](https://github.com/klutometis) research just fascinating, with a few lines of his code pumping inspiration into new projects and ideas. Check it out !
+
+Now that we have the above in our project, we can start a REPL, and be done with:
+
+@@@ ruby chapter07/speech/src/speech/hear.clj @@@
+
+So a few notes on this code. First we can change the language to *en*, *fr* etc... to get our speech recognized in different languages. 
+
+The input index, is relative to your machine and the number of devices. You need to search for the proper input on your machine, with _(get-mixers)_ :
+
+    user=> (get-mixers)
+    #<DirectAudioDeviceInfo Default Audio Device, version Unknown Version>
+    #<DirectAudioDeviceInfo Built-in Input, version Unknown Version>
+    #<DirectAudioDeviceInfo Built-in Output, version Unknown Version>
+
+The easy life cycle to get this working is detailed in the diagram below:
+
+![voice](../images/chap07/voice.png)
+
+Now to extend this to something great, you realize we have just the start of a Siri, Apple copyright here, framework. You can hear the sentence and process it with some clever pattern matching.
+
+#### Voice with Clojure
+
+The above part would be incomplete if we could not get our order to be pronounced properly as well. Here comes the speaking text part.
+
+We will use a library from Peter again, [speech-synthesis](
+https://github.com/klutometis/speech-synthesis), this time with no modification. 
+To add this to your project:
+
+    [facts/speech-synthesis "1.0.0"]
+
+@@@ ruby chapter07/speech/src/speech/speak.clj @@@
+
+But, I know what you are going to say .. "Wait here ... where's my Japanese Girl talking to me?"
+
+That is where, we are going to realize that we did not need a library after all !!
+
+This is the whole source code for the library above with some slight changes:
+
+@@@ ruby chapter07/speech/src/speech/speak_ja.clj @@@
+
+That is all. We just added some lines to recognize Japanese sentence for us.
+
+"Arigatou ne-"
 
 ### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
@@ -49,11 +107,6 @@ And make some sound !
 
 [https://github.com/neatonk/overtone-quil-hacknight](https://github.com/neatonk/overtone-quil-hacknight)
 
-### Speech Recognition: Clojure with speeech !
-[Clojure with speech](https://github.com/klutometis/speech-recognition)
-
-And speaking text as well:
-https://github.com/klutometis/speech-synthesis
 
 ### Control your sound
 [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
