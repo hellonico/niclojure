@@ -64,6 +64,13 @@ That is all. We just added some lines to recognize Japanese sentence for us.
 
 "Arigatou ne-"
 
+### Midi sound with Clojure
+
+Transitioning from recording and playing sound, we will now move to Midi sounds. The JVM already has by default everything needed to play them.
+
+We will go over the [Clojure Midi Library](https://github.com/pcsanwald/clojure-midi) so see how we can mix 
+
+
 ### All you need to perform live music is here
 [https://github.com/overtone/overtone/wiki/Getting-Started](https://github.com/overtone/overtone/wiki/Getting-Started)
 
@@ -99,9 +106,6 @@ And make some sound !
 ### Mini-beast
 [https://github.com/overtone/mini-beast](https://github.com/overtone/mini-beast)
 
-### Midi sound with Clojure
-[Midi](https://github.com/pcsanwald/clojure-midi)
-
 ### Live Samples
 [https://github.com/neatonk/mini-beast](https://github.com/neatonk/mini-beast)
 
@@ -110,9 +114,6 @@ And make some sound !
 
 ### Control your sound
 [Sound control](http://opensoundcontrol.org/implementation/osc-clj-clojure-osc-library)
-
-### Stream and get streamed with Icecast audio streaming server
-[Ice Client Server](https://github.com/jblomo/iceclient)
 
 ## GPU, Processing and other visual tools
 

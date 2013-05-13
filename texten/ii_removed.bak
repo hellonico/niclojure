@@ -154,3 +154,9 @@ is pretty to the point and easy to understand, and Chas Emerick has created a [s
 
 ### Lemur, your friend to launch hadoop jobs locally or on EMR
 [Lemur is a tool to launch Hadoop jobs locally or on EMR](https://github.com/TheClimateCorporation/lemur)
+
+
+--> Too outdated for now
+
+### Stream and get streamed with Icecast audio streaming server
+[Ice Client Server](https://github.com/jblomo/iceclient)
