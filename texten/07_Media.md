@@ -235,6 +235,8 @@ And this will launch a ready to play interface, based on overtone, and some grap
 
 Up to your keyboard to play the music now.
 
+And if you cannot find inspiration (yet!), go and have a look at the [meta-ex band](http://meta-ex.com/). The 40 minutes [Zurich live](http://soundcloud.com/meta-ex/zurich-live) track is just incredible. All live coding in Clojure. 
+
 #### Clojure and Chicago pizza
 
 The best (and only?) place to find Chicago pizza in Tokyo is called the [Devil's Craft](http://www.devilcraft.jp/), near Kanda station.
@@ -260,6 +262,8 @@ and to display it on screen:
 Your turn to hack !
 
 ## Clojure on GPU, Processing, OpenCV, OpenCL, appellations controlees. 
+
+This section will lead us to some graphical adventure, 
 
 ### Processing, the best visual tool ported to Clojure for easy animation
 [https://github.com/quil/quil](https://github.com/quil/quil)
