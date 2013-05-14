@@ -362,12 +362,55 @@ The [version we are including](https://github.com/bronsa/penumbra) here is not f
 
     [bronsa/penumbra "0.6.0-SNAPSHOT"] 
 
+Penumbra has a lot of picky dependencies to get running and at a time where Apple and Oracle are in transition over the JVM handling, we are stuck with a few workarounds.
+One of them for this recipe to work, is to use an old version of the Java Machine, using the following command:
 
+@@@ ruby chapter07/penumbra-samples/set_mac_java.sh @@@
 
-@@@ ruby 43_penumbra.clj @@@
+This basically just tells to use Java6. Java8 is about to be supported, and as I write this book it seems it is. The above command will slightly update your path, on other machines, Windows include, this is not required.
 
-#### Blender exporter for Penumbra
-[https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
+One thing you will notice, while looking at:
+
+@@@ ruby chapter07/penumbra-samples/src/example/opengl/text.clj @@@
+
+is how similar it is to the processing/quil samples we saw earlier on. We start with some initial state our opengl *sketch* with a set of [callbacks](https://github.com/ztellman/penumbra/wiki/callbacks) pretty much the same way indeed.
+
+Our first example is just printing text, so let's do just that:
+
+![text](../images/chap07/text.png)
+
+Now the example I prefer with Penumbra is the Triangle:
+
+@@@ ruby chapter07/penumbra-samples/src/example/opengl/triangle1.clj @@@
+
+![triangle](../images/chap07/triangle.png)
+
+We can of course control our opengl code using mouse events, by just adding a callback for mouse-drag with:
+
+    :mouse-drag mouse-drag
+
+That then becomes:
+
+@@@ ruby chapter07/penumbra-samples/src/example/opengl/triangle3.clj @@@
+
+![triangle3](../images/chap07/triangle3.png)
+
+Penumbra can only go so far in its current state, but it can go far enough to implement Tetris:
+
+![tetris](../images/chap07/tetris.png)
+
+or asteroids:
+
+![asteroids](../images/chap07/asteroids.png)
+
+So what did we learn in this OpenGL adventure ? That it is easy to make nice screenshots for a book in a few lines of Clojure. That it takes more than just reading the lines to understand what they do indeed.
+
+I actually like the idea of the raw power of Penumbra, binding straight to OpenGL but I often find myself doing graphics with Quil. In any case, Penumbra needs just a bit of love to prove that code written 3 years ago runs as is. 
+And this is the lesson to be learned. 
+
+I was recently contacted by an old customer on some code written in Clojure 2 years ago. I thought it was thrashed but the web service and its bare UI had actually bean running without a glitch for 2 years. Wow. Lesson learn.
+
+Back to Penumbra, since we have slightly touched how to use our graphic card with OpenGL, let's see how we can actually delegate some non-graphical processing to that GPU in our next tip.
 
 ### OpenCL
 [https://github.com/ztellman/calx](https://github.com/ztellman/calx)
