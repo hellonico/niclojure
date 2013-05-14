@@ -263,22 +263,107 @@ Your turn to hack !
 
 ## Clojure on GPU, Processing, OpenCV, OpenCL, appellations controlees. 
 
-This section will lead us to some graphical adventure, 
+This section will lead us to some graphical adventure, first to a port of Processing for Clojure, that will lead us to some easy graphic work in Clojure, with live programming as a mantra.
+
+We will then move to different sort of open-ness. 
+
+Direct OpenGL fun, followed by attempting to shed some light on OpenCL, or how to use the power of your graphic card (almost) straight from Clojure. 
+Then on to OpenCV for some easy photo and imaging work.
+
+Last, we will briefly get into some gaming fun.
 
 ### Processing, the best visual tool ported to Clojure for easy animation
-[https://github.com/quil/quil](https://github.com/quil/quil)
 
-https://github.com/gtrak/quilltest/
+In the world of independent artists, [Processing](http://www.processing.org/) is a favorite. It is entirely open source, run originally on the Java machine, thus running as is on Android devices, it has recently been ported to the javascript world with [processingjs](http://processingjs.org/).
 
-Quil is to [Processing](http://processing.org/) what Clojure is to Java, some fresh air.
+There are already quite a few books teaching the original [Processing](http://www.amazon.co.jp/Processing%E3%82%92%E3%81%AF%E3%81%98%E3%82%81%E3%82%88%E3%81%86-Make-PROJECTS-Casey-Reas/dp/4873115159/ref=pd_sim_b_2), especially from the original Author Casey Reas.
 
-This is how your quil-ed processing sketch now looks like:
+Today we will look at bits of code on how to run this smoothly from Clojure.
 
-@@@ ruby 10_quil.clj @@@
+Why would you even want to run Processing in the language world ? You asked. 
+Easy. As we have seen with overtone, and all those chapters we have done up to know: Live Programming.
 
-Note the decor set to false, that hides most of the ugliness of the Window borders.
+In Processing, you write a sketch, and once you have put it all together you click on the start button.
+In Quil, you press the start button first, and just add things to a live sketch. Sounds fun ? Bet it is.
 
-And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the Generative Art book have been implemented in Clojure/Quil.
+Processing in the Clojure universe is named [quil](https://github.com/quil/quil).
+
+![quil](../images/chap07/quil.png)
+
+We add it to our project the usual way with:
+
+    [quil "1.6.0"]
+
+If you have seen a processing sketch before, you basically know it's made up of two separate parts:
+
+* setup
+* draw
+
+The setup is run once, to initialize frame rate, background color, and a few other start up variables.
+
+Draw is run a certain number of times per second, and is responsible for drawing the content that will be showing up on screen. (or on pdf by the way...)
+
+Our simplest sketch, will be just drawing random circles. It will define the setup and draw method, as well as putting it all together using the defsketch macro. Let's have a look:
+
+@@@ ruby chapter07/quil-start/src/zero_nc.clj @@@
+
+Setup, in our case, sets the background to black, as well as setting the draw method as anti-aliasing.
+
+Draw, setups the stroke color and stroke weight, as well as the color of the circle, then draw a circle randomly on screen using those parameters.
+
+Now we can run the sketch, and get something like this on the screen:
+
+![quil](../images/chap07/sketch00.png)
+
+Now if we replace the line in the draw method:
+
+    (fill (random 255)) 
+
+with:
+
+    (fill-int 
+     (color (random 255) (random 255) (random 255)) 
+     (random 255))
+
+Then we see that without restarting the sketch, the applet keeps on drawing itself with nice colors:
+
+![quil](../images/chap07/sketch01.png)
+
+The drawing adds itself *over* the already drawn shapes.
+
+If you want to redraw everything, you will need to black out the background by resetting the color:
+
+    (background 0)
+
+And then do your usual drawings.
+
+To keep in touch with the different functions available for Quil, there is your friendly [cheatsheet](https://github.com/quil/quil/raw/master/docs/cheatsheet/cheat-sheet.pdf) in the neighborhood. 
+
+To keep you learning for a while, all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art) you have ever dreamed from the [Generative Art](http://www.amazon.co.jp/%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%A9%E3%83%86%E3%82%A3%E3%83%96%E3%83%BB%E3%82%A2%E3%83%BC%E3%83%88--Processing%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89-Matt-Pearson/dp/4861008565/ref=sr_1_1?ie=UTF8&qid=1368513628&sr=8-1&keywords=generative+art) book have been implemented in Clojure/Quil.
+Go slowly through each of them and enjoy some great time.
+
+![circles](../images/chap07/circles.png)
+
+Lastly, a nice little test sketch taken from [https://github.com/gtrak/quilltest/](https://github.com/gtrak/quilltest/) that includes physics, ball objects, etc.. and shows you how to start a project yourself and organize it nicely.
+
+![quiltest](../images/chap07/quiltest.png)
+
+Now explore your wine driven creativity, with Clojure.
+
+### OpenGL for Clojure is here
+[https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
+
+OpenGL binding library.  This is not actively developped anymore, but still a good way to play with OpenGL from clojure, or simply to do GPU computing straight from your computer.
+
+The version we are including here is not from the original author but is compatible with the latest clojure
+<code>
+[bronsa/penumbra "0.6.0-SNAPSHOT"] 
+</code>
+
+@@@ ruby 43_penumbra.clj @@@
+
+#### Blender exporter for Penumbra
+[https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
 
 ### OpenCL
 [https://github.com/ztellman/calx](https://github.com/ztellman/calx)
@@ -296,21 +381,6 @@ And all the [examples](https://github.com/quil/quil/tree/master/examples/gen_art
 Simple CL
 https://bitbucket.org/postspectacular/simplecl
 
-### OpenGL for Clojure is here
-[https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
-
-OpenGL binding library.  This is not actively developped anymore, but still a good way to play with OpenGL from clojure, or simply to do GPU computing straight from your computer.
-
-The version we are including here is not from the original author but is compatible with the latest clojure
-<code>
-[bronsa/penumbra "0.6.0-SNAPSHOT"] 
-</code>
-
-@@@ ruby 43_penumbra.clj @@@
-
-#### Blender exporter for Penumbra
-[https://github.com/krumholt/penumbra-blender-exporter](https://github.com/krumholt/penumbra-blender-exporter)
-
 ## OpenCV and Imaging
 
 ### You have Vision !
@@ -319,3 +389,8 @@ The version we are including here is not from the original author but is compati
 
 ### Fiji, the best imaging tool in java can be clojure scripted !
 [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
+
+## Monkeys like gaming, so does Clojure
+
+A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
+

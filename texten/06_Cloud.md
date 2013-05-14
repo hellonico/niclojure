@@ -366,7 +366,7 @@ In this case:
 
 You have 5 applications ready to be deployed for free ! So go on, and launch some great honey tasting wine with some cloud bees !
 
-### Beanstalk or Clojure on Amazone Web Service
+### Beanstalk or Clojure on Amazon Web Service
 
 In the world of Cloud computing, it is hard to go without Amazon AWS these days. Even our earlier example on Heroku was, without us knowing it, based on the Amazon infrastructure.
 
