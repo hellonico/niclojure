@@ -351,14 +351,18 @@ Lastly, a nice little test sketch taken from [https://github.com/gtrak/quilltest
 Now explore your wine driven creativity, with Clojure.
 
 ### OpenGL for Clojure is here
-[https://github.com/ztellman/penumbra](https://github.com/ztellman/penumbra)
 
-OpenGL binding library.  This is not actively developped anymore, but still a good way to play with OpenGL from clojure, or simply to do GPU computing straight from your computer.
+I think we got hooked up to great graphics in the Quil section. While Processing/Quil allows you to easily do OpenGL drawings, it is far away enough as a language from the original specifications that people used to OpenGL might be at lost.
 
-The version we are including here is not from the original author but is compatible with the latest clojure
-<code>
-[bronsa/penumbra "0.6.0-SNAPSHOT"] 
-</code>
+Here comes the project that will make you shine around your geek friends, [penumbra](https://github.com/ztellman/penumbra), an OpenGL binding library.  
+
+While development has slowed down greatly, it is still a good way to play with OpenGL from clojure, or simply to do GPU computing straight from your computer.
+
+The [version we are including](https://github.com/bronsa/penumbra) here is not from the original author but is compatible with the latest clojure, and we will include it with:
+
+    [bronsa/penumbra "0.6.0-SNAPSHOT"] 
+
+
 
 @@@ ruby 43_penumbra.clj @@@
 
