@@ -413,20 +413,78 @@ I was recently contacted by an old customer on some code written in Clojure 2 ye
 Back to Penumbra, since we have slightly touched how to use our graphic card with OpenGL, let's see how we can actually delegate some non-graphical processing to that GPU in our next tip.
 
 ### OpenCL
-[https://github.com/ztellman/calx](https://github.com/ztellman/calx)
 
-[OpenCL](http://www.drdobbs.com/parallel/a-gentle-introduction-to-opencl/231002854) binding library. OpenCL is meant to be a universal parallel computing library. With calx we now have its power straight from Clojure. 
+In one of my consulting job, we are now using video processing servers whose sole purpose is to encoding videos using a bunch of GPUs. Not only was I still impressed, I was wondering why instead of simply using CPUs doing to calculations, servers would implemented in such a way that the CPU usage was barely around 5% and the GPU would be put to its maximum.
+Turns out ... At equivalent generating, of CPU and GPU, there is a lot to be gained in case the algorithm involves a lot of parallel computation.
+When using GPU, the main problem is to write in and read back values, but the in-between can be impressively fast.
 
-<code>
-[calx "0.2.1"]
-</code>
+In this short chapter, we will not present how to do OpenCL programming per se. We will expose just enough that you might want to consider it as a tool set, all usable from Clojure.
 
-@@@ ruby 42_calx.clj@@@
+[OpenCL](http://www.drdobbs.com/parallel/a-gentle-introduction-to-opencl/231002854) is a universal parallel computing library. With it you can harness the power of your GPU for your own needs. 
 
-#### More on Clojure with OpenCL, using SimpleCL
+#### GPU, OpenCL, calx and Clojure
 
-Simple CL
-https://bitbucket.org/postspectacular/simplecl
+In the Clojure universe, [calx](https://github.com/ztellman/calx) is an experiment to bring OpenCL power straight to your Clojure hands.
+
+We start by adding a dependency to our project:
+
+    [calx "0.2.1"]
+
+And to test that we indeed have a compatible machine running, we will use the following debug script:
+
+@@@ ruby chapter07/calx-samples/test/zero.clj @@@
+
+Should get output with something like
+
+    (#<CLDevice GeForce 320M)
+
+Under the GPU section. If you don't, OpenCL will try to use the CPU but some of the samples will break, and speed will be hampered. If you have an Intel card, some details on how to get going can be found on [JOCL](http://www.jocl.org/) website.
+
+Now to do a simple vector addition. If you have ever seen the [helloworld](http://developer.apple.com/library/mac/#samplecode/OpenCL_Hello_World_Example/Listings/hello_c.html#//apple_ref/doc/uid/DTS40008187-hello_c-DontLinkElementID_4) program presented by Apple for OpenCL, the below will be a breeze:
+
+@@@ ruby chapter07/calx-samples/test/addition.clj @@@
+
+A few things to note:
+
+* The OpenCL code for the GPU itself, is written as text in the Clojure code.
+* The OpenCL code is then compiled within a CL context
+* *wrap*: turns a Clojure variable into OpenCL variable, along with type casting
+* *mimic*: create a typed copy
+* *enqueue-kernel*: runs the operation through OpenCL
+* *enqueue-read*: retrieves the return value from the OpenCL code
+* We actually retrieve a Clojure ref to the native buffer of the returned value. So the actual value is only retrieved from the buffer when needed.
+
+To do a vector multiply is not much more complicated:
+
+@@@ ruby chapter07/calx-samples/test/multiply.clj @@@
+
+We can also note that the OpenCL method name is keywordized in calx.
+
+If you would like to compare the speed results on your machine, on CPU, on GPU, in and out of pure Clojure, we have added the source written by Tellman that compare the different methods, and funny enough, my favorite function *pmap* is just as slow as possible.
+
+Try it for yourself ! The filename is *compare.clj* in the calx-samples folder.
+
+#### (Always) More on Clojure with OpenCL, using SimpleCL
+
+Because there really can't be too much of a good things, some people are trying to push the limits further.
+
+[Simple CL](https://bitbucket.org/postspectacular/simplecl) is taking on where calx is stopping.
+
+The source sample for this is way to long to go through, but the sample folder *simplecl* has just enough to get you running.
+
+@@@ ruby chapter07/simplecl/physics.sh @@@
+
+The Clojure file to run is:
+
+    test/simplecl/verlet_test.clj
+
+Will run a fantastic picture generating algorithm using the latest [JOCL](http://www.jocl.org/).
+
+![simplecl](../image/chap07/simplecl.png)
+
+#### Openings with OpenCL and GPU computing
+
+We mostly exposed how to just get your hands dirty with GPU computing, but we hope you have been hooked. There is more to come, and we hope you will contribute a bit to an exciting area of the Clojure possibilities.
 
 ## OpenCV and Imaging
 
