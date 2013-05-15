@@ -489,10 +489,36 @@ We mostly exposed how to just get your hands dirty with GPU computing, but we ho
 ## OpenCV and Imaging
 
 ### You have Vision !
-[https://github.com/nakkaya/vision](https://github.com/nakkaya/vision)
-[http://nakkaya.com/vision.html](http://nakkaya.com/vision.html)
+
+OpenCV is your do everything imaging framework, running on every platform, with binding for almost any languages.
+
+#### Installing OpenCV
+
+To install it on Apple OSX we we will use Homebrew again, as we saw a long time ago in the early chapters:
+
+    brew tap homebrew/science
+    brew install opencv
+
+Once this is done, you should get a version of opencv 2.4.5 on your machine:
+
+    [niko][12:05][~/projects/vision/] % brew install opencv
+    ...
+    The OpenCV Python module will not work until you edit your PYTHONPATH like so:
+    export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+    To make this permanent, put it in your shell's profile (e.g. ~/.profile).
+    ==> Summary
+    🍺  /usr/local/Cellar/opencv/2.4.5: 216 files, 42M, built in 5.1 minutes
+
+#### Getting vision
+
+[vision](https://github.com/nakkaya/vision) developed by [Nurullah Akkaya](http://nakkaya.com/vision.html) can get you going in the 
+
+WARNING: At the time of writing, this was actually broken on my machines.
 
 ### Fiji, the best imaging tool in java can be clojure scripted !
+
+And this pretty much going to help you automate 
+
 [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
 
 ## Monkeys like gaming, so does Clojure
