@@ -638,9 +638,11 @@ See the results:
 
 There's also multithreading ... everything you need to start drinking wine more rapidly. Cheers !
 
-## Monkeys like gaming, so does Clojure
+### Exploring 
 
-A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
+Well it's been yet another chapter packed with Glory and fun wine adventures. 
 
+We have seen how to play with voice, speech and recognition, how to become a live DJ, and even getting to live VJ with Overtone and Quil.
+We then moved to hardcore GPU programming while ending slowly with Image handling and batched processing.
 
-
+We are getting close to desert, but first ...

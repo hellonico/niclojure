@@ -26,7 +26,10 @@ have a look at:
 [https://github.com/Chouser/clojure-jna](https://github.com/Chouser/clojure-jna)
 but it seems broken
 
-### Gaming
+### Monkeys like gaming, so does Clojure: Gaming
+
+A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
+
 
 https://github.com/odyssomay/orbit
 http://www.thejach.com/view/2012/05/getting_started_with_jmonkeyengine_and_clojure
