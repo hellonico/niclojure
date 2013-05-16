@@ -19,17 +19,3 @@ Mixpanel allows you to track any kind of event from Within your Application.
 [https://mixpanel.com/account/](https://mixpanel.com/account/)
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:+AggressiveOpts -Xmx16m" 
-
-GAME 
-Clojure wrapper for 3d
-
-https://github.com/odyssomay/orbit
-http://www.thejach.com/view/2012/05/getting_started_with_jmonkeyengine_and_clojure
-https://github.com/adinapoli/clj3D
-https://github.com/odyssomay/orbit/blob/master/test/orbit/test/ui.clj#L45
-
-http://aurellem.org/cortex/html/util.html
-http://aurellem.org/cortex/html/world.html
-
-Game !!!
-http://hg.bortreb.com/cortex/
