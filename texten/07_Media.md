@@ -490,11 +490,20 @@ We mostly exposed how to just get your hands dirty with GPU computing, but we ho
 
 ### You have Vision !
 
-OpenCV is your do everything imaging framework, running on every platform, with binding for almost any languages.
+OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
+OpenCV helps you doing everything media related from Image Processing, Camera calibration, 2D and 3D processing, video analysis, face recognition .. 
+
+For a vast set of tutorials, and possibilities have a look at the [OpenCV tutorial page](http://docs.opencv.org/doc/tutorials/tutorials.html).
+
+Most of those tutorials are in the C++ programming language.
+
+[vision](https://github.com/nakkaya/vision) was developed by [Nurullah Akkaya](http://nakkaya.com/vision.html) and can get you going a long way into working with a large subset of the OpenCV apis straight in Clojure.
+
+Let's dive in !
 
 #### Installing OpenCV
 
-To install it on Apple OSX we we will use Homebrew again, as we saw a long time ago in the early chapters:
+To install it on Apple OSX we we will use Homebrew again, as we saw a long time ago in the early chapters. opencv has actually been moved to a separate subrepository. So we will have to use one more command to get the proper formula:
 
     brew tap homebrew/science
     brew install opencv
@@ -511,17 +520,127 @@ Once this is done, you should get a version of opencv 2.4.5 on your machine:
 
 #### Getting vision
 
-[vision](https://github.com/nakkaya/vision) developed by [Nurullah Akkaya](http://nakkaya.com/vision.html) can get you going in the 
+There is actually one more extra step to do, we needcompile the C code necessary for vision to work.
 
-WARNING: At the time of writing, this was actually broken on my machines.
+    cmake .
+    make
+
+Finally, in your project.clj file, we need to add a native dependency to the library we just compiled. This is done by adding a path to "java native access" with:
+
+    :jvm-opts ["-Djna.library.path=resources/lib/"]
+
+#### Having a great vision with your webcam
+
+Seeing something could start by using the webcam to load some images. This is now easily done with:
+
+@@@ ruby chapter07/vision/src/display_webcam.clj @@@
+
+2 notes on the above code:
+* capture, allows us to access the input stream from the webcam
+* query-frame capture, capture one frame of the stream
+* view, display the captured frame on screen
+
+#### Loading images and applying transformations
+
+There is a simpler way to just load an image by the way by using the core Clojure method:
+
+    (load-image "resources/samples/soccerfield.jpeg")
+
+Let's say we loaded an image to do lane detection:
+
+![lane raw](../images/chap07/lane-detection-raw.png)
+
+Now we can use the OpenCV bindings to apply some transformation to the image:
+
+As exposed in Nakkaya's blog post on [lane detection](http://nakkaya.com/2011/01/24/lane-detection-using-clojure-and-opencv/) we can apply transformation to the image so as to make it easier to process.
+
+This could be done with:
+
+    (defn detect-edges [i]
+        (--> 
+         (convert-color i :bgr-gray)
+         (smooth :gaussian 7 7 0 0)
+         (canny 90 90 3)))
+
+For every frame, we convert it to gray scale, smooth it, and mark the edges on the scene using the Canny algorithm. —> in the code is not a typo, none of the calls in the library modify the original image, instead they all return a brand new image which needs to be released when done, —> works just like the -> in Clojure with the only difference being, it will call release for each intermediate image. 
+
+After edge detection we end up with the following: 
+
+![lane raw](../images/chap07/lane-detection-edges.png)
+
+#### Face recognition 
+
+The quintessential example of OpenCV probably is to find out where Lena's face is. Nakkaya has a sample for that too, see by yourself: 
+
+@@@ ruby chapter07/vision/src/face_detect.clj  @@@
+
+And the resulting image:
+
+![lena](../images/chap07/Lena.jpg)
+
+Actually, if you have followed the code properly, you'd see that we were taking input from the webcam here again ! Maybe too much red wine though.
+
+#### What's next with imaging ? Bounding Box
+
+The complete list of supported OpenCV functions are displayed on [Vision's github page](https://github.com/nakkaya/vision), so there is quite a bit ready to experiment.
+
+Last summer I was asked how to find the bounding box of an image in a fast algorithm. Took me way too long to figure out. And then, while writing this book, find out, Nakkaya's implemented it in only a few magic lines:
+
+@@@ ruby chapter07/vision/src/bounding_box.clj  @@@
+
+with-countours and bounding-rects are the two magic functions. How sweet.
 
 ### Fiji, the best imaging tool in java can be clojure scripted !
 
-And this pretty much going to help you automate 
+While OpenCV was a great jump to a new world of possibilities, let's step back a bit in the practical world with Fiji.
 
-[Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting)
+Fiji is an image processing package. It can be described as a distribution of ImageJ (and soon ImageJ2) together with Java, Java 3D and a lot of plugins organized into a coherent menu structure. Fiji compares to ImageJ as Ubuntu compares to Linux. 
+
+But we are not here to talk about Fiji, but rather, what Clojure can help us to with image processing. 
+And Fiji has a full on section on how to do [Clojure Scripting in Fiji](http://fiji.sc/wiki/index.php/Clojure_Scripting). Perfect for late night wine.
+
+#### Fiji UI and Clojure
+
+Once you have downloaded and started Fiji
+
+![fiji](../images/chap07/fiji.png)
+
+You can select the integrated Clojure interpreter from the scripting menu:
+
+![fiji](../images/chap07/clojure_interpreter.png)
+
+Then loading and displaying an image from the web is as simple as:
+
+@@@ ruby chapter07/fiji/first.clj @@@ 
+
+And here's what shows:
+
+![fiji](../images/chap07/gold.png)
+
+Sweet !! 
+
+#### Fiji and Clojure on the command line
+
+But what if you have a batch of imaging tasks to be done ? No problem, this is exactly why we are introducing such great tools.
+
+The quintessential example for this would be to resize an image:
+
+@@@ ruby chapter07/fiji/resize.clj @@@ 
+
+Sweet ? Wait ! There's more !
+
+There are a [bunch of samples](http://fiji.sc/wiki/index.php/Clojure_Scripting#Example_Clojure_plugins_included_in_Fiji) included in the Fiji distribution and I particularly like 
+the example showing how to blend two images. 
+
+See the results: 
+
+![fiji](../images/chap07/blend.png)
+
+There's also multithreading ... everything you need to start drinking wine more rapidly. Cheers !
 
 ## Monkeys like gaming, so does Clojure
 
 A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
+
+
 
