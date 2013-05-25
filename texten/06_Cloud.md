@@ -480,7 +480,7 @@ We will do a simple check out and review how that works.
 
 First we have a simple configuration file in Clojure syntax:
 
-@@@ ruby chapter06/ServerStats/server-stats.clj @@@
+@@@ ruby chapter06/ServerStats/server-stats.cfg @@@
 
 As you see first we defined some alert handlers, one that simply prints a message when an alert was detected. 
 
@@ -519,9 +519,13 @@ In our configuration file above, the following is a list of alerts:
 						 :trigger (> 90)}]}
 
 Meaning the email alert handler will be triggered if the percentage value of the disk space is over 90%.
-Et voila!
+Note also, that you need the trigger flag on the command line:
 
-Note that the list of commands is generated automatically for you:
+	lein run disk -a
+
+Et voila! Alerts are sent, SMS, Email or logs are created.
+
+Note also, that the list of commands is generated automatically for you.
 
 A run with no parameters would return:
 
