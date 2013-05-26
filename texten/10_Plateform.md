@@ -723,6 +723,18 @@ Also, Domina contains a robust event handling API that wraps the Google Closure 
 
 In any case, Enjoy your voyage in the Clojure script land !
 
+###### ClojureScript & Canvas: A Simple Breakout Implementation
+
+This is nothing more than a way to squeeze a link to work on the HTML5 canvas with Clojure script.
+
+Have a look at the original [post](http://nakkaya.com/2012/01/31/clojurescript-canvas-a-simple-breakout-implementation/)
+
+And at the awesome screenshot:
+
+![canvas](../images/chap10/canvas.png)
+
+More to come in a future book !
+
 #### Bonus points: Clojurescript with Google's AngularJS
 
 [Clang](https://github.com/pangloss/clang) is ClojureScript well integrated with [Google's AngularJS framework](http://angularjs.org/).

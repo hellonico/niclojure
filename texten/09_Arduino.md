@@ -180,16 +180,137 @@ The clj-native folder contains a full example defining struts, unions, and callb
 
 Have fun reading through it !
 
+## Gaming
+
+In this section, we will briefly go into the world of gaming. This is to get you going and see what happens in the Clojure world, but this section alone would deserve a book on its own as well. (hint hint).
+
+We will see how to have fun with 3D models and textures, as well as getting through a potential hello world for a real game, based on the jmonkeyengine.
+
 ### Monkeys like gaming, so does Clojure: Gaming
 
 A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
 
+So what do we have in the pure Clojure land for games ?
+
+#### clj3D
+
+Clj3D is massively based on the excellent jMonkeyEngine and it tooks the best of it. PLaSM is a "design language" for geometric and solid parametric design, developed by the CAD Group at the Universities "La Sapienza" and "Roma Tre".
+
+Clj3d was my first 3d adventure in the Clojure land. It's been left out a bit now but if you have the energy, let's update it and bring it up to speed !
+
+The original repository is located at: https://github.com/adinapoli/clj3D, but it was in need of some spring cleanup so we ported it to:
+
+    https://github.com/hellonico/clj3D
+
+To include this in your project and start the fun, include the following dependency:
+
+    [hellonico/clj3d "0.0.6"]
+
+And for the moment, until further notice, we should stay onto a previous version of Clojure:
+
+    [org.clojure/clojure "1.2.0"]
+
+We start the REPL and ... 
+
+##### Live 3D
+
+We start by importing the namespaces:
+
+    (use '(clj3D math fl fenvs viewer) :reload)
+
+Display a 1x1x1 cube
+
+    (view (cube 1))
+
+![clj3d1](../images/chap09/clj3d1.png)
+
+Creates a green torus
+
+    (def green-torus (color :green (torus 0.5 1.0)))
+    (view green-torus)
+
+![clj3d2](../images/chap09/clj3d2.png)
+
+Creates a red torus rotated by PI/2 on X axes and translated on X by -1.0
+
+    (def red-torus 
+        (struct2 
+            (t 1 -1.0) 
+            (r 1 (/ PI 2.0)) 
+            (color :red) 
+            (torus 0.5 1.0)))
+     
+     (view red-torus)
+
+![clj3d3](../images/chap09/clj3d3.png)    
+
+And assemble the two torus together:
+
+     (view (struct2 green-torus red-torus))
+
+![clj3d4](../images/chap09/clj3d4.png)
+
+We can also load textures and models quite easily. Models, mostly wavefront obj files are loaded from the models folder. We have included 
+
+From the repl, this translates into:
+
+    (view (load-obj "car.obj"))
+
+And this shows 
+
+![obj3](../images/chap09/obj3.png)
+
+Et voila. 
+
 #### Orbit
 
-https://github.com/odyssomay/orbit
-http://www.thejach.com/view/2012/05/getting_started_with_jmonkeyengine_and_clojure
+In 2013, an new project named [orbit](https://github.com/odyssomay/orbit) has also started a great Clojure wrapper around the [jmonkey engine](http://jmonkeyengine.com/).
 
-#### clj3D 
+![jmonkey logo](../images/chap09/Jmonkeyengine-logo.png)
 
-https://github.com/adinapoli/clj3D
-https://github.com/odyssomay/orbit/blob/master/test/orbit/test/ui.clj#L45
+Since all the required libraries are properly packaged together, we can start doing a nice [hello jmonkey from Clojure](
+http://www.thejach.com/view/2012/05/getting_started_with_jmonkeyengine and_clojure).
+
+The code to get started is in:
+
+@@@ ruby chapter09/orbit/test/orbit/monkey.clj @@@
+
+Let's go through it slowly.
+
+* We start by defining an asset manager, responsible for providing an interface for managing the data assets of a jME3 application.
+
+* We then go on and define the application settings, through the use of the Java class, *AppSettings*
+
+* Moving on, we create a cube, using the *Box* method, making available as a *Geometry* object. We set it to a nice *Blue* color. We then load a texture to loaded through the Assets Manager that we defined before, and finally set the texture to the geometry.
+
+The interesting part of the code is in:
+
+    (let [b (Box. Vector3f/ZERO 1 1 1)
+          geom (Geometry. "Box" b)
+          mat (Material. assetManager
+                         "Common/MatDefs/Misc/Unshaded.j3md")]
+      (.setColor mat "Color" ColorRGBA/Blue)
+      (.setMaterial geom mat)
+
+Remaining of the *monkey.clj* file is mostly starting the application that we have defined by proxy-ing the java object *SimpleApplication*.
+
+When running we luckily get:
+
+![hello monkey](../images/chap09/hello_jmonkey.png)
+
+Nice, we now have the power of the jmonkey engine to our clojure hands !
+
+To continue from there, we recommend looking at the following [blog](http://aurellem.org/), and the especially the following entries:
+
+* [Creating a virtual world](http://aurellem.org/cortex/html/world.html)
+* [jMonkeyEngine from Clojure](http://aurellem.org/cortex/html/games.html)
+* The series on Sensors and effectors. ([Building a Body](http://aurellem.org/cortex/html/body.html) ...)
+* [Gabor Filters](http://aurellem.org/cortex/html/gabor.html)* 
+
+![gabor](../images/chap09/gabor.png)
+
+### Where's the next game ?
+
+This section ends only to let you begin. We only touched through some fun themes, Arduino, Games preparing your imagination to just go wild and create some nice interaction from the real world, to the world of games, whether you are using sensors, touch, or again, still trying to get your [Roomba](http://napkinfactory.net/blog/?cat=8) out of the way.
+
+![roomba](../images/chap09/roomba-sketch.png)
