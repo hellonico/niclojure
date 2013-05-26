@@ -130,11 +130,55 @@ Of course, connecting quil or overtone is totally allowed and part of the advent
 
 Robot are going mad. 
 
-### Going native
-[Clojure Native](https://github.com/bagucode/clj-native)
-have a look at:
-[https://github.com/Chouser/clojure-jna](https://github.com/Chouser/clojure-jna)
-but it seems broken
+### Going native, C code interfacing with Clojure
+
+We already have seen a lot of native code with OpenCV and OpenGL in the last chapter. 
+Now comes [Clojure Native](https://github.com/bagucode/clj-native), a rough but working implementation to interface Clojure code and C code.
+
+The C library we are going to interface with is quite simple:
+
+@@@ ruby clj-native/src/examples/simple.c @@@
+
+Basically we define the simplest function in C:
+
+    const char* returnsConstantString()
+
+And another one with parameters and a return value:
+
+    int add(int x, int y) 
+
+In the examples folder, we can compile it with gcc:
+
+@@@ ruby clj-native/src/examples/build_simple @@@
+
+And it will generate a platform dependent library.
+
+We do remember from the previous chapter that we add a quick setting in project.clj for JNA, the Java Native Access to work:
+
+    :jvm-opts ["-Djna.library.path=src/examples"]
+
+The Clojure side of things is not very complicated either. We need to enumerate the functions we will use inside a *defclib* macro.
+
+The remaining part of it, is simply load the library we have just compiled with *loadlib*, and calling the functions directly as if they were defined in Clojure.
+
+This now reads in the code below:
+
+@@@ ruby clj-native/src/examples/simple.clj @@@
+
+If we run it with:
+    
+    lein run -m examples.simple
+
+The output will natively be:
+
+    This string should be safe to read as const char*
+    3
+
+Nice and simple. 
+
+The clj-native folder contains a full example defining struts, unions, and callbacks on top of the functions we have just seen.
+
+Have fun reading through it !
 
 ### Monkeys like gaming, so does Clojure: Gaming
 
