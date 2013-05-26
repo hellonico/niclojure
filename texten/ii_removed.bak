@@ -233,3 +233,6 @@ http://hg.bortreb.com/cortex/
 
             git clone https://github.com/brentonashworth/one.git
 
+#### Alembic
+Alembic to build on top of Pomegranate
+http://palletops.com/alembic-clojure-classpath-control
