@@ -114,11 +114,11 @@ If just anything, I am trying to lock down my windows environment to VirtualBox.
 
 Here is the content of the zip file:
 
-![../images/chap10/clr1.png]
+![clr1](../images/chap10/clr1.png)
 
 Here is a REPL running on the CLR:
 
-![../images/chap10/clr2.png]
+![clr2](../images/chap10/clr2.png)
 
 
 
@@ -132,7 +132,7 @@ Now that we know we have the REPL working it is time to try out a few calls into
 
     (System.Console/WriteLine “I just called a .NET method!”)
 
-![../images/chap10/net1.png]
+![net1](../images/chap10/net1.png)
 
 One way to load a .NET assembly makes use of the Assembly/LoadWithPartialName method.  Here’s what it looks like:
 
@@ -148,7 +148,7 @@ The call above tells the REPL we want to bring the System.Windows.Forms.MessageB
 
     (MessageBox/Show “Hi from clojure-clr!” “Clojure-CLR Dialog”)
 
-![../images/chap10/net2.png]
+![net2](../images/chap10/net2.png)
 
 Straight forward ? Now let's look in the mirror and ...
 
