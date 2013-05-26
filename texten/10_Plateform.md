@@ -519,17 +519,67 @@ To summarize, we have seen how to
 
 We have gathered some quite advanced techniques here. With great techniques, comes great powers, comes great wine. Another glass of wine should not hurt.
 
-#### Single Page Application Using Clojure Script
-[https://github.com/neatonk/one](https://github.com/neatonk/one)
+#### Your whole website in Clojure
 
-            git clone https://github.com/brentonashworth/one.git
+This section will follow up where *lein cljsbuild* stops. We will go over and see a few bricks of the Clojurescript landscape to make your development time even faster and pleasant.
 
-#### Clojurescript with Google's AngularJS
+We will see Clojure Home Page, or the base framework to have your whole website in Clojure.
+Then onwards with some templating powers with Enlive in clojure script.
 
-https://github.com/pangloss/clang
+Lastly, since we love Google's AngularJS, we will also see how to write AngularJS code in clojure script.
+
+Still hungry ? Bon Appetit !
+
+##### Clojure Home Page
+
+To follow up with a new kid on the block in the school of web frameworks, here comes [Clojure Home Page](https://github.com/runexec/chp)
+
+ClojureHomePage is a Compojure based web framework that allows you to write the backend and frontend with Clojure.
+
+You can:
+
+* Run Clojure inside a HTML file with the <clj></clj> tags
+* Have multiple method handlers under a single route (get, post, put, delete, and head)
+* Easily get common web headers (ex. ($ user-agent))
+* Easily get web headers (ex. ($$ cache-control))
+* Easily get environmental variables (ex. (env java.vm.name))
+* Generate HTML with a drop-in replacement for common Hiccup forms
+* Generate JavaScript / ECMAScript with ClojureScript
+* Generate CSS with Garden
+* Manipulate databases with KormaSQL
+
+I have cloned a basic sample from the *clojure-home-page* repository. Navigating to it, we remember we start with the now familiar two commands:
+
+    lein ring server-headless
+    lein cljsbuild auto
+
+In this checkout, we have a new generic ring rouges named *chp-route* :
+
+    (chp-route "/" 
+               (or (chp-parse (str root-path "index.chtml"))
+                   "error"))
+
+Which basically does the magic for us, and allows for embedding Clojure code and templating with clojure directly into the file.
+
+The template itself, declared with the extension .chtml, will read easily at this stage of the book:
+
+@@@ ruby chapter10/clojure-home-page/chp-root/index.chtml @@@
+
+And it really is Clojure everywhere. With some clojure script in the chtml file and some more clojurescript coming from file:
+
+@@@ ruby chapter10/clojure-home-page/resources/cljs/main.cljs @@@
+
+Et voila.
+
+![chp](../images/chap10/chp1.png)
+
+Clojure Home Page wraps [hiccup](https://github.com/runexec/chp#clojure-and-html-generation) for templating, in those chtml files, and includes the [Garden](https://github.com/noprompt/garden)  library to have fun even when writing CSS code. 
+
 
 #### Enlive inspired templating for Clojure Script
 [Enlive inspired templating](https://github.com/ckirkendall/enfocus)
 
-#### Clojure Home Page
-Your whole website in Clojure: https://github.com/runexec/chp
+#### Clojurescript with Google's AngularJS
+https://github.com/pangloss/clang
+
+
