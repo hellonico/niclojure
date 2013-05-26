@@ -575,11 +575,229 @@ Et voila.
 
 Clojure Home Page wraps [hiccup](https://github.com/runexec/chp#clojure-and-html-generation) for templating, in those chtml files, and includes the [Garden](https://github.com/noprompt/garden)  library to have fun even when writing CSS code. 
 
+##### Fetch: A ClojureScript library that makes client/server interaction painless.
 
-#### Enlive inspired templating for Clojure Script
-[Enlive inspired templating](https://github.com/ckirkendall/enfocus)
+Remember the noir web library from our web chapter some time ago ?
 
-#### Clojurescript with Google's AngularJS
-https://github.com/pangloss/clang
+[Fetch](https://github.com/ibdknox/fetch) introduces *Remotes*, and let you make calls to a noir server without having to think about XHR. On the client-side you simply have code that looks like this:
+
+    (ns playground.client.test
+     (:require [fetch.remotes :as remotes])
+     (:require-macros [fetch.macros :as fm]))
+    
+    (fm/remote (adder 2 5 6) [result]
+     (js/alert result))
+    
+    (fm/remote (get-user 2) [{:keys [username age]}]
+     (js/alert (str "Name: " username ", Age: " age)))
+     
+     ;; for a much nicer experience, use letrem
+    (fm/letrem [a (adder 3 4)
+              b (adder 5 6)]
+      (js/alert (str "a: " a " b: " b)))
+
+Note that the results we get are real Clojure datastructures and so we use them just as we would in normal Clojure code. No JSON here.
+
+The noir side of things is just as simple. All you do is declare a remote using defremote.
+
+    (use 'noir.fetch.remotes)
+     
+    (defremote adder [& nums]
+               (apply + nums))
+     
+    (defremote get-user [id]
+               {:username "Chris"
+                :age 24})
+    
+    (server/start 8080)
+
+Easy ? We have included an example using both friendly and fetch, under *friendly-fetch-example*.
+
+The most interesting file is sliced in two parts. The server side:
+
+    (ns friendly.views.welcome
+      (:require [friendly.views.common :as common]
+                [cemerick.friend :as friend])
+      (:use [noir.fetch.remotes]
+            [noir.core :only [defpage]]))
+     
+    (defremote get-user []
+      (:username (friend/current-authentication)))
+     
+    (defremote login [auth]
+      (friend/authorize #{:friendly.server/user}
+                        (:username (friend/current-authentication))))
+     
+    (defremote logout [] nil)
+     
+    (defremote another []
+      (friend/authorize #{:friendly.server/user} "This action required logging in!"))
+
+And the client side, making calls from Clojurescript to Clojure and back:
+
+@@@ ruby chapter10/friendly-fetch-example/src-cljs/friendly/client.cljs @@@
+
+We also get a nice example of how to use the google dom library and update the DOM directly with:
+
+    (dom/setTextContent (dom/getElement "currentuser") "")
+
+##### Shoreleave
+
+We would not be presenting the Clojurescript landscape properly without presenting Shoreleave.
+
+[Shoreleave](https://github.com/ohpauleez/shoreleave) is a smarter client-side in ClojureScript. Shoreleave is a collection of integrated libraries that focuses on:
+
+    Security
+    Idiomatic interfaces
+    Common client-side strategies
+    HTML5 capabilities
+    ClojureScript's advantages
+
+More concisely (and reductively), Shoreleave is a set of web-app libraries that make it simpler to get a ClojureScript-based client-side connected to a Ring/Compojure-based Clojure backend.
+
+We have included a [barebone shoreleave](https://github.com/ddellacosta/barebones-shoreleave) playground in the chapter10 folder.
+
+The main ring handler file, contains three interesting sections. 
+
+First, The shoreleave middle included and defined in the namespace with:
+
+    [shoreleave.middleware.rpc :refer [defremote wrap-rpc]]
+
+Second, we add it to our route definition:
+
+    (def app
+      (-> app-routes
+      wrap-rpc
+      ...
+      handler/site))
+
+Last, we define a remotely available endpoint with:
+
+     ;; https://github.com/shoreleave/shoreleave-remote-ring
+     (defremote ping [pingback]
+       (str "You have hit the API with: " pingback))
+
+This remote endpoint can then be used from the client side:
+
+@@@ ruby chapter10/barebones-shoreleave/src/barebones_shoreleaves/client/main.cljs @@@
+
+![shoreleave](../images/chap10/shoreleave.png)
+
+Sweet ? But wait, there's more !
+
+Shoreleave's remotes package includes XHR, Pooled-XHR, JSONP, and HTTP-RPC capabilities.
+
+CSRF protection is built in if your Clojure server is using the ring-anti-forgery middleware. See shoreleave-baseline for anti-forgery details.
+
+The HTTP-RPC allows for exposing a server-side namespace as a client-side API, via a single server-side call, remote-ns.
+
+And finally Shoreleave includes a [pub/sub abstraction](https://github.com/ohpauleez/shoreleave#a-pubsub-abstraction-and-implementations) (and implementations)
+
+Shoreleave's pub/sub system enables you to completely decouple parts of your app and declaratively bind them together. New features and functionalities can be built by composing pre-existing services/publishables.
+
+We have included a [barebone shoreleave](https://github.com/ddellacosta/barebones-shoreleave) playground in the chapter10 folder.
+
+A more extensive shoreleave example project is included in the sample codes for chapter10 inside the shoreleave folder.
+
+
+##### Whole website in Clojure. Where to go from here ?
+
+So what have we seen in this section ? 
+
+* Clojure Home Page, a base line for creating your web application with Clojure on the front end, with Clojurescript and on the backend with Clojure Ring Handlers
+* Fetch, a remoting library to explain the advantage of having remoting expose as Clojure functions on both server side and client side.
+* Shoreleave, pushes the limit further by providing a very clean remoting interface and a full implementation of a publisher/subscripber framework.
+
+To keep on playing in the Clojure script land, you should also have a look at the following two libraries:
+
+###### Enfocus: Enlive inspired templating for Clojure Script
+
+If we remember again we have seen Enlive templating. And now we will present [enfocus](https://github.com/ckirkendall/enfocus), Enlive inspired templating in Clojurescript.
+
+The [enfocus-site](http://ckirkendall.github.io/enfocus-site/)'s [source code](https://github.com/ckirkendall/enfocus-demo-site.git) itself is worth every second of reading.
+
+###### Domina
+
+[Domina](https://github.com/levand/domina) is a jQuery inspired DOM manipulation library for ClojureScript. It provides a functional, idiomatic Clojure interface to the DOM manipulation facilities provided by the Google Closure library.
+Also, Domina contains a robust event handling API that wraps the Google Closure event handling code, while exposing it in a idiomatic functional way. 
+
+In any case, Enjoy your voyage in the Clojure script land !
+
+#### Bonus points: Clojurescript with Google's AngularJS
+
+[Clang](https://github.com/pangloss/clang) is ClojureScript well integrated with [Google's AngularJS framework](http://angularjs.org/).
+
+##### What is it?
+
+Clang includes an unmodified current release of AngularJS. It allows you to use ClojureScript data structures throughout your angular app and simplifies writing your controllers and directives, etc according to Angular's best practices. Clang integrates ClojureScript into all of Angular's built-in directives.
+
+##### How is it? 
+
+Clang defines a new $parse provider which is injected throughout Angular and used wherever Angular reads any properties from the scope. It also replaces the Angular $interpolate provider to enable the same thing in {{interpolated}} blocks in your app.
+
+Those two changes enable all of Angular's built in directives to work with ClojureScript except for the ng-repeat which assumes Javascript arrays. Clang's clang-repeat fills that gap.
+
+##### Show me
+
+Here are a couple of bits of code clipped from the sample index.html
+
+This bit calls the remaining function from the scope and applies the built-in count function to the todos vector:
+
+      <span>{{(remaining)}} of {{(count todos)}} remaining</span>
+      [ <a ng-click="(archive)">archive</a> ]
+
+The relevant controller definitions:
+
+    (def.controller m TodoCtrl [$scope]
+     (scope! todos [{:text "learn angular" :done "yes"}
+                 {:text "learn cljs" :done "yes"}
+                 {:text "build an app" :done "no"}])
+     (defn.scope remaining []
+      (->>
+       (scope! todos)
+       (map :done)
+       (remove #{"yes"})
+       count)))
+
+Here's a slightly silly but kind of awesome example of building a table:
+
+      <table>
+        <tr clang-repeat="group in (drop 1 (partition 3 nums))">
+          <td clang-repeat="x in (map (juxt identity odd?) group)">
+            {{(first x)}} is {{(if (last x) "odd" "even")}}
+          </td>
+        </tr>
+      </table>
+
+The relevant controller definitions:
+
+    (def.controller m TodoCtrl [$scope]
+     (scope! nums (range 1 10)))
+
+###### Try it yourself !
+
+In the clang folder, we use the cljsbuild command to compile the code:
+
+    lein cljsbuild auto dev
+
+And then open the resulting compiled code with:
+
+    open resources/public/index.html
+
+And see real time client side javascript "a-la-angular-js" on your own brower:
+
+![clang](../images/chap10/clang.png)    
+
+### Finishing the chapter10
+
+So this last chapter was a pretty intense presentation of the whole Clojure landscape pushed to some new worlds.
+
+We have gone through this very diverse list of knowledge:
+
+* run Clojure on the Ruby Virtual Machine and how to call ruby gems from Clojure
+* run Clojure on .Net, Microsoft's virtual machine, and how to call .NET code from Clojure and the reverse.
+* Presented and work through a long list of examples for Clojurescript, and how it is redefining in a very Fresh way how to do web programming.
+
+Hope you enjoyed, finish the last glass of wine and review some working samples to have a nice last impression on this long chapter.
 
 
