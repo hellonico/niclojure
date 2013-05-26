@@ -80,11 +80,11 @@ Voila. We have gone in details through the authentication steps. We do not need 
 
 Prepare for creating a new application on Heroku. Let's head to our account page again, and create a new app through the following steps:
 
-![../images/chap06/heroku1.png]
+![heroku1](../images/chap06/heroku1.png)
 
-![../images/chap06/heroku2.png]
+![heroku2](../images/chap06/heroku2.png)
 
-![../images/chap06/heroku3.png]
+![heroku3](../images/chap06/heroku3.png)
 
 Then back to our application, we can add the necessary git remote.
 

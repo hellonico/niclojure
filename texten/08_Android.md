@@ -29,7 +29,7 @@ If you have not worked with Android before, all the same, head to the above link
 
 While I am not going to review the content of each folder yet, because this is mostly outside the scope of this book, here is what you have just extracted on your machine:
 
-![../images/chap08/android_sdk.png]
+![android_sdk](../images/chap08/android_sdk.png)
 
 Within that folder, we need to install a slightly more compatible version of the Android core. We will do that using the *SDK Manager* that can be started using the following command:
 
@@ -37,7 +37,7 @@ Within that folder, we need to install a slightly more compatible version of the
 
 And we will install the version 11, as shown in the screenshot below:
 
-![../images/chap08/sdk.png]
+![sdk.png](../images/chap08/sdk.png)
 
 That's it. You could play with the native android examples but you have so many Clojure things to do, let's move on.
 
