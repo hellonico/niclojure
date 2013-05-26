@@ -220,9 +220,16 @@ http://hg.bortreb.com/cortex/
 [ClojureScripting Intro](http://jeditoolkit.com/2012/03/17/clojurescripting-intro.html)
 
 
+### Physics with Clojure
+[http://nakkaya.com/2010/07/21/physics-with-clojure/]([http://nakkaya.com/2010/07/21/physics-with-clojure/)
+[http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/](http://antoniogarrote.wordpress.com/2011/01/30/ocr-with-clojure-tesseract-and-opencv/)
+
+
+
 ### Ugokanai
 
 #### Single Page Application Using Clojure Script
 [https://github.com/neatonk/one](https://github.com/neatonk/one)
 
             git clone https://github.com/brentonashworth/one.git
+
