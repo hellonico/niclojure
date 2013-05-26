@@ -4,7 +4,6 @@ http://palletops.com/alembic-clojure-classpath-control
 https://github.com/zcaudate/cronj
 
 javafx -> in apps folder
-
 vaadin -> in apps folder
 
 lein-exec -> in lein chapter, how to execute scripts

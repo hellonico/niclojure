@@ -17,8 +17,7 @@ You can send a Clojure SOS.
 
 There are so many more great [Samples](http://nakkaya.com/clodiuno.html) that Nakkaya has been writing. Make sure you go through them.
 
-### Having fun around moving Roomba around the house from Clojure
-[REPL Roomba](http://gigasquidsoftware.com/wordpress/?p=450)
+Another way to have fun, is to hack a [REPL connecting to your Roomba](http://gigasquidsoftware.com/wordpress/?p=450) robot !!
 
 ### Going native
 [Clojure Native](https://github.com/bagucode/clj-native)
@@ -30,14 +29,12 @@ but it seems broken
 
 A long time I ago, just around 10, I picked up a book on [Game theory](http://en.wikipedia.org/wiki/Game_theory). I was a lot into Role Playing games at the time, and thought that this was going to help me design more entertaining games for those role playing sessions. Little did I know I was completely off. It did take me some time to read the different explanations and was quite soon on the path to be very interested into the process of decision making.
 
+#### Orbit
 
 https://github.com/odyssomay/orbit
 http://www.thejach.com/view/2012/05/getting_started_with_jmonkeyengine_and_clojure
+
+#### clj3D 
+
 https://github.com/adinapoli/clj3D
 https://github.com/odyssomay/orbit/blob/master/test/orbit/test/ui.clj#L45
-
-http://aurellem.org/cortex/html/util.html
-http://aurellem.org/cortex/html/world.html
-
-Game !!!
-http://hg.bortreb.com/cortex/

@@ -259,19 +259,277 @@ That's most of it for our very short presentation of Clojure CLR, the rest is up
 Happy Windows Sweet Wine. 
 
 ### ClojureScript (clojure compiling to Javascript)
-[https://github.com/clojure/clojurescript](https://github.com/clojure/clojurescript)
 
-#### Intro
-[ClojureScripting Intro](http://jeditoolkit.com/2012/03/17/clojurescripting-intro.html)
+[ClojureScript](https://github.com/clojure/clojurescript) is Clojure's answer to Javascript, probably one of the most dynamic runtime nowadays.
+ClojureScript is a new compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.
+
+[This page](http://himera.herokuapp.com/synonym.html) presents in two columns the differences between Clojurescript and Javascript. Please take the time to go and read through it. You should be finish a single glass of wine anyway.
+
+There is a ready to use [online REPL](http://www.clojurescript.net/) at:
+
+    http://www.clojurescript.net/
+
+If you want to know more about the syntax a few books have started to appear on the subject. As usual, we are less interested in the syntax itself, and more about the ecosystem around Clojurescript.
+
+#### Our first Clojure Script project, is actually in Javascript.
+
+To get up to speed quickly, we are going to look at how to extend a simple ring application, remember our Web chapter ? (or maybe now's a good time to quickly go through it), extend to have Clojure script integrated.
+
+Let's have a look at the *project.clj* file:
+
+@@@ ruby chapter10/cljs-simple/project.clj @@@
+
+We note we have, a new Leiningen plugin, lein-cljsbuild that we integrate in our project with:
+
+    [lein-cljsbuild "0.3.2"]
+
+We also have a new section for clojure script:
+
+    :cljsbuild {
+      :builds [{:source-paths ["src-cljs"]
+              :compiler {:output-to "resources/public/js/main.js"
+                         :optimizations :whitespace
+                         :pretty-print true}}]}
+
+Which reads easily enough, we just want to compile all the clojurescript code found in folder *src-cljs* to a file named *main.js* with a few indications for formatting.
+
+Now in the cljs-simple project, we will use a command to compile the clojure script code in the background for us:
+
+    lein cljsbuild auto
+
+While, the regular Clojure code from the *src-clj* is nothing new, let's have a look at the content of src-cljs/example/hello.clj:
+
+@@@ ruby chapter10/cljs-simple/src-cljs/example/hello.clj @@@
+
+Quite basic, it will be compiled into a regular javascript file that we have specified in *project.clj* 
+
+Now, we can start the ring server with (remember?) :
+
+    lein ring server-headless
+
+And head to the local URL: [http://localhost:3000](http://localhost:3000).
+
+The result is nicely expected:
+
+![cljs1](../images/chap10/cljs1.png)
+
+Now changing the content of *hello.cljs* a little with:
+
+    (js/alert "おはよう ClojureScript!")
+
+In the terminal with the *lein cljsbuild auto* command still running in the background, we can see the update is compiled directly on save:
+
+![cljs3](../images/chap10/cljs3.png)
+
+And the result shows on a reload of the page in the browser:
+
+![cljs2](../images/chap10/cljs2.png)
+
+Play around with a few commands, and see how it goes yourself !
+
+#### Live Clojure script in the browser ! REPL, steroids and desert wine
+
+Now a slightly more fun and advanced example. The project is located in *chapter10/cljs-advanced* and is taken from the lein-cljsbuild sample.
+
+##### Sharing, Shared: Code is fully shared between server and client.
+
+First thing we notice when we look at the *project.clj* file is quite large. Don't be afraid, this is mostly to cover numerous scenario, in a regular application we mostly don't need to write all this.
+
+After noticing the first thing, we can start noticing the second, which is, we have a shared section, with the following two lines:
+
+    :crossovers [example.crossover]
+    :crossover-jar true
+
+With those two lines we define a namespace, containing standard Clojure code that will be used for both the client side (compiled to javascript) and the server side (eventually compiled to java).
+
+All this compilation is all done in the background, so while it is better to know about it, there's no limitation if you don't really see all together yet.
+
+So running the server with the usual:
+
+    lein ring server-headless
+
+And heading to the server page, we get:
+
+![cljs4](../images/chap10/cljs4.png)
+
+But wait !! If we follow this through, we realize the code showing in the popup is not in the *src-cljs* folder. It's defined in the standard clojure source path at *src-clj*.
+
+@@@ ruby chapter10/cljs-advanced/src-clj/example/crossover/shared.clj @@@
+
+That's it ! That's where the code is coming from. But how? 
+
+If we look at the source of the HTML page we loaded, we see:
+
+    <script src="/js/main-debug.js" type="text/javascript"></script>
+    <script type="text/javascript">//<![CDATA[
+    example.hello.say_hello()
+    //]]></script>
+
+This has been produced by the server side, the ring handler, so if we go through the regular view path for ring, we find in *views.clj*
+
+    (defn- run-clojurescript [path init]
+     (list
+      (include-js path)
+      (javascript-tag init)))
+     
+    (defn index-page []
+     (html5
+      [:head
+        [:title (shared/make-example-text)] ]
+      [:body
+        [:h1 (shared/make-example-text)]
+         (run-clojurescript
+          "/js/main-debug.js"
+          "example.hello.say_hello()")]))
+
+Ok. I see this now. So we just need to check the *hello.cljs* file:
+
+    (ns example.hello
+      (:require
+        [example.crossover.shared :as shared]))
+     
+    (defn ^:export say-hello []
+       (js/alert (shared/make-example-text)))
+
+And now it all comes swiftly together. So let's see this graphically:
+
+![Flow](../images/chap10/ClojureScript.png)
+
+Note that the shared code section is pretty reactive too. If we change the text in *shared.clj* to, say:
+
+    (defn make-example-text []
+      (macros/reverse-eval
+        ("code" "shared " "from the " "おはよう " str)))
+
+The change when we reload the browser is shown almost instantly:
+
+![cljs5](../images/chap10/cljs5.png)
+
+Sweet ! That's our first lesson in the advance course. Still ready for more ? It gets better and better.
+
+##### Connecting a clojure script REPL to our browser: Live coding
+
+With the same setup we had in the previous section, namely 2 leiningen commands running.
+One for compiling clojurescript in the background:
+
+    lein cljsbuild auto
+
+And another one for the server:
+
+    lein ring server-headless
+
+We now direct our browser to a different page:
+
+    http://localhost:3000/repl-demo
+
+The most interesting part of the server side code, is in the views.clj file again, the function *repl-demo-page* 
+
+    (run-clojurescript
+        "/js/main-debug.js"
+        "example.repl.connect()")
+
+So we know that this clojurescript code comes from example/repl.cljs:
+
+@@@ ruby chapter10/cljs-advanced/src-cljs/example/repl.clj @@@
+
+Oh ! It opens a connection to a REPL on load. Sweet. So let's *listen* to this client with:
+    
+    lein trampoline cljsbuild repl-listen 
+
+And .. we are connected ! Client and Server talking the same language through the REPL. And as written on the page, we can "Try some fun REPL commands!". Do and type those commands in the clojure script REPL you have just open and see the results for yourself:
+
+    (js/alert "Hello!")
+
+![cljs10](../images/chap10/cljs10.png)
+
+    (load-namespace 'goog.date.Date)
+    (js/alert (goog.date.Date.))
+
+![cljs11](../images/chap10/cljs11.png)
+
+    (.log js/console (reduce + [1 2 3 4 5]))
+
+![cljs12](../images/chap10/cljs12.png)
+
+    (load-namespace 'goog.dom)
+    (goog.dom.setTextContent (goog.dom.getElement "fun") "おはようございます!")
+
+![cljs13](../images/chap10/cljs13.png)
+
+Turns to:
+
+![cljs14](../images/chap10/cljs14.png)
+
+Oh wow. That was actually pleasing even just to write in this book.
+
+##### Testing and REPLing with Firefox and PhantomJS
+
+Our latest advanced topic will be to run a browser so as to validate code, and basically is a hint towards testing. 
+
+We will be using a bit of [PhantomJS](http://phantomjs.org/download.html), a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.
+Basically, PhantomJS does everything your regular browser does, without a way for you to see it.
+
+After you have played a bit with PhantomJS, let's put pieces together.
+
+The repl-launch command of leiningen's cljsuibld, runs a REPL and launch a custom command to connect to it. So with the following command:
+
+    lein trampoline \
+    cljsbuild repl-launch \
+    phantom http://localhost:3000/repl-demo
+
+We will start a REPL on the command prompt and tell phantomJS to connect through it.
+Meaning we achieve the same as the previous section, but in headless mode.
+
+This is actually defined in the *project.clj* file of our project with:
+
+         ; This is similar to "firefox" except it uses PhantomJS.
+         ; $ lein trampoline cljsbuild repl-launch phantom <URL>
+         "phantom" ["phantomjs"
+                  "phantom/repl.js"
+                  :stdout ".repl-phantom-out"
+                  :stderr ".repl-phantom-err"]
+
+So, if the clojure script REPL we write:
+
+    ClojureScript:cljs.user> (js/console.log "ありがとう")
+
+The result can be seen in the console logs of phantomjs in the *.repl-phantom-out* file ! Have a look:
+
+    Loading URL: http://localhost:3000/repl-demo
+    Loaded successfully.
+    App console: ありがとう 
+
+It works all the same with the commands we used before, so in the Clojure script console, the following:
+
+     (.log js/console (reduce + [1 2 3 4 5]))
+
+Will output normally in the file above:
+
+    App console: 15
+
+##### Clojure Script first steps: already running
+
+With the bits we have seen, I am sure you are getting bubbling ideas of all the great projects you can start.
+
+To summarize, we have seen how to
+
+* integrate and run clojure script code in a ring-based project
+* do live coding from the REPL to the browser
+* interact with clojure, clojurescript code with a headless browser, phantomJS.
+
+We have gathered some quite advanced techniques here. With great techniques, comes great powers, comes great wine. Another glass of wine should not hurt.
 
 #### Single Page Application Using Clojure Script
 [https://github.com/neatonk/one](https://github.com/neatonk/one)
+
+            git clone https://github.com/brentonashworth/one.git
+
+#### Clojurescript with Google's AngularJS
+
+https://github.com/pangloss/clang
 
 #### Enlive inspired templating for Clojure Script
 [Enlive inspired templating](https://github.com/ckirkendall/enfocus)
 
 #### Clojure Home Page
 Your whole website in Clojure: https://github.com/runexec/chp
-
-#### Bringing the magic of ClojureScript to the desktop via Gnome Shell 
-[Gnome Shell Extension](https://github.com/technomancy/lein-gnome)	
