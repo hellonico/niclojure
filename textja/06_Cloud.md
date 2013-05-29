@@ -906,65 +906,52 @@ Palletノードのスペックには３つのメインコンポーネントが�
 	    (pallet.core/group-spec "mygroup" :count 1 :node-spec mynode))
 	; (pprint mygroup)
 
-And that's the core of it. Now we can boot up our group configuration onto the vmfest provider with:
+これが今回のポイントです。 以下のコマンドでvmfestでグループコンフィグレーションを指定してブートしてみましょう:
 
 	; (pallet.core/converge mygroup :compute vmfest)
 
-This will spawn something like this if you look in the VirtualBox UI:
+VirtualBoxのUIは以下のような表示になります:
 
 ![vbox](../images/chap06/vboxui.png)
 
-We can check the ip of the new node:
+新しいノードのIPをチェックして:
 
 	(pallet.compute/nodes vmfest)
 
-And at this stage you are ready to ssh into your created virtual machine.
+この状態で、この新しいVMにSSHすることが可能です。
 
-Shutdown works by reducing the number of available instances to 0:
+インスタンスの数を0にすることで、シャットダウンすることが出来ます:
 
 	(pallet.core/converge
 		(pallet.core/group-spec "mygroup" :count 0)
 		:compute vmfest)
 
-#### Create users and install packages
+#### ユーザを作って、パッケージをインストールする
 
-Creating a super user to achieve our tasks works by using a crate that will create a superuser for us.
+スーパーユーザーを作成してくれるcreateを使ってスーパーユーザーを作ってタスクを実行する。
 
-What is a Crate you ask me ? It is simply a function that encapsulate some usually small unit of configuration or administration.
+何だ、createって？ createはコンフィグレーションや管理のための小さいユニットをカプセル化します。
 
-We add this crate inside a _bootstrap_ phase. See by yourself:
+_bootstrap_ プロセスの中にcreateを追加します。 次のコードを見てみてください:
 
 @@@ ruby chapter06/pallet/src/tutorial02.clj @@@
 
-Then can install some packages onto the VM with a *:configure* keyword into the phases section as well.
+次に、phasesセクションで*:configure*キーワードを使って、VMにパッケージをインストールすることが出来ます。
 
 @@@ ruby chapter06/pallet/src/tutorial03.clj @@@
 
-#### Take it from there
+#### さらにこの先へ
 
-There is much more wine to be drunk, and grapes to be collected with pallet.
+Palletについてはまだまだ色々あります。
 
-It takes a sharp curve to get use to Pallet, as [Ian noticed before](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/)
+[Ian noticed before](http://ianrumford.github.io/blog/2012/10/24/first-steps-using-pallet-with-vmfest-and-virtualbox-4-dot-2/) にはPalletのさらに実践的な使い方があります。
 
-But with a very extensive set of [Documentations](http://palletops.com/doc/), an [extensive API](http://palletops.com/pallet/api/0.8/index.html) and a [set of tutorials](http://palletops.com/doc/reference-0.8/) to explain the Pallet concepts in details, you should see the good wine flow sooner than later.
+また、[Documentations](http://palletops.com/doc/), an [extensive API](http://palletops.com/pallet/api/0.8/index.html) と [set of tutorials](http://palletops.com/doc/reference-0.8/) には、Palletの広範囲に渡る説明とコンセプトについて書かれています。
 
-### What did you learn high up there ?
+### この章でやったこと
 
-Wow. This is has been a very packed but fun chapter 6 to go along with. We have gone all the way from execute powerful commands on remote servers, to build a custom minimal management server infrastructure.
+この章では、リモートサーバーで強力なコマンドを実行したり、最小限の管理でサーバーインフラを作ったりということをしました。
 
-Then we moved on to more advanced recipes with local VMs set up and management to a full PAAS example.
+それから、ローカルのVMのセットアップやPAASの管理についてやりました。
 
-Take some time to digest it, read it over it will make you fly faster than others.
-###### フロマージュ（Les fromage）: チーズ
-
-### Amazon EC2 を直接モニタする
-### システム管理やデプロイ用のクラスタとタスクを定義し、リモートで実行する
-### clojure-control でClojureアプリをモニタする
-### 並列 SSH
-### ロビンちゃんでグラフ化モニタリング
-### すぐに使えるクラウドインフラ
-### クラウド管理のための簡単 VirtualBoxラッパー
-### Hadoop ジョブをローカルやEMRで実行するための Lemur
-### Redhat OpenShift にデプロイする
-### Google App Engine
-### ちょー簡単！ jetlastic でClojureアプリをクラウドでデプロイ
+色々なことを短時間にやってきたので、もし時間があれば、もう一度ざっと読み返してみると良いかも知れません。
