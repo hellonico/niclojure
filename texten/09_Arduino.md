@@ -1,4 +1,4 @@
-## Arduino 
+## Arduino
 
 Now originally I was really dying to do things the way [Nurullah Akkaya](https://github.com/nakkaya) is doing. He has such a perfect sense for putting projects out there that will trigger your interest and make you passionate and curious about new things.
 
@@ -8,7 +8,7 @@ I have been passionated about [Arduino](http://ja.wikipedia.org/wiki/Arduino) fo
 
 But there has always been one thing that annoying me a little bit while playing with the hardware was the time needed to compile code and send it to the Arduino board.
 
-Now this is yet again one of the great theme in this book, we can now do live programming of the board itself using Clojure. 
+Now this is yet again one of the great theme in this book, we can now do live programming of the board itself using Clojure.
 
 If you think this section is not for you, because you're not into hardware programming (yet!), do [buy a board on Amazon](http://www.amazon.co.jp/dp/B0044X2E5S) by the end of today in your house and join the live programming session.
 
@@ -50,7 +50,7 @@ Once your house is about to be out of electricity, pour some wine in that empty 
 
 #### Upload Firmata
 
-At the base of Cloduino, is the [Firmata protocol](http://arduino.cc/en/reference/firmata), that allows for communication with software on the host computer. 
+At the base of Cloduino, is the [Firmata protocol](http://arduino.cc/en/reference/firmata), that allows for communication with software on the host computer.
 
 We upload it to our Arduino board the same we have done for the blink example.
 
@@ -60,7 +60,7 @@ We upload it to our Arduino board the same we have done for the blink example.
 
 The upload goes the same way as well.
 
-Once you have successfully uploaded the Firmata protocol, we can play. 
+Once you have successfully uploaded the Firmata protocol, we can play.
 
 #### Endless blinking
 
@@ -76,9 +76,9 @@ The blinking code is included in the example:
 
 @@@ ruby chapter09/cloduino/src/cloduino/sample.clj @@@
 
-What have we here that is not specific to Clojure ? 
+What have we here that is not specific to Clojure ?
 
-We define a board using cloduino's *arduino* method. 
+We define a board using cloduino's *arduino* method.
 
     board (arduino :firmata "/dev/tty.usbmodemfa131")
 
@@ -88,7 +88,7 @@ Note the port to the arduino board is actually showing in the Arduino software.
 
 The second thing that is new, is setting the mode of the PIN we are going to use. This is done using the pin-mode function on the board with:
 
-    (pin-mode board 13 OUTPUT) 
+    (pin-mode board 13 OUTPUT)
 
 This means we will _write to_ PIN 13.
 
@@ -104,7 +104,7 @@ This will get your board's LED blinking for a bit of time, until you realizing n
 
 But fun no ?
 
-#### Are we live yet ? 
+#### Are we live yet ?
 
 This is all great, but so much for live programming you might say. We hear you.
 
@@ -128,11 +128,11 @@ Personally, the best hack I have seen with this, is to connect a [REPL to your R
 
 Of course, connecting quil or overtone is totally allowed and part of the adventure.
 
-Robot are going mad. 
+Robot are going mad.
 
 ### Going native, C code interfacing with Clojure
 
-We already have seen a lot of native code with OpenCV and OpenGL in the last chapter. 
+We already have seen a lot of native code with OpenCV and OpenGL in the last chapter.
 Now comes [Clojure Native](https://github.com/bagucode/clj-native), a rough but working implementation to interface Clojure code and C code.
 
 The C library we are going to interface with is quite simple:
@@ -145,7 +145,7 @@ Basically we define the simplest function in C:
 
 And another one with parameters and a return value:
 
-    int add(int x, int y) 
+    int add(int x, int y)
 
 In the examples folder, we can compile it with gcc:
 
@@ -166,7 +166,7 @@ This now reads in the code below:
 @@@ ruby clj-native/src/examples/simple.clj @@@
 
 If we run it with:
-    
+
     lein run -m examples.simple
 
 The output will natively be:
@@ -174,7 +174,7 @@ The output will natively be:
     This string should be safe to read as const char*
     3
 
-Nice and simple. 
+Nice and simple.
 
 The clj-native folder contains a full example defining struts, unions, and callbacks on top of the functions we have just seen.
 
@@ -210,7 +210,7 @@ And for the moment, until further notice, we should stay onto a previous version
 
     [org.clojure/clojure "1.2.0"]
 
-We start the REPL and ... 
+We start the REPL and ...
 
 ##### Live 3D
 
@@ -233,16 +233,16 @@ Creates a green torus
 
 Creates a red torus rotated by PI/2 on X axes and translated on X by -1.0
 
-    (def red-torus 
-        (struct2 
-            (t 1 -1.0) 
-            (r 1 (/ PI 2.0)) 
-            (color :red) 
+    (def red-torus
+        (struct2
+            (t 1 -1.0)
+            (r 1 (/ PI 2.0))
+            (color :red)
             (torus 0.5 1.0)))
-     
+
      (view red-torus)
 
-![clj3d3](../images/chap09/clj3d3.png)    
+![clj3d3](../images/chap09/clj3d3.png)
 
 And assemble the two torus together:
 
@@ -250,17 +250,17 @@ And assemble the two torus together:
 
 ![clj3d4](../images/chap09/clj3d4.png)
 
-We can also load textures and models quite easily. Models, mostly wavefront obj files are loaded from the models folder. We have included 
+We can also load textures and models quite easily. Models, mostly wavefront obj files are loaded from the models folder. We have included
 
 From the repl, this translates into:
 
     (view (load-obj "car.obj"))
 
-And this shows 
+And this shows
 
 ![obj3](../images/chap09/obj3.png)
 
-Et voila. 
+Et voila.
 
 #### Orbit
 
@@ -305,7 +305,7 @@ To continue from there, we recommend looking at the following [blog](http://aure
 * [Creating a virtual world](http://aurellem.org/cortex/html/world.html)
 * [jMonkeyEngine from Clojure](http://aurellem.org/cortex/html/games.html)
 * The series on Sensors and effectors. ([Building a Body](http://aurellem.org/cortex/html/body.html) ...)
-* [Gabor Filters](http://aurellem.org/cortex/html/gabor.html)* 
+* [Gabor Filters](http://aurellem.org/cortex/html/gabor.html)*
 
 ![gabor](../images/chap09/gabor.png)
 
