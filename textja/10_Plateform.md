@@ -444,25 +444,23 @@ HTMLのソースを見てみると、以下の部分があります:
 
 ワクワクしますね！
 
-##### Testing and REPLing with Firefox and PhantomJS
+##### PhantomJSでテスト
 
-Our latest advanced topic will be to run a browser so as to validate code, and basically is a hint towards testing.
+前のトピックではブラウザで入力されたコードを扱いました。 今回はこれをブラウザ無しでやってみましょう。
 
-We will be using a bit of [PhantomJS](http://phantomjs.org/download.html), a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG.
-Basically, PhantomJS does everything your regular browser does, without a way for you to see it.
+ここでは、JavaScriptが使えるヘッドレスなWebKitである[PhantomJS](http://phantomjs.org/download.html)を使います。 PhoantomJSは速くて様々なWebのスタンダードをサポートします: DOM、CSS、JSON、Canvas、SVG等
+基本的にPhantomJSは画面がない以外は普通のブラウザ出来ることはほとんど出来ます。
 
-After you have played a bit with PhantomJS, let's put pieces together.
-
-The repl-launch command of leiningen's cljsuibld, runs a REPL and launch a custom command to connect to it. So with the following command:
+Leiningenのcljsbuildのrepl-launchコマンドは、REPLを起動し、REPLにコネクトするカスタムコマンドを実行します。 次のコマンドを実行して:
 
     lein trampoline \
     cljsbuild repl-launch \
     phantom http://localhost:3000/repl-demo
 
-We will start a REPL on the command prompt and tell phantomJS to connect through it.
-Meaning we achieve the same as the previous section, but in headless mode.
+コマンドプロンプトでREPLがスタートし、PhantomJSにREPLにコネクトするよう伝えます。
+つまり、ブラウザの画面が無いことを除けば、これは前のセクションでやったことと同じ状態です。
 
-This is actually defined in the *project.clj* file of our project with:
+phantomはプロジェクトの*project.clj*ファイルの中で定義されています:
 
          ; This is similar to "firefox" except it uses PhantomJS.
          ; $ lein trampoline cljsbuild repl-launch phantom <URL>
@@ -471,97 +469,87 @@ This is actually defined in the *project.clj* file of our project with:
                   :stdout ".repl-phantom-out"
                   :stderr ".repl-phantom-err"]
 
-So, if the clojure script REPL we write:
+これで、REPLに次のClojureScriptを入力すれば:
 
     ClojureScript:cljs.user> (js/console.log "ありがとう")
 
-The result can be seen in the console logs of phantomjs in the *.repl-phantom-out* file ! Have a look:
+*.repl-phantom-out*ファイルのPhantomJSのコンソールログにメッセージが表示されます。 こんな感じで:
 
     Loading URL: http://localhost:3000/repl-demo
     Loaded successfully.
     App console: ありがとう
 
-It works all the same with the commands we used before, so in the Clojure script console, the following:
+前のセクションで試したコマンドも同じように動きます。 例えば以下のように入力すれば:
 
      (.log js/console (reduce + [1 2 3 4 5]))
 
-Will output normally in the file above:
+は、上記のファイルに同じように結果が出力されます:
 
     App console: 15
 
-##### Clojure Script first steps: already running
+##### Clojure Script 最初の一歩: まとめ
 
-With the bits we have seen, I am sure you are getting bubbling ideas of all the great projects you can start.
+ここまでをまとめると、
 
-To summarize, we have seen how to
+* RingベースのプロジェクトにClojure Scriptを統合し、実行
+* REPLからブラウザにライブでコーディング
+* PhantomJSを使ってClojureとClojureScriptでやり取り
 
-* integrate and run clojure script code in a ring-based project
-* do live coding from the REPL to the browser
-* interact with clojure, clojurescript code with a headless browser, phantomJS.
+ここまでの内容だけでも、色々なアイディアが浮かんでくるのではないでしょうか？
 
-We have gathered some quite advanced techniques here. With great techniques, comes great powers, comes great wine. Another glass of wine should not hurt.
+#### WebサイトをClojureで
 
-#### Your whole website in Clojure
+まずは、Clojure Home PageというClojureのフレームワークを使って、Clojure Scriptとテンプレートのパワーに触れてみましょう。
 
-This section will follow up where *lein cljsbuild* stops. We will go over and see a few bricks of the Clojurescript landscape to make your development time even faster and pleasant.
-
-We will see Clojure Home Page, or the base framework to have your whole website in Clojure.
-Then onwards with some templating powers with Enlive in clojure script.
-
-Lastly, since we love Google's AngularJS, we will also see how to write AngularJS code in clojure script.
-
-Still hungry ? Bon Appetit !
+その後は、GoogleのAngularJSコードをClojure　Scriptの中で書いてみましょう。
 
 ##### Clojure Home Page
 
-To follow up with a new kid on the block in the school of web frameworks, here comes [Clojure Home Page](https://github.com/runexec/chp)
+[Clojure Home Page](https://github.com/runexec/chp)はCompojureベースのフレームワークで、フロントエンドとバックエンドをClojureで書くことが出来ます。
 
-ClojureHomePage is a Compojure based web framework that allows you to write the backend and frontend with Clojure.
+Clojure Home Pageで出来ること:
 
-You can:
+* <clj></clj>タグを使ってHTMLの中でClojureを走らせる
+* 複数のメソッドハンドラを使える: get、post、put、delete、head
+* コモンWebヘッダーの取得: ($ user-agent)とか
+* Webヘッダーの取得: ($$ cache-control)とか
+* 環境変数の取得: (env java.vm.name)とか
+* Hiccupフォームを使ったHTML置換
+* ClojureScriptを使ってJavaScript/ECMAScript生成
+* Gardenを使ったCSS生成
+* KormaSQLを使ったデータベース操作
 
-* Run Clojure inside a HTML file with the <clj></clj> tags
-* Have multiple method handlers under a single route (get, post, put, delete, and head)
-* Easily get common web headers (ex. ($ user-agent))
-* Easily get web headers (ex. ($$ cache-control))
-* Easily get environmental variables (ex. (env java.vm.name))
-* Generate HTML with a drop-in replacement for common Hiccup forms
-* Generate JavaScript / ECMAScript with ClojureScript
-* Generate CSS with Garden
-* Manipulate databases with KormaSQL
-
-I have cloned a basic sample from the *clojure-home-page* repository. Navigating to it, we remember we start with the now familiar two commands:
+*clojure-home-page*のリポジトリからサンプルをクローンして見てみたところ、今やお馴染みの2つのコマンドからスタートします:
 
     lein ring server-headless
     lein cljsbuild auto
 
-In this checkout, we have a new generic ring rouges named *chp-route* :
+このプロジェクトでは、*chp-route*という新しい識別子が登場します:
 
     (chp-route "/"
                (or (chp-parse (str root-path "index.chtml"))
                    "error"))
 
-Which basically does the magic for us, and allows for embedding Clojure code and templating with clojure directly into the file.
+これによって、index.chtmlファイルに直接Clojureのコードを埋め込むことが出来るようになります。
 
-The template itself, declared with the extension .chtml, will read easily at this stage of the book:
+ファイルの拡張子は.chtmlで、cljタグに挟まれてClojureのコードが埋め込まれています:
 
 @@@ ruby chapter10/clojure-home-page/chp-root/index.chtml @@@
 
-And it really is Clojure everywhere. With some clojure script in the chtml file and some more clojurescript coming from file:
+ファイルにはClojureコードが埋め込まれ、別のファイルはClojure Scriptが書かれ、どこでもClojureという感じですね！
 
 @@@ ruby chapter10/clojure-home-page/resources/cljs/main.cljs @@@
 
-Et voila.
 
 ![chp](../images/chap10/chp1.png)
 
-Clojure Home Page wraps [hiccup](https://github.com/runexec/chp#clojure-and-html-generation) for templating, in those chtml files, and includes the [Garden](https://github.com/noprompt/garden)  library to have fun even when writing CSS code.
+Clojure Home Pageはテンプレート用に[hiccup](https://github.com/runexec/chp#clojure-and-html-generation)をラップしており、CSS用に[Garden](https://github.com/noprompt/garden)ライブラリを使用しています。
 
-##### Fetch: A ClojureScript library that makes client/server interaction painless.
+##### Fetch: クライアント/サーバー間のやり取りを手軽に行うClojureScriptライブラリ
 
-Remember the noir web library from our web chapter some time ago ?
+Webの章ではnoirというライブラリを使いました。
 
-[Fetch](https://github.com/ibdknox/fetch) introduces *Remotes*, and let you make calls to a noir server without having to think about XHR. On the client-side you simply have code that looks like this:
+[Fetch](https://github.com/ibdknox/fetch)の*Remotes*はXHR無しにnoirサーバの呼び出しを可能にします。 クライアント側では、以下のようなコードを書きます:
 
     (ns playground.client.test
      (:require [fetch.remotes :as remotes])
@@ -578,9 +566,9 @@ Remember the noir web library from our web chapter some time ago ?
               b (adder 5 6)]
       (js/alert (str "a: " a " b: " b)))
 
-Note that the results we get are real Clojure datastructures and so we use them just as we would in normal Clojure code. No JSON here.
+※ クライアント側で取得するのはJSONではなく、正にClojureのデータ構造なのでClojureコードの中でそのまま扱うことができます。
 
-The noir side of things is just as simple. All you do is declare a remote using defremote.
+noir側もシンプルにdefremoteを使ってリモートを定義しています。
 
     (use 'noir.fetch.remotes)
 
@@ -593,9 +581,9 @@ The noir side of things is just as simple. All you do is declare a remote using 
 
     (server/start 8080)
 
-Easy ? We have included an example using both friendly and fetch, under *friendly-fetch-example*.
+friendlyとfetchのサンプルは*friendly-fetch-example*フォルダにあります。
 
-The most interesting file is sliced in two parts. The server side:
+以下、サーバー側のポイントとなる部分です(抜粋):
 
     (ns friendly.views.welcome
       (:require [friendly.views.common :as common]
@@ -615,37 +603,35 @@ The most interesting file is sliced in two parts. The server side:
     (defremote another []
       (friend/authorize #{:friendly.server/user} "This action required logging in!"))
 
-And the client side, making calls from Clojurescript to Clojure and back:
+そしてクライアント側。 ClojurescriptからClojureを呼び出しています:
 
 @@@ ruby chapter10/friendly-fetch-example/src-cljs/friendly/client.cljs @@@
 
-We also get a nice example of how to use the google dom library and update the DOM directly with:
+また、Googleのdomライブラリを使ってDOMを直接更新しています:
 
     (dom/setTextContent (dom/getElement "currentuser") "")
 
 ##### Shoreleave
 
-We would not be presenting the Clojurescript landscape properly without presenting Shoreleave.
+これ抜きにはClojurescriptは語れないってくらい重要なShoreleaveを紹介します。
 
-[Shoreleave](https://github.com/ohpauleez/shoreleave) is a smarter client-side in ClojureScript. Shoreleave is a collection of integrated libraries that focuses on:
+[Shoreleave](https://github.com/ohpauleez/shoreleave)で、ClojureScriptをクライアントサイドでよりスマートに使うことができます。 Shoreleaveは下記にフォーカスしたライブラリのコレクションです:
 
-    Security
-    Idiomatic interfaces
-    Common client-side strategies
-    HTML5 capabilities
-    ClojureScript's advantages
+    セキュリティ
+    慣用的なインターフェイス
+    クライアントサイド方式
+    HTML5の機能
+    ClojureScript
 
-More concisely (and reductively), Shoreleave is a set of web-app libraries that make it simpler to get a ClojureScript-based client-side connected to a Ring/Compojure-based Clojure backend.
+もっと簡単に言うと、ShoreleaveはRing/CompojureベースのバックエンドにコネクトするClojurescriptベースのクライアントWebアプリケーションに有用なライブラリセットです。
 
-We have included a [barebone shoreleave](https://github.com/ddellacosta/barebones-shoreleave) playground in the chapter10 folder.
+メインのRingハンドラーファイルには3つの興味深いセクションがあります。
 
-The main ring handler file, contains three interesting sections.
-
-First, The shoreleave middle included and defined in the namespace with:
+1つ目: shoreleave middlewareは以下のネームスペースで定義されている:
 
     [shoreleave.middleware.rpc :refer [defremote wrap-rpc]]
 
-Second, we add it to our route definition:
+2つ目: それをルート定義に追加:
 
     (def app
       (-> app-routes
@@ -653,38 +639,136 @@ Second, we add it to our route definition:
       ...
       handler/site))
 
-Last, we define a remotely available endpoint with:
+3つ目: リモートのエンドポイントを定義:
 
      ;; https://github.com/shoreleave/shoreleave-remote-ring
      (defremote ping [pingback]
        (str "You have hit the API with: " pingback))
 
-This remote endpoint can then be used from the client side:
+これで、リモートのエンドポイントはクライアントサイドから使用できるようになる:
 
 @@@ ruby chapter10/barebones-shoreleave/src/barebones_shoreleaves/client/main.cljs @@@
 
 ![shoreleave](../images/chap10/shoreleave.png)
 
-Sweet ? But wait, there's more !
+ShoreleaveのremotesパッケージにはXHR、Pooled-XHR、JSONP、HTTP-RPCの機能が含まれています。
 
-Shoreleave's remotes package includes XHR, Pooled-XHR, JSONP, and HTTP-RPC capabilities.
+Clojureサーバがring-anti-forgery middlewareを使用しているのであれば、CSRFプロテクションが組み込まれています。 anti-forgeryの詳細はshoreleave-baselineを参照して下さい。
 
-CSRF protection is built in if your Clojure server is using the ring-anti-forgery middleware. See shoreleave-baseline for anti-forgery details.
+HTTP-RPCは単一のサーバーサイドの呼び出し、remote-nsによって、クライアント側APIとしてサーバーサイドのネームスペースを出します。
 
-The HTTP-RPC allows for exposing a server-side namespace as a client-side API, via a single server-side call, remote-ns.
+最後に、Shoreleaveは[pub/sub abstraction](https://github.com/ohpauleez/shoreleave#a-pubsub-abstraction-and-implementations)が含まれています。
 
-And finally Shoreleave includes a [pub/sub abstraction](https://github.com/ohpauleez/shoreleave#a-pubsub-abstraction-and-implementations) (and implementations)
+Shoreleaveのpub/subシステムを使って、アプリケーションのパーツを完全に分離し、宣言的にそれらをバインドすることができます。 そうすることで、既存のサービスを組み合わせて新しい機能を構築することが出来ます。
 
-Shoreleave's pub/sub system enables you to completely decouple parts of your app and declaratively bind them together. New features and functionalities can be built by composing pre-existing services/publishables.
+[barebone shoreleave](https://github.com/ddellacosta/barebones-shoreleave) を第10章のフォルダに含めました。
 
-We have included a [barebone shoreleave](https://github.com/ddellacosta/barebones-shoreleave) playground in the chapter10 folder.
+第10章のshoreleaveフォルダには、他にもいくつかのShoreleaveサンプルがあります。
 
-A more extensive shoreleave example project is included in the sample codes for chapter10 inside the shoreleave folder.
+##### ここから先へ
 
+このセクションでやったこと:
 
-## JavaだけぢゃないClojure：Ruby、.NET、javascript
-###### プティ・フール（Petit fours）: 締めのお茶受け
+* Clojure Home Page: WebアプリケーションのフロントエンドでClojureを使う、Ringハンドラーを使ったバックエンド
+* Fetch: サーバとクライアントでリモートでClojureのファンクションをやり取りするライブラリ
+* Shoreleave: クリーンなリモートインターフェイス、pub/subフレームワーク
 
-### Ruby + Clojure = Rouge !
-### ClojureCLR： .NET でClojure
-### ClojureScript： Clojure を Javascript にコンパイル
+Clojure scriptの更なるトピックとしては、以下のライブラリがあります:
+
+###### Enfocus
+
+[enfocus](https://github.com/ckirkendall/enfocus)はEnliveに触発されたClojure Script用テンプレートです。
+
+[enfocus-site](http://ckirkendall.github.io/enfocus-site/)の[source code](https://github.com/ckirkendall/enfocus-demo-site.git)そのものが非常に良いリファレンスとなっています。
+
+###### Domina
+
+[Domina](https://github.com/levand/domina)はjQueryにインスパイアされたDOM操作ライブラリです。 Google ClosureライブラリによるDOM操作に対するClojure用のインターフェイスを提供します。
+また、DominaにはGoogle Closureのイベントハンドリングをラップした強力なAPIがあります。
+
+###### ClojureScriptとCanvas: シンプルなブロック崩しの実装
+
+HTML5のCanvasを使ってブロック崩しをClojure scriptで実装しています: [post](http://nakkaya.com/2012/01/31/clojurescript-canvas-a-simple-breakout-implementation/)
+
+スクリーンショットはこちら:
+
+![canvas](../images/chap10/canvas.png)
+
+もう一冊本が書けそうですね!
+
+#### ボーナス: ClojurescriptでGoogle AngularJS
+
+[Clang](https://github.com/pangloss/clang)では、ClojureScriptと[Google's AngularJS framework](http://angularjs.org/)を統合しています。
+
+##### Clangとは?
+
+Clang includes an unmodified current release of AngularJS. It allows you to use ClojureScript data structures throughout your angular app and simplifies writing your controllers and directives, etc according to Angular's best practices. Clang integrates ClojureScript into all of Angular's built-in directives.
+
+##### How is it?
+
+Clang defines a new $parse provider which is injected throughout Angular and used wherever Angular reads any properties from the scope. It also replaces the Angular $interpolate provider to enable the same thing in {{interpolated}} blocks in your app.
+
+Those two changes enable all of Angular's built in directives to work with ClojureScript except for the ng-repeat which assumes Javascript arrays. Clang's clang-repeat fills that gap.
+
+##### Show me
+
+Here are a couple of bits of code clipped from the sample index.html
+
+This bit calls the remaining function from the scope and applies the built-in count function to the todos vector:
+
+      <span>{{(remaining)}} of {{(count todos)}} remaining</span>
+      [ <a ng-click="(archive)">archive</a> ]
+
+The relevant controller definitions:
+
+    (def.controller m TodoCtrl [$scope]
+     (scope! todos [{:text "learn angular" :done "yes"}
+                 {:text "learn cljs" :done "yes"}
+                 {:text "build an app" :done "no"}])
+     (defn.scope remaining []
+      (->>
+       (scope! todos)
+       (map :done)
+       (remove #{"yes"})
+       count)))
+
+Here's a slightly silly but kind of awesome example of building a table:
+
+      <table>
+        <tr clang-repeat="group in (drop 1 (partition 3 nums))">
+          <td clang-repeat="x in (map (juxt identity odd?) group)">
+            {{(first x)}} is {{(if (last x) "odd" "even")}}
+          </td>
+        </tr>
+      </table>
+
+The relevant controller definitions:
+
+    (def.controller m TodoCtrl [$scope]
+     (scope! nums (range 1 10)))
+
+###### Try it yourself !
+
+In the clang folder, we use the cljsbuild command to compile the code:
+
+    lein cljsbuild auto dev
+
+And then open the resulting compiled code with:
+
+    open resources/public/index.html
+
+And see real time client side javascript "a-la-angular-js" on your own brower:
+
+![clang](../images/chap10/clang.png)
+
+### Finishing the chapter10
+
+So this last chapter was a pretty intense presentation of the whole Clojure landscape pushed to some new worlds.
+
+We have gone through this very diverse list of knowledge:
+
+* run Clojure on the Ruby Virtual Machine and how to call ruby gems from Clojure
+* run Clojure on .Net, Microsoft's virtual machine, and how to call .NET code from Clojure and the reverse.
+* Presented and work through a long list of examples for Clojurescript, and how it is redefining in a very Fresh way how to do web programming.
+
+Hope you enjoyed, finish the last glass of wine and review some working samples to have a nice last impression on this long chapter.
