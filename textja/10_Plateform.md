@@ -698,28 +698,26 @@ HTML5のCanvasを使ってブロック崩しをClojure scriptで実装してい�
 
 #### ボーナス: ClojurescriptでGoogle AngularJS
 
-[Clang](https://github.com/pangloss/clang)では、ClojureScriptと[Google's AngularJS framework](http://angularjs.org/)を統合しています。
+[Clang](https://github.com/pangloss/clang)は、ClojureScriptと[Google's AngularJS framework](http://angularjs.org/)を統合します。
 
 ##### Clangとは?
 
-Clang includes an unmodified current release of AngularJS. It allows you to use ClojureScript data structures throughout your angular app and simplifies writing your controllers and directives, etc according to Angular's best practices. Clang integrates ClojureScript into all of Angular's built-in directives.
+ClangにはAngularJSの変更していない現在のリリースが含まれており、AngularアプリケーションからClojure Scriptのデータ構造を使えるようになるので、コントローラやディレクティブを簡潔に書くことが出来ます。 ClangはClojureScriptをAngularにビルトインされているディレクティブに統合します。
 
-##### How is it?
+Clangは、Angularがスコープからプロパティを読み込むときに使われる新しい$parseプロバイダーを定義します。 また、Angularの$interpolateプロバイダーをアプリケーション中の{{interpolated}}ブロックの中身と置き換えます。
 
-Clang defines a new $parse provider which is injected throughout Angular and used wherever Angular reads any properties from the scope. It also replaces the Angular $interpolate provider to enable the same thing in {{interpolated}} blocks in your app.
+これら2つの変更でJavaScriptのアレイと見なされるng-repeatを除くすべてのAngularのビルトイン・ディレクティブを有効にします。 ng-repeatはClangのclang-repeatが対応します。
 
-Those two changes enable all of Angular's built in directives to work with ClojureScript except for the ng-repeat which assumes Javascript arrays. Clang's clang-repeat fills that gap.
+##### サンプル
 
-##### Show me
+以下、サンプルのindex.htmlの抜粋です。
 
-Here are a couple of bits of code clipped from the sample index.html
-
-This bit calls the remaining function from the scope and applies the built-in count function to the todos vector:
+ここでは、スコープからremainingファンクションを呼び出し、todosベクタに対してcountビルトイン・ファンクションを実行しています:
 
       <span>{{(remaining)}} of {{(count todos)}} remaining</span>
       [ <a ng-click="(archive)">archive</a> ]
 
-The relevant controller definitions:
+関連するコントローラの定義部分:
 
     (def.controller m TodoCtrl [$scope]
      (scope! todos [{:text "learn angular" :done "yes"}
@@ -732,7 +730,7 @@ The relevant controller definitions:
        (remove #{"yes"})
        count)))
 
-Here's a slightly silly but kind of awesome example of building a table:
+次の部分では、動的にテーブルを作り上げています:
 
       <table>
         <tr clang-repeat="group in (drop 1 (partition 3 nums))">
@@ -742,33 +740,31 @@ Here's a slightly silly but kind of awesome example of building a table:
         </tr>
       </table>
 
-The relevant controller definitions:
+そのコントローラ部分:
 
     (def.controller m TodoCtrl [$scope]
      (scope! nums (range 1 10)))
 
-###### Try it yourself !
+###### 自分で試す
 
-In the clang folder, we use the cljsbuild command to compile the code:
+clangのフォルダで、cljsbuildコマンドを使ってコンパイルします:
 
     lein cljsbuild auto dev
 
-And then open the resulting compiled code with:
+コンパイルされたコードをopenする:
 
     open resources/public/index.html
 
-And see real time client side javascript "a-la-angular-js" on your own brower:
+ブラウザで表示する:
 
 ![clang](../images/chap10/clang.png)
 
-### Finishing the chapter10
+### この章でやったこと
 
-So this last chapter was a pretty intense presentation of the whole Clojure landscape pushed to some new worlds.
+この最後の章では、本来のClojureとはちょっと別の世界を紹介しました。
 
-We have gone through this very diverse list of knowledge:
+* RubyのVMでClojureを動かし、Ruby gemをClojureから呼び出す
+* .NetでClojureを動かし、Clojureから.Netのコードを呼ぶ
+* Clojurescriptを動かし、WebプログラミングでClojureを使う
 
-* run Clojure on the Ruby Virtual Machine and how to call ruby gems from Clojure
-* run Clojure on .Net, Microsoft's virtual machine, and how to call .NET code from Clojure and the reverse.
-* Presented and work through a long list of examples for Clojurescript, and how it is redefining in a very Fresh way how to do web programming.
-
-Hope you enjoyed, finish the last glass of wine and review some working samples to have a nice last impression on this long chapter.
+飲み残したワインはないですか？ もう最後の章なので、新しいボトルを開けるのもアリですね。
