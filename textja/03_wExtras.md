@@ -40,90 +40,88 @@ ClojureでVaadinを使うには、Clojureのコードを呼び出すJava Servlet
 
 ![vaadin2](../images/chap03/vaadin2.png)
 
-#### Lein-exec, scripting Clojure
+#### Lein-exec: Clojureスクリプト
 
-[lein-exec](https://github.com/kumarshantanu/lein-exec) is a plugin for leiningen that now allows you to script whatever you want in Clojure. That's it. Leiningen is actually put in the background for a bit, and you can run your one off script when needed.
+[lein-exec](https://github.com/kumarshantanu/lein-exec)はClojureスクリプトを実現するLeiningenプラグインです。
 
-To install lein-exec we write the plugin dependency in our *profiles.clj* file:
+*profiles.clj*にプラグインを書いて、lein-execをインストールします:
 
     {:user {:plugins [[lein-exec "0.3.0"]]}}
 
-We now have access to the following Leiningen shortcut:
+これで、下記のショートカットがLeiningenで使えるようになりました:
 
     lein exec -e <string-s-expr>
 
-That we can try straight away with:
+実際にコマンドを入力して試してみましょう:
 
     lein exec -e "(println (+ 1 1))"
     > 2
 
-We can also run scripts written in files, so our good old friend factorial can be called from Clojure:
+ファイルに書いたスクリプトを実行することもできます。 以下は引数で渡された数値の階乗を計算します:
 
 @@@ ruby chapter03x/lein-exec/factorial.clj @@@
 
-And run it with:
+このスクリプトを以下のように実行すると、20の階乗が出力されます:
 
     lein exec factorial.clj 20
     > 2432902008176640000
 
-##### Executable scripts
+##### スクリプトコマンド
 
-On Unix machines, it gets even better with the proper shebang. As you have seen the factorial.clj file contains:
+Unix系の環境では、さらに便利な使い方があります。 上記のfactorial.cljファイルの先頭には以下のように書かれています:
 
     #!/bin/bash lein-exec
 
-To install the necessary files we download them and put them in our classpath:
+必要なファイルをダウンロードし、classpathに含まれる場所に置きます:
 
     $ wget https://raw.github.com/kumarshantanu/lein-exec/master/lein-exec
     $ wget https://raw.github.com/kumarshantanu/lein-exec/master/lein-exec-p
     $ chmod a+x lein-exec lein-exec-p
     $ mv lein-exec lein-exec-p ~/bin  # assuming ~/bin is in PATH
 
-Now, the factorial.clj file can be turned into an executable with:
+スクリプトファイルの属性を実行形式に変えたら、実行してみましょう:
 
     ./factorial.clj 20
     > 2432902008176640000
 
-##### Dependencies
+##### スクリプトコマンドの依存関係
 
-The "Cerise sur le gateau" is the dependency feature available to us through some pomegranate magic.
+Leiningenのpomegranateライブラリによって、動的に依存関係を解決することができます。
 
-To create a Ring application (see the web chapter) on the spot, we call:
+Ringアプリケーションを作成するために以下のようにコールします:
 
     (use '[leiningen.exec :only  (deps)])
     (deps '[[ring "1.2.0-beta1"]])
     (deps '[[compojure "1.1.5"]])
 
-First line brings the power of pomegranate to us, the two other lines, are fetching the dependencies.
+これにより必要な依存関係がダウンロードされます。
 
-So running the script with:
+後はスクリプトを実行すると:
 
     ./ring.clj
 
-Brings a full webservice application that can be tweaked at will right on the sweeeeet spot.
+フルスペックのWebサービス・アプリケーションが起動します。
 
-##### Websockets on the spot
+##### パっと作るWebsocket
 
-Building on the power of the ring example above, we have included a chat room based on *http-kit* that we have seen earlier.
+上記のRingサンプルに、ちょっと前にやった*http-kit*を使ってチャットルームを作ってみました。
 
-Running the script with:
+以下のコマンドで実行します:
 
     ./async.clj
 
-Brings some chat room goodness. Your browser will open, and you can try it following the indications on the screen:
+ブラウザが開くので、websocketによる通信を試して下さい:
 
 ![ws1](../images/chap03/ws1.png)
 ![ws2](../images/chap03/ws2.png)
 ![ws3](../images/chap03/ws3.png)
 
-Could not get any sweeter.
+*async.clj*にはJSONを返すハンドラーも含まれています。
 
-Note that by some random accident, that *async.clj* example also includes parsing and returning json.
-
-Try to access:
+以下のURLにアクセスします:
 
     http://localhost:8090/tellme.json
 
-And check the result by yourself. !
+結果は以下の通りです。
 
 ![httpkit_json](../images/chap03/httpkit_json.png)
