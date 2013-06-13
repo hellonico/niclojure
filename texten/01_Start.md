@@ -584,7 +584,7 @@ This is not the end, Leiningen provides plugins for all your needs. Groovy, Hado
 I have found that I am using those ones the most:
 
 Leiningen Plugin| What does it do | What's useful |
-| |
+-----|:-------------------:|-------------------:|
 lein-midje | It runs test | Not only useful, you have to install it. We will cover that later | 
 lein-noir | To easily create webapps | We will cover that later | 
 lein-deps | This shows all your project transitive dependencies. | Try _lein deps :tree_ 
@@ -624,7 +624,7 @@ The rest of the code goes like this:
 And then, we can get a bunch of results like:
 
 Company name | Command line | Result
-| | 
+-----|:-------------------:|-------------------:|
 Apple | lein stock AAPL | 520.00
 Microsoft | lein stock MSFT | 26.83
 Yahoo | lein stock YHOO | 19.29

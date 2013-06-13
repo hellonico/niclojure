@@ -577,7 +577,7 @@ Groovy、Hadoop、... Leiningenには本当に色々なプラグインが存在�
 ちなみに私がよく使うプラグインを紹介します:
 
 Leiningen プラグイン| 機能 | 備考 |
-| |
+-----|:-------------------:|-------------------:|
 lein-midje | テストを実行 | インストール必須！ この本でも取り上げている |
 lein-noir | Webアプリを簡単に作成 | この本で取り上げている |
 lein-deps | プロジェクトの依存関係を表示 | _lein deps :tree_
@@ -616,7 +616,7 @@ project.clj ファイルに追加して現在のプロジェクトから直接�
 実際に実行すると、以下のようになります:
 
 Company name | Command line | Result
-| |
+-----|:-------------------:|-------------------:|
 Apple | lein stock AAPL | 520.00
 Microsoft | lein stock MSFT | 26.83
 Yahoo | lein stock YHOO | 19.29
