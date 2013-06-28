@@ -527,30 +527,31 @@ XMLのクエリというと、きっと今までに何度もやってきたこ�
 
 #### ニューラルネットワークにはNetz
 
-	Netz は多層パーセプトロン(Multilayer perceptron = MLP)、	人工ニューラルネットワークモデルの一つをClojureに実装したものです。 Netz provides functions for training and running MLPs. Training is accomplished via gradient descent batch Rprop or standard backpropagation.
-	Netz implements Rprop as described by Riedmiller in Rprop - Description and Implementation Details.
+	Netz は多層パーセプトロン(Multilayer perceptron = MLP)、	人工ニューラルネットワークモデルの一つをClojureに実装したものです。
+	NetzはトレーニングとMLPを実行するファンクションを提供します。 トレーニングは勾配法であるRPROPまたはバックプロパゲーションによって行われます。
+	Netzは、Riedmillerの"Rprop - Description and Implementation Details"における記述をベースに実装されています。
 
 [Netz, Clojure Neural Network Library](https://github.com/nickewing/netz)
 
-Here is a very short example, showing how to train and run a Neural Network:
+以下はニューラルネットワークがどのようにトレーニングし、実行するかのサンプルです:
 
 @@@ ruby chapter02/src/netz.clj @@@
 
-In the example, we see we train the network with some hidden values. The options you are most likely to find interesting are:
+このサンプルでは、隠れた値を使ってネットワークをトレーニングしています。 興味深いポイントとしては:
 
-	:hidden-neurons - A vector containing the number of neurons in each hidden layer. Set to [2 2] for two hidden layers with two neurons each, or [] for no hidden layers. Setting this option is recommended. Default: One hidden layer with the same number of hidden neurons as inputs.
+	:hidden-neurons - 各隠れ層中の複数のニューロンを含むベクターデータ。 [2 2]とセットすると隠れ層が2つ、それぞれにニューロンが2つという意味となり、[]をセットすると隠れ層は無しになります。 このオプションは設定することを推奨されており、デフォルトでは1つの隠れ層に1つのニューロンが入力となります。
 
-and to change the learning algorithm:
+また、学習アルゴリズムを変更するには:
 
-	:learning-algorithm - The algorithm to use while training. Choose either :rprop for the Rprop algorithm or :bprop for standard back propagation. Default: :rprop.
+	:learning-algorithm - トレーニングに使用するアルゴリズム。 :rpropを指定するとRpropが、:bpropを指定するとバックプロパゲーションとなる。 デフォルトは :rprop
 
-Also, each training variant has some specific options.
+※ 各トレーニングにはそれぞれのアルゴリズムに特化したオプションがあります。
 
-As a reminder modern Neural Networks can be applied to a variety of useful tasks such as:
+近年では、ニューラルネットワークは以下のような様々な用途に利用されています:
 
-* Function approximation, or regression analysis, including time series prediction and modeling.
-* Classification, including pattern and sequence recognition, novelty detection and sequential decision making.
-* Data processing, including filtering, clustering, blind signal separation and compression.
+* 時系列予測やモデリングを含む関数近似や回帰分析
+* パターンや順序識別、新規性認識、逐次的意思決定に基づいた分類
+* フィルタリング、クラスタリング、ブラインド信号分離や圧縮等のデータ処理
 
 
 #### SSHトンネリング
